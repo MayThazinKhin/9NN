@@ -26,6 +26,7 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->word,
             'price' => $this->faker->numberBetween(1000,5000),
+            'count' => 1000 ,
             'category_id' => $this->faker->randomElement($category_IDs)
         ];
     }

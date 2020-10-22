@@ -10,10 +10,12 @@ class ItemTest extends TestCase
      *
      * @return void
      */
+
     public function testItemCategories()
     {
         $response = $this->post('api/categories',['type'=>'shop']);
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+        ->assertJson([]);
     }
 
     public function testItems()

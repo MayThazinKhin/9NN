@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             MarkerSeeder::class,
             Table::factory(20)->create(),
             Category::factory(20)->create(),
-            Item::factory(200)->create()
+            Item::factory(20)->create()
         ]);
 
     }

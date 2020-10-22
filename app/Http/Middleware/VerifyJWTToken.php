@@ -12,14 +12,13 @@ use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 
 class VerifyJWTToken extends BaseMiddleware
 {
-
     public function handle($request, Closure $next)
     {
         if (!$request->bearerToken()) {
             return responseStatus('Token is not found.', 400);
         }
         try {
-           // return   responseData('aa',JWTAuth::parseToken(),200);
+            //return   responseData('aa',JWTAuth::parseToken()->authenticate(),200);
             if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return responseStatus('User is not authenticated.', 401);
             }
@@ -32,8 +31,6 @@ class VerifyJWTToken extends BaseMiddleware
                 return responseStatus('Something is wrong about the token.', 401);
             }
         }
-
         return $next($request);
-
     }
 }

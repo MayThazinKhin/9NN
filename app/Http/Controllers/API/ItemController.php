@@ -18,7 +18,7 @@ class ItemController extends Controller
     }
 
     public function getItemsByCategoryID(ItemRequest $request){
-        $items  = Item::where('category_id',$request->category_id)->select('id','name','price')->get();
+        $items  = Item::where('category_id',$request->category_id)->select('id','name','price','count')->get();
         $paginate_items = paginate($items,$request);
         return responseData('items',$paginate_items,200);
     }
