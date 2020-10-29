@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Table;
+use App\Http\Services\Table\TableFacade as Table;
 use Illuminate\Http\Request;
 
 class TableController extends Controller
 {
     public function getTables()
     {
-        $marker = UserData();
-        $tables = Table::where('marker_id',null)->select('id','name','price')->get();
+        $tables = Table::getFreeTables();
         return responseData('tables',$tables,200);
     }
 }

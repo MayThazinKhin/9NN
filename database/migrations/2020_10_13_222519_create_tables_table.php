@@ -17,7 +17,7 @@ class CreateTablesTable extends Migration
             $table->id();
             $table->char('name',200);
             $table->double('price');
-            $table->foreignId('marker_id')->nullable()->constrained()->onDelete('cascade');
+            $table->unsignedInteger('marker_id')->nullable();
             $table->timestamps();
         });
     }

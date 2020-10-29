@@ -10,6 +10,7 @@ use App\Models\Receipt;
 class OrderController extends Controller
 {
     public function orderItems(SellItemRequest $request){
+        return [$this->sampleData()];
         $input_items = stripslashes($request->items);
         $order = json_decode( $input_items, true );
         if($order == null){
@@ -38,16 +39,33 @@ class OrderController extends Controller
     public function sampleData()
     {
         $d = [];
-        for($i = 1;$i<6; $i++){
+        $c = [];
+        for($i = 1;$i<3; $i++){
             $a = new \stdClass();
             $a->id = $i;
             $a->count = $i+2;
             $d[]  = $a ;
         }
-       $data = new \stdClass();
-        $data->items = $d;
-        $data->total = 100000.00;
-        $data->type = 'shop' ;
+        for($n = 1;$n<3; $n++){
+            $b = new \stdClass();
+            $b->start_time = '2020-10-29 06:43:21';
+            $b->end_time = '2020-10-29 07:43:21';
+            $b->total = 1000 * $n;
+            $c[]  = $b ;
+        }
+        $items = new \stdClass();
+        $items->values = $d;
+        $items->total = 10000.00;
+        $periods = new \stdClass();
+        $periods->values = $c;
+        $periods->total = 20000.00;
+
+        $data = new \stdClass();
+        $data->session_id = 4;
+        $data->items = $items;
+        $data->periods = $periods;
+        $data->total = 30000.00;
+        //$data->type = 'shop' ;
         return $data;
     }
 

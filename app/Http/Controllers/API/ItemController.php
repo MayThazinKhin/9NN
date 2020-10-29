@@ -4,14 +4,14 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\ItemRequest;
-use App\Http\Requests\API\ItemCategory;
+use App\Http\Requests\API\ItemCategoryRequest;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Type;
 
 class ItemController extends Controller
 {
-    public function getItemCategoriesByType(ItemCategory $request){
+    public function getItemCategoriesByType(ItemCategoryRequest $request){
         $type_id = Type::where('name',$request->type)->pluck('id')->first();
         $categories = Category::where('type_id',$type_id)->select('id','name')->get();
         return responseData('categories',$categories,200);

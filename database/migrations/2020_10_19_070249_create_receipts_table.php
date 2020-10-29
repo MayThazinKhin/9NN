@@ -16,6 +16,7 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
             $table->double('total');
+            $table->double('discount')->default(0.0);
             $table->foreignId('admin_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('marker_id')->constrained()->onDelete('cascade');
             $table->timestamps();
