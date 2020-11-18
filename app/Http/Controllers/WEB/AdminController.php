@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\WEB;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\AdminCreateRequest;
 use App\Models\Admin;
-use App\Models\Item;
 use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+
 
 class AdminController extends BasicController
 {
@@ -33,7 +31,6 @@ class AdminController extends BasicController
 
     public function store(AdminCreateRequest $request)
     {
-        //return $request->all();
         return parent::storeData($request);
     }
 

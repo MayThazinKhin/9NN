@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         //\App\Models\User::factory(10)->create();
         $this->call([
-            MarkerSeeder::class,
+            //StaffSeeder::class,
             Table::factory(20)->create(),
             Category::factory(20)->create(),
             Item::factory(3000)->create()

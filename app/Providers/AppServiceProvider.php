@@ -3,11 +3,12 @@
 namespace App\Providers;
 
 use App\Http\Controllers\API\SessionController;
+use App\Http\Repositories\Period\PeriodInterface;
+use App\Http\Repositories\Period\PeriodRepository;
 use App\Http\Repositories\Session\SessionInterface;
 use App\Http\Repositories\Session\SessionRepository;
 use App\Http\Repositories\Table\TableInterface;
 use App\Http\Repositories\Table\TableRepository;
-use App\Http\Services\Session\SessionService;
 use App\Http\Services\Table\TableService;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,6 +31,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(SessionInterface::class, function (){
             return new SessionRepository();
+        });
+
+        $this->app->bind(PeriodInterface::class, function (){
+            return new PeriodRepository();
         });
 
 //        $this->app->bind('SessionService', function ($app){

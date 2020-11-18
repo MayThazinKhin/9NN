@@ -9,4 +9,5 @@ class Period extends Model
 {
     use HasFactory;
     protected $fillable = ['start_time','end_time','session_id'];
+    public $timestamps = false;
 }

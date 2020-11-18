@@ -2,8 +2,6 @@
 
 
 namespace App\Http\Services\Session;
-
-
 use App\Http\Repositories\Session\SessionInterface;
 
 class SessionService
@@ -19,6 +17,22 @@ class SessionService
 
     public function getCurrentSessionID($table_id){
         return $this->session->getCurrentSessionID($table_id);
+    }
+
+    public function orderItems($data){
+        return $this->session->orderItems($data);
+    }
+
+    public function getOrderItems($sessionID){
+        return $this->session->getOrderItems($sessionID);
+    }
+
+    public function getSessionDetails($sessionID){
+        return $this->session->getSessionDetails($sessionID);
+    }
+
+    public function checkSessionID($sessionID){
+        return $this->session->checkSessionID($sessionID);
     }
 
 }

@@ -3,10 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
-use Tymon\JWTAuth\Facades\JWTAuth;
+use JWTAuth;
+use JWTAuthException;
 use Exception;
 use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 
@@ -18,7 +18,7 @@ class VerifyJWTToken extends BaseMiddleware
             return responseStatus('Token is not found.', 400);
         }
         try {
-            //return   responseData('aa',JWTAuth::parseToken()->authenticate(),200);
+            //return   responseData('aa', JWTAuth::parseToken()->authenticate(),200);
             if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return responseStatus('User is not authenticated.', 401);
             }

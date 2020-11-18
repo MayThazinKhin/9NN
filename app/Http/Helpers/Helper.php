@@ -21,11 +21,13 @@ if(!function_exists('UserData')){
     }
 }
 
-if(!function_exists('Model')){
-    function Model($model){
-        return Relation::getMorphedModel($model);
+if(!function_exists('CurrentTime')){
+    function CurrentTime(){
+        return  now()->format('Y-m-d H:i:s');
     }
 }
+
+
 
 
 

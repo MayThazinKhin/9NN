@@ -38,12 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'staff',
         ],
 
         'api' => [
             'driver' => 'jwt',
-            'provider' => 'markers',
+            'provider' => 'staff',
            // 'hash' => false,
         ],
     ],
@@ -66,14 +66,9 @@ return [
     */
 
     'providers' => [
-        'admins' => [
+        'staff' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
-        ],
-
-        'markers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Marker::class,
+            'model' => App\Models\Staff::class,
         ],
     ],
 

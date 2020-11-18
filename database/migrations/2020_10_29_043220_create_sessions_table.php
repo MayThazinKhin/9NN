@@ -21,8 +21,8 @@ class CreateSessionsTable extends Migration
             $table->double('credit')->default(0.0);
             $table->boolean('is_tax')->default(false);
             $table->foreignId('table_id')->constrained()->onDelete('cascade');
-            $table->foreignId('marker_id')->constrained()->onDelete('cascade');
-            $table->foreignId('admin_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('marker_id')->constrained('staff')->onDelete('cascade');
+            $table->foreignId('admin_id')->nullable()->constrained('staff')->onDelete('cascade');
             $table->foreignId('member_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });

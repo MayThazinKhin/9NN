@@ -17,8 +17,8 @@ class CreateReceiptsTable extends Migration
             $table->id();
             $table->double('total');
             $table->double('discount')->default(0.0);
-            $table->foreignId('admin_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('marker_id')->constrained()->onDelete('cascade');
+            $table->foreignId('admin_id')->nullable()->constrained('staff')->onDelete('cascade');
+            $table->foreignId('marker_id')->constrained('staff')->onDelete('cascade');
             $table->timestamps();
         });
     }

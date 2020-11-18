@@ -3,9 +3,8 @@
 namespace App\Http\Requests\API;
 
 use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Request;
 
-class SellItemRequest extends APIRequest
+class StartPeriodRequest extends APIRequest
 {
     public function authorize(){
         return parent::authorize();
@@ -13,13 +12,11 @@ class SellItemRequest extends APIRequest
 
     public function rules(){
         return [
-            'items'=> 'required'
+            'session_id'=>'required'
         ];
     }
+
     public function failedValidation(Validator $validator){
         parent::failedValidation($validator);
     }
-
-
-
 }

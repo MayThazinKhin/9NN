@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemSessionsTable extends Migration
+class CreateItemSessionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,6 @@ class CreateItemSessionsTable extends Migration
     public function up()
     {
         Schema::create('item_session', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('item_id')->constrained()->onDelete('cascade');
             $table->foreignId('session_id')->constrained()->onDelete('cascade');
             $table->double('count');
@@ -29,6 +28,6 @@ class CreateItemSessionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_sessions');
+        Schema::dropIfExists('item_session');
     }
 }
