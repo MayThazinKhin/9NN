@@ -43,6 +43,14 @@ class SessionController extends Controller
         responseData('session',$session,200);
     }
 
+    public function getCurrentTime(){
+        responseData('time',CurrentTime(),200);
+    }
+
+    public function endSession(Request $request){
+        responseTrue('order successfully');
+    }
+
     protected function setSessionData($request){
         $marker = UserData();
         $request['marker_id'] = $marker->id;
