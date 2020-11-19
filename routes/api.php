@@ -18,12 +18,14 @@ Route::middleware('jwt-auth')->group(function () {
 
     Route::post('start_session',[SessionController::class,'startSession']);
     Route::post('session_details',[SessionController::class,'getSessionById']);
-    Route::post('order_items',[SessionController::class,'orderItems']);
+    Route::post('order_items',[SessionController::class,'orderItems'])->name('order_items');
+    Route::post('cancel_order_items',[SessionController::class,'orderItems'])->name('cancel_order_items');
     Route::post('get_order_items',[SessionController::class,'getOrderItems']);
 
     Route::post('start_period',[PeriodController::class,'startPeriod']);
     Route::post('restart_period',[PeriodController::class,'restartPeriod']);
     Route::post('end_period',[PeriodController::class,'endPeriod']);
+    Route::post('get_table_periods',[PeriodController::class,'getAllPeriodsBySessionId']);
 });
 
 Route::post('login',[LoginController::class,'login'])->name('login');

@@ -27,7 +27,16 @@ if(!function_exists('CurrentTime')){
     }
 }
 
-
+if(!function_exists('JsonDecode')){
+    function JsonDecode($raw_data){
+        $input_items = stripslashes($raw_data);
+        $json_data = json_decode( $input_items, true );
+        if($json_data == null){
+            responseStatus('input data is not corrected',402);
+        }
+        return $json_data;
+    }
+}
 
 
 

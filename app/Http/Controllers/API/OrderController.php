@@ -10,11 +10,7 @@ use App\Models\Receipt;
 class OrderController extends Controller
 {
     public function orderItems(SellItemRequest $request){
-        $input_items = stripslashes($request->items);
-        $order = json_decode( $input_items, true );
-        if($order == null){
-            responseStatus('input data is not corrected',402);
-        }
+       $order = JsonDecode($request->items);
         $marker = UserData();
         $receipt = Receipt::create([
             'marker_id' => $marker->id,

@@ -29,6 +29,11 @@ class PeriodController extends Controller
         return $this->getAllPeriods($data);
     }
 
+    public function getAllPeriodsBySessionId(StartPeriodRequest $request){
+        $data = $request->all();
+        return $this->getAllPeriods($data);
+    }
+
     protected function getAllPeriods($data){
         $periods = PeriodFacade::getPeriodsBySessionID($data['session_id']);
         responseData('periods',$periods,200);

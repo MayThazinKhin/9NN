@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\StartSessionRequest;
+use App\Http\Services\Period\PeriodFacade as Period;
 use App\Http\Services\Session\SessionFacade as Session;
 use App\Http\Services\Table\TableFacade as Table;
 use Illuminate\Http\Request;
@@ -21,11 +22,7 @@ class SessionController extends Controller
     }
 
     public function orderItems(Request $request){
-        $input_items = stripslashes($request->items);
-        $order = json_decode( $input_items, true );
-        if($order == null){
-            responseStatus('input data is not corrected',402);
-        }
+        $order = JsonDecode($request->items);
         $is_success_order =  Session::orderItems($order);
         if($is_success_order){
             $orders = Session::getOrderItems($order['session_id']);
@@ -40,7 +37,9 @@ class SessionController extends Controller
     }
 
     public function getSessionById(Request $request){
-        $session = Session::getSessionDetails($request->session_id);
+        $sessionID = $request->session_id;
+        $session = Session::getSessionDetails($sessionID);
+        $session = $this->getTotalSessionValue($session,$sessionID);
         responseData('session',$session,200);
     }
 
@@ -49,6 +48,13 @@ class SessionController extends Controller
         $request['marker_id'] = $marker->id;
         $request['start_time'] = now()->format('Y-m-d H:i:s');
         return $request;
+    }
+
+    protected function getTotalSessionValue($session, $sessionID){
+        $order_value = Session::getOrderItems($sessionID)->net_total;
+        $table_value = Period::getPeriodsBySessionID($sessionID)->total_value;
+        $session->total_value = $order_value + $table_value ;
+        return $session;
     }
 
 
