@@ -1,16 +1,27 @@
 <div class="sidebar">
     <div class="inner-sidebar" id="inner">
-        <a href="{{route('admins.index')}}" class="a-clear a-sidebar active-link">
-            Admin
+
+        <a href="{{route('staff.index')}}" class="a-clear a-sidebar active-link">
+            Staff
         </a>
 
-        <a href="bar_and_kitchen.html" class="a-clear a-sidebar">
-            bar & Kitchen
+        <a href="{{route('item.index')}}" class="a-clear a-sidebar">
+            Bar & Kitchen
         </a>
 
-        <a href="shop_item.html" class="a-clear a-sidebar">
+        <a href="{{route('item.index')}}" class="a-clear a-sidebar">
             Shop
         </a>
+
+        <a href="{{route('table.index')}}" class="a-clear a-sidebar">
+            Table
+        </a>
+
+        <a href="{{route('member.index')}}" class="a-clear a-sidebar">
+            Member
+        </a>
+
+
 
     </div>
 </div>

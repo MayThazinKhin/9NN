@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <title>
-        Min Thar Gyi
+
+        9 snookers
     </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=yes">
@@ -19,7 +20,7 @@
     @yield('css')
 </head>
 <body style="background-color: #eff1f5">
-<div class="overall-container">
+<div class="overall-container" id="app">
     <div class="top-and-side-bar">
         <div class="topbar">
             9 snookers & billiard shop
@@ -36,6 +37,8 @@
                     <a href="#" class="a-clear text-dark fm-roboto fs17">@yield('content_title') </a>
                 </nav>
                 <div>
+
+                    @yield('select_box')
                     <label class="search-box-container">
                         <input type="text" class="search-box py-1 " id="myInput" placeholder=" Search..." autocomplete="off">
                         <i class="fal fa-search search-icon"></i>
@@ -55,7 +58,8 @@
 <script src="{{asset('js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.js')}}"></script>
 <script src="{{asset('js/bs.js')}}"></script>
-<script src="{{ asset('js/MonthPicker.min.js') }}"> </script>
+
+<script src="{{asset('js/MonthPicker.min.js') }}"> </script>
 <script src="{{asset('js/datepicker.min.js')}}"></script>
 <script src="{{ asset('js/yearpicker.js') }}"> </script>
 <script src="{{ asset('js/vue.js') }}"> </script>
@@ -79,7 +83,7 @@
     new Vue({
         el:'#app',
         data:{
-            isadmin:null,
+
         }
     })
 

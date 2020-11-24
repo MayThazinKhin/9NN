@@ -17664,7 +17664,11 @@ hammer:
   label: Hammer
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - fix
       - repair
       - settings
@@ -22253,7 +22257,11 @@ lock:
   label: lock
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - lock
       - open
       - password
@@ -22273,7 +22281,11 @@ lock-alt:
   label: Alternate Lock
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - lock
       - open
       - password
@@ -22295,7 +22307,11 @@ lock-open:
   label: Lock Open
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - lock
       - open
       - password
@@ -22316,7 +22332,11 @@ lock-open-alt:
   label: Alternate Lock Open
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - lock
       - open
       - password
@@ -29686,7 +29706,11 @@ screwdriver:
   label: Screwdriver
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - fix
       - mechanic
       - repair
@@ -36183,7 +36207,11 @@ toolbox:
   label: Toolbox
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - container
       - fix
       - repair
@@ -36203,7 +36231,11 @@ tools:
   label: Tools
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - fix
       - repair
       - screwdriver
@@ -37743,7 +37775,11 @@ unlock:
   label: unlock
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - lock
       - password
       - private
@@ -37762,7 +37798,11 @@ unlock-alt:
   label: Alternate Unlock
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - lock
       - password
       - private
@@ -38072,7 +38112,11 @@ user-cog:
   label: User Cog
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - cog
       - person
       - settings
@@ -38116,7 +38160,11 @@ user-crown:
   label: User Crown
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - avatar
       - person
       - special
@@ -38247,7 +38295,11 @@ user-lock:
   label: User Lock
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - lock
       - person
       - private
@@ -38442,7 +38494,11 @@ user-shield:
   label: User Shield
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - person
       - private
       - protect
@@ -38534,7 +38590,11 @@ user-unlock:
   label: User Unlock
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - lock
       - person
       - private
@@ -38608,7 +38668,11 @@ users-cog:
   label: Users Cog
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - cog
       - group
       - person
@@ -38627,7 +38691,11 @@ users-crown:
   label: Users Crown
   search:
     terms:
+<<<<<<< HEAD
       - admin
+=======
+      - staff
+>>>>>>> 6e76c343cdcf1025c5c2e51c5ee88b4542c8e10f
       - avatar
       - group
       - person
