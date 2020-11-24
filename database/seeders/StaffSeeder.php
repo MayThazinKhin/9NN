@@ -15,7 +15,7 @@ class StaffSeeder extends Seeder
     public function run()
     {
         Staff::create([
-            'name' => 'admin',
+            'name' => 'staff',
             'password' => 'password',
             'role_id' => 1
         ]);

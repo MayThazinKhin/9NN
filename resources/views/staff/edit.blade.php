@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+<div class="modal fade" id="edit_staff_modal" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="width: 400px;">
         <div class="modal-content" style="border-radius: 4px;">
             <form id="edit_form">

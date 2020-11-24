@@ -17664,7 +17664,7 @@ hammer:
   label: Hammer
   search:
     terms:
-      - admin
+      - staff
       - fix
       - repair
       - settings
@@ -22253,7 +22253,7 @@ lock:
   label: lock
   search:
     terms:
-      - admin
+      - staff
       - lock
       - open
       - password
@@ -22273,7 +22273,7 @@ lock-alt:
   label: Alternate Lock
   search:
     terms:
-      - admin
+      - staff
       - lock
       - open
       - password
@@ -22295,7 +22295,7 @@ lock-open:
   label: Lock Open
   search:
     terms:
-      - admin
+      - staff
       - lock
       - open
       - password
@@ -22316,7 +22316,7 @@ lock-open-alt:
   label: Alternate Lock Open
   search:
     terms:
-      - admin
+      - staff
       - lock
       - open
       - password
@@ -29686,7 +29686,7 @@ screwdriver:
   label: Screwdriver
   search:
     terms:
-      - admin
+      - staff
       - fix
       - mechanic
       - repair
@@ -36183,7 +36183,7 @@ toolbox:
   label: Toolbox
   search:
     terms:
-      - admin
+      - staff
       - container
       - fix
       - repair
@@ -36203,7 +36203,7 @@ tools:
   label: Tools
   search:
     terms:
-      - admin
+      - staff
       - fix
       - repair
       - screwdriver
@@ -37743,7 +37743,7 @@ unlock:
   label: unlock
   search:
     terms:
-      - admin
+      - staff
       - lock
       - password
       - private
@@ -37762,7 +37762,7 @@ unlock-alt:
   label: Alternate Unlock
   search:
     terms:
-      - admin
+      - staff
       - lock
       - password
       - private
@@ -38072,7 +38072,7 @@ user-cog:
   label: User Cog
   search:
     terms:
-      - admin
+      - staff
       - cog
       - person
       - settings
@@ -38116,7 +38116,7 @@ user-crown:
   label: User Crown
   search:
     terms:
-      - admin
+      - staff
       - avatar
       - person
       - special
@@ -38247,7 +38247,7 @@ user-lock:
   label: User Lock
   search:
     terms:
-      - admin
+      - staff
       - lock
       - person
       - private
@@ -38442,7 +38442,7 @@ user-shield:
   label: User Shield
   search:
     terms:
-      - admin
+      - staff
       - person
       - private
       - protect
@@ -38534,7 +38534,7 @@ user-unlock:
   label: User Unlock
   search:
     terms:
-      - admin
+      - staff
       - lock
       - person
       - private
@@ -38608,7 +38608,7 @@ users-cog:
   label: Users Cog
   search:
     terms:
-      - admin
+      - staff
       - cog
       - group
       - person
@@ -38627,7 +38627,7 @@ users-crown:
   label: Users Crown
   search:
     terms:
-      - admin
+      - staff
       - avatar
       - group
       - person

@@ -9,19 +9,16 @@ use function PHPUnit\Framework\isEmpty;
 class BasicController extends Controller
 {
 
-    private  $model;
+    private $model;
     private $var;
     private $route;
-    public function __construct($model,$var,$route)
-    {
+    public function __construct($model,$var,$route){
         $this->model = $model;
         $this->var = $var;
         $this->route = $route;
     }
 
-
-    public function indexData($view_path =null, $extra_data =[])
-    {
+    public function indexData($view_path =null, $extra_data =[]){
         $data = $this->model::orderBy('id', 'desc')->paginate(20);
         $index_data =[$this->route=>$data];
         if(!empty($extra_data)){
@@ -63,8 +60,9 @@ class BasicController extends Controller
         //
     }
 
-    public function destroy($id)
-    {
-        //
+    public function destroy($id){
+      $data =  $this->model::find($id);
+      if($data) $data->delete();
+      return redirect()->back();
     }
 }

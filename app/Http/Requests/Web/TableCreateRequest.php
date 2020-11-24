@@ -4,9 +4,8 @@ namespace App\Http\Requests\Web;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminCreateRequest extends FormRequest
+class TableCreateRequest extends FormRequest
 {
-
     public function authorize()
     {
         return true;
@@ -15,9 +14,8 @@ class AdminCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:staff,name',
-            'password' => 'required',
-            'role_id' => 'required'
+            'name' => 'required|unique:tables,name',
+            'price' => 'required'
         ];
     }
 }
