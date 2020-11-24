@@ -8,8 +8,8 @@ use App\Http\Controllers\WEB\MemberController;
 use App\Http\Controllers\WEB\ItemController;
 
 
-Route::resource('staff',StaffController::class);
-Route::resource('item',ItemController::class);
-Route::resource('member',MemberController::class);
-Route::resource('table',TableController::class);
+Route::resource('staffs',StaffController::class);
+Route::resource('items',ItemController::class);
+Route::resource('members',MemberController::class);
+Route::resource('tables',TableController::class);
 
