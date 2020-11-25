@@ -49,4 +49,10 @@ class TableController extends BasicController
     {
         //
     }
+
+    public function search(Request $request){
+        $query = $request->all()['query'];
+        $tables = Table::where('name', 'LIKE', "%{$query}%")->get();
+        return view('table.search',compact('tables'));
+    }
 }

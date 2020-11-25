@@ -1,9 +1,20 @@
 @extends('layouts.master')
-@section('content_title', 'Table Management')
-@section('add','#add_table_modal')
-@include('Table.create')
-@include('Table.edit')
+@section('content_title', 'table Management')
+@section('add','#add')
+{{--@include('table.create')--}}
+{{--@include('table.edit')--}}
+@include('layouts.delete')
 @section('content')
+    <form action=" {{route('staffs.search')}} " id="staff_search" method="post">
+        @csrf
+        <label class="search-box-container">
+            <input type="text" id="search_input" name="query" class="search-box py-1 " id="myInput" placeholder=" Search..." autocomplete="off">
+            <i class="fal fa-search search-icon"></i>
+        </label>
+    </form>
+    <div class="d-inline-block ml-3">
+        <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>Add</button>
+    </div>
     <div>
         <form class="position-relative w-100 h-100 bg-white p-3 mt-3">
         <table class="table table-borderless" id="myTable">
@@ -37,12 +48,9 @@
                 </td>
 
                 <td class="padding-table-row w88px">
-                    <button type="button" class="btn-clear " title="Edit"  id="edit-button" data-toggle="modal" data-target="#edit_table_modal">
-                        <a class="a-clear">
-                            <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
-                        </a>
-                    </button>
-                    <button type="button" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
+                    <edit-button entity="{{$table}}"></edit-button>
+
+                    <button type="button" onclick="deleteItem('tables',{{$table->id}})" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
                         <i class="fal fa-times text-danger fw300"></i>
                     </button>
                 </td>
@@ -56,4 +64,23 @@
             </nav>
     </form>
     </div>
+
+    @php
+        $input1 = (object) ["type" => "text", "label" => "Name", "name" => "name"];
+        $input2 = (object) ["type" => "text", "label" => "Price Per Min", "name" => "price"];
+        $inputs = array($input1,$input2);
+    @endphp
+
+    <add-modal title="Add New Table" :inputs="{{json_encode($inputs)}}" url="/tables"></add-modal>
+    <edit-modal title="Edit Table" :inputs="{{json_encode($inputs)}}" url="/tables"></edit-modal>
+
+
+    <script type="application/javascript">
+        $('#search_input').keydown(function(event){
+            let keyCode = (event.keyCode ? event.keyCode : event.which);
+            if (keyCode == 13) {
+                if(!($('#search_input').val() === '')) $('form#staff_search').submit();
+            }
+        });
+    </script>
 @endsection

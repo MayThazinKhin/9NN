@@ -1977,6 +1977,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -1993,6 +2001,8 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var self = this;
       _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
       $.post(this.url, JSON.stringify(this.form)).done(function (data) {
+        console.log(data);
+
         if (data.success) {
           location.reload();
         }
@@ -2019,6 +2029,11 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2124,6 +2139,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2146,6 +2169,8 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         contentType: "application/json",
         data: JSON.stringify(this.form),
         success: function success(data) {
+          console.log(data);
+
           if (data.success) {
             location.reload();
           }
@@ -20501,7 +20526,7 @@ var render = function() {
             [
               _c(
                 "form",
-                { attrs: { id: "add_form", action: "#", method: "post" } },
+                { attrs: { action: "#", method: "post" } },
                 [
                   _c(
                     "div",
@@ -20680,7 +20705,57 @@ var render = function() {
                             ])
                           : _vm._e(),
                         _vm._v(" "),
-                        input.type == "password"
+                        input.type == "textarea"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: { "font-size": "16px!important" }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  placeholder: input.label,
+                                  cols: "30",
+                                  rows: "3"
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        input.type == "select"
                           ? _c("div", { staticClass: "mb-4" }, [
                               _c(
                                 "label",
@@ -20783,7 +20858,7 @@ var render = function() {
                         {
                           staticClass: "btn btn-info pl-3",
                           staticStyle: { "font-size": "16px!important" },
-                          attrs: { id: "confirm-add-button" },
+                          attrs: { type: "button" },
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -20834,7 +20909,6 @@ var render = function() {
       attrs: {
         type: "button",
         title: "Edit",
-        id: "edit-button",
         "data-toggle": "modal",
         "data-target": "#edit"
       },
@@ -21088,7 +21162,57 @@ var render = function() {
                             ])
                           : _vm._e(),
                         _vm._v(" "),
-                        input.type == "password"
+                        input.type == "textarea"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: { "font-size": "16px!important" }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  placeholder: input.label,
+                                  cols: "30",
+                                  rows: "3"
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        input.type == "select"
                           ? _c("div", { staticClass: "mb-4" }, [
                               _c(
                                 "label",
@@ -34671,7 +34795,9 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-Vue.component('add-modal', __webpack_require__(/*! ./components/AddModal.vue */ "./resources/js/components/AddModal.vue")["default"]);
+Vue.component('add-modal', __webpack_require__(/*! ./components/AddModal.vue */ "./resources/js/components/AddModal.vue")["default"], {
+  name: 'add-modal'
+});
 Vue.component('edit-modal', __webpack_require__(/*! ./components/EditModal.vue */ "./resources/js/components/EditModal.vue")["default"]);
 Vue.component('edit-button', __webpack_require__(/*! ./components/EditButton.vue */ "./resources/js/components/EditButton.vue")["default"]);
 var app = new Vue({

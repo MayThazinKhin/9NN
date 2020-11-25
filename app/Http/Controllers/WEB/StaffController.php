@@ -54,4 +54,13 @@ class StaffController extends BasicController
     {
         return parent::destroy($id);
     }
+
+
+    public function search(Request $request){
+        $query = $request->all()['query'];
+        $roles = Role::all();
+
+        $staffs = Staff::where('name', 'LIKE', "%{$query}%")->get();
+        return view('staff.search',compact('staffs','roles'));
+    }
 }

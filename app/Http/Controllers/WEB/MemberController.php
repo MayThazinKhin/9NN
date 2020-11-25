@@ -40,4 +40,10 @@ class MemberController extends BasicController
     public function destroy($id){
         //
     }
+
+    public function search(Request $request){
+        $query = $request->all()['query'];
+        $members = Member::where('name', 'LIKE', "%{$query}%")->get();
+        return view('member.search',compact('members'));
+    }
 }

@@ -17,10 +17,31 @@
     <link rel="stylesheet" href="{{asset('css/yearpicker.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/timepicki.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/MonthPicker.min.css')}}" type="text/css">
+    <script src="{{asset('js/bootstrap.popper.min.js')}}"></script>
+    <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.js')}}"></script>
+    <script src="{{asset('js/bs.js')}}"></script>
+
+    <script src="{{asset('js/MonthPicker.min.js') }}"> </script>
+    <script src="{{asset('js/datepicker.min.js')}}"></script>
+    <script src="{{ asset('js/yearpicker.js') }}"> </script>
+    <script src="{{ asset('js/vue.js') }}"> </script>
+    <script src="{{ asset('js/sorting.js') }}"> </script>
+    <script src="{{asset('js/jquery.autosize.js')}}"></script>
+    <script src="{{ asset('js/axios.js') }}"> </script>
+
     @yield('css')
+
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+
 </head>
 <body style="background-color: #eff1f5">
 <div class="overall-container" id="app">
+
+
     <div class="top-and-side-bar">
         <div class="topbar">
             9 snookers & billiard shop
@@ -39,13 +60,13 @@
                 <div>
 
                     @yield('select_box')
-                    <label class="search-box-container">
-                        <input type="text" class="search-box py-1 " id="myInput" placeholder=" Search..." autocomplete="off">
-                        <i class="fal fa-search search-icon"></i>
-                    </label>
-                    <div class="d-inline-block ml-3">
-                        <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>Add</button>
-                    </div>
+{{--                    <label class="search-box-container">--}}
+{{--                        <input type="text" class="search-box py-1 " id="myInput" placeholder=" Search..." autocomplete="off">--}}
+{{--                        <i class="fal fa-search search-icon"></i>--}}
+{{--                    </label>--}}
+{{--                    <div class="d-inline-block ml-3">--}}
+{{--                        <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>Add</button>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </header>
@@ -53,19 +74,9 @@
     </div>
 </div>
 
-<script src="{{asset('js/bootstrap.popper.min.js')}}"></script>
-<script src="{{asset('js/jquery.js')}}"></script>
-<script src="{{asset('js/jquery-ui.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.js')}}"></script>
-<script src="{{asset('js/bs.js')}}"></script>
 
-<script src="{{asset('js/MonthPicker.min.js') }}"> </script>
-<script src="{{asset('js/datepicker.min.js')}}"></script>
-<script src="{{ asset('js/yearpicker.js') }}"> </script>
-<script src="{{ asset('js/vue.js') }}"> </script>
-<script src="{{ asset('js/sorting.js') }}"> </script>
-<script src="{{asset('js/jquery.autosize.js')}}"></script>
-<script src="{{ asset('js/axios.js') }}"> </script>
+
+
 
 <script>
     $(document).ready(function (){
@@ -80,14 +91,15 @@
         });
     });
 
-    new Vue({
-        el:'#app',
-        data:{
-
-        }
-    })
+    // new Vue({
+    //     el:'#app',
+    //     data:{
+    //
+    //     }
+    // })
 
 
 </script>
+
 </body>
 </html>

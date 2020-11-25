@@ -1,5 +1,10 @@
 <template>
-    <button type="button" class="btn-clear " @click.prevent="setEditItem" title="Edit"  id="edit-button" data-toggle="modal" data-target="#edit">
+    <button type="button"
+            class="btn-clear "
+            title="Edit"
+            data-toggle="modal"
+            data-target="#edit"
+            @click.prevent="setEditItem">
         <a class="a-clear">
             <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
         </a>
@@ -17,7 +22,7 @@ export default {
         {
             this.$store.commit("setEditData", JSON.parse(this.entity));
         }
-    }
+    },
 };
 </script>
 

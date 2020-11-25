@@ -36,8 +36,16 @@
                                 }}</span>
                         </div>
 
+                        <div class="mb-4" v-if="input.type == 'textarea'">
+                            <label class="label-form mb-1" style="font-size: 16px!important;">{{ input.label }}</label>
+                            <textarea v-model="form[input.name]" :placeholder="input.label" class="input-form" cols="30" rows="3" style="font-size: 14px!important;"></textarea>
+                            <span v-if="errors[input.name]" class="text-danger">{{
+                                    errors[input.name][0]
+                                }}</span>
+                        </div>
 
-                        <div class="mb-4" v-if="input.type == 'password'">
+
+                        <div class="mb-4" v-if="input.type == 'select'">
                             <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">{{ input.label }}</label>
                             <select v-model="form[input.name]" :title="input.label" class="selectpicker d-block" data-width="100%" title="Choice..."
                                     data-style="select-form w-100">
@@ -88,6 +96,7 @@ export default {
                 contentType: "application/json",
                 data: JSON.stringify(this.form),
                 success: function(data) {
+                    console.log(data);
                     if (data.success) {
                         location.reload();
                     }
