@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Requests\Web\MemberCreateRequest;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -20,8 +21,8 @@ class MemberController extends BasicController
     }
 
 
-    public function store(Request $request){
-        //
+    public function store(MemberCreateRequest $request){
+        return parent::storeData($request);
     }
 
     public function show($id){

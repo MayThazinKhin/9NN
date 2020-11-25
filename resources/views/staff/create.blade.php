@@ -1,7 +1,7 @@
 <div class="modal fade" id="add_staff_modal" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
     <div class="modal-dialog" style="width: 400px;">
         <div class="modal-content" style="border-radius: 4px;" id="app">
-            <form id="add_form" action="{{route('staff.store')}}"  method="post">
+            <form id="add_form" action="{{route('staffs.store')}}"  method="post">
                     @csrf
                 <div class="modal-header border-bottom-0 mt-3">
                     <div class="text-left pl-4 pt-1">
