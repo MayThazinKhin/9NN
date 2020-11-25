@@ -60,13 +60,16 @@
                 <div>
 
                     @yield('select_box')
-{{--                    <label class="search-box-container">--}}
-{{--                        <input type="text" class="search-box py-1 " id="myInput" placeholder=" Search..." autocomplete="off">--}}
-{{--                        <i class="fal fa-search search-icon"></i>--}}
-{{--                    </label>--}}
-{{--                    <div class="d-inline-block ml-3">--}}
-{{--                        <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>Add</button>--}}
-{{--                    </div>--}}
+                    <form action=@yield('route') id="search" method="post">
+                        @csrf
+                        <label class="search-box-container">
+                            <input type="text" class="search-box py-1 " id="myInput" placeholder=" Search..." autocomplete="off">
+                            <i class="fal fa-search search-icon"></i>
+                        </label>
+                    </form>
+                    <div class="d-inline-block ml-3">
+                        <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>Add</button>
+                    </div>
                 </div>
             </div>
         </header>
@@ -79,6 +82,13 @@
 
 
 <script>
+    $('#search_input').keydown(function(event){
+        let keyCode = (event.keyCode ? event.keyCode : event.which);
+        if (keyCode == 13) {
+            if(!($('#search_input').val() === '')) $('form#search').submit();
+        }
+    });
+
     $(document).ready(function (){
         $('.normal').autosize();
         $('.animated-txtarea').autosize();
