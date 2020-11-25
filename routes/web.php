@@ -17,7 +17,6 @@ Route::post('/members/search',[MemberController::class,'search'])->name('members
 Route::resource('tables',TableController::class);
 Route::post('/tables/search',[TableController::class,'search'])->name('tables.search');
 
-Route::post('staff_search',[StaffController::class,'search']);
 
 Route::get('/',function(){
     return view('inventory.create');

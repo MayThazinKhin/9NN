@@ -67,9 +67,10 @@
         $input3 = (object) ["type" => "select", "label" => "Role", "name" => "role_id", "data" => $roles];
         $input4 = (object) ["type" => "text", "label" => "Fee Per Min", "name" => "fee"];
         $inputs = array($input1,$input2,$input3,$input4);
+        $edit_inputs =  array($input1,$input3,$input4);
     @endphp
 
     <add-modal title="Add New Staff" :inputs="{{json_encode($inputs)}}" url="/staffs"></add-modal>
-    <edit-modal title="Edit Staff" :inputs="{{json_encode($inputs)}}" url="/staffs"></edit-modal>
+    <edit-modal title="Edit Staff" :inputs="{{json_encode($edit_inputs)}}" url="/staffs"></edit-modal>
 
 @endsection
