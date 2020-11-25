@@ -41,13 +41,16 @@ class BasicController extends Controller
     }
 
     public function updateData($request, $data){
-        $data->update($request);
-        return redirect()->back();
+        $data->update($request->all());
+        return response()->json(array('success' => true) , 200);
+
+//        return redirect()->back();
     }
 
     public function destroyData($data){
       if($data) $data->delete();
-      return redirect()->back();
+
+        return redirect()->back();
     }
 
     public function searchData($name){

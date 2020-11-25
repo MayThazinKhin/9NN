@@ -47,9 +47,9 @@ class ItemController extends BasicController
         //
     }
 
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        //
+        return parent::destroyData($item);
     }
 
     public function search(Request $request){

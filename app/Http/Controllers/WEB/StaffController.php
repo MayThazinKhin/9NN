@@ -33,9 +33,9 @@ class StaffController extends BasicController
         return parent::destroyData($staff);
     }
 
-    public function search(Request $request){
-        return parent::searchData($request->name);
-    }
+//    public function search(Request $request){
+//        return parent::searchData($request->name);
+//    }
 
 
     public function search(Request $request){
