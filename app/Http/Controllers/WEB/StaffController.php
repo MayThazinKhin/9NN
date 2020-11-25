@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\WEB;
 
-
 use App\Http\Requests\Web\AdminCreateRequest;
+use App\Http\Requests\Web\AdminUpdateRequest;
 use App\Models\Role;
 use App\Models\Staff;
 use Illuminate\Http\Request;
@@ -21,38 +21,20 @@ class StaffController extends BasicController
         return  parent::indexData(null,$extra_data);
     }
 
-    public function create()
-    {
-        //
-    }
-
-
-    public function store(AdminCreateRequest $request)
-    {
+    public function store(AdminCreateRequest $request){
         return parent::storeData($request);
     }
 
-    public function show($id)
-    {
-        //
+    public function update(AdminUpdateRequest $request,Staff  $staff){
+        return parent::updateData($request,$staff);
     }
 
-
-    public function edit($id)
-    {
-        //
+    public function destroy(Staff $staff){
+        return parent::destroyData($staff);
     }
 
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        return parent::destroy($id);
+    public function search(Request $request){
+        return parent::searchData($request->name);
     }
 
 

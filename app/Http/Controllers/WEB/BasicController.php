@@ -8,8 +8,6 @@ use function PHPUnit\Framework\isEmpty;
 
 class BasicController extends Controller
 {
-
-
     private $model;
     private $var;
     private $route;
@@ -18,7 +16,6 @@ class BasicController extends Controller
         $this->var = $var;
         $this->route = $route;
     }
-
 
     public function indexData($view_path =null, $extra_data =[]){
         $data = $this->model::orderBy('id', 'desc')->paginate(20);
@@ -32,13 +29,7 @@ class BasicController extends Controller
         return view($this->var.'.index')->with($index_data);
     }
 
-    public function create()
-    {
-
-    }
-
-    public function storeData($request)
-    {
+    public function storeData($request){
         $data = $request->validated();
         if ($request->has('image')) {
             $data['image'] = StoreImage(collect($data));
@@ -47,25 +38,30 @@ class BasicController extends Controller
         return redirect()->back();
     }
 
-    public function show($id)
-    {
-        //
+    public function updateData($request, $data){
+        $data->update($request);
+        return redirect()->back();
     }
 
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id){
-      $data =  $this->model::find($id);
+    public function destroyData($data){
       if($data) $data->delete();
       return redirect()->back();
+    }
+
+    public function searchData($name){
+        $index_data = $this->model::where('name', 'LIKE', "%{$name}%")->get();
+        return view($this->var.'.index')->with($index_data);
+    }
+
+    public function create(){
+
+    }
+
+    public function show($id){
+        //
+    }
+
+    public function edit($id){
+        //
     }
 }
