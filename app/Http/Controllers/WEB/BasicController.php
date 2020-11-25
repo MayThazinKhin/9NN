@@ -36,20 +36,15 @@ class BasicController extends Controller
         }
          $this->model::create($data);
         return response()->json(array('success' => true) , 200);
-
-//        return redirect()->back();
     }
 
     public function updateData($request, $data){
         $data->update($request->all());
         return response()->json(array('success' => true) , 200);
-
-//        return redirect()->back();
     }
 
     public function destroyData($data){
       if($data) $data->delete();
-
         return redirect()->back();
     }
 
