@@ -1,6 +1,6 @@
 <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="delete" aria-hidden="true">
     <div class="modal-dialog">
-        <form method="post" id="delete">
+        <form method="post" id="delete-item">
             @csrf
             @method('delete')
             <div class="modal-content">
@@ -14,7 +14,7 @@
                 Are you sure?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Delete</button>
             </div>
         </div>
@@ -24,6 +24,8 @@
 
 <script type="application/javascript">
     function deleteItem($item,$id) {
-        $('#delete').attr('action', $item+ '/' + $id);
+        $('#delete-item').attr('action', $item+ '/' + $id);
     }
+
+
 </script>

@@ -19,3 +19,7 @@ Route::post('/tables/search',[TableController::class,'search'])->name('tables.se
 
 Route::post('staff_search',[StaffController::class,'search']);
 
+Route::get('/',function(){
+    return view('inventory.create');
+});
+
