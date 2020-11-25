@@ -11,6 +11,7 @@ use App\Http\Controllers\WEB\ItemController;
 Route::resource('staffs',StaffController::class);
 Route::post('/staffs/search',[StaffController::class,'search'])->name('staffs.search');
 Route::resource('items',ItemController::class);
+Route::post('/items/search',[ItemController::class,'search'])->name('items.search');
 Route::resource('members',MemberController::class);
 Route::post('/members/search',[MemberController::class,'search'])->name('members.search');
 Route::resource('tables',TableController::class);

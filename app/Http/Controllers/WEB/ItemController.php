@@ -51,4 +51,10 @@ class ItemController extends BasicController
     {
         //
     }
+
+    public function search(Request $request){
+        $query = $request->all()['query'];
+        $items = Item::where('name', 'LIKE', "%{$query}%")->get();
+        return view('item.search',compact('items'));
+    }
 }

@@ -44,7 +44,9 @@ class BasicController extends Controller
             $data['image'] = StoreImage(collect($data));
         }
          $this->model::create($data);
-        return redirect()->back();
+        return response()->json(array('success' => true) , 200);
+
+//        return redirect()->back();
     }
 
     public function show($id)

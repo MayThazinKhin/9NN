@@ -1,8 +1,12 @@
 @extends('layouts.master')
-@section('content_title', 'Item Management')
-@section('add','#add_item_modal')
-@include('Item.create')
-@include('Item.edit')
+@section('content_title', 'item Management')
+@section('add','#add')
+@section('route','/items/search')
+
+{{--@include('item.create')--}}
+{{--@include('item.edit')--}}
+@include('layouts.delete')
+
 @section('select_box')
     <div class="d-inline-block">
         <label>
