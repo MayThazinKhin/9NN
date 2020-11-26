@@ -18,7 +18,7 @@ class BarController extends BasicController
     }
 
     public function create(){
-        //
+        return view('bar.create');
     }
 
     public function store(Request $request){

@@ -1,7 +1,11 @@
 @extends('layouts.master')
-@section('content_title', 'Item Management')
-@section('add','#add')
-@section('route','/items/search')
+@section('content_title', 'Bar Management')
+@section('add_route','/bars/create')
+{{--@section('add','#add')--}}
+{{--@section('route','/bars/search')--}}
+@section('content_header')
+    @include('layouts.content_header')
+@endsection
 
 {{--@include('item.create')--}}
 {{--@include('item.edit')--}}

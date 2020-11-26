@@ -18,9 +18,10 @@
                 <div class="row mx-0 mb-3">
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Type</label>
-                        <select name="type" id="type" class="selectpicker d-block" data-width="100%" title="select1..."
+                        <select name="type" id="type" class="selectpicker d-block" data-width="100%" title="Types"
                                 data-style="select-form w-100">
-                            <option value="1">select1.1</option>
+                            <option value="bar">Bar</option>
+                            <option value="menu">Menu</option>
                         </select>
                     </div>
                     <div class="col-4">
@@ -91,6 +92,7 @@
             }
 
             $('#type').change(function (){
+                console.log('type')
                 refreshSelectPicker();
 
                 let form = {
@@ -103,8 +105,9 @@
                     }
                 });
 
-                $.post('/types', JSON.stringify(form))
+                $.post('/bars/categories', JSON.stringify(form))
                     .done(function(data) {
+                        console.log(data);
                         if(data.success){
                             categories = data.categories;
                             refreshSelectPicker();
