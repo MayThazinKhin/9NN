@@ -7,7 +7,6 @@ use App\Http\Requests\API\RestartPeriodRequest;
 use App\Http\Requests\API\StartPeriodRequest;
 use App\Http\Services\Period\PeriodFacade;
 
-
 class PeriodController extends Controller
 {
     public function startPeriod(StartPeriodRequest $request){

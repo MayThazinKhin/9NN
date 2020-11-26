@@ -37,28 +37,28 @@
             </thead>
             <tbody>
 
-            @foreach($items as $i=>$item)
+            @foreach($bars as $i=>$bar)
             <tr>
                 <th scope="row" class="padding-table-row">
                     <span class="text-td font-weight-normal">
-                        {{ $items->perPage()*($items->currentPage()-1)+ (++$i) }}
+                        {{ $bars->perPage()*($bars->currentPage()-1)+ (++$i) }}
                     </span>
                 </th>
                 <td class="padding-table-row">
                     <div class="text-td text-capitalize">
-                        {{$item->name}}
+                        {{$bar->name}}
                     </div>
                 </td>
 
                 <td class="padding-table-row">
                     <div class="text-td text-capitalize">
-                        {{$item->category_name}}
+                        {{$bar->category_name}}
                     </div>
                 </td>
 
                 <td class="padding-table-row">
                     <div class="text-td text-capitalize">
-                        {{$item->price}}
+                        {{$bar->price}}
                     </div>
                 </td>
 
@@ -68,7 +68,7 @@
                             <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
                         </a>
                     </button>
-                    <button type="button" onclick="deleteItem('items',{{$item->id}})" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
+                    <button type="button" onclick="deleteItem('items',{{$bar->id}})" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
                         <i class="fal fa-times text-danger fw300"></i>
                     </button>
                 </td>
@@ -78,7 +78,7 @@
 
         </table>
             <nav aria-label="Page navigation example">
-                {{$items->links()}}
+                {{$bars->links()}}
             </nav>
     </form>
     </div>

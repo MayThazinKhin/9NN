@@ -28,7 +28,7 @@ class BasicController extends Controller
     }
 
     public function storeData($request){
-        $data = $request->validated();
+        $data = $request->all();
         if ($request->has('image')) {
             $data['image'] = StoreImage(collect($data));
         }

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Requests\Web\ItemCreateRequest;
 use App\Http\Services\Item\ItemFacade;
+use App\Models\Category;
 use App\Models\Item;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ItemController extends BasicController
@@ -30,23 +33,34 @@ class ItemController extends BasicController
     }
 
     public function getAllTypes(){
-       ItemFacade::getAllTypes();
+        $types = Type::all();
+        responseData('types',$types,200);
     }
 
     public function getItemsByTypeID(Request $request){
-        ItemFacade::getItemsByTypeID($request->type_ids);
+        $types = Type::whereIn('id',$request->typeIDs)->with('categories.items')->get();
+        $items = collect([]) ;
+        foreach($types as $type)
+            foreach ($type->categories as $category)
+                $items =   $items->merge($category->items);
+        responseData('items',$items,200);
     }
 
-    public function getItemCategoriesByType(Request  $request){
-        ItemFacade::getItemCategoriesByType($request->type);
+    public function getItemCategoriesByType(){
+        $type_id = Type::where('name','shop')->pluck('id')->first();
+        $categories = Category::where('type_id',$type_id)->select('id','name')->get();
+        return $categories;
     }
 
-    public function store(Request $request){
-        return parent::storeData($request);
+    public function store(ItemCreateRequest $request){
+        $data = $request->all();
+        Item::create($data);
+        return redirect(route('items.index'));
     }
 
     public function create(){
-
+        $categories = $this->getItemCategoriesByType();
+        return view('item.create',compact('categories'));
     }
 
     public function show($id)

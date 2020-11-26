@@ -5,7 +5,7 @@
             Staff
         </a>
 
-        <a href="{{route('items.index')}}" class="a-clear a-sidebar">
+        <a href="{{route('bars.index')}}" class="a-clear a-sidebar">
             Bar & Kitchen
         </a>
 
