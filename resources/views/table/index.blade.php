@@ -1,13 +1,15 @@
 @extends('layouts.master')
-@section('content_title', 'table Management')
+@section('content_title', 'Table Management')
 @section('add','#add')
 @section('route','/tables/search')
 
 {{--@include('table.create')--}}
 {{--@include('table.edit')--}}
 @include('layouts.delete')
+@section('content_header')
+    @include('layouts.content_header')
+@endsection
 @section('content')
-
     <div>
         <form class="position-relative w-100 h-100 bg-white p-3 mt-3">
         <table class="table table-borderless" id="myTable">

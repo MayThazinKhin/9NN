@@ -7,9 +7,10 @@
 {{--@include('staff.create')--}}
 {{--@include('staff.edit')--}}
 @include('layouts.delete')
-
+@section('content_header')
+    @include('layouts.content_header')
+@endsection
 @section('content')
-
     <div>
         <form class="position-relative w-100 h-100 bg-white p-3 mt-3">
         <table class="table table-borderless" id="myTable">
@@ -44,12 +45,13 @@
 
                 <td class="padding-table-row w88px">
                     <edit-button entity="{{$staff}}"></edit-button>
-
-
                     <button type="button" onclick="deleteItem('staffs',{{$staff->id}})" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
-                      <a href="#"
-                      > <i class="fal fa-times text-danger fw300"></i></a>
+                      <i class="fal fa-times text-danger fw300"></i>
                     </button >
+                </td>
+
+                <td class="padding-table-row w88px">
+                    <edit-button entity="{{$staff}}"></edit-button>
                 </td>
             </tr>
             @endforeach
@@ -66,10 +68,14 @@
         $input2 = (object) ["type" => "password", "label" => "Password", "name" => "password"];
         $input3 = (object) ["type" => "select", "label" => "Role", "name" => "role_id", "data" => $roles];
         $input4 = (object) ["type" => "text", "label" => "Fee Per Min", "name" => "fee"];
+        $input5 = (object) ["type" => "password", "label" => "Password Confirmation ", "name" => "password_confirmation"];
         $inputs = array($input1,$input2,$input3,$input4);
+        $edit_inputs =  array($input1,$input3,$input4);
+        $change_inputs =  array($input2,$input5);
     @endphp
 
     <add-modal title="Add New Staff" :inputs="{{json_encode($inputs)}}" url="/staffs"></add-modal>
-    <edit-modal title="Edit Staff" :inputs="{{json_encode($inputs)}}" url="/staffs"></edit-modal>
+    <edit-modal title="Edit Staff" :inputs="{{json_encode($edit_inputs)}}" url="/staffs"></edit-modal>
+    <change-modal title="Change Password" :inputs="{{json_encode($change_inputs)}}" url="/staffs"></change-modal>
 
 @endsection

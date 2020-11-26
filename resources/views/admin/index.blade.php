@@ -38,11 +38,6 @@
 
                 <td class="padding-table-row w88px">
                     <edit-button entity="{{$admin}}"></edit-button>
-{{--                    <button type="button" class="btn-clear " title="Edit"  id="edit-button" data-toggle="modal" data-target="#edit_modal">--}}
-{{--                        <a class="a-clear">--}}
-{{--                            <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>--}}
-{{--                        </a>--}}
-{{--                    </button>--}}
                     <button type="button" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
                         <i class="fal fa-times text-danger fw300"></i>
                     </button>

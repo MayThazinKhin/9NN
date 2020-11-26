@@ -18,7 +18,7 @@ class AdminCreateRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:staff,name',
-            'password' => 'required',
+            'password' => 'required|min:6',
             'role_id' => 'required'
         ];
     }

@@ -15,7 +15,6 @@ class AdminUpdateRequest extends FormRequest
         return [
             'name' => ['required',
                 Rule::unique('staff','name')->ignore($this->staff->id)],
-            'password' => 'required',
             'role_id' => 'required'
         ];
     }

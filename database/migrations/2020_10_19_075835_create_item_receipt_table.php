@@ -16,7 +16,7 @@ class CreateItemReceiptTable extends Migration
         Schema::create('item_receipt', function (Blueprint $table) {
             $table->foreignId('item_id')->constrained()->onDelete('cascade');
             $table->foreignId('receipt_id')->constrained()->onDelete('cascade');
-            $table->double('count');
+            $table->double('count')->default(0);
         });
     }
 
