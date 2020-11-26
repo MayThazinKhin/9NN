@@ -13,7 +13,9 @@
             </label>
         </form>
         <div class="d-inline-block ml-3">
-            <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>Add</button>
+            <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>
+                <a href=@yield('add_route')>Add</a>
+            </button>
         </div>
     </div>
 </div>

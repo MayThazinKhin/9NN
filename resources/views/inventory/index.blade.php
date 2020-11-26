@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content_title', 'Inventory Management')
-
+@section('add_route','/inventories/create')
+@section('content_header')
+    @include('layouts.content_header')
+@endsection
 @section('content')
     <header class="header pl-2">
         <div class="d-flex justify-content-between">

@@ -64,7 +64,7 @@
                     </div>
                     <div class="modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-4">
                         <button class="btn pr-0" data-dismiss="modal" style="font-size: 16px!important;">Cancel</button>
-                        <button @click.prevent="update" class="btn btn-info pl-3" style="font-size: 16px!important;" id="confirm-add-button"> Confirm </button>
+                        <button @click.prevent="update" class="btn btn-info pl-3" style="font-size: 16px!important;"> Confirm </button>
                     </div>
                 </form>
             </div>

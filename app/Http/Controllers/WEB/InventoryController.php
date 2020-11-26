@@ -19,7 +19,7 @@ class InventoryController extends BasicController
     }
 
     public function create(){
-
+        return view('inventory.create');
     }
 
     public function store(Request $request){

@@ -1985,6 +1985,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2009,6 +2013,13 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       }).fail(function (xhr, status, error) {
         self.errors = JSON.parse(xhr.responseText).errors;
       });
+    },
+    disableFeeFor9N: function disableFeeFor9N(input, value) {
+      $('#fee').attr('disabled', false);
+
+      if (value == 3) {
+        $('#fee').attr('disabled', true);
+      }
     }
   },
   created: function created() {
@@ -2200,6 +2211,192 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
       this.route = this.url + "/" + this.edit_data.id;
       this.errors = {};
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPassword.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditPassword.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/ajax_helper.js */ "./resources/js/helpers/ajax_helper.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["title", "inputs", "url"],
+  data: function data() {
+    return {
+      form: {},
+      errors: {},
+      route: ""
+    };
+  },
+  methods: {
+    update: function update() {
+      var self = this;
+      _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
+      $.ajax({
+        url: this.route,
+        type: "post",
+        contentType: "application/json",
+        data: JSON.stringify(this.form),
+        success: function success(data) {
+          console.log(data);
+
+          if (data.success) {
+            location.reload();
+          }
+        },
+        error: function error(xhr, status, _error) {
+          self.errors = JSON.parse(xhr.responseText).errors;
+        }
+      });
+    }
+  },
+  created: function created() {
+    for (var i = 0; i < this.inputs.length; i++) {
+      this.form[this.inputs[i].name] = "";
+    }
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+    edit_data: function edit_data(state) {
+      return state.edit_modal.edit_data;
+    }
+  })),
+  watch: {
+    edit_data: function edit_data() {
+      for (var i = 0; i < this.inputs.length; i++) {
+        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name];
+        if (this.inputs[i].type == 'select') $(".selectpicker").selectpicker("refresh"); //TODO refresh selectpicker
+      }
+
+      this.route = this.url + "/" + this.edit_data.id;
+      this.errors = {};
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPasswordButton.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditPasswordButton.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["entity"],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    setEditItem: function setEditItem() {
+      this.$store.commit("setEditData", JSON.parse(this.entity));
     }
   }
 });
@@ -20581,6 +20778,7 @@ var render = function() {
                                 staticClass: "input-form",
                                 staticStyle: { "font-size": "14px!important" },
                                 attrs: {
+                                  id: input.name,
                                   type: "text",
                                   placeholder: input.label
                                 },
@@ -20788,26 +20986,36 @@ var render = function() {
                                     "data-style": "select-form w-100"
                                   },
                                   on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.$set(
-                                        _vm.form,
-                                        input.name,
-                                        $event.target.multiple
-                                          ? $$selectedVal
-                                          : $$selectedVal[0]
-                                      )
-                                    }
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          input.name,
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                      function($event) {
+                                        input.label == "Role"
+                                          ? _vm.disableFeeFor9N(
+                                              input,
+                                              _vm.form[input.name]
+                                            )
+                                          : null
+                                      }
+                                    ]
                                   }
                                 },
                                 _vm._l(input.data, function(item, j) {
@@ -21315,7 +21523,6 @@ var render = function() {
                         {
                           staticClass: "btn btn-info pl-3",
                           staticStyle: { "font-size": "16px!important" },
-                          attrs: { id: "confirm-add-button" },
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -21338,6 +21545,462 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPassword.vue?vue&type=template&id=65fc6c30&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditPassword.vue?vue&type=template&id=65fc6c30& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "edit-password",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "add",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "modal-dialog", staticStyle: { width: "400px" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-content",
+              staticStyle: { "border-radius": "4px" },
+              attrs: { id: "app" }
+            },
+            [
+              _c(
+                "form",
+                { attrs: { id: "add_form", action: "#", method: "post" } },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "modal-header border-bottom-0 mt-3" },
+                    [
+                      _c("div", { staticClass: "text-left pl-4 pt-1" }, [
+                        _c(
+                          "p",
+                          {
+                            staticClass: "fs18 mb-0 font-weight-bold",
+                            staticStyle: {
+                              "font-family": "'Roboto',sans-serif",
+                              "font-size": "18px!important"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(_vm.title)
+                            )
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.inputs, function(input, i) {
+                    return _c(
+                      "div",
+                      { key: i, staticClass: "modal-body mx-4 pt-2 pb-0" },
+                      [
+                        input.type == "text"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: { "font-size": "16px!important" }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  type: "text",
+                                  placeholder: input.label
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        input.type == "email"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: { "font-size": "16px!important" }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  type: "email",
+                                  placeholder: input.label
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        input.type == "password"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: { "font-size": "16px!important" }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  type: "password",
+                                  placeholder: input.label
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        input.type == "textarea"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: { "font-size": "16px!important" }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c("textarea", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  placeholder: input.label,
+                                  cols: "30",
+                                  rows: "3"
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        input.type == "select"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: {
+                                    "font-size": "14px!important",
+                                    color: "#4b4e51"
+                                  }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form[input.name],
+                                      expression: "form[input.name]"
+                                    }
+                                  ],
+                                  staticClass: "selectpicker d-block",
+                                  attrs: {
+                                    title: input.label,
+                                    "data-width": "100%",
+                                    title: "Choice...",
+                                    "data-style": "select-form w-100"
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      var $$selectedVal = Array.prototype.filter
+                                        .call($event.target.options, function(
+                                          o
+                                        ) {
+                                          return o.selected
+                                        })
+                                        .map(function(o) {
+                                          var val =
+                                            "_value" in o ? o._value : o.value
+                                          return val
+                                        })
+                                      _vm.$set(
+                                        _vm.form,
+                                        input.name,
+                                        $event.target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      )
+                                    }
+                                  }
+                                },
+                                _vm._l(input.data, function(item, j) {
+                                  return input.data
+                                    ? _c(
+                                        "option",
+                                        {
+                                          key: j,
+                                          domProps: { value: item.id }
+                                        },
+                                        [_vm._v(_vm._s(item.name))]
+                                      )
+                                    : _vm._e()
+                                }),
+                                0
+                              ),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-4"
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn pr-0",
+                          staticStyle: { "font-size": "16px!important" },
+                          attrs: { "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Cancel")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info pl-3",
+                          staticStyle: { "font-size": "16px!important" },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.update($event)
+                            }
+                          }
+                        },
+                        [_vm._v(" Confirm ")]
+                      )
+                    ]
+                  )
+                ],
+                2
+              )
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPasswordButton.vue?vue&type=template&id=086c16fc&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditPasswordButton.vue?vue&type=template&id=086c16fc& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      staticClass: "btn-clear ",
+      attrs: {
+        type: "button",
+        title: "Edit",
+        "data-toggle": "modal",
+        "data-target": "#edit-password"
+      },
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          return _vm.setEditItem($event)
+        }
+      }
+    },
+    [_vm._m(0)]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "a-clear" }, [
+      _c("i", {
+        staticClass: "far fa-file-edit fw300",
+        staticStyle: { color: "#673ab7" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -34800,6 +35463,8 @@ Vue.component('add-modal', __webpack_require__(/*! ./components/AddModal.vue */ 
 });
 Vue.component('edit-modal', __webpack_require__(/*! ./components/EditModal.vue */ "./resources/js/components/EditModal.vue")["default"]);
 Vue.component('edit-button', __webpack_require__(/*! ./components/EditButton.vue */ "./resources/js/components/EditButton.vue")["default"]);
+Vue.component('edit-password', __webpack_require__(/*! ./components/EditPassword.vue */ "./resources/js/components/EditPassword.vue")["default"]);
+Vue.component('edit-password-button', __webpack_require__(/*! ./components/EditPasswordButton.vue */ "./resources/js/components/EditPasswordButton.vue")["default"]);
 var app = new Vue({
   el: '#app',
   store: _store_store__WEBPACK_IMPORTED_MODULE_0__["store"]
@@ -35041,6 +35706,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditModal_vue_vue_type_template_id_04ac6368___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditModal_vue_vue_type_template_id_04ac6368___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPassword.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/EditPassword.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditPassword_vue_vue_type_template_id_65fc6c30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditPassword.vue?vue&type=template&id=65fc6c30& */ "./resources/js/components/EditPassword.vue?vue&type=template&id=65fc6c30&");
+/* harmony import */ var _EditPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditPassword.vue?vue&type=script&lang=js& */ "./resources/js/components/EditPassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditPassword_vue_vue_type_template_id_65fc6c30___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditPassword_vue_vue_type_template_id_65fc6c30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditPassword.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPassword.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/EditPassword.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EditPassword.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPassword.vue?vue&type=template&id=65fc6c30&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/EditPassword.vue?vue&type=template&id=65fc6c30& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPassword_vue_vue_type_template_id_65fc6c30___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditPassword.vue?vue&type=template&id=65fc6c30& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPassword.vue?vue&type=template&id=65fc6c30&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPassword_vue_vue_type_template_id_65fc6c30___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPassword_vue_vue_type_template_id_65fc6c30___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPasswordButton.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/EditPasswordButton.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditPasswordButton_vue_vue_type_template_id_086c16fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditPasswordButton.vue?vue&type=template&id=086c16fc& */ "./resources/js/components/EditPasswordButton.vue?vue&type=template&id=086c16fc&");
+/* harmony import */ var _EditPasswordButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditPasswordButton.vue?vue&type=script&lang=js& */ "./resources/js/components/EditPasswordButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditPasswordButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditPasswordButton_vue_vue_type_template_id_086c16fc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditPasswordButton_vue_vue_type_template_id_086c16fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditPasswordButton.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPasswordButton.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/EditPasswordButton.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPasswordButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EditPasswordButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPasswordButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPasswordButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EditPasswordButton.vue?vue&type=template&id=086c16fc&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/EditPasswordButton.vue?vue&type=template&id=086c16fc& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPasswordButton_vue_vue_type_template_id_086c16fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditPasswordButton.vue?vue&type=template&id=086c16fc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditPasswordButton.vue?vue&type=template&id=086c16fc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPasswordButton_vue_vue_type_template_id_086c16fc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditPasswordButton_vue_vue_type_template_id_086c16fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

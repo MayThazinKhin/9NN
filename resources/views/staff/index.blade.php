@@ -51,7 +51,7 @@
                 </td>
 
                 <td class="padding-table-row w88px">
-                    <edit-button entity="{{$staff}}"></edit-button>
+                    <edit-password-button entity="{{$staff}}"></edit-password-button>
                 </td>
             </tr>
             @endforeach
@@ -70,12 +70,15 @@
         $input4 = (object) ["type" => "text", "label" => "Fee Per Min", "name" => "fee"];
         $input5 = (object) ["type" => "password", "label" => "Password Confirmation ", "name" => "password_confirmation"];
         $inputs = array($input1,$input2,$input3,$input4);
+
         $edit_inputs =  array($input1,$input3,$input4);
+
         $change_inputs =  array($input2,$input5);
     @endphp
 
     <add-modal title="Add New Staff" :inputs="{{json_encode($inputs)}}" url="/staffs"></add-modal>
     <edit-modal title="Edit Staff" :inputs="{{json_encode($edit_inputs)}}" url="/staffs"></edit-modal>
-    <change-modal title="Change Password" :inputs="{{json_encode($change_inputs)}}" url="/staffs"></change-modal>
+
+    <edit-password title="Change Password" :inputs="{{json_encode($change_inputs)}}" url="/staffs/change_password"></edit-password>
 
 @endsection
