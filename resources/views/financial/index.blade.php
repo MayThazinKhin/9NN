@@ -30,7 +30,7 @@
                 </th>
                 <td class="padding-table-row">
                     <div class="text-td text-capitalize">
-                        {{$primary->name}}
+                        <a href=""></a>  {{$primary->name}} </a>
                     </div>
                 </td>
 

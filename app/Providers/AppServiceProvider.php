@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Http\Controllers\API\SessionController;
+use App\Http\Repositories\Item\ItemInterface;
+use App\Http\Repositories\Item\ItemRepository;
 use App\Http\Repositories\Period\PeriodInterface;
 use App\Http\Repositories\Period\PeriodRepository;
 use App\Http\Repositories\Session\SessionInterface;
@@ -37,9 +39,10 @@ class AppServiceProvider extends ServiceProvider
             return new PeriodRepository();
         });
 
-//        $this->app->bind('SessionService', function ($app){
-//            return new SessionService($app->make(SessionInterface::class));
-//        } );
+        $this->app->bind(ItemInterface::class, function (){
+            return new ItemRepository();
+        });
+
     }
     /**
      * Register any application services.

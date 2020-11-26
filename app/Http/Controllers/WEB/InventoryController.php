@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\WEB;
 
 use App\Models\Inventory;
+use App\Models\Secondary;
 use Illuminate\Http\Request;
 
 class InventoryController extends BasicController
 {
-    public function __construct()
-    {
+    public function __construct(){
         $inventories = Inventory::class;
         parent::__construct($inventories, 'inventory', 'inventories');
     }
 
     public function index(){
-        //return view('inventory.create');
         return parent::indexData();
     }
 
@@ -30,4 +29,6 @@ class InventoryController extends BasicController
      return   Inventory::create($a);
 
     }
+
+
 }
