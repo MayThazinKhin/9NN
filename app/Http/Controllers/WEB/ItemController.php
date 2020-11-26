@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Services\Item\ItemFacade;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -13,22 +14,40 @@ class ItemController extends BasicController
     }
 
     public function index(){
-//        $roles = Role::all();
-//        $extra_data  = ['roles'=>$roles];
         return  parent::indexData(null,[]);
     }
 
-
-    public function create()
-    {
-        //
+    public function destroy(Item $item){
+        return parent::destroyData($item);
     }
 
-    public function store(Request $request)
-    {
-        //
+    public function search(Request $request){
+        return parent::searchData($request);
     }
 
+    public function update(Request $request,Item $item){
+        return parent::updateData($request,$item);
+    }
+
+    public function getAllTypes(){
+       ItemFacade::getAllTypes();
+    }
+
+    public function getItemsByTypeID(Request $request){
+        ItemFacade::getItemsByTypeID($request->type_ids);
+    }
+
+    public function getItemCategoriesByType(Request  $request){
+        ItemFacade::getItemCategoriesByType($request->type);
+    }
+
+    public function store(Request $request){
+        return parent::storeData($request);
+    }
+
+    public function create(){
+
+    }
 
     public function show($id)
     {
@@ -42,19 +61,7 @@ class ItemController extends BasicController
     }
 
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
-    public function destroy(Item $item)
-    {
-        return parent::destroyData($item);
-    }
 
-    public function search(Request $request){
-        $query = $request->all()['query'];
-        $items = Item::where('name', 'LIKE', "%{$query}%")->get();
-        return view('item.search',compact('items'));
-    }
+
 }

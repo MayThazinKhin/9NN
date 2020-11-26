@@ -12,4 +12,10 @@ class Category extends Model
     protected $fillable = ['name','type_id'];
 
     protected $hidden = ['created_at','updated_at'];
+
+    public function items(){
+        return $this->hasMany(Item::class);
+    }
+
+
 }

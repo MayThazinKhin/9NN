@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class BarController extends BasicController
 {
+    protected $items;
     public function __construct(){
-        $items = Item::class;
-        parent::__construct( $items,'item','items');
+        $this->items = Item::class;
+        parent::__construct( $this->items,'item','items');
     }
 
     public function index(){
@@ -21,9 +22,16 @@ class BarController extends BasicController
     }
 
     public function store(Request $request){
-        //
+      return  parent::storeData($request);
     }
 
+    public function update(Request $request, Item $item){
+        return parent::updateData($request,$item);
+    }
+
+    public function destroy(Item $item){
+        return parent::destroyData($item);
+    }
 
     public function show($id){
         //
@@ -35,11 +43,5 @@ class BarController extends BasicController
     }
 
 
-    public function update(Request $request, $id){
-        //
-    }
 
-    public function destroy($id){
-        //
-    }
 }
