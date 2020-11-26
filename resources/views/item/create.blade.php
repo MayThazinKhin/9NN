@@ -25,10 +25,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-4">
-                        <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Count</label>
-                        <input name="count" value="{{old('count')}}" type="text" class="input-form" placeholder="Count" style="font-size: 14px!important;">
-                    </div>
                 </div>
 
                 <div class="modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-4">
