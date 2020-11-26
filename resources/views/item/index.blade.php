@@ -1,23 +1,12 @@
 @extends('layouts.master')
-@section('content_title', 'Item Management')
-@section('add','#add')
+@section('content_title', 'Shop Management')
+@section('add_route', 'items/create')
 @section('route','/items/search')
 
 {{--@include('item.create')--}}
 {{--@include('item.edit')--}}
 @include('layouts.delete')
 
-@section('select_box')
-    <div class="d-inline-block">
-        <label>
-            <select name="color" class="selectpicker d-block" data-width="100%"
-                    data-style="select-form-header w-100">
-                <option value="1">Bar</option>
-                <option value="2">Kitchen</option>
-            </select>
-        </label>
-    </div>
-@endsection
 @section('content_header')
     @include('layouts.content_header')
 @endsection

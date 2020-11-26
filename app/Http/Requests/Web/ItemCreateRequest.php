@@ -13,7 +13,9 @@ class ItemCreateRequest extends FormRequest
 
     public function rules(){
         return [
-            //
+            'name'=> 'required',
+            'category_id' => 'required',
+            'price' => 'required'
         ];
     }
 }

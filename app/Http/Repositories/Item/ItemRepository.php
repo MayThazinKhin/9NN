@@ -10,14 +10,14 @@ use App\Models\Type;
 
 class ItemRepository implements ItemInterface
 {
-    private $type;
-    private $category;
-    private $item;
-    public function __construct(){
-        $this->type = Type::class;
-        $this->category = Category::class;
-        $this->item = Item::class;
-    }
+//    private $type;
+//    private $category;
+//    private $item;
+//    public function __construct(){
+//        $this->type = Type::class;
+//        $this->category = Category::class;
+//        $this->item = Item::class;
+//    }
 
     public function getItemCategoriesByType($type){
         $type_id = Type::where('name',$type)->pluck('id')->first();

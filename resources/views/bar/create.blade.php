@@ -26,9 +26,11 @@
                     </div>
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Category</label>
-                        <select name="category_name" id="category" class="selectpicker d-block" data-width="100%" title="select1..."
+                        <select name="category_id" id="category" class="selectpicker d-block" data-width="100%" title="..."
                                 data-style="select-form w-100">
-                            <option value="1">select1.1</option>
+{{--                            @foreach($categories as $category)--}}
+{{--                                <option value="{{$category->id}}">{{$category->name}}</option>--}}
+{{--                            @endforeach--}}
                         </select>
                     </div>
                 </div>

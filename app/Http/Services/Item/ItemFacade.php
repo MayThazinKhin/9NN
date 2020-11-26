@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static getItemCategoriesByType($type)
- * @method static getItemsByCategoryID(\App\Http\Requests\API\ItemRequest $request)
+ * @method static getItemsByCategoryID($request)
  * @method static getAllTypes()
  * @method static getItemsByTypeID($type_ids)
  */

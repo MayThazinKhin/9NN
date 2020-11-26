@@ -10,7 +10,7 @@ class BarController extends BasicController
     protected $items;
     public function __construct(){
         $this->items = Item::class;
-        parent::__construct( $this->items,'item','items');
+        parent::__construct( $this->items,'bar','bars');
     }
 
     public function index(){
