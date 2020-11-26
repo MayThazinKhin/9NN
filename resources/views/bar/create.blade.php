@@ -98,6 +98,7 @@
                 let form = {
                     'type_id' : $(this).val()
                 };
+                console.log(form);
                 $.ajaxSetup({
                     headers: {
                         "Content-Type": "application/json",
