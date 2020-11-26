@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\WEB;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use function PHPUnit\Framework\isEmpty;
 
 class BasicController extends Controller
 {
@@ -48,9 +46,14 @@ class BasicController extends Controller
         return redirect()->back();
     }
 
-    public function searchData($name){
-        $index_data = $this->model::where('name', 'LIKE', "%{$name}%")->get();
-        return view($this->var.'.index')->with($index_data);
+    public function searchData($request, $extra_data = []){
+        $query = $request->all()['query'];
+        $data = $this->model::where('name', 'LIKE', "%{$query}%")->get();
+        $index_data =[$this->route=>$data];
+        if(!empty($extra_data)){
+            $index_data =  array_merge($index_data,$extra_data);
+        }
+        return view($this->var.'.search')->with($index_data);
     }
 
     public function create(){

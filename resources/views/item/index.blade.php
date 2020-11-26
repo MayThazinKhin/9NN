@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content_title', 'item Management')
+@section('content_title', 'Item Management')
 @section('add','#add')
 @section('route','/items/search')
 
@@ -17,6 +17,9 @@
             </select>
         </label>
     </div>
+@endsection
+@section('content_header')
+    @include('layouts.content_header')
 @endsection
 @section('content')
     <div>

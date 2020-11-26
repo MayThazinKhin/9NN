@@ -4,6 +4,7 @@ namespace App\Http\Controllers\WEB;
 
 use App\Http\Requests\Web\AdminCreateRequest;
 use App\Http\Requests\Web\AdminUpdateRequest;
+use App\Http\Requests\Web\ChangePasswordRequest;
 use App\Models\Role;
 use App\Models\Staff;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class StaffController extends BasicController
         return parent::storeData($request);
     }
 
-    public function update(AdminUpdateRequest $request,Staff  $staff){
+    public function update(AdminUpdateRequest $request,Staff $staff){
         return parent::updateData($request,$staff);
     }
 
@@ -33,16 +34,13 @@ class StaffController extends BasicController
         return parent::destroyData($staff);
     }
 
-//    public function search(Request $request){
-//        return parent::searchData($request->name);
-//    }
-
-
     public function search(Request $request){
-        $query = $request->all()['query'];
         $roles = Role::all();
+        $extra_data  = ['roles'=>$roles];
+        return parent::searchData($request,$extra_data);
+    }
 
-        $staffs = Staff::where('name', 'LIKE', "%{$query}%")->get();
-        return view('staff.search',compact('staffs','roles'));
+    public function changePassword(ChangePasswordRequest $request,Staff $staff){
+        return parent::updateData($request,$staff);
     }
 }

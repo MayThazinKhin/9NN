@@ -21,6 +21,17 @@
             Member
         </a>
 
+        <a href="{{route('inventory.index')}}" class="a-clear a-sidebar">
+            Inventory
+        </a>
+
+        <a href="{{route('financial.index')}}" class="a-clear a-sidebar">
+            Financial
+        </a>
+
+
+
+
 
 
     </div>

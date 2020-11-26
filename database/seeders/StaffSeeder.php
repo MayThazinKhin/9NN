@@ -7,16 +7,10 @@ use Illuminate\Database\Seeder;
 
 class StaffSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
         Staff::create([
-
-            'name' => 'staff',
+            'name' => 'admin',
             'password' => 'password',
             'role_id' => 1
         ]);
@@ -35,5 +29,15 @@ class StaffSeeder extends Seeder
                 'fee' => 100 * $i
             ]);
         }
+        Staff::create([
+            'name' => 'accountant',
+            'password' => 'password',
+            'role_id' => 4
+        ]);
+        Staff::create([
+            'name' => 'Kitchen_staff',
+            'password' => 'password',
+            'role_id' => 5
+        ]);
     }
 }
