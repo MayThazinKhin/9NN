@@ -17,7 +17,12 @@ class ItemController extends BasicController
     }
 
     public function index(){
-        return  parent::indexData(null,[]);
+        $types = Type::whereIn('id',[1])->with('categories.items')->get();
+        $items = collect([]) ;
+        foreach($types as $type)
+            foreach ($type->categories as $category)
+                $items =   $items->merge($category->items);
+        return view('item.index',compact('items'));
     }
 
     public function destroy(Item $item){
