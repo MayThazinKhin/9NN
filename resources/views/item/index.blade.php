@@ -29,8 +29,7 @@
             <tr>
                 <th scope="row" class="padding-table-row">
                     <span class="text-td font-weight-normal">
-                        {{$i}}
-{{--                        {{ $items->perPage()*($items->currentPage()-1)+ (++$i) }}--}}
+                        {{ $items->perPage()*($items->currentPage()-1)+ (++$i) }}
                     </span>
                 </th>
                 <td class="padding-table-row">
@@ -66,9 +65,9 @@
             </tbody>
 
         </table>
-{{--            <nav aria-label="Page navigation example">--}}
-{{--                {{$items->links()}}--}}
-{{--            </nav>--}}
+            <nav aria-label="Page navigation example">
+                {{$items->links()}}
+            </nav>
     </form>
     </div>
 @endsection

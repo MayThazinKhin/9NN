@@ -17,11 +17,8 @@ class ItemController extends BasicController
     }
 
     public function index(){
-        $types = Type::whereIn('id',[1])->with('categories.items')->get();
-        $items = collect([]) ;
-        foreach($types as $type)
-            foreach ($type->categories as $category)
-                $items =   $items->merge($category->items);
+        $category_IDs = Category::where('type_id',1)->pluck('id')->all();
+        $items = Item::whereIn('category_id',$category_IDs)->orderBy('id', 'desc')->paginate(20);
         return view('item.index',compact('items'));
     }
 
