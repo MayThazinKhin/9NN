@@ -79,13 +79,6 @@
             });
         });
 
-        new Vue({
-            el:'#app',
-            data:{
-
-            }
-        })
-
 
     </script>
 @endsection
