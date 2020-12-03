@@ -38,7 +38,9 @@ Route::post('/tables/search',[TableController::class,'search'])->name('tables.se
 //Inventories
 Route::get('/inventories',[InventoryController::class,'index'])->name('inventory.index');
 Route::get('/inventories/create',[InventoryController::class,'create'])->name('inventory.create');
-Route::post('/inventories/create',[InventoryController::class,'store'])->name('inventory.store');
+Route::post('/inventories',[InventoryController::class,'store'])->name('inventory.store');
+Route::post('items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
+
 
 //Financial
 Route::get('/financial',[FinancialController::class,'index'])->name('financial.index');

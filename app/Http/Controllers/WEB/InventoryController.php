@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Requests\InventoryRequest;
 use App\Models\Inventory;
+use App\Models\Role;
 use App\Models\Secondary;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class InventoryController extends BasicController
@@ -13,20 +16,22 @@ class InventoryController extends BasicController
         parent::__construct($inventories, 'inventory', 'inventories');
     }
 
-    public function index(){
+    public function index()
+    {
         return parent::indexData();
     }
 
     public function create(){
-        return view('inventory.create');
+        $types = Type::all();
+
+        return view('inventory.create',compact('types'));
     }
 
-    public function store(Request $request){
-        $a ['count'] = 1;
-        $a ['price'] = 200 ;
-        $a ['item_id'] = 1;
-        $a ['date'] = '2020-11-26 05:16:29';
-     return   Inventory::create($a);
+    public function store(InventoryRequest $request){
+        $data = $request->all();
+        $data['date'] = today();
+        Inventory::create($data);
+        return redirect(route('inventory.index'));
 
     }
 
