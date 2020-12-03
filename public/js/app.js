@@ -2014,10 +2014,10 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         self.errors = JSON.parse(xhr.responseText).errors;
       });
     },
-    disableFeeFor9N: function disableFeeFor9N(input, value) {
+    disableFeeFor9N: function disableFeeFor9N(value) {
       $('#fee').attr('disabled', false);
 
-      if (value == 3) {
+      if (value !== 3) {
         $('#fee').attr('disabled', true);
       }
     }
@@ -2158,6 +2158,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2190,6 +2192,13 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
           self.errors = JSON.parse(xhr.responseText).errors;
         }
       });
+    },
+    disableFeeFor9N: function disableFeeFor9N(value) {
+      $('#fee').attr('disabled', false); // console.log(value);
+
+      if (value !== 3) {
+        $('#fee').attr('disabled', true);
+      }
     }
   },
   created: function created() {
@@ -2197,6 +2206,15 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.form[this.inputs[i].name] = "";
     }
   },
+  // mounted(){
+  //     let value;
+  //     for(let i=0; i<this.inputs.length; i++)
+  //     {
+  //         if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
+  //     }
+  //
+  //     this.disableFeeFor9N(value);
+  // },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     edit_data: function edit_data(state) {
       return state.edit_modal.edit_data;
@@ -2204,11 +2222,16 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   })),
   watch: {
     edit_data: function edit_data() {
-      for (var i = 0; i < this.inputs.length; i++) {
-        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name];
-        if (this.inputs[i].type == 'select') $(".selectpicker").selectpicker("refresh"); //TODO refresh selectpicker
-      }
+      var value;
 
+      for (var i = 0; i < this.inputs.length; i++) {
+        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name]; // if(this.inputs[i].type == 'select') $(".selectpicker").selectpicker("refresh");
+
+        if (this.inputs[i].label == "Role") value = this.form[this.inputs[i].name]; //TODO refresh selectpicker
+      } // $(".selectpicker").selectpicker("refresh");
+
+
+      this.disableFeeFor9N(value);
       this.route = this.url + "/" + this.edit_data.id;
       this.errors = {};
     }
@@ -21010,7 +21033,6 @@ var render = function() {
                                       function($event) {
                                         input.label == "Role"
                                           ? _vm.disableFeeFor9N(
-                                              input,
                                               _vm.form[input.name]
                                             )
                                           : null
@@ -21246,6 +21268,7 @@ var render = function() {
                                 staticClass: "input-form",
                                 staticStyle: { "font-size": "14px!important" },
                                 attrs: {
+                                  id: input.name,
                                   type: "text",
                                   placeholder: input.label
                                 },
@@ -21453,26 +21476,35 @@ var render = function() {
                                     "data-style": "select-form w-100"
                                   },
                                   on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.$set(
-                                        _vm.form,
-                                        input.name,
-                                        $event.target.multiple
-                                          ? $$selectedVal
-                                          : $$selectedVal[0]
-                                      )
-                                    }
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          input.name,
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                      function($event) {
+                                        input.label == "Role"
+                                          ? _vm.disableFeeFor9N(
+                                              _vm.form[input.name]
+                                            )
+                                          : null
+                                      }
+                                    ]
                                   }
                                 },
                                 _vm._l(input.data, function(item, j) {

@@ -63,8 +63,8 @@
                 </td>
 
                 <td class="padding-table-row w88px">
-                    <button type="button" class="btn-clear " title="Edit"  id="edit-button" data-toggle="modal" data-target="#edit_item_modal">
-                        <a class="a-clear">
+                    <button type="button" class="btn-clear " title="Edit"  id="edit-button">
+                        <a class="a-clear" href="{{route('bars.edit',['bar' => $bar->id])}}">
                             <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
                         </a>
                     </button>

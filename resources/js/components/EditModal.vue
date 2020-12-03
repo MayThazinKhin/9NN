@@ -14,7 +14,7 @@
 
                         <div class="mb-4" v-if="input.type == 'text'">
                             <label class="label-form mb-1" style="font-size: 16px!important;">{{ input.label }}</label>
-                            <input  v-model="form[input.name]" type="text" class="input-form" :placeholder="input.label" style="font-size: 14px!important;">
+                            <input :id="input.name"  v-model="form[input.name]" type="text" class="input-form" :placeholder="input.label" style="font-size: 14px!important;">
                             <span v-if="errors[input.name]" class="text-danger">{{
                                     errors[input.name][0]
                                 }}</span>
@@ -48,7 +48,9 @@
                         <div class="mb-4" v-if="input.type == 'select'">
                             <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">{{ input.label }}</label>
                             <select v-model="form[input.name]" :title="input.label" class="selectpicker d-block" data-width="100%" title="Choice..."
-                                    data-style="select-form w-100">
+                                    data-style="select-form w-100"
+                                    @change="input.label == 'Role' ? disableFeeFor9N(form[input.name]) : null"
+                            >
                                 <option v-if="input.data"
                                         v-for="(item, j) in input.data"
                                         :key="j"
@@ -105,6 +107,14 @@ export default {
                     self.errors = JSON.parse(xhr.responseText).errors;
                 }
             });
+        },
+        disableFeeFor9N(value){
+            $('#fee').attr('disabled',false);
+            // console.log(value);
+            if(value !== 3)
+            {
+                $('#fee').attr('disabled',true);
+            }
         }
     },
 
@@ -114,6 +124,16 @@ export default {
         }
     },
 
+    // mounted(){
+    //     let value;
+    //     for(let i=0; i<this.inputs.length; i++)
+    //     {
+    //         if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
+    //     }
+    //
+    //     this.disableFeeFor9N(value);
+    // },
+
     computed: {
         ...mapState({
             edit_data: state => state.edit_modal.edit_data
@@ -121,11 +141,18 @@ export default {
     },
     watch: {
         edit_data: function() {
+            let value;
             for(let i=0; i<this.inputs.length; i++){
                 this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name];
-                if(this.inputs[i].type == 'select') $(".selectpicker").selectpicker("refresh");
+                // if(this.inputs[i].type == 'select') $(".selectpicker").selectpicker("refresh");
+
+                if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
+
                 //TODO refresh selectpicker
             }
+            // $(".selectpicker").selectpicker("refresh");
+            this.disableFeeFor9N(value);
+
             this.route = this.url + "/" + this.edit_data.id;
             this.errors = {};
         }

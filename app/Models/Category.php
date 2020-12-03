@@ -17,5 +17,10 @@ class Category extends Model
         return $this->hasMany(Item::class);
     }
 
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+
 
 }

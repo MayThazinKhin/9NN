@@ -9,16 +9,19 @@
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Name</label>
                         <input name="name" type="text" value="{{old('name')}}" class="input-form" placeholder="Name" style="font-size: 14px!important;">
+                        <span class="text-danger">{{$errors->first('name')}}</span>
                     </div>
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Price</label>
                         <input name="price" type="text" value="{{old('price')}}" class="input-form" placeholder="Price" style="font-size: 14px!important;">
+                        <span class="text-danger">{{$errors->first('price')}}</span>
+
                     </div>
                 </div>
                 <div class="row mx-0 mb-3">
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Type</label>
-                        <select name="type" id="type" class="selectpicker d-block" data-width="100%" title="Types"
+                        <select id="type" class="selectpicker d-block" data-width="100%" title="Types"
                                 data-style="select-form w-100">
                             <option value="bar">Bar</option>
                             <option value="menu">Menu</option>
@@ -29,6 +32,8 @@
                         <select name="category_id" id="category" class="selectpicker d-block" data-width="100%" title="Categories"
                                 data-style="select-form w-100">
                         </select>
+                        <span class="text-danger">{{$errors->first('category_id')}}</span>
+
                     </div>
                 </div>
 
@@ -92,8 +97,9 @@
 
 
                 let form = {
-                    'type_id' : $(this).val()
+                    'type' : $(this).val()
                 };
+
                 $.ajaxSetup({
                     headers: {
                         "Content-Type": "application/json",
@@ -104,7 +110,7 @@
                 $.post('/categories', JSON.stringify(form))
                     .done(function(data) {
                         // if(data.success){
-                        console.log(data);
+                        // console.log(data);
                             categories = [...data];
                         refreshSelectPicker();
 

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content_title', 'Shop Management')
-@section('add_route', 'items/create')
+@section('add','#add')
 @section('route','/items/search')
 
 {{--@include('item.create')--}}
@@ -51,11 +51,8 @@
                 </td>
 
                 <td class="padding-table-row w88px">
-                    <button type="button" class="btn-clear " title="Edit"  id="edit-button" data-toggle="modal" data-target="#edit_item_modal">
-                        <a class="a-clear">
-                            <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
-                        </a>
-                    </button>
+                    <edit-button entity="{{$item}}"></edit-button>
+
                     <button type="button" onclick="deleteItem('items',{{$item->id}})" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
                         <i class="fal fa-times text-danger fw300"></i>
                     </button>
@@ -70,4 +67,14 @@
             </nav>
     </form>
     </div>
+
+    @php
+        $input1 = (object) ["type" => "text", "label" => "Name", "name" => "name"];
+        $input2 = (object) ["type" => "text", "label" => "Price", "name" => "price"];
+        $input3 = (object) ["type" => "select", "label" => "Category", "name" => "category_id", "data" => $categories];
+        $inputs = array($input1,$input2,$input3);
+    @endphp
+
+    <add-modal title="Add New Item" :inputs="{{json_encode($inputs)}}" url="/items"></add-modal>
+    <edit-modal title="Edit Item" :inputs="{{json_encode($inputs)}}" url="/items"></edit-modal>
 @endsection

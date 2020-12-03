@@ -13,7 +13,7 @@ class ItemUpdateRequest extends FormRequest
     public function rules(){
         return [
             'name'=> 'required',
-            'category_id' => 'required',
+//            'category_id' => 'required',
             'price' => 'required'
         ];
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Requests\Web\ItemCreateRequest;
+use App\Http\Requests\Web\ItemUpdateRequest;
 use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
@@ -24,14 +26,17 @@ class BarController extends BasicController
         return view('bar.create');
     }
 
-    public function store(Request $request){
+    public function store(ItemCreateRequest $request){
         $data = $request->all();
         Item::create($data);
         return redirect(route('bars.index'));
     }
 
-    public function update(Request $request, Item $item){
-        return parent::updateData($request,$item);
+    public function update(ItemUpdateRequest $request, Item $bar){
+        $request->category_id == null ? $data = $request->except('category_id') : $data = $request->all();
+        $bar->update($data);
+        return redirect(route('bars.index'));
+//        return parent::updateData($request,$item);
     }
 
     public function destroy(Item $item){
@@ -43,8 +48,9 @@ class BarController extends BasicController
     }
 
 
-    public function edit($id){
-        //
+    public function edit(Item $bar){
+        return view('bar.edit',compact('bar'));
+
     }
 
 

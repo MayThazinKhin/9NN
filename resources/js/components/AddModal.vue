@@ -49,7 +49,7 @@
                             <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">{{ input.label }}</label>
                             <select v-model="form[input.name]" :title="input.label" class="selectpicker d-block" data-width="100%" title="Choice..."
                                     data-style="select-form w-100"
-                                    @change="input.label == 'Role' ? disableFeeFor9N(input,form[input.name]) : null"
+                                    @change="input.label == 'Role' ? disableFeeFor9N(form[input.name]) : null"
 
                             >
                                 <option v-if="input.data"
@@ -106,10 +106,10 @@ export default {
                 });
         },
 
-        disableFeeFor9N(input,value){
+        disableFeeFor9N(value){
             $('#fee').attr('disabled',false);
 
-            if(value == 3)
+            if(value !== 3)
             {
                 $('#fee').attr('disabled',true);
             }
