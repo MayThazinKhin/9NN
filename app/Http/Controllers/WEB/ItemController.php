@@ -42,6 +42,7 @@ class ItemController extends BasicController
 
     public function create(){
         $categories = ItemFacade::getItemCategoriesByType('shop');
+        dd($categories);
         return view('item.create',compact('categories'));
     }
 
