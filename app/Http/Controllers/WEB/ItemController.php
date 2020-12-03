@@ -17,11 +17,8 @@ class ItemController extends BasicController
     }
 
     public function index(){
-        $types = Type::whereIn('id',[1])->with('categories.items')->get();
-        $items = collect([]) ;
-        foreach($types as $type)
-            foreach ($type->categories as $category)
-                $items =   $items->merge($category->items);
+        $category_IDs = Category::where('type_id',1)->pluck('id')->all();
+        $items = Item::whereIn('category_id',$category_IDs)->orderBy('id', 'desc')->paginate(20);
         return view('item.index',compact('items'));
     }
 
@@ -37,26 +34,6 @@ class ItemController extends BasicController
         return parent::updateData($request,$item);
     }
 
-    public function getAllTypes(){
-        $types = Type::all();
-        responseData('types',$types,200);
-    }
-
-    public function getItemsByTypeID(Request $request){
-        $types = Type::whereIn('id',$request->typeIDs)->with('categories.items')->get();
-        $items = collect([]) ;
-        foreach($types as $type)
-            foreach ($type->categories as $category)
-                $items =   $items->merge($category->items);
-        responseData('items',$items,200);
-    }
-
-    public function getItemCategoriesByType(){
-        $type_id = Type::where('name','shop')->pluck('id')->first();
-        $categories = Category::where('type_id',$type_id)->select('id','name')->get();
-        return $categories;
-    }
-
     public function store(ItemCreateRequest $request){
         $data = $request->all();
         Item::create($data);
@@ -68,16 +45,20 @@ class ItemController extends BasicController
         return view('item.create',compact('categories'));
     }
 
-    public function show($id)
-    {
-        //
+    public function getAllTypes(){
+        ItemFacade::getAllTypes();
+    }
+
+    public function getItemsByTypeID(Request $request){;
+       ItemFacade::getItemsByTypeID($request->typeIDs);
+    }
+
+    public function getItemCategoriesByType(){
+        $type_id = Type::where('name','shop')->pluck('id')->first();
+        ItemFacade::getItemCategoriesByType($type_id);
     }
 
 
-    public function edit($id)
-    {
-        //
-    }
 
 
 

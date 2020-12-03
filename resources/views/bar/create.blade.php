@@ -43,39 +43,39 @@
 @section('script_index')
     <script>
         $(document).ready(function (){
-            $('.normal').autosize();
-            $('.animated-txtarea').autosize();
-
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tbody tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-            $('.selectpicker').selectpicker('refresh');
-            $('#monthpicker').MonthPicker({ Button: false });
-            $(".yearpicker").yearpicker({
-                // autohide:true,
-                // initialYear:null,
-                onShow:null,
-                year:null,
-                startYear: 2015,
-                endYear: 2026,
-                pick:null,
-                show:null,
-
-            });
-            $('.pickdate').datepicker({
-                // altFormat:"dd-mm-YY",
-                dateFormat:'D, dd M yy',
-                changeYear:true,
-                changeMonth:true,
-                showButtonPanel: true,
-                autoSize: true,
-                hideIfNoPrevNext: true,
-                yearRange: "1960:2030",
-                duration:'slow',
-            });
+            // $('.normal').autosize();
+            // $('.animated-txtarea').autosize();
+            //
+            // $("#myInput").on("keyup", function() {
+            //     var value = $(this).val().toLowerCase();
+            //     $("#myTable tbody tr").filter(function() {
+            //         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            //     });
+            // });
+            // $('.selectpicker').selectpicker('refresh');
+            // $('#monthpicker').MonthPicker({ Button: false });
+            // $(".yearpicker").yearpicker({
+            //     // autohide:true,
+            //     // initialYear:null,
+            //     onShow:null,
+            //     year:null,
+            //     startYear: 2015,
+            //     endYear: 2026,
+            //     pick:null,
+            //     show:null,
+            //
+            // });
+            // $('.pickdate').datepicker({
+            //     // altFormat:"dd-mm-YY",
+            //     dateFormat:'D, dd M yy',
+            //     changeYear:true,
+            //     changeMonth:true,
+            //     showButtonPanel: true,
+            //     autoSize: true,
+            //     hideIfNoPrevNext: true,
+            //     yearRange: "1960:2030",
+            //     duration:'slow',
+            // });
 
 
             let categories=[];
@@ -101,9 +101,10 @@
                     }
                 });
 
-                $.post('/bars/categories', JSON.stringify(form))
+                $.post('/categories', JSON.stringify(form))
                     .done(function(data) {
                         // if(data.success){
+                        console.log(data);
                             categories = [...data];
                         refreshSelectPicker();
 

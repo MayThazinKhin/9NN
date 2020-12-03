@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class BarController extends BasicController
     }
 
     public function index(){
-        return  parent::indexData(null,[]);
+        $category_IDs = Category::where('type_id','!=',1)->pluck('id')->all();
+        $bars = Item::whereIn('category_id',$category_IDs)->orderBy('id', 'desc')->paginate(20);
+        return view('bar.index',compact('bars'));
     }
 
     public function create(){

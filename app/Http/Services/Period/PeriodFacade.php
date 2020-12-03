@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Facade;
  */
 class PeriodFacade extends Facade
 {
-    public static function getFacadeAccessor()
-    {
+    public static function getFacadeAccessor(){
         return 'App\Http\Services\Period\PeriodService';
     }
 }

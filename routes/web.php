@@ -9,6 +9,7 @@ use App\Http\Controllers\WEB\ItemController;
 use App\Http\Controllers\WEB\InventoryController;
 use App\Http\Controllers\WEB\FinancialController;
 use App\Http\Controllers\WEB\BarController;
+use App\Http\Controllers\WEB\InvoiceController;
 
 //staffs
 Route::resource('staffs',StaffController::class);
@@ -42,6 +43,10 @@ Route::post('/inventories/create',[InventoryController::class,'store'])->name('i
 //Financial
 Route::get('/financial',[FinancialController::class,'index'])->name('financial.index');
 Route::get('/secondary/{id}',[FinancialController::class,'secondary'])->name('secondary');
+
+
+//Invoice
+Route::get('invoices',[InvoiceController::class,'index'])->name('invoice');
 
 
 

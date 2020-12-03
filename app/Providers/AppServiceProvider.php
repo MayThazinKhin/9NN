@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\API\SessionController;
 use App\Http\Repositories\Item\ItemInterface;
 use App\Http\Repositories\Item\ItemRepository;
 use App\Http\Repositories\Period\PeriodInterface;
@@ -11,7 +10,6 @@ use App\Http\Repositories\Session\SessionInterface;
 use App\Http\Repositories\Session\SessionRepository;
 use App\Http\Repositories\Table\TableInterface;
 use App\Http\Repositories\Table\TableRepository;
-use App\Http\Services\Table\TableService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
             return new TableRepository();
         });
 
-        $this->app->bind('TableService', function ($app){
-            return new TableService($app->make(TableInterface::class));
-        } );
+//        $this->app->bind('TableService', function ($app){
+//            return new TableService($app->make(TableInterface::class));
+//        } );
 
         $this->app->bind(SessionInterface::class, function (){
             return new SessionRepository();
