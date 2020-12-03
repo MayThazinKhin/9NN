@@ -17,4 +17,6 @@ interface SessionInterface
     public function getSessionDetails($sessionID);
 
     public function checkSessionID($sessionID);
+
+    public function endSession($sessionID);
 }

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static getOrderItems($session_id)
  * @method static getSessionDetails($session_id)
  * @method static checkSessionID($sessionID)
+ * @method static endSession($session_id)
  */
 class SessionFacade extends Facade
 {

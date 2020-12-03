@@ -48,6 +48,7 @@ class SessionController extends Controller
     }
 
     public function endSession(Request $request){
+        return Session::endSession($request->session_id);
         responseTrue('order successfully');
     }
 

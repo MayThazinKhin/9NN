@@ -41,27 +41,18 @@ class ItemController extends BasicController
     }
 
     public function create(){
-        $categories = $this->getItemCategoriesByType();
+        $categories = ItemFacade::getItemCategoriesByType('shop');
         return view('item.create',compact('categories'));
     }
 
     public function getAllTypes(){
-        ItemFacade::getAllTypes();
+       $types =  ItemFacade::getAllTypes();
+       return $types;
     }
 
     public function getItemsByTypeID(Request $request){;
-       ItemFacade::getItemsByTypeID($request->typeIDs);
+     $items =  ItemFacade::getItemsByTypeID($request->typeIDs);
+     return $items;
     }
-
-    public function getItemCategoriesByType(){
-        $type_id = Type::where('name','shop')->pluck('id')->first();
-        ItemFacade::getItemCategoriesByType($type_id);
-    }
-
-
-
-
-
-
 
 }

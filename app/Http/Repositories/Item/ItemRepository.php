@@ -20,18 +20,17 @@ class ItemRepository implements ItemInterface
     public function getItemCategoriesByType($type){
         $type_id = $this->type::where('name',$type)->pluck('id')->first();
         $categories = $this->category::where('type_id',$type_id)->select('id','name')->get();
-        responseData('categories',$categories,200);
+        return $categories;
     }
 
     public function getItemsByCategoryID($request){
         $items  = $this->item::where('category_id',$request->category_id)->select('id','name','price','count','category_id')->get();
-        $paginate_items = paginate($items,$request);
-        responseData('items',$paginate_items,200);
+         return $items;
     }
 
     public function getAllTypes(){
         $types = Type::all();
-        responseData('types',$types,200);
+        return $types;
     }
 
     public function getItemsByTypeID(array $typeIDs){
@@ -40,7 +39,7 @@ class ItemRepository implements ItemInterface
         foreach($types as $type)
             foreach ($type->categories as $category)
                 $items =   $items->merge($category->items);
-        responseData('items',$items,200);
+        return $items;
     }
 
 
