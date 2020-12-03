@@ -23,4 +23,8 @@ class TableService
     public function applyMarkerID($table_id,$marker_id){
         return $this->table->applyMarkerID($table_id,$marker_id);
     }
+
+    public function freeTable($table){
+        return $this->table->freeTable($table);
+    }
 }

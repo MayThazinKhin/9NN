@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     public function getItemCategoriesByType(Request $request){
-       // $categories = ItemFacade::getItemCategoriesByType('bar');
         $categories =   ItemFacade::getItemCategoriesByType($request->type);
         responseData('categories',$categories,200);
     }

@@ -50,18 +50,18 @@ class ItemController extends BasicController
     }
 
     public function getAllTypes(){
-       $types =  ItemFacade::getAllTypes();
-       return $types;
+       return ItemFacade::getAllTypes();
     }
 
-    public function getItemsByTypeID(Request $request){;
-     $items =  ItemFacade::getItemsByTypeID($request->typeIDs);
-     return $items;
+    public function getItemsByTypeID(Request $request){
+        return ItemFacade::getItemsByTypeID($request->typeIDs);
     }
+
 
     public function getItemCategoriesByType(Request $request)
     {
         return ItemFacade::getItemCategoriesByType($request->type);
     }
+
 
 }

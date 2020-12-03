@@ -12,5 +12,5 @@ interface PeriodInterface
 
     public function getPeriodsBySessionID($sessionID);
 
-    public function checkPeriodID($id);
+    public function endLatestPeriod($sessionID);
 }

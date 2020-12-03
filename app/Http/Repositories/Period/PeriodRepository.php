@@ -2,6 +2,7 @@
 
 namespace App\Http\Repositories\Period;
 
+use App\Http\Actions\Periods\End;
 use App\Http\Actions\Periods\PeriodsBySessionID;
 use App\Http\Services\Session\SessionFacade as Session;
 use App\Models\Period;
@@ -20,9 +21,7 @@ class PeriodRepository implements PeriodInterface
     }
 
     public function end($data){
-       $data['end_time'] = CurrentTime();
-       $period = $this->checkPeriodID( $data['period_id']);
-       $period->update($data);
+        (new End())->byId($data['period_id']);
     }
 
     public function getPeriodsBySessionID($sessionID){
@@ -30,12 +29,7 @@ class PeriodRepository implements PeriodInterface
         return (new PeriodsBySessionID())->run($periods,$sessionID);
     }
 
-    public function checkPeriodID($id){
-        $period = $this->period::where('id',$id)->first();
-        if(!$period)
-            return responseStatus('Requested period ID is not found',400);
-        if($period->end_time != null)
-            return responseStatus('Requested period ID is already finished',400);
-        return $period;
+    public function endLatestPeriod($sessionID){
+        (new End())->byLatest($sessionID);
     }
 }

@@ -3,8 +3,12 @@
 
 namespace App\Http\Repositories\Session;
 
+use App\Http\Actions\Session\OrderedItems;
+use App\Http\Actions\Session\OrderItems;
+use App\Http\Actions\Session\SessionDetails;
+use App\Http\Services\Period\PeriodFacade as Period;
+use App\Http\Services\Table\TableFacade as Table;
 use App\Models\Session;
-use Illuminate\Support\Facades\Route;
 
 class SessionRepository implements SessionInterface
 {
@@ -24,51 +28,18 @@ class SessionRepository implements SessionInterface
 
     public function orderItems($data){
         $session = $this->checkSessionID($data['session_id']);
-        $route_name = Route::currentRouteName();
-        foreach ($data['items'] as $item) {
-            $item_id = $item['id'];
-            $count = $item['count'];
-            $is_already_ordered = $session->items->contains($item_id);
-            if ($is_already_ordered) {
-                $old_count = $session->items()->where('item_id', $item_id)->first()->pivot->count;
-                $new_count = ($route_name == 'order_items')  ? $old_count + $count : $old_count - $count;
-                $session->items()->where('item_id', $item_id)->updateExistingPivot($item_id, ['count' => $new_count]);
-            } else {
-                $session->items()->attach($item_id, ['count' => $count]);
-            }
-        }
+        (new OrderItems())->run($session,$data);
         return true;
     }
 
     public function getOrderItems($sessionID){
         $session = $this->checkSessionID($sessionID);
-        $orders = new \stdClass();
-        if ($session) {
-            $items = $session->items;
-            $net_total = 0;
-            foreach ($items as $item) {
-                $item->count = $item->pivot->count;
-                $item->total = $item->count * $item->price;
-                unset($item['category_id']);
-                unset($item['pivot']);
-                $net_total += $item->total;
-            }
-            $orders->items = $items;
-            $orders->net_total = $net_total;
-        }
-        return $orders;
+        return  (new OrderedItems())->run($session);
     }
 
     public function getSessionDetails($sessionID){
         $session = $this->checkSessionID($sessionID);
-        $details = new \stdClass();
-        $table = $session->table;
-        $details->session_id = $session->id;
-        $details->start_time = $session->start_time;
-        $details->end_time = $session->end_time;
-        $details->table_price = $table->price;
-        $details->table_name = $table->name;
-        return $details;
+        return (new SessionDetails())->run($session);
     }
 
     public function checkSessionID($sessionID){
@@ -82,12 +53,9 @@ class SessionRepository implements SessionInterface
     public function endSession($sessionID){
         $session = $this->checkSessionID($sessionID);
         $session->update([
-            'end_time' => now()
+            'end_time' => CurrentTime()
         ]);
-        $session_table = $session->table;
-        $session_table->update([
-            'marker_id' => null
-            ]
-        );
+        Table::freeTable($session->table);
+        Period::endLatestPeriod($sessionID);
     }
 }

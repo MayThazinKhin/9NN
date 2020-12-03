@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static start(array $data)
  * @method static end(array $data)
  * @method static getPeriodsBySessionID($session_id)
+ * @method static endLatestPeriod($sessionID)
  */
 class PeriodFacade extends Facade
 {

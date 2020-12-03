@@ -22,8 +22,16 @@ class TableRepository implements TableInterface
 
     public function applyMarkerID($table_id, $marker_id){
         $table = $this->table::find($table_id);
+        $this->updateTable($table,$marker_id);
+    }
+
+    public function freeTable($table){
+        $this->updateTable($table,null);
+    }
+
+    protected function updateTable($table,$data){
         $table->update([
-            'marker_id' => $marker_id
+            'marker_id' => $data
         ]);
     }
 }

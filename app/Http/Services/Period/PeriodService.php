@@ -23,4 +23,8 @@ class PeriodService
     public static function getPeriodsBySessionID($sessionID){
         return self::$period->getPeriodsBySessionID($sessionID);
     }
+
+    public function endLatestPeriod($sessionID){
+        return self::$period->endLatestPeriod($sessionID);
+    }
 }
