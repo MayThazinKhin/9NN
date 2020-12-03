@@ -13,19 +13,19 @@ class ItemService
     }
 
     public function getItemCategoriesByType($type){
-        $this->item->getItemCategoriesByType($type);
+     return   $this->item->getItemCategoriesByType($type);
     }
 
     public function getItemsByCategoryID($data){
-        $this->item->getItemsByCategoryID($data);
+      return  $this->item->getItemsByCategoryID($data);
     }
 
     public function getAllTypes(){
-        $this->item->getAllTypes();
+      return  $this->item->getAllTypes();
     }
 
     public function getItemsByTypeID($typeIDs){
-        $this->item->getItemsByTypeID($typeIDs);
+     return   $this->item->getItemsByTypeID($typeIDs);
     }
 
 

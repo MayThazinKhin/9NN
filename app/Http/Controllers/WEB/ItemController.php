@@ -6,7 +6,6 @@ use App\Http\Requests\Web\ItemCreateRequest;
 use App\Http\Services\Item\ItemFacade;
 use App\Models\Category;
 use App\Models\Item;
-use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ItemController extends BasicController
