@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('content_title', 'Create Shop')
+@section('content_title', 'Create Bar')
 @section('content')
-    <form action="{{route('items.store')}}" method="post">
+    <form action="{{route('bars.store')}}" method="post">
         @csrf
         <div>
             <div class="position-relative w-100 h-100 bg-white p-3 mt-3">
@@ -18,23 +18,17 @@
                 <div class="row mx-0 mb-3">
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Type</label>
-                        <select name="type" id="type" class="selectpicker d-block" data-width="100%" title="select1..."
+                        <select name="type" id="type" class="selectpicker d-block" data-width="100%" title="Types"
                                 data-style="select-form w-100">
-                            <option value="1">select1.1</option>
+                            <option value="bar">Bar</option>
+                            <option value="menu">Menu</option>
                         </select>
                     </div>
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Category</label>
-                        <select name="category_name" id="category" class="selectpicker d-block" data-width="100%" title="select1..."
+                        <select name="category_id" id="category" class="selectpicker d-block" data-width="100%" title="Categories"
                                 data-style="select-form w-100">
-                            <option value="1">select1.1</option>
                         </select>
-                    </div>
-                </div>
-                <div class="row mx-0 mb-3">
-                    <div class="col-4">
-                        <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Count</label>
-                        <input name="count" value="{{old('count')}}" type="text" class="input-form" placeholder="Count" style="font-size: 14px!important;">
                     </div>
                 </div>
 
@@ -84,7 +78,7 @@
             });
 
 
-            let categories='';
+            let categories=[];
 
             function refreshSelectPicker(){
                 $('.selectpicker').selectpicker('refresh');
@@ -92,6 +86,10 @@
 
             $('#type').change(function (){
                 refreshSelectPicker();
+                categories = [];
+                $('#category').empty();
+
+
 
                 let form = {
                     'type_id' : $(this).val()
@@ -103,17 +101,20 @@
                     }
                 });
 
-                $.post('/types', JSON.stringify(form))
+                $.post('/bars/categories', JSON.stringify(form))
                     .done(function(data) {
-                        if(data.success){
-                            categories = data.categories;
-                            refreshSelectPicker();
-                            categories.forEach(function(category){
-                                $('#category').append(`
+                        // if(data.success){
+                        categories = [...data];
+                        refreshSelectPicker();
+
+                        categories.forEach(function(category){
+                            $('#category').append(`
                                     <option value="${ category.id }">${category.name}</option>
                             `)
-                            })
-                        }
+                        })
+                        refreshSelectPicker();
+
+                        // }
                     });
             })
         });

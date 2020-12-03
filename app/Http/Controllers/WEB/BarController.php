@@ -22,7 +22,9 @@ class BarController extends BasicController
     }
 
     public function store(Request $request){
-      return  parent::storeData($request);
+        $data = $request->all();
+        Item::create($data);
+        return redirect(route('bars.index'));
     }
 
     public function update(Request $request, Item $item){

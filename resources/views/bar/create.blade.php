@@ -1,7 +1,7 @@
 @extends('layouts.master')
-@section('content_title', 'Create Shop')
+@section('content_title', 'Create Bar')
 @section('content')
-    <form action="{{route('items.store')}}" method="post">
+    <form action="{{route('bars.store')}}" method="post">
         @csrf
         <div>
             <div class="position-relative w-100 h-100 bg-white p-3 mt-3">
@@ -26,18 +26,9 @@
                     </div>
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Category</label>
-                        <select name="category_id" id="category" class="selectpicker d-block" data-width="100%" title="..."
+                        <select name="category_id" id="category" class="selectpicker d-block" data-width="100%" title="Categories"
                                 data-style="select-form w-100">
-{{--                            @foreach($categories as $category)--}}
-{{--                                <option value="{{$category->id}}">{{$category->name}}</option>--}}
-{{--                            @endforeach--}}
                         </select>
-                    </div>
-                </div>
-                <div class="row mx-0 mb-3">
-                    <div class="col-4">
-                        <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Count</label>
-                        <input name="count" value="{{old('count')}}" type="text" class="input-form" placeholder="Count" style="font-size: 14px!important;">
                     </div>
                 </div>
 
@@ -87,20 +78,22 @@
             });
 
 
-            let categories='';
+            let categories=[];
 
             function refreshSelectPicker(){
                 $('.selectpicker').selectpicker('refresh');
             }
 
             $('#type').change(function (){
-                console.log('type')
                 refreshSelectPicker();
+                categories = [];
+                $('#category').empty();
+
+
 
                 let form = {
                     'type_id' : $(this).val()
                 };
-                console.log(form);
                 $.ajaxSetup({
                     headers: {
                         "Content-Type": "application/json",
@@ -110,16 +103,18 @@
 
                 $.post('/bars/categories', JSON.stringify(form))
                     .done(function(data) {
-                        console.log(data);
-                        if(data.success){
-                            categories = data.categories;
-                            refreshSelectPicker();
-                            categories.forEach(function(category){
+                        // if(data.success){
+                            categories = [...data];
+                        refreshSelectPicker();
+
+                        categories.forEach(function(category){
                                 $('#category').append(`
                                     <option value="${ category.id }">${category.name}</option>
                             `)
                             })
-                        }
+                        refreshSelectPicker();
+
+                        // }
                     });
             })
         });
