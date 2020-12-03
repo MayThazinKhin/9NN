@@ -29,10 +29,9 @@
             Financial
         </a>
 
-
-
-
-
+        <a href="{{route('invoice')}}" class="a-clear a-sidebar active-link">
+            Invoices
+        </a>
 
     </div>
 </div>

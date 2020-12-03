@@ -3,30 +3,30 @@
 
 namespace App\Http\Services\Item;
 
-
 use App\Http\Repositories\Item\ItemInterface;
 
 class ItemService
 {
-    protected static $item;
+    protected $item;
     public function __construct(ItemInterface $item){
-        self::$item = $item;
+        $this->item = $item;
     }
 
     public function getItemCategoriesByType($type){
-        return self::getItemCategoriesByType($type);
+        $this->item->getItemCategoriesByType($type);
     }
 
-    public function getItemsByCategoryID($request){
-        return self::getItemsByCategoryID($request);
+    public function getItemsByCategoryID($data){
+        $this->item->getItemsByCategoryID($data);
     }
 
     public function getAllTypes(){
-        return self::getAllTypes();
+        $this->item->getAllTypes();
     }
 
-    public function getItemsByTypeID(array $typeIDs){
-        return self::getItemsByTypeID($typeIDs);
+    public function getItemsByTypeID($typeIDs){
+        $this->item->getItemsByTypeID($typeIDs);
     }
+
 
 }

@@ -14,7 +14,7 @@ class BarController extends BasicController
     }
 
     public function index(){
-        return  parent::indexData(null,[]);
+
     }
 
     public function create(){
