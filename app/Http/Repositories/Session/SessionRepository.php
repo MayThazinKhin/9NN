@@ -45,7 +45,6 @@ class SessionRepository implements SessionInterface
         $orders = new \stdClass();
         if ($session) {
             $items = $session->items;
-            $i = 1;
             $net_total = 0;
             foreach ($items as $item) {
                 $item->count = $item->pivot->count;
@@ -72,11 +71,23 @@ class SessionRepository implements SessionInterface
         return $details;
     }
 
-
     public function checkSessionID($sessionID){
         $session = $this->session::where('id', $sessionID)->first();
         if (!$session)
             responseStatus('Requested session ID is not found', 400);
         return $session;
+    }
+
+
+    public function endSession($sessionID){
+        $session = $this->checkSessionID($sessionID);
+        $session->update([
+            'end_time' => now()
+        ]);
+        $session_table = $session->table;
+        $session_table->update([
+            'marker_id' => null
+            ]
+        );
     }
 }

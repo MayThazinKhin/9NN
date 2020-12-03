@@ -35,4 +35,8 @@ class SessionService
         return $this->session->checkSessionID($sessionID);
     }
 
+    public function endSession($sessionID){
+        return $this->session->endSession($sessionID);
+    }
+
 }
