@@ -18,7 +18,7 @@ class ItemRepository implements ItemInterface
     }
 
     public function getItemCategoriesByType($type){
-        $type_id = $this->type::where('name','bar')->pluck('id')->first();
+        $type_id = $this->type::where('name',$type)->pluck('id')->first();
         $categories = $this->category::where('type_id',$type_id)->select('id','name')->get();
         return $categories;
     }
