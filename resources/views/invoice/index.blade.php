@@ -14,10 +14,8 @@
                 </tr>
                 </thead>
                 <tbody>
-
                 @foreach($invoices as $i=>$invoice)
                     <tr>
-
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
                                 {{$invoice->created_at}}
@@ -46,8 +44,6 @@
                                 <i class="fal fa-times text-danger fw300"></i>
                             </button>
                         </td>
-
-
                     </tr>
                 @endforeach
                 </tbody>
