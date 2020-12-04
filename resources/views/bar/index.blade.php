@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content_title', 'Bar Management')
+@section('bar','active-link')
 @section('add_route','/bars/create')
 {{--@section('add','#add')--}}
 {{--@section('route','/bars/search')--}}

@@ -39,4 +39,8 @@ class SessionService
         return $this->session->endSession($sessionID);
     }
 
+    public function uncheck(){
+        return $this->session->getAllUncheckSessions();
+    }
+
 }

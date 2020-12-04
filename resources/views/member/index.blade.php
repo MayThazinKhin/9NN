@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content_title', 'Member Management')
+@section('member','active-link')
 @section('add','#add')
 @section('route','/members/search')
 

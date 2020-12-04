@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\WEB;
 
 use App\Http\Requests\InventoryRequest;
+use App\Http\Services\Item\ItemFacade;
 use App\Models\Inventory;
-use App\Models\Role;
-use App\Models\Secondary;
-use App\Models\Type;
-use Illuminate\Http\Request;
 
 class InventoryController extends BasicController
 {
@@ -16,14 +13,12 @@ class InventoryController extends BasicController
         parent::__construct($inventories, 'inventory', 'inventories');
     }
 
-    public function index()
-    {
+    public function index(){
         return parent::indexData();
     }
 
     public function create(){
-        $types = Type::all();
-
+        $types = ItemFacade::getAllTypes();
         return view('inventory.create',compact('types'));
     }
 
@@ -32,8 +27,5 @@ class InventoryController extends BasicController
         $data['date'] = today();
         Inventory::create($data);
         return redirect(route('inventory.index'));
-
     }
-
-
 }

@@ -20,7 +20,6 @@ class ItemController extends BasicController
         $category_IDs = Category::where('type_id',1)->pluck('id')->all();
         $items = Item::whereIn('category_id',$category_IDs)->orderBy('id', 'desc')->paginate(20);
         $categories = ItemFacade::getItemCategoriesByType('shop');
-
         return view('item.index',compact('items','categories'));
     }
 
@@ -40,8 +39,6 @@ class ItemController extends BasicController
         $data = $request->all();
         Item::create($data);
         return response()->json(array('success' => true) , 200);
-
-//        return redirect(route('items.index'));
     }
 
     public function create(){
@@ -57,11 +54,7 @@ class ItemController extends BasicController
         return ItemFacade::getItemsByTypeID($request->typeIDs);
     }
 
-
-    public function getItemCategoriesByType(Request $request)
-    {
+    public function getItemCategoriesByType(Request $request){
         return ItemFacade::getItemCategoriesByType($request->type);
     }
-
-
 }

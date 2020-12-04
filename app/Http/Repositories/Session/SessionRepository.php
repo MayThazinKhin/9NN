@@ -29,7 +29,7 @@ class SessionRepository implements SessionInterface
     public function orderItems($data){
         $session = $this->checkSessionID($data['session_id']);
         (new OrderItems())->run($session,$data);
-        return true;
+         return true;
     }
 
     public function getOrderItems($sessionID){
@@ -49,13 +49,27 @@ class SessionRepository implements SessionInterface
         return $session;
     }
 
-
     public function endSession($sessionID){
         $session = $this->checkSessionID($sessionID);
+        Period::endLatestPeriod($sessionID);
+        $this->updateSession($session);
+        Table::freeTable($session->table);
+    }
+
+    protected function updateSession($session){
         $session->update([
             'end_time' => CurrentTime()
         ]);
-        Table::freeTable($session->table);
-        Period::endLatestPeriod($sessionID);
+    }
+
+    public function getAllUncheckSessions(){
+       $sessions =  $this->session::where('end_time',null)->orderBy('id', 'desc')->get();
+       foreach ($sessions as $session){
+           $session->table_name = $session->table->name;
+           $session->marker_name = $session->marker->name;
+           unset($session['table']);
+           unset($session['marker']);
+       }
+       return $sessions;
     }
 }

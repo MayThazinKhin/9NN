@@ -3,11 +3,20 @@
 namespace App\Http\Controllers\WEB;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+use App\Http\Services\Period\PeriodFacade;
+use App\Http\Services\Session\SessionFacade;
 
 class InvoiceController extends Controller
 {
     public function index(){
-        return view('invoice.index');
+        $invoices  = SessionFacade::uncheck();
+        return view('invoice.index',compact('invoices'));
+    }
+
+    public function detail($id){
+        $periods  = PeriodFacade::getPeriodsBySessionID($id);
+        $items = SessionFacade::getOrderItems($id);
+        return view('invoice.detail',compact('periods','items'));
     }
 }

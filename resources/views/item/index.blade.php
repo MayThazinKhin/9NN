@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content_title', 'Shop Management')
+@section('item','active-link')
 @section('add','#add')
 @section('route','/items/search')
 

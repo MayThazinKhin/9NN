@@ -6,7 +6,6 @@ use App\Http\Requests\Web\ItemCreateRequest;
 use App\Http\Requests\Web\ItemUpdateRequest;
 use App\Models\Category;
 use App\Models\Item;
-use Illuminate\Http\Request;
 
 class BarController extends BasicController
 {
@@ -36,21 +35,15 @@ class BarController extends BasicController
         $request->category_id == null ? $data = $request->except('category_id') : $data = $request->all();
         $bar->update($data);
         return redirect(route('bars.index'));
-//        return parent::updateData($request,$item);
+
     }
 
     public function destroy(Item $item){
         return parent::destroyData($item);
     }
 
-    public function show($id){
-        //
-    }
-
-
     public function edit(Item $bar){
         return view('bar.edit',compact('bar'));
-
     }
 
 

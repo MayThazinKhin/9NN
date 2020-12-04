@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content_title', 'Financial Management')
-
+@section('financial','active-link')
 @section('content')
     <header class="header pl-2">
         <div class="d-flex justify-content-between">

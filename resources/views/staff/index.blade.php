@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content_title', 'Staff Management')
-
+@section('staff','active-link')
 @section('add','#add')
 @section('route','/staffs/search')
 

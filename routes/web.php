@@ -10,6 +10,7 @@ use App\Http\Controllers\WEB\InventoryController;
 use App\Http\Controllers\WEB\FinancialController;
 use App\Http\Controllers\WEB\BarController;
 use App\Http\Controllers\WEB\InvoiceController;
+use App\Http\Controllers\WEB\CancelItemController;
 
 //staffs
 Route::resource('staffs',StaffController::class);
@@ -49,6 +50,10 @@ Route::get('/secondary/{id}',[FinancialController::class,'secondary'])->name('se
 
 //Invoice
 Route::get('invoices',[InvoiceController::class,'index'])->name('invoice');
+Route::get('invoice_detail/{id}',[InvoiceController::class,'detail'])->name('invoice.detail');
+
+//cancel_item
+Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
 
 
 
