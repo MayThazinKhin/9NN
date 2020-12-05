@@ -251,9 +251,7 @@ export default {
                 'debt': this.debt,
                 'is_tax': this.is_tax,
                 'session_id': this.id
-
             }
-            console.log(data);
         }
     },
 
@@ -269,8 +267,8 @@ export default {
         paid_value: function ()
         {
             this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
-            // if(this.net_value>this.paid_value) this.debt = this.net_value-this.paid_value;
-            // else this.debt=0;
+            this.net_value = (this.tax+this.total)-this.discount;
+            this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
         },
         net_value: function ()
         {
