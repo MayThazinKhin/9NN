@@ -9,7 +9,6 @@ use App\Http\Services\Session\SessionFacade;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
-
 class InvoiceController extends Controller
 {
     public function index(){
@@ -25,7 +24,8 @@ class InvoiceController extends Controller
     }
 
     public function update(Request $request){
-        SessionFacade::checkout($request->data);
+        SessionFacade::checkout($request->all());
+        return response()->json(array('is_success' => true) , 200);
     }
 
 

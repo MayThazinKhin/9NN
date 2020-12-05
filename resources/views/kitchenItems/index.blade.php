@@ -57,7 +57,7 @@
 {{--                                </a>--}}
 {{--                            </button>--}}
                             <button class="border-0 bg-white" data-toggle="modal" data-target="#order_status" title="Change Status"
-                                    onclick="getOrderStatus({{ $item }})">
+                                    onclick="getOrderStatus({{ $item }})" type="button">
                                 <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
                             </button>
                         </td>

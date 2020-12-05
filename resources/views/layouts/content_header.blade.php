@@ -13,9 +13,14 @@
             </label>
         </form>
         <div class="d-inline-block ml-3">
-            <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>
+            @hasSection('add_route')
                 <a href=@yield('add_route')>Add</a>
-            </button>
+            @else
+                <button type="button" class="btn btn-info py-1 px-5 rounded-0"  data-toggle="modal" data-target=@yield('add')>
+                    Add
+                </button>
+            @endif
+
         </div>
     </div>
 </div>
