@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Services\Period\PeriodFacade;
 use App\Http\Services\Session\SessionFacade;
+use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
@@ -18,5 +19,9 @@ class InvoiceController extends Controller
         $periods  = PeriodFacade::getPeriodsBySessionID($id);
         $items = SessionFacade::getOrderItems($id);
         return view('invoice.detail',compact('periods','items'));
+    }
+
+    public function save(Request $request){
+
     }
 }
