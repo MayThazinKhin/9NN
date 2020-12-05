@@ -55,7 +55,8 @@ class SessionController extends Controller
     protected function setSessionData($request){
         $marker = UserData();
         $request['marker_id'] = $marker->id;
-        $request['start_time'] = now()->format('Y-m-d H:i:s');
+
+        $request['start_time'] = CurrentTime();
         return $request;
     }
 

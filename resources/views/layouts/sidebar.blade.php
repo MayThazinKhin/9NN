@@ -37,5 +37,11 @@
             Cancel Items
         </a>
 
+
+        <a href="{{route('kitchen_items')}}" class="a-clear a-sidebar @yield('kitchen')">
+            Kitchen Items
+        </a>
+
+
     </div>
 </div>

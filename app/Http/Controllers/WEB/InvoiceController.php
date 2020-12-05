@@ -8,6 +8,7 @@ use App\Http\Services\Period\PeriodFacade;
 use App\Http\Services\Session\SessionFacade;
 use App\Models\Member;
 
+
 class InvoiceController extends Controller
 {
     public function index(){
@@ -20,5 +21,6 @@ class InvoiceController extends Controller
         $items = SessionFacade::getOrderItems($id);
         $members = Member::all();
         return view('invoice.detail',compact('periods','items','members','id'));
+
     }
 }

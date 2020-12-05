@@ -55,6 +55,11 @@ Route::get('invoice_detail/{id}',[InvoiceController::class,'detail'])->name('inv
 //cancel_item
 Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
 
+//kitchen_item
+Route::get('kitchen_items',[CancelItemController::class,'kitchenItems'])->name('kitchen_items');
+Route::get('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
+
+
 
 
 

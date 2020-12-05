@@ -2426,6 +2426,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InvoiceDetail.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/InvoiceDetail.vue?vue&type=script&lang=js& ***!
@@ -2705,6 +2706,8 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /***/ }),
 
+=======
+>>>>>>> origin/master
 /***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/nprogress/nprogress.css":
 /*!******************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/nprogress/nprogress.css ***!
@@ -22318,6 +22321,7 @@ render._withStripped = true
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/InvoiceDetail.vue?vue&type=template&id=12096e83&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/InvoiceDetail.vue?vue&type=template&id=12096e83& ***!
@@ -23244,6 +23248,8 @@ render._withStripped = true
 
 /***/ }),
 
+=======
+>>>>>>> origin/master
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
 /*!********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
@@ -35360,7 +35366,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
 /*!
+<<<<<<< HEAD
  * vuex v3.6.0
+=======
+ * vuex v3.5.1
+>>>>>>> origin/master
  * (c) 2020 Evan You
  * @license MIT
  */
@@ -35647,11 +35657,15 @@ ModuleCollection.prototype.isRegistered = function isRegistered (path) {
   var parent = this.get(path.slice(0, -1));
   var key = path[path.length - 1];
 
+<<<<<<< HEAD
   if (parent) {
     return parent.hasChild(key)
   }
 
   return false
+=======
+  return parent.hasChild(key)
+>>>>>>> origin/master
 };
 
 function update (path, targetModule, newModule) {
@@ -36591,7 +36605,11 @@ function pad (num, maxLength) {
 var index = {
   Store: Store,
   install: install,
+<<<<<<< HEAD
   version: '3.6.0',
+=======
+  version: '3.5.1',
+>>>>>>> origin/master
   mapState: mapState,
   mapMutations: mapMutations,
   mapGetters: mapGetters,
@@ -36705,7 +36723,10 @@ Vue.component('add-modal', __webpack_require__(/*! ./components/AddModal.vue */ 
 Vue.component('edit-modal', __webpack_require__(/*! ./components/EditModal.vue */ "./resources/js/components/EditModal.vue")["default"]);
 Vue.component('edit-button', __webpack_require__(/*! ./components/EditButton.vue */ "./resources/js/components/EditButton.vue")["default"]);
 Vue.component('edit-password', __webpack_require__(/*! ./components/EditPassword.vue */ "./resources/js/components/EditPassword.vue")["default"]);
+<<<<<<< HEAD
 Vue.component('invoice-detail', __webpack_require__(/*! ./components/InvoiceDetail.vue */ "./resources/js/components/InvoiceDetail.vue")["default"]);
+=======
+>>>>>>> origin/master
 Vue.component('edit-password-button', __webpack_require__(/*! ./components/EditPasswordButton.vue */ "./resources/js/components/EditPasswordButton.vue")["default"]);
 var app = new Vue({
   el: '#app',
@@ -37091,6 +37112,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./resources/js/components/InvoiceDetail.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/InvoiceDetail.vue ***!
@@ -37160,6 +37182,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+=======
+>>>>>>> origin/master
 /***/ "./resources/js/helpers/ajax_helper.js":
 /*!*********************************************!*\
   !*** ./resources/js/helpers/ajax_helper.js ***!
@@ -37287,8 +37311,13 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! /home/tinmaungzin/PHP/9Snooker/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/tinmaungzin/PHP/9Snooker/resources/css/app.css */"./resources/css/app.css");
+=======
+__webpack_require__(/*! /Users/maythazinkhin/PhpstormProjects/9N/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/maythazinkhin/PhpstormProjects/9N/resources/css/app.css */"./resources/css/app.css");
+>>>>>>> origin/master
 
 
 /***/ })
