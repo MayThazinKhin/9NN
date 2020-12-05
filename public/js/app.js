@@ -2637,6 +2637,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2652,8 +2660,9 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       paid_value: 0,
       total: this.items.net_total + this.periods.total_value,
       tax: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100),
-      net_value: 0,
-      debt: 0
+      net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
+      debt: 0,
+      change: 0
     };
   },
   methods: {
@@ -2682,7 +2691,8 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         'net_value': this.net_value,
         'debt': this.debt,
         'is_tax': this.is_tax,
-        'session_id': this.id
+        'session_id': this.id,
+        'change': this.change
       };
     }
   },
@@ -2694,6 +2704,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     },
     paid_value: function paid_value() {
       this.net_value > this.paid_value ? this.debt = this.net_value - this.paid_value : this.debt = 0;
+      this.net_value < this.paid_value ? this.change = this.paid_value - this.net_value : this.change = 0;
       this.net_value = this.tax + this.total - this.discount;
       this.net_value > this.paid_value ? this.debt = this.net_value - this.paid_value : this.debt = 0;
     },
@@ -22447,6 +22458,21 @@ var render = function() {
                       [_vm._v("MMKs " + _vm._s(_vm.net_value) + " ")]
                     )
                   ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row mx-0 mb-3" }, [
+                  _vm._m(6),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col" }, [
+                    _c(
+                      "p",
+                      {
+                        staticClass: "label-form",
+                        staticStyle: { color: "#6b6e71" }
+                      },
+                      [_vm._v("MMKs " + _vm._s(_vm.change) + " ")]
+                    )
+                  ])
                 ])
               ]
             ),
@@ -22454,7 +22480,7 @@ var render = function() {
             _c("div", { staticClass: "col pt-2 pb-2" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col" }, [
-                  _vm._m(6),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("label", { staticClass: "search-box-container" }, [
                     _c("input", {
@@ -22531,7 +22557,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col mb-3" }, [
-                  _vm._m(7),
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -22559,7 +22585,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col" }, [
-                  _vm._m(8),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -22625,7 +22651,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm._m(9)
+                  _vm._m(10)
                 ])
               ])
             ])
@@ -22640,7 +22666,7 @@ var render = function() {
               },
               [
                 _c("table", { staticClass: "table table-borderless" }, [
-                  _vm._m(10),
+                  _vm._m(11),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -22788,7 +22814,7 @@ var render = function() {
                 attrs: { id: "myTable" }
               },
               [
-                _vm._m(11),
+                _vm._m(12),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -23025,6 +23051,23 @@ var staticRenderFns = [
           }
         },
         [_vm._v("Net Total")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-5" }, [
+      _c(
+        "p",
+        {
+          staticStyle: {
+            "font-size": "16px!important",
+            "font-family": "Padauk!important"
+          }
+        },
+        [_vm._v("ပြန်အမ်းငွေ")]
       )
     ])
   },

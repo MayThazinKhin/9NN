@@ -57,6 +57,14 @@
                                     <p class="label-form" style="color:#6b6e71;">MMKs {{ net_value }} </p>
                                 </div>
                             </div>
+                            <div class="row mx-0 mb-3">
+                                <div class="col-5">
+                                    <p style="font-size: 16px!important;font-family: Padauk!important;">ပြန်အမ်းငွေ</p>
+                                </div>
+                                <div class="col">
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ change }} </p>
+                                </div>
+                            </div>
                         </div>
                         <div class="col pt-2 pb-2">
                             <div class="row">
@@ -214,8 +222,9 @@ export default {
             paid_value: 0,
             total: this.items.net_total + this.periods.total_value,
             tax: Math.round(((this.items.net_total + this.periods.total_value)*5)/100),
-            net_value: 0,
-            debt: 0
+            net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
+            debt: 0,
+            change: 0
 
         };
     },
@@ -250,7 +259,8 @@ export default {
                 'net_value': this.net_value,
                 'debt': this.debt,
                 'is_tax': this.is_tax,
-                'session_id': this.id
+                'session_id': this.id,
+                'change': this.change
             }
         }
     },
@@ -267,13 +277,15 @@ export default {
         paid_value: function ()
         {
             this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
+            this.net_value<this.paid_value ? this.change = this.paid_value-this.net_value : this.change=0;
             this.net_value = (this.tax+this.total)-this.discount;
             this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
         },
         net_value: function ()
         {
             this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
-        }
+        },
+
     }
 };
 </script>
