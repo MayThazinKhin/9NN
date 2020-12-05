@@ -43,4 +43,8 @@ class SessionService
         return $this->session->getAllUncheckSessions();
     }
 
+    public function checkout($data){
+        return $this->session->checkoutSession($data);
+    }
+
 }

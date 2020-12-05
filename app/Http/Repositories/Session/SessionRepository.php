@@ -69,6 +69,6 @@ class SessionRepository implements SessionInterface
 
     public function checkoutSession($data){
         $session = $this->checkSessionID($data->session);
-        return (new SessionCheckout())->run($data,$session);
+        (new SessionCheckout())->run($data,$session);
     }
 }

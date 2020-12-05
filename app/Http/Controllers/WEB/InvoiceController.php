@@ -25,7 +25,7 @@ class InvoiceController extends Controller
     }
 
     public function update(Request $request){
-
+        SessionFacade::checkout($request->data);
     }
 
 
