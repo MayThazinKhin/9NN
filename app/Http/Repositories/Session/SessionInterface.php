@@ -21,4 +21,6 @@ interface SessionInterface
     public function endSession($sessionID);
 
     public function getAllUncheckSessions();
+
+    public function checkoutSession($data);
 }

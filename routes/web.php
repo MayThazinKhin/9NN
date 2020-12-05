@@ -51,13 +51,14 @@ Route::get('/secondary/{id}',[FinancialController::class,'secondary'])->name('se
 //Invoice
 Route::get('invoices',[InvoiceController::class,'index'])->name('invoice');
 Route::get('invoice_detail/{id}',[InvoiceController::class,'detail'])->name('invoice.detail');
+Route::post('invoice_update',[InvoiceController::class,'update'])->name('invoice.update');
 
 //cancel_item
 Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
 
 //kitchen_item
 Route::get('kitchen_items',[CancelItemController::class,'kitchenItems'])->name('kitchen_items');
-Route::get('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
+Route::get('update_kitchen_status/{id}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 
 
 

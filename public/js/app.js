@@ -35403,7 +35403,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
 /*!
- * vuex v3.6.0
+ * vuex v3.5.1
  * (c) 2020 Evan You
  * @license MIT
  */
@@ -35690,11 +35690,7 @@ ModuleCollection.prototype.isRegistered = function isRegistered (path) {
   var parent = this.get(path.slice(0, -1));
   var key = path[path.length - 1];
 
-  if (parent) {
-    return parent.hasChild(key)
-  }
-
-  return false
+  return parent.hasChild(key)
 };
 
 function update (path, targetModule, newModule) {
@@ -36634,7 +36630,7 @@ function pad (num, maxLength) {
 var index = {
   Store: Store,
   install: install,
-  version: '3.6.0',
+  version: '3.5.1',
   mapState: mapState,
   mapMutations: mapMutations,
   mapGetters: mapGetters,
@@ -37330,8 +37326,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/tinmaungzin/PHP/9Snooker/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/tinmaungzin/PHP/9Snooker/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /Users/maythazinkhin/PhpstormProjects/9N/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/maythazinkhin/PhpstormProjects/9N/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

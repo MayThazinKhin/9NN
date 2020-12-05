@@ -5,7 +5,9 @@ namespace App\Http\Repositories\Session;
 
 use App\Http\Actions\Session\OrderedItems;
 use App\Http\Actions\Session\OrderItems;
+use App\Http\Actions\Session\SessionCheckout;
 use App\Http\Actions\Session\SessionDetails;
+use App\Http\Actions\Session\UncheckSessions;
 use App\Http\Services\Period\PeriodFacade as Period;
 use App\Http\Services\Table\TableFacade as Table;
 use App\Models\Session;
@@ -13,7 +15,6 @@ use App\Models\Session;
 class SessionRepository implements SessionInterface
 {
     private $session;
-
     public function __construct(){
         $this->session = Session::class;
     }
@@ -63,13 +64,11 @@ class SessionRepository implements SessionInterface
     }
 
     public function getAllUncheckSessions(){
-       $sessions =  $this->session::where('end_time',null)->orderBy('id', 'desc')->get();
-       foreach ($sessions as $session){
-           $session->table_name = $session->table->name;
-           $session->marker_name = $session->marker->name;
-           unset($session['table']);
-           unset($session['marker']);
-       }
-       return $sessions;
+       return (new UncheckSessions())->run();
+    }
+
+    public function checkoutSession($data){
+        $session = $this->checkSessionID($data->session);
+        return (new SessionCheckout())->run($data,$session);
     }
 }

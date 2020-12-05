@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    protected $fillable = ['start_time','end_time','total','credit','is_tax','table_id','marker_id','admin_id','member_id'];
+    protected $fillable = ['start_time','end_time','total','credit','paid_value','discount','is_tax','table_id','marker_id','cashier_id','member_id'];
 
     public function items(){
         return $this->belongsToMany(Item::class,'item_session')->withTimestamps()->withPivot('count');
@@ -20,7 +20,7 @@ class Session extends Model
         return $this->belongsTo(Staff::class,'marker_id');
     }
 
-    public function admin(){
-         return $this->hasOne(Staff::class,'admin_id');
+    public function cashier(){
+         return $this->belongsTo(Staff::class,'cashier_id');
     }
 }
