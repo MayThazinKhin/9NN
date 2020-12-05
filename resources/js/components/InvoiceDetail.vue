@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="col">
 <!--                                    <p class="label-form" style="color:#6b6e71;"> {{$items->net_total + $periods->total_value}} MMKs</p>-->
-                                    <p class="label-form" style="color:#6b6e71;"> {{total}} MMKs</p>
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{total}} </p>
                                 </div>
                             </div>
                             <div class="row mx-0 mb-3">
@@ -22,7 +22,7 @@
                                     <p class="label-form">Discount</p>
                                 </div>
                                 <div class="col">
-                                    <p class="label-form" style="color:#6b6e71;">{{ discount }} MMKs</p>
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ discount }} </p>
                                 </div>
                             </div>
                             <div class="row mx-0 mb-3">
@@ -30,7 +30,7 @@
                                     <p style="font-size: 16px!important;font-family: Padauk!important;">ပေးချေငွေ</p>
                                 </div>
                                 <div class="col">
-                                    <p class="label-form" style="color:#6b6e71;">{{ paid_value }} MMKs</p>
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ paid_value }} </p>
                                 </div>
                             </div>
                             <div class="row mx-0 mb-3">
@@ -38,7 +38,7 @@
                                     <p style="font-size: 16px!important;font-family: Padauk!important;">Tax</p>
                                 </div>
                                 <div class="col">
-                                    <p class="label-form" style="color:#6b6e71;">{{ tax }} MMKs</p>
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ tax }} </p>
                                 </div>
                             </div>
                             <div class="row mx-0 mb-3">
@@ -46,7 +46,7 @@
                                     <p style="font-size: 16px!important;font-family: Padauk!important;">အကြွေး</p>
                                 </div>
                                 <div class="col">
-                                    <p class="label-form" style="color:#6b6e71;">{{ debt }} MMKs</p>
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ debt }} </p>
                                 </div>
                             </div>
                             <div class="row mx-0 mb-3">
@@ -54,7 +54,7 @@
                                     <p style="font-size: 16px!important;font-family: Padauk!important;">Net Total</p>
                                 </div>
                                 <div class="col">
-                                    <p class="label-form" style="color:#6b6e71;">{{ net_value }} MMKs</p>
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ net_value }} </p>
                                 </div>
                             </div>
                         </div>
@@ -231,6 +231,7 @@ export default {
                     let match = entry.name.toUpperCase().match(query);
                     return match ? entry : null;
                 });
+
             }
         },
         setMember(member)

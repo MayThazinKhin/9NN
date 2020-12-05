@@ -22369,7 +22369,7 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v(" " + _vm._s(_vm.total) + " MMKs")]
+                      [_vm._v("MMKs " + _vm._s(_vm.total) + " ")]
                     )
                   ])
                 ]),
@@ -22384,7 +22384,7 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v(_vm._s(_vm.discount) + " MMKs")]
+                      [_vm._v("MMKs " + _vm._s(_vm.discount) + " ")]
                     )
                   ])
                 ]),
@@ -22399,7 +22399,7 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v(_vm._s(_vm.paid_value) + " MMKs")]
+                      [_vm._v("MMKs " + _vm._s(_vm.paid_value) + " ")]
                     )
                   ])
                 ]),
@@ -22414,7 +22414,7 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v(_vm._s(_vm.tax) + " MMKs")]
+                      [_vm._v("MMKs " + _vm._s(_vm.tax) + " ")]
                     )
                   ])
                 ]),
@@ -22429,7 +22429,7 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v(_vm._s(_vm.debt) + " MMKs")]
+                      [_vm._v("MMKs " + _vm._s(_vm.debt) + " ")]
                     )
                   ])
                 ]),
@@ -22444,7 +22444,7 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v(_vm._s(_vm.net_value) + " MMKs")]
+                      [_vm._v("MMKs " + _vm._s(_vm.net_value) + " ")]
                     )
                   ])
                 ])
