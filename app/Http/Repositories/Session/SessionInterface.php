@@ -23,4 +23,8 @@ interface SessionInterface
     public function getAllUncheckSessions();
 
     public function checkoutSession($data);
+
+    public function getCreditSessions();
+
+    public function payCredit($data);
 }

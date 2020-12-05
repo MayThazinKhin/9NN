@@ -6,6 +6,7 @@ namespace App\Http\Repositories\Session;
 use App\Http\Actions\Session\OrderedItems;
 use App\Http\Actions\Session\OrderItems;
 use App\Http\Actions\Session\SessionCheckout;
+use App\Http\Actions\Session\SessionCredits;
 use App\Http\Actions\Session\SessionDetails;
 use App\Http\Actions\Session\UncheckSessions;
 use App\Http\Services\Period\PeriodFacade as Period;
@@ -47,6 +48,9 @@ class SessionRepository implements SessionInterface
         $session = $this->session::where('id', $sessionID)->first();
         if (!$session)
             responseStatus('Requested session ID is not found', 400);
+        if($session->end_time <> null && $session->cashier_id <> null){
+            responseStatus('Requested session ID is already checkout', 400);
+        }
         return $session;
     }
 
@@ -58,9 +62,7 @@ class SessionRepository implements SessionInterface
     }
 
     protected function updateSession($session){
-        $session->update([
-            'end_time' => CurrentTime()
-        ]);
+        $session->update(['end_time' => CurrentTime()]);
     }
 
     public function getAllUncheckSessions(){
@@ -68,7 +70,16 @@ class SessionRepository implements SessionInterface
     }
 
     public function checkoutSession($data){
-        $session = $this->checkSessionID($data->session);
+        $session = $this->checkSessionID($data['session_id']);
         (new SessionCheckout())->run($data,$session);
     }
+
+    public function getCreditSessions(){
+        return (new SessionCredits())->run();
+    }
+
+    public function payCredit($data){
+        $session = $this->checkSessionID($data['session_id']);
+    }
+
 }

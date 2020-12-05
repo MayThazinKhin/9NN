@@ -30,5 +30,6 @@ class CancelItemController extends Controller
 
     public function updateKitchenStatus(Request $request,KitchenItem $item){
         $item->update($request->all());
+        return redirect()->back();
     }
 }

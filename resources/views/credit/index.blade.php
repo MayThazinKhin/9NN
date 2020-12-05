@@ -8,8 +8,8 @@
                 <thead>
                 <tr class="" style="border-bottom: 2px solid #dee2e6">
                     <th class="table-header font-weight-normal">Date</th>
-                    <th class="table-header font-weight-normal">Marker Name</th>
-                    <th class="table-header font-weight-normal">Table Name</th>
+                    <th class="table-header font-weight-normal">Member Name</th>
+                    <th class="table-header font-weight-normal">Credit</th>
                     <th class="table-header font-weight-normal"> &nbsp;</th>
                 </tr>
                 </thead>
@@ -24,13 +24,13 @@
 
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$invoice->marker_name}}
+                                {{$invoice->member_name}}
                             </div>
                         </td>
 
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$invoice->table_name}}
+                                {{$invoice->credit}}
                             </div>
                         </td>
 

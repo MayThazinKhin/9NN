@@ -47,4 +47,12 @@ class SessionService
         return $this->session->checkoutSession($data);
     }
 
+    public function credits(){
+        return $this->session->getCreditSessions();
+    }
+
+    public function pay($data){
+        return $this->session->payCredit($data);
+    }
+
 }

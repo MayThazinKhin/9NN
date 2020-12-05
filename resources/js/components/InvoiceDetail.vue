@@ -252,6 +252,7 @@ export default {
         submit()
         {
             let data = {
+                'total' :this.total,
                 'member_id': this.member_id,
                 'discount': this.discount,
                 'paid_value': this.paid_value,

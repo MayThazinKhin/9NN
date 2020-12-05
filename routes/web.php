@@ -53,6 +53,9 @@ Route::get('invoices',[InvoiceController::class,'index'])->name('invoice');
 Route::get('invoice_detail/{id}',[InvoiceController::class,'detail'])->name('invoice.detail');
 Route::post('invoice_update',[InvoiceController::class,'update'])->name('invoice.update');
 
+//Credit
+Route::get('credits',[InvoiceController::class,'getCredits'])->name('credits');
+
 //cancel_item
 Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
 

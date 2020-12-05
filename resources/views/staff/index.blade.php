@@ -4,8 +4,6 @@
 @section('add','#add')
 @section('route','/staffs/search')
 
-{{--@include('staff.create')--}}
-{{--@include('staff.edit')--}}
 @include('layouts.delete')
 @section('content_header')
     @include('layouts.content_header')
