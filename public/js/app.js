@@ -2661,7 +2661,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       total: this.items.net_total + this.periods.total_value,
       tax: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100),
       net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
-      debt: 0,
+      credit: 0,
       change: 0
     };
   },
@@ -2689,11 +2689,28 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         'paid_value': this.paid_value,
         'tax': this.tax,
         'net_value': this.net_value,
-        'debt': this.debt,
+        'credit': this.credit,
         'is_tax': this.is_tax,
         'session_id': this.id,
-        'change': this.change
+        'change': this.change,
+        'cashier_id': 1
       };
+      fetch('/invoice_update/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        body: JSON.stringify(data)
+      }).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (data.is_success) {
+          window.location.replace('/invoices');
+        } else {
+          window.location.reload();
+        }
+      });
     }
   },
   created: function created() {// console.log(this.id);
@@ -2703,13 +2720,12 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.net_value = this.tax + this.total - this.discount;
     },
     paid_value: function paid_value() {
-      this.net_value > this.paid_value ? this.debt = this.net_value - this.paid_value : this.debt = 0;
+      this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
       this.net_value < this.paid_value ? this.change = this.paid_value - this.net_value : this.change = 0;
-      this.net_value = this.tax + this.total - this.discount;
-      this.net_value > this.paid_value ? this.debt = this.net_value - this.paid_value : this.debt = 0;
+      this.net_value = this.tax + this.total - this.discount; // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
     },
     net_value: function net_value() {
-      this.net_value > this.paid_value ? this.debt = this.net_value - this.paid_value : this.debt = 0;
+      this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
     }
   }
 });
@@ -22440,7 +22456,7 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v("MMKs " + _vm._s(_vm.debt) + " ")]
+                      [_vm._v("MMKs " + _vm._s(_vm.credit) + " ")]
                     )
                   ])
                 ]),
@@ -35403,7 +35419,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
 /*!
- * vuex v3.5.1
+ * vuex v3.6.0
  * (c) 2020 Evan You
  * @license MIT
  */
@@ -35690,7 +35706,11 @@ ModuleCollection.prototype.isRegistered = function isRegistered (path) {
   var parent = this.get(path.slice(0, -1));
   var key = path[path.length - 1];
 
-  return parent.hasChild(key)
+  if (parent) {
+    return parent.hasChild(key)
+  }
+
+  return false
 };
 
 function update (path, targetModule, newModule) {
@@ -36630,7 +36650,7 @@ function pad (num, maxLength) {
 var index = {
   Store: Store,
   install: install,
-  version: '3.5.1',
+  version: '3.6.0',
   mapState: mapState,
   mapMutations: mapMutations,
   mapGetters: mapGetters,
@@ -37326,8 +37346,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/maythazinkhin/PhpstormProjects/9N/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/maythazinkhin/PhpstormProjects/9N/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/tinmaungzin/PHP/9Snooker/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/tinmaungzin/PHP/9Snooker/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

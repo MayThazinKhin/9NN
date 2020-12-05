@@ -51,10 +51,14 @@
                         </td>
 
                         <td class="padding-table-row w88px">
-                            <button type="button" class="btn-clear " title="Edit"  id="edit-button">
-                                <a class="a-clear" href="{{route('update_kitchen_status',['item' => $item->id])}}">
-                                    <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
-                                </a>
+{{--                            <button type="button" class="btn-clear " title="Edit"  id="edit-button">--}}
+{{--                                <a class="a-clear" href="{{route('update_kitchen_status',['item' => $item->id])}}">--}}
+{{--                                    <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>--}}
+{{--                                </a>--}}
+{{--                            </button>--}}
+                            <button class="border-0 bg-white" data-toggle="modal" data-target="#order_status" title="Change Status"
+                                    onclick="getOrderStatus({{ $item }})">
+                                <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
                             </button>
                         </td>
                     </tr>
@@ -67,6 +71,8 @@
             </nav>
         </form>
     </div>
+    @include('layouts.order_status')
+
 
 @endsection
 

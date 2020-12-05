@@ -46,7 +46,7 @@
                                     <p style="font-size: 16px!important;font-family: Padauk!important;">အကြွေး</p>
                                 </div>
                                 <div class="col">
-                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ debt }} </p>
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ credit }} </p>
                                 </div>
                             </div>
                             <div class="row mx-0 mb-3">
@@ -223,7 +223,7 @@ export default {
             total: this.items.net_total + this.periods.total_value,
             tax: Math.round(((this.items.net_total + this.periods.total_value)*5)/100),
             net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
-            debt: 0,
+            credit: 0,
             change: 0
 
         };
@@ -257,11 +257,28 @@ export default {
                 'paid_value': this.paid_value,
                 'tax': this.tax,
                 'net_value': this.net_value,
-                'debt': this.debt,
+                'credit': this.credit,
                 'is_tax': this.is_tax,
                 'session_id': this.id,
-                'change': this.change
+                'change': this.change,
+                'cashier_id': 1
             }
+            fetch('/invoice_update/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.is_success){
+                        window.location.replace('/invoices');
+                    }else{
+                        window.location.reload();
+                    }
+                });
         }
     },
 
@@ -276,14 +293,14 @@ export default {
         },
         paid_value: function ()
         {
-            this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
+            this.net_value>this.paid_value ? this.credit = this.net_value-this.paid_value : this.credit=0;
             this.net_value<this.paid_value ? this.change = this.paid_value-this.net_value : this.change=0;
             this.net_value = (this.tax+this.total)-this.discount;
-            this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
+            // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
         },
         net_value: function ()
         {
-            this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
+            this.net_value>this.paid_value ? this.credit = this.net_value-this.paid_value : this.credit=0;
         },
 
     }

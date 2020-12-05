@@ -58,7 +58,7 @@ Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_i
 
 //kitchen_item
 Route::get('kitchen_items',[CancelItemController::class,'kitchenItems'])->name('kitchen_items');
-Route::get('update_kitchen_status/{id}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
+Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 
 
 
