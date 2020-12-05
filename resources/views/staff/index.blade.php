@@ -18,6 +18,7 @@
                 <th class="table-header font-weight-normal">Name</th>
                 <th class="table-header font-weight-normal">Role</th>
                 <th class="table-header font-weight-normal"> &nbsp;</th>
+                <th class="table-header font-weight-normal"> &nbsp;</th>
             </tr>
             </thead>
             <tbody>

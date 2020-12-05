@@ -339,6 +339,9 @@ textarea:focus {
 
 .topbar {
   position: fixed;
+    z-index: 9;
+    border-bottom: 2px solid #eef0f4;
+    box-shadow: 0 2px 1px #eff1f5;
   top: 0;
   left: 200px;
   background-color: white;
@@ -367,7 +370,7 @@ textarea:focus {
   display: block;
   color: #666;
   margin: 4px 0;
-  padding: 8px 6px 10px 48px;
+  padding: 8px 6px 10px 30px;
   align-items: center;
   white-space: nowrap;
   overflow: hidden;
@@ -391,7 +394,9 @@ textarea:focus {
   border-right: 5px solid red;
   color: red !important;
 }
-
+.active-color{
+    fill: #666;
+}
 /*****************mainbody***********************/
 .main-container {
   margin-left: 200px;
@@ -516,7 +521,8 @@ textarea:focus {
 
 .text-td {
   font-size: 14px;
-  font-family: SansSerif;
+    padding: 6px 0;
+  font-family: 'Roboto';
   color: #414b4e;
 }
 

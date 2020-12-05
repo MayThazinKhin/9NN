@@ -25,7 +25,7 @@
 @endsection
 @section('content')
     <div>
-        <form class="position-relative w-100 h-100 bg-white p-3 mt-3">
+        <form class="position-relative w-100 bg-white p-3 mt-3">
         <table class="table table-borderless" id="myTable">
             <thead>
             <tr class="" style="border-bottom: 2px solid #dee2e6">
@@ -39,6 +39,7 @@
             <tbody>
 
             @foreach($bars as $i=>$bar)
+
             <tr>
                 <th scope="row" class="padding-table-row">
                     <span class="text-td font-weight-normal">
