@@ -18,7 +18,16 @@ class Item extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
     public function getCategoryNameAttribute(){
         return $this->category()->where('id',$this->category_id)->pluck('name')->first();
     }
+
+    public function type(){
+        return $this->category->type();
+    }
+
+
+
+
 }

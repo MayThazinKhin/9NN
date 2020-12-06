@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     protected $fillable = ['name'];
-    public $timestamps = false ;
 
     public function categories(){
         return $this->hasMany(Category::class);

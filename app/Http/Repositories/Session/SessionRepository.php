@@ -48,9 +48,9 @@ class SessionRepository implements SessionInterface
         $session = $this->session::where('id', $sessionID)->first();
         if (!$session)
             responseStatus('Requested session ID is not found', 400);
-        if($session->end_time <> null && $session->cashier_id <> null){
-            responseStatus('Requested session ID is already checkout', 400);
-        }
+//        if($session->end_time <> null && $session->cashier_id <> null){
+//            responseStatus('Requested session ID is already checkout', 400);
+//        }
         return $session;
     }
 

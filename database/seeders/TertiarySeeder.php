@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\tertiary;
+use App\Models\Tertiary;
 use Illuminate\Database\Seeder;
 
 class TertiarySeeder extends Seeder
@@ -12,9 +12,10 @@ class TertiarySeeder extends Seeder
         $current_assets = ['stock'];
         $this->create($current_assets,1);
     }
+
     protected function create($data,$id){
         foreach ($data as $item){
-            tertiary::create([
+            Tertiary::create([
                 'name' => $item,
                 'secondary_id' => $id
             ]);

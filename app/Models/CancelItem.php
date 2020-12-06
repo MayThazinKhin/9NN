@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class CancelItem extends Model
 {
     protected $fillable = ['item_id','session_id','count'];
-
     protected $appends = ['item_name'];
 
     public function session(){
