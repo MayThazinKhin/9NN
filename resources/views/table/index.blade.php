@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content_title', 'Table Management')
-@section('table','active-link')
+@section('table','red')
 @section('add','#add')
 @section('route','/tables/search')
 
