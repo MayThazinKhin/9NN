@@ -26,12 +26,14 @@ class InvoiceController extends Controller
     public function update(Request $request){
         SessionFacade::checkout($request->all());
         return response()->json(array('is_success' => true) , 200);
+
     }
 
     public function getCredits(){
         $invoices  = SessionFacade::credits();
         return view('credit.index',compact('invoices'));
     }
+
 
     public function payCredit(Request $request){
         SessionFacade::pay($request->all());
