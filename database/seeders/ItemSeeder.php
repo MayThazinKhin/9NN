@@ -8,6 +8,6 @@ use Illuminate\Database\Seeder;
 class ItemSeeder extends Seeder
 {
     public function run(){
-        Item::factory(3000)->create();
+        Item::factory(100)->create();
     }
 }
