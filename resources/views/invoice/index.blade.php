@@ -3,7 +3,17 @@
 @section('invoice','active-link')
 @section('content')
     <div>
-        <form class="position-relative w-100 h-100 bg-white p-3 mt-3">
+        <header class="header pl-2">
+            <div class="d-flex justify-content-between">
+                <nav style="margin-top: 8px">
+                    <a href="#" class="a-clear text-dark fm-roboto fs17">Invoice Management</a>
+                </nav>
+                <div>
+                </div>
+            </div>
+        </header>
+        <form class="position-relative w-100">
+            <div class="w-100 bg-white p-3 mt-3" style="min-height: 76vh">
             <table class="table table-borderless" id="myTable">
                 <thead>
                 <tr class="" style="border-bottom: 2px solid #dee2e6">
@@ -46,6 +56,7 @@
                 </tbody>
 
             </table>
+            </div>
         </form>
     </div>
 

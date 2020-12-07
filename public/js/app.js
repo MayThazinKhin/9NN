@@ -21091,7 +21091,7 @@ var render = function() {
                                 "label",
                                 {
                                   staticClass: "label-form mb-1",
-                                  staticStyle: { "font-size": "16px!important" }
+                                  staticStyle: { "font-size": "15px!important" }
                                 },
                                 [_vm._v(_vm._s(input.label))]
                               ),
@@ -21110,7 +21110,8 @@ var render = function() {
                                 attrs: {
                                   id: input.name,
                                   type: "text",
-                                  placeholder: input.label
+                                  placeholder: input.label,
+                                  autocomplete: "off"
                                 },
                                 domProps: { value: _vm.form[input.name] },
                                 on: {
@@ -21141,7 +21142,7 @@ var render = function() {
                                 "label",
                                 {
                                   staticClass: "label-form mb-1",
-                                  staticStyle: { "font-size": "16px!important" }
+                                  staticStyle: { "font-size": "15px!important" }
                                 },
                                 [_vm._v(_vm._s(input.label))]
                               ),
@@ -21190,7 +21191,7 @@ var render = function() {
                                 "label",
                                 {
                                   staticClass: "label-form mb-1",
-                                  staticStyle: { "font-size": "16px!important" }
+                                  staticStyle: { "font-size": "15px!important" }
                                 },
                                 [_vm._v(_vm._s(input.label))]
                               ),
@@ -21239,7 +21240,7 @@ var render = function() {
                                 "label",
                                 {
                                   staticClass: "label-form mb-1",
-                                  staticStyle: { "font-size": "16px!important" }
+                                  staticStyle: { "font-size": "15px!important" }
                                 },
                                 [_vm._v(_vm._s(input.label))]
                               ),
@@ -21253,13 +21254,9 @@ var render = function() {
                                     expression: "form[input.name]"
                                   }
                                 ],
-                                staticClass: "input-form",
+                                staticClass: "input-form animated-txtarea",
                                 staticStyle: { "font-size": "14px!important" },
-                                attrs: {
-                                  placeholder: input.label,
-                                  cols: "30",
-                                  rows: "3"
-                                },
+                                attrs: { placeholder: input.label, rows: "5" },
                                 domProps: { value: _vm.form[input.name] },
                                 on: {
                                   input: function($event) {
@@ -21290,8 +21287,8 @@ var render = function() {
                                 {
                                   staticClass: "label-form mb-1",
                                   staticStyle: {
-                                    "font-size": "14px!important",
-                                    color: "#4b4e51"
+                                    "font-size": "15px!important",
+                                    color: "#1b1e21"
                                   }
                                 },
                                 [_vm._v(_vm._s(input.label))]
@@ -21393,7 +21390,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-info pl-3",
+                          staticClass: "btn btn-danger pl-3",
                           staticStyle: { "font-size": "16px!important" },
                           attrs: { type: "button" },
                           on: {
@@ -21558,7 +21555,7 @@ var render = function() {
                                 "label",
                                 {
                                   staticClass: "label-form mb-1",
-                                  staticStyle: { "font-size": "16px!important" }
+                                  staticStyle: { "font-size": "15px!important" }
                                 },
                                 [_vm._v(_vm._s(input.label))]
                               ),
@@ -21608,7 +21605,7 @@ var render = function() {
                                 "label",
                                 {
                                   staticClass: "label-form mb-1",
-                                  staticStyle: { "font-size": "16px!important" }
+                                  staticStyle: { "font-size": "15px!important" }
                                 },
                                 [_vm._v(_vm._s(input.label))]
                               ),
@@ -21657,7 +21654,7 @@ var render = function() {
                                 "label",
                                 {
                                   staticClass: "label-form mb-1",
-                                  staticStyle: { "font-size": "16px!important" }
+                                  staticStyle: { "font-size": "15px!important" }
                                 },
                                 [_vm._v(_vm._s(input.label))]
                               ),
@@ -21706,7 +21703,7 @@ var render = function() {
                                 "label",
                                 {
                                   staticClass: "label-form mb-1",
-                                  staticStyle: { "font-size": "16px!important" }
+                                  staticStyle: { "font-size": "15px!important" }
                                 },
                                 [_vm._v(_vm._s(input.label))]
                               ),
@@ -21720,13 +21717,9 @@ var render = function() {
                                     expression: "form[input.name]"
                                   }
                                 ],
-                                staticClass: "input-form",
+                                staticClass: "input-form animated-txtarea",
                                 staticStyle: { "font-size": "14px!important" },
-                                attrs: {
-                                  placeholder: input.label,
-                                  cols: "30",
-                                  rows: "3"
-                                },
+                                attrs: { placeholder: input.label, rows: "5" },
                                 domProps: { value: _vm.form[input.name] },
                                 on: {
                                   input: function($event) {
@@ -21757,8 +21750,8 @@ var render = function() {
                                 {
                                   staticClass: "label-form mb-1",
                                   staticStyle: {
-                                    "font-size": "14px!important",
-                                    color: "#4b4e51"
+                                    "font-size": "15px!important",
+                                    color: "#1b1e21"
                                   }
                                 },
                                 [_vm._v(_vm._s(input.label))]
@@ -21860,7 +21853,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-info pl-3",
+                          staticClass: "btn btn-danger pl-3",
                           staticStyle: { "font-size": "16px!important" },
                           on: {
                             click: function($event) {
@@ -22262,7 +22255,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-info pl-3",
+                          staticClass: "btn btn-danger pl-3",
                           staticStyle: { "font-size": "16px!important" },
                           on: {
                             click: function($event) {

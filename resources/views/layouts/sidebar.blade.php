@@ -43,7 +43,5 @@
         <a href="{{route('credits')}}" class="a-clear a-sidebar @yield('credit')">
           Credit
         </a>
-
-
     </div>
 </div>
