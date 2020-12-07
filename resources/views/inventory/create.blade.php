@@ -1,6 +1,20 @@
 @extends('layouts.master')
 @section('content_title', 'Create Inventory')
+@section('inventory','active-link')
+
 @section('content')
+    <header class="header pl-2">
+        <div class="d-flex justify-content-between">
+            <nav style="margin-top: 8px">
+                <a href="#" class="a-clear text-dark fm-roboto fs17">Inventory Management</a>
+                <span> / </span>
+                <a href="#" class="a-clear text-dark fm-roboto fs17">Create</a>
+
+            </nav>
+            <div>
+            </div>
+        </div>
+    </header>
     <form action="{{route('inventory.store')}}" method="post">
         @csrf
             <div>
@@ -8,12 +22,12 @@
                     <div class="row mx-0 mb-3">
                         <div class="col-4">
                             <label for="input1" class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Price</label>
-                            <input type="text" name="price" id="input1" class="input-form" placeholder="Price" style="font-size: 14px!important;">
+                            <input type="text" name="price" id="input1" class="input-form" placeholder="Price" autocomplete="off" style="font-size: 14px!important;">
                             <span class="text-danger">{{$errors->first('price')}}</span>
                         </div>
                         <div class="col-4">
                             <label for="input2" class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Count</label>
-                            <input type="text" name="count" id="input2" class="input-form" placeholder="Count" style="font-size: 14px!important;">
+                            <input type="text" name="count" id="input2" class="input-form" autocomplete="off" placeholder="Count" style="font-size: 14px!important;">
                             <span class="text-danger">{{$errors->first('count')}}</span>
 
                         </div>
@@ -37,11 +51,15 @@
 
                         </div>
                     </div>
-
-                    <div class="modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-4">
-                        <button type="button" class="btn pr-0" data-dismiss="modal" style="font-size: 16px!important;">မလုပ်တော့ပါ</button>
-                        <button type="submit" class="btn btn-info pl-3" style="font-size: 16px!important;" id="confirm-add-button"> Add Inventory </button>
+                    <div class="row mx-0 mb-3">
+                        <div class="col-8">
+                            <div class="modal-footer border-0 justify-content-between mx-0 px-2 mb-0">
+                                <button type="button" class="btn pl-0" data-dismiss="modal" style="font-size: 16px!important;">Cancel</button>
+                                <button type="submit" class="btn btn-danger pl-3" style="font-size: 16px!important;" id="confirm-add-button"> Add Inventory </button>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </form>

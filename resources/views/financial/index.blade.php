@@ -10,7 +10,8 @@
         </div>
     </header>
     <div>
-        <form class="position-relative w-100 h-100 bg-white p-3 mt-3">
+        <form class="position-relative w-100">
+            <div class="w-100 bg-white p-3 mt-3" style="min-height: 76vh">
         <table class="table table-borderless" id="myTable">
             <thead>
             <tr class="" style="border-bottom: 2px solid #dee2e6">
@@ -45,6 +46,7 @@
             </tbody>
 
         </table>
+            </div>
     </form>
     </div>
 

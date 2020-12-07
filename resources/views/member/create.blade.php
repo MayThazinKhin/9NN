@@ -12,7 +12,7 @@
                 <div class="modal-body mx-4 pt-2 mt-1 pb-0">
                     <div class="mb-4">
                         <label for="name" class="label-form mb-1" style="font-size: 14px!important;">Member Name</label>
-                        <input type="text" name="name" id="name" class="input-form" placeholder="Member Name" style="font-size: 14px!important;">
+                        <input type="text" name="name" id="name" class="input-form" placeholder="Member Name" autocomplete="OFF" style="font-size: 14px!important;">
                     </div>
                     <div class="mb-4">
                         <label for="ph" class="label-form mb-1" style="font-size: 14px!important;">Phone Number</label>

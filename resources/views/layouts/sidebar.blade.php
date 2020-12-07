@@ -13,7 +13,7 @@
         </a>
 
         <a href="{{route('tables.index')}}" class="a-clear a-sidebar @yield('table')">
-            &nbsp;<i class="fas fa-table"></i> Table
+            &nbsp;<i class="fal fa-table"></i> Table
         </a>
 
         <a href="{{route('members.index')}}" class="a-clear a-sidebar @yield('member')">
