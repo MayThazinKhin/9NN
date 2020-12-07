@@ -12,25 +12,25 @@ class PeriodController extends Controller
     public function startPeriod(StartPeriodRequest $request){
         $data = $request->all();
         PeriodFacade::start($data);
-        return $this->getAllPeriods($data);
+        $this->getAllPeriods($data);
     }
 
     public function restartPeriod(RestartPeriodRequest $request){
         $data = $request->all();
         PeriodFacade::end($data);
         PeriodFacade::start($data);
-        return $this->getAllPeriods($data);
+        $this->getAllPeriods($data);
     }
 
     public function endPeriod(RestartPeriodRequest $request){
         $data = $request->all();
         PeriodFacade::end($data);
-        return $this->getAllPeriods($data);
+        $this->getAllPeriods($data);
     }
 
     public function getAllPeriodsBySessionId(StartPeriodRequest $request){
         $data = $request->all();
-        return $this->getAllPeriods($data);
+        $this->getAllPeriods($data);
     }
 
     protected function getAllPeriods($data){

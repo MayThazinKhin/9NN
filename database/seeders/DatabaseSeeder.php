@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
             ItemSeeder::class,
             PrimarySeeder::class,
             SecondarySeeder::class,
-            TertiarySeeder::class
+            TertiarySeeder::class,
+            SessionSeeder::class
         ]);
 
     }
