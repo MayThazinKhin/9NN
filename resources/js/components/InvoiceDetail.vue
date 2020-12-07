@@ -1,8 +1,18 @@
 <template>
     <div>
-        <form class="position-relative w-100 h-100 pb-3 mt-3">
-            <button type="button" @click="submit()" class="btn btn-primary btn-sm">Submit</button>
+        <form class="position-relative w-100 h-100 pb-3 mt-1">
+<!--            <button type="button" @click="submit()" class="btn btn-primary btn-sm">Submit</button>-->
+            <div class="d-flex justify-content-between mb-3">
+                <nav style="margin-top: 8px">
+                    <a href="#" class="a-clear text-dark fm-roboto fs17">Invoices</a>
+                </nav>
+                <div>
 
+                    <div class="d-inline-block ml-3">
+                        <button type="button" @click="submit()" class="btn btn-danger py-1 rounded-0" style="font-size: 16px!important;">Invoices ထုတ်ရန်</button>
+                    </div>
+                </div>
+            </div>
             <div class="row mx-0">
                 <div class="col-8 pl-0">
 
@@ -27,7 +37,7 @@
                             </div>
                             <div class="row mx-0 mb-3">
                                 <div class="col-5">
-                                    <p style="font-size: 16px!important;font-family: Padauk!important;">ပေးချေငွေ</p>
+                                    <p class="mb-0" style="font-size: 16px!important;font-family: Padauk!important;">ပေးချေငွေ</p>
                                 </div>
                                 <div class="col">
                                     <p class="label-form" style="color:#6b6e71;">MMKs {{ paid_value }} </p>
@@ -35,7 +45,7 @@
                             </div>
                             <div class="row mx-0 mb-3">
                                 <div class="col-5">
-                                    <p style="font-size: 16px!important;font-family: Padauk!important;">Tax</p>
+                                    <p class="label-form">Tax</p>
                                 </div>
                                 <div class="col">
                                     <p class="label-form" style="color:#6b6e71;">MMKs {{ tax }} </p>
@@ -43,7 +53,7 @@
                             </div>
                             <div class="row mx-0 mb-3">
                                 <div class="col-5">
-                                    <p style="font-size: 16px!important;font-family: Padauk!important;">အကြွေး</p>
+                                    <p class="mb-0" style="font-size: 16px!important;font-family: Padauk!important;">အကြွေး</p>
                                 </div>
                                 <div class="col">
                                     <p class="label-form" style="color:#6b6e71;">MMKs {{ credit }} </p>
@@ -51,7 +61,7 @@
                             </div>
                             <div class="row mx-0 mb-3">
                                 <div class="col-5">
-                                    <p style="font-size: 16px!important;font-family: Padauk!important;">Net Total</p>
+                                    <p class="label-form">Net Total</p>
                                 </div>
                                 <div class="col">
                                     <p class="label-form" style="color:#6b6e71;">MMKs {{ net_value }} </p>
@@ -59,7 +69,7 @@
                             </div>
                             <div class="row mx-0 mb-3">
                                 <div class="col-5">
-                                    <p style="font-size: 16px!important;font-family: Padauk!important;">ပြန်အမ်းငွေ</p>
+                                    <p class="mb-0" style="font-size: 16px!important;font-family: Padauk!important;">ပြန်အမ်းငွေ</p>
                                 </div>
                                 <div class="col">
                                     <p class="label-form" style="color:#6b6e71;">MMKs {{ change }} </p>
@@ -73,8 +83,8 @@
 <!--                                    <form action=" {{route('members.search')}} " method="post">-->
 <!--                                        @csrf-->
                                         <label class="search-box-container">
-                                            <input v-model="query" v-on:keyup="getMembers(query)"  type="text" id="search_input" class="search-box py-1 "  autocomplete="off">
-                                            <i class="fal fa-search search-icon"></i>
+                                            <input v-model="query" v-on:keyup="getMembers(query)"  type="text" id="search_input" class="input-form py-1 "  autocomplete="off">
+<!--                                            <i class="fal fa-search search-icon"></i>-->
                                             <ul style="list-style: none;padding-left: 16px;">
                                                 <li style="cursor:pointer;padding-top: 4px" v-for="(result,i) in results.filter(property => property !== '')" :key="i" v-on:click="setMember(result)">
                                                     {{result.name}}
