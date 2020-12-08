@@ -2645,6 +2645,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -22355,20 +22365,29 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("form", { staticClass: "position-relative w-100 h-100 pb-3 mt-3" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary btn-sm",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              return _vm.submit()
-            }
-          }
-        },
-        [_vm._v("Submit")]
-      ),
+    _c("form", { staticClass: "position-relative w-100 h-100 pb-3 mt-1" }, [
+      _c("div", { staticClass: "d-flex justify-content-between mb-3" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", [
+          _c("div", { staticClass: "d-inline-block ml-3" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger py-1 rounded-0",
+                staticStyle: { "font-size": "16px!important" },
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.submit()
+                  }
+                }
+              },
+              [_vm._v("Invoices ထုတ်ရန်")]
+            )
+          ])
+        ])
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row mx-0" }, [
         _c("div", { staticClass: "col-8 pl-0" }, [
@@ -22381,7 +22400,7 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "row mx-0 mb-3" }, [
-                  _vm._m(0),
+                  _vm._m(1),
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c(
@@ -22396,7 +22415,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mx-0 mb-3" }, [
-                  _vm._m(1),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c(
@@ -22411,7 +22430,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mx-0 mb-3" }, [
-                  _vm._m(2),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c(
@@ -22426,7 +22445,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mx-0 mb-3" }, [
-                  _vm._m(3),
+                  _vm._m(4),
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c(
@@ -22441,7 +22460,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mx-0 mb-3" }, [
-                  _vm._m(4),
+                  _vm._m(5),
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c(
@@ -22456,7 +22475,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mx-0 mb-3" }, [
-                  _vm._m(5),
+                  _vm._m(6),
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c(
@@ -22471,7 +22490,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mx-0 mb-3" }, [
-                  _vm._m(6),
+                  _vm._m(7),
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c(
@@ -22490,7 +22509,7 @@ var render = function() {
             _c("div", { staticClass: "col pt-2 pb-2" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col" }, [
-                  _vm._m(7),
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("label", { staticClass: "search-box-container" }, [
                     _c("input", {
@@ -22502,7 +22521,7 @@ var render = function() {
                           expression: "query"
                         }
                       ],
-                      staticClass: "search-box py-1 ",
+                      staticClass: "input-form py-1 ",
                       attrs: {
                         type: "text",
                         id: "search_input",
@@ -22521,8 +22540,6 @@ var render = function() {
                         }
                       }
                     }),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "fal fa-search search-icon" }),
                     _vm._v(" "),
                     _c(
                       "ul",
@@ -22567,7 +22584,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col mb-3" }, [
-                  _vm._m(8),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -22595,7 +22612,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col" }, [
-                  _vm._m(9),
+                  _vm._m(10),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -22661,7 +22678,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm._m(10)
+                  _vm._m(11)
                 ])
               ])
             ])
@@ -22676,7 +22693,7 @@ var render = function() {
               },
               [
                 _c("table", { staticClass: "table table-borderless" }, [
-                  _vm._m(11),
+                  _vm._m(12),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -22824,7 +22841,7 @@ var render = function() {
                 attrs: { id: "myTable" }
               },
               [
-                _vm._m(12),
+                _vm._m(13),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -22984,6 +23001,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("nav", { staticStyle: { "margin-top": "8px" } }, [
+      _c(
+        "a",
+        {
+          staticClass: "a-clear text-dark fm-roboto fs17",
+          attrs: { href: "#" }
+        },
+        [_vm._v("Invoices")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-5" }, [
       _c("p", { staticClass: "label-form" }, [_vm._v("Total")])
     ])
@@ -23004,6 +23036,7 @@ var staticRenderFns = [
       _c(
         "p",
         {
+          staticClass: "mb-0",
           staticStyle: {
             "font-size": "16px!important",
             "font-family": "Padauk!important"
@@ -23018,16 +23051,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-5" }, [
-      _c(
-        "p",
-        {
-          staticStyle: {
-            "font-size": "16px!important",
-            "font-family": "Padauk!important"
-          }
-        },
-        [_vm._v("Tax")]
-      )
+      _c("p", { staticClass: "label-form" }, [_vm._v("Tax")])
     ])
   },
   function() {
@@ -23038,6 +23062,7 @@ var staticRenderFns = [
       _c(
         "p",
         {
+          staticClass: "mb-0",
           staticStyle: {
             "font-size": "16px!important",
             "font-family": "Padauk!important"
@@ -23052,16 +23077,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-5" }, [
-      _c(
-        "p",
-        {
-          staticStyle: {
-            "font-size": "16px!important",
-            "font-family": "Padauk!important"
-          }
-        },
-        [_vm._v("Net Total")]
-      )
+      _c("p", { staticClass: "label-form" }, [_vm._v("Net Total")])
     ])
   },
   function() {
@@ -23072,6 +23088,7 @@ var staticRenderFns = [
       _c(
         "p",
         {
+          staticClass: "mb-0",
           staticStyle: {
             "font-size": "16px!important",
             "font-family": "Padauk!important"

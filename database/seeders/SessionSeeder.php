@@ -9,7 +9,6 @@ use Illuminate\Database\Seeder;
 
 class SessionSeeder extends Seeder
 {
-
     public function run()
     {
         $data = $this->setSampleData();
@@ -39,7 +38,7 @@ class SessionSeeder extends Seeder
         PeriodFacade::end($s_data);
     }
     protected function setOrderJasonString(){
-       return '{
+        return '{
         "session_id": 1,
         "items": [
             {
@@ -57,6 +56,4 @@ class SessionSeeder extends Seeder
         ]
     }';
     }
-
-
 }
