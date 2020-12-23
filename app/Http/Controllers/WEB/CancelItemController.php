@@ -16,7 +16,6 @@ class CancelItemController extends Controller
         $items = CancelItem::orderBy('id', 'desc')->paginate(20);
         foreach ( $items->items() as $item){
             $item->marker_name = Staff::where('id', $item->session->marker_id)->pluck('name')->first();
-
             unset($item['session']);
         }
         return view('cancelItems.index',compact('items'));

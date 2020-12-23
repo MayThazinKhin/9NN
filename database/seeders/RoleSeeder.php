@@ -7,8 +7,7 @@ use Illuminate\Database\Seeder;
 
 class RoleSeeder extends Seeder
 {
-    public function run()
-    {
+    public function run(){
         $roles = ['admin','cashier','marker','accountant','kitchen_staff'];
         foreach ($roles as $role){
             Role::create([
