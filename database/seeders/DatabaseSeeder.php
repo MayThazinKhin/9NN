@@ -12,9 +12,6 @@ class DatabaseSeeder extends Seeder
             TableSeeder::class,
             CategorySeeder::class,
             ItemSeeder::class,
-            PrimarySeeder::class,
-            SecondarySeeder::class,
-            TertiarySeeder::class,
             SessionSeeder::class
         ]);
 
