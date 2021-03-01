@@ -9,7 +9,7 @@ use App\Http\Controllers\API\SessionController;
 use App\Http\Controllers\API\PeriodController;
 
 Route::middleware('jwt-auth')->group(function () {
-    Route::post('categories',[ItemController::class,'getItemCategoriesByType'])->name('categories');
+
     Route::post('items',[ItemController::class,'getItemsByCategoryID'])->name('items');
     Route::post('type_items',[ItemController::class,'getItemsByTypeID']);
 
@@ -33,3 +33,4 @@ Route::middleware('jwt-auth')->group(function () {
 });
 
 Route::post('login',[LoginController::class,'login'])->name('login');
+Route::post('categories',[ItemController::class,'getItemCategoriesByType'])->name('categories');
