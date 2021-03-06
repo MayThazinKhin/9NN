@@ -64,3 +64,10 @@ Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateK
 
 
 
+Route::get("/index", function(){
+    return view("menu_invoice.index");
+});
+
+Route::get("/detail", function(){
+    return view("menu_invoice.detail");
+});

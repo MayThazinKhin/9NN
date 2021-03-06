@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('shop_invoice','active-link')
+@section('menu_invoice','active-link')
 @section('content')
 
     {{--    <invoice-detail :items="{{json_encode($items)}}" :periods="{{json_encode($periods)}}" :members="{{json_encode($members)}}" :id="{{$id}}"></invoice-detail>--}}
@@ -7,7 +7,7 @@
         <form class="position-relative w-100 h-100 pb-3 mt-3">
             <div class="d-flex justify-content-between mb-3">
                 <nav style="margin-top: 8px">
-                    <a href="#" class="a-clear text-dark fm-roboto fs17">Shop Invoices</a>
+                    <a href="#" class="a-clear text-dark fm-roboto fs17">Menu Invoices</a>
                 </nav>
                 <div>
 
