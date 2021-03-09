@@ -32,8 +32,12 @@
            <i class="fal fa-file-invoice-dollar fs17"></i> &nbsp;Invoices
         </a>
 
+        <a href="{{route('receipt')}}" class="a-clear a-sidebar @yield('receipt')">
+             <i class="fal fa-file-invoice-dollar fs17"></i> &nbsp;Shop
+        </a>
+
         <a href="{{route('credits')}}" class="a-clear a-sidebar @yield('credit')">
-           Credit
+            <i class="fal fa-file-invoice-dollar fs17"></i> Credit
         </a>
 
         @elsecan('isAccountant')

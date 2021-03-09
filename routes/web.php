@@ -12,7 +12,7 @@ use App\Http\Controllers\WEB\BarController;
 use App\Http\Controllers\WEB\InvoiceController;
 use App\Http\Controllers\WEB\CancelItemController;
 use App\Http\Controllers\WEB\LoginController;
-
+use App\Http\Controllers\WEB\ReceiptController;
 
 //login
 Route::get('',[LoginController::class,'index']);
@@ -56,6 +56,11 @@ Route::middleware('can:isCashier')->group(function () {
     Route::get('invoice_detail/{id}',[InvoiceController::class,'detail'])->name('invoice.detail');
     Route::post('invoice_update',[InvoiceController::class,'update'])->name('invoice.update');
 
+    //Receipt
+    Route::get('receipts',[ReceiptController::class,'index'])->name('receipt');
+    Route::get('receipt_detail/{id}',[ReceiptController::class,'detail'])->name('receipt.detail');
+    Route::post('receipt_update',[ReceiptController::class,'update'])->name('receipt.update');
+
     //Credit
     Route::get('credits',[InvoiceController::class,'getCredits'])->name('credits');
 });
@@ -92,3 +97,10 @@ Route::middleware('can:isAccountant')->group(function () {
 
 
 
+Route::get("/index", function(){
+    return view("menu_invoice.index");
+});
+
+Route::get("/detail", function(){
+    return view("menu_invoice.detail");
+});
