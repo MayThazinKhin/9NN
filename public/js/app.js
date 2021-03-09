@@ -2671,7 +2671,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       total: this.items.net_total + this.periods.total_value,
       tax: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100),
       net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
-      credit: 0,
+      credit: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
       change: 0
     };
   },
@@ -2988,7 +2988,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       total: this.items.net_total,
       tax: Math.round(this.items.net_total * 5 / 100),
       net_value: Math.round(this.items.net_total * 5 / 100) + this.items.net_total,
-      credit: 0,
+      credit: Math.round(this.items.net_total * 5 / 100) + this.items.net_total,
       change: 0
     };
   },
@@ -3033,7 +3033,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         return response.json();
       }).then(function (data) {
         if (data.is_success) {
-          window.location.replace('/invoices');
+          window.location.replace('/receipts');
         } else {
           window.location.reload();
         }
@@ -3047,6 +3047,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.net_value = this.tax + this.total - this.discount;
     },
     paid_value: function paid_value() {
+      // if(this.paid_value === 0) this.credit = this.net_value;
       this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
       this.net_value < this.paid_value ? this.change = this.paid_value - this.net_value : this.change = 0;
       this.net_value = this.tax + this.total - this.discount; // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;

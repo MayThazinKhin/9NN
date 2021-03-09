@@ -233,7 +233,7 @@ export default {
             total: this.items.net_total,
             tax: Math.round(((this.items.net_total)*5)/100),
             net_value: Math.round(((this.items.net_total)*5)/100) + this.items.net_total,
-            credit: 0,
+            credit: Math.round(((this.items.net_total)*5)/100) + this.items.net_total,
             change: 0
 
         };
@@ -284,7 +284,7 @@ export default {
                 .then(response => response.json())
                 .then(data => {
                     if(data.is_success){
-                        window.location.replace('/invoices');
+                        window.location.replace('/receipts');
                     }else{
                         window.location.reload();
                     }
@@ -303,6 +303,7 @@ export default {
         },
         paid_value: function ()
         {
+            // if(this.paid_value === 0) this.credit = this.net_value;
             this.net_value>this.paid_value ? this.credit = this.net_value-this.paid_value : this.credit=0;
             this.net_value<this.paid_value ? this.change = this.paid_value-this.net_value : this.change=0;
             this.net_value = (this.tax+this.total)-this.discount;

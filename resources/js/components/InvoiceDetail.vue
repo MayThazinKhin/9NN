@@ -233,7 +233,7 @@ export default {
             total: this.items.net_total + this.periods.total_value,
             tax: Math.round(((this.items.net_total + this.periods.total_value)*5)/100),
             net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
-            credit: 0,
+            credit: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
             change: 0
 
         };
