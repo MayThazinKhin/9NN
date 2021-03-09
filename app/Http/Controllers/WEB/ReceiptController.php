@@ -17,7 +17,7 @@ class ReceiptController extends Controller
     }
 
     public function index(){
-        $receipts = $this->receipt::where('admin_id', null)->orderBy('id', 'desc')->paginate(20);
+        $receipts = $this->receipt::where('cashier_id', null)->orderBy('id', 'desc')->paginate(20);
         return view('shop_invoice.index',compact('receipts'));
     }
 
