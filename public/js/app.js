@@ -37357,8 +37357,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/maythazinkhin/PhpstormProjects/9N/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/maythazinkhin/PhpstormProjects/9N/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/tmz/php/9Snooker/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/tmz/php/9Snooker/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })
