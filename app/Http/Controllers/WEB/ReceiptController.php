@@ -24,7 +24,7 @@ class ReceiptController extends Controller
     public function detail($id){
         $receipt = (new OrderedItems())->run($this->checkReceiptID($id));
         $members = Member::all();
-        return view('shop_invoice.detail',compact('receipt','members'));
+        return view('shop_invoice.detail',compact('receipt','members','id'));
     }
 
     public function checkReceiptID($id){
