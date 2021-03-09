@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <title>
-
         9 snookers
     </title>
     <meta charset="utf-8">

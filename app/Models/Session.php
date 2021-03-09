@@ -16,6 +16,7 @@ class Session extends Model
         return $this->belongsToMany(Item::class,'item_session')->withTimestamps()->withPivot('count');
     }
 
+
     public function table(){
         return $this->belongsTo(Table::class);
     }
