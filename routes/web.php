@@ -80,6 +80,15 @@ Route::middleware('can:isAccountant')->group(function () {
     Route::get('/secondary/{id}',[FinancialController::class,'secondary'])->name('secondary');
 });
 
+Route::middleware('can:isBarStaff')->group(function () {
+    //cancel_item
+    Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
+
+    //kitchen_item
+    Route::get('kitchen_items',[CancelItemController::class,'kitchenItems'])->name('kitchen_items');
+    Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
+});
+
 
 
 

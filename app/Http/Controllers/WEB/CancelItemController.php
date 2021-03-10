@@ -2,16 +2,25 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Actions\Paginate\paginate;
 use App\Http\Controllers\Controller;
 use App\Models\CancelItem;
-
-
 use App\Models\KitchenItem;
 use App\Models\Staff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CancelItemController extends Controller
 {
+    protected $type;
+    public function __construct(){
+        $this->middleware(function ($request, $next) {
+            $role = Auth::user()->role;
+            $this->type = ($role == 'kitchen_staff') ? 'menu' : 'bar';
+            return $next($request);
+        });
+    }
+
     public function index(){
         $items = CancelItem::orderBy('id', 'desc')->paginate(20);
         foreach ( $items->items() as $item){
@@ -22,8 +31,10 @@ class CancelItemController extends Controller
     }
 
 
-    public function kitchenItems(){
-        $items = KitchenItem::orderBy('id', 'desc')->paginate(20);
+    public function kitchenItems(Request  $request){
+        $kitchen_items = KitchenItem::orderBy('id', 'desc')->get();
+        $filtered_items = collect($kitchen_items)->where('item_type',$this->type)->values();
+        $items = paginate($filtered_items,$request);
         return view('kitchenItems.index',compact('items'));
     }
 
