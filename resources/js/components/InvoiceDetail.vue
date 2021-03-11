@@ -9,7 +9,7 @@
                 <div>
 
                     <div class="d-inline-block ml-3">
-                        <button type="button" @click="submit()" class="btn btn-danger py-1 rounded-0" style="font-size: 16px!important;">Invoices ထုတ်ရန်</button>
+                        <button :disabled="is_credit_error" type="button" @click="submit()" class="btn btn-danger py-1 rounded-0" style="font-size: 16px!important;">Invoices ထုတ်ရန်</button>
                     </div>
                 </div>
             </div>
@@ -111,6 +111,8 @@
                             </div>
                         </div>
                     </div>
+                    <span v-if="is_credit_error" class="text-danger">{{credit_error_msg}}</span>
+
                     <div class="row mx-0">
                         <div class="col bg-white position-relative" style="min-height: 50vh;padding-bottom: 52px">
                             <table class="table table-borderless">
@@ -227,6 +229,7 @@ export default {
             query: '',
             results: [],
             member_id: '',
+            member: '',
             discount: 0,
             is_tax: false,
             paid_value: 0,
@@ -234,12 +237,15 @@ export default {
             tax: Math.round(((this.items.net_total + this.periods.total_value)*5)/100),
             net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
             credit: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
-            change: 0
+            change: 0,
+            credit_error_msg: 'Credit Value is more than Maximum Allowance!',
+            is_credit_error: false
 
         };
     },
 
     methods: {
+
         getMembers(query)
         {
             if(query === ''){
@@ -258,6 +264,9 @@ export default {
             this.results = [];
             this.query = member.name;
             this.member_id = member.id;
+            this.member = member;
+            if(this.credit > this.member.allowance) this.is_credit_error = true;
+
         },
         submit()
         {
@@ -313,6 +322,13 @@ export default {
         {
             this.net_value>this.paid_value ? this.credit = this.net_value-this.paid_value : this.credit=0;
         },
+        credit: function ()
+        {
+            if(this.member !== '')
+            {
+                this.credit > this.member.allowance ? this.is_credit_error = true : this.is_credit_error = false;
+            }
+        }
 
     }
 };
