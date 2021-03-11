@@ -29,7 +29,7 @@ class InventoryController extends BasicController
         Inventory::create($data);
         $new_price = $data['price'] / $data['count'];
         $item = Item::where('id',$data['item_id'])->first();
-        $item_data['buying_price'] = round(($item->buying_price + $new_price) / 2) ;
+        $item_data['buying_price'] = ($item->buying_price == 0 )? $new_price : round(($item->buying_price + $new_price) / 2) ;
         $item_data['count'] = $item->count + $data['count'];
         $item->update($item_data);
         return redirect(route('inventory.index'));

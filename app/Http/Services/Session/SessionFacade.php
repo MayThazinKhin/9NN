@@ -17,6 +17,7 @@ use phpDocumentor\Reflection\Types\Static_;
  * @method static checkout(array $all)
  * @method static credits()
  * @method static pay($data)
+ * @method static sessionCredits($memberID);
  */
 class SessionFacade extends Facade
 {
