@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content_title', 'Invoices')
+@section('content_title', 'Credits')
 @section('invoice','active-link')
 @section('content')
     <div>
@@ -14,49 +14,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="padding-table-row">
-                        <div class="text-td text-capitalize">
-                            1
-                        </div>
-                    </td>
-
-                    <td class="padding-table-row">
-                        <div class="text-td text-capitalize">
-                            name
-                        </div>
-                    </td>
-
-                    <td class="padding-table-row">
-                        <div class="text-td text-capitalize">
-                            1500
-                        </div>
-                    </td>
-
-                    <td class="padding-table-row w88px">
-                        <button type="button" class="btn-clear " title="Edit"  id="edit-button"
-                                data-toggle="modal" data-target="#modal">
-                            <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
-                        </button>
-                    </td>
-                </tr>
-                @foreach($invoices as $i=>$invoice)
+                @foreach($members as $i=>$member)
                     <tr>
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$invoice->created_at}}
+                                {{$member->member_name}}
                             </div>
                         </td>
 
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$invoice->member_name}}
-                            </div>
-                        </td>
-
-                        <td class="padding-table-row">
-                            <div class="text-td text-capitalize">
-                                {{$invoice->credit}}
+                                {{$member->credit}}
                             </div>
                         </td>
 
@@ -73,6 +41,7 @@
             </table>
         </form>
     </div>
+
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 400px;">
             <div class="modal-content" style="border-radius: 4px;" id="app">

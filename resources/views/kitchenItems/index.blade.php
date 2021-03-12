@@ -18,11 +18,11 @@
                 </thead>
                 <tbody>
 
-                @foreach($items as $i=>$item)
+                @foreach($items['data'] as $i=>$item)
                     <tr>
                         <th scope="row" class="padding-table-row">
                     <span class="text-td font-weight-normal">
-                        {{ $items->perPage()*($items->currentPage()-1)+ (++$i) }}
+{{--                        {{ $items->perPage()*($items->currentPage()-1)+ (++$i) }}--}}{{++$i}}
                     </span>
                         </th>
 
@@ -68,9 +68,9 @@
 
             </table>
                 </div>
-            <nav aria-label="Page navigation example">
-                {{$items->links()}}
-            </nav>
+{{--            <nav aria-label="Page navigation example">--}}
+{{--                {{$items['data']->links()}}--}}
+{{--            </nav>--}}
         </form>
     </div>
     @include('layouts.order_status')

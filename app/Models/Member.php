@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','phone_number','address','allowance'];
+    protected $fillable = ['name','phone_number','address','allowance','credit'];
 }

@@ -2655,6 +2655,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2665,6 +2667,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       query: '',
       results: [],
       member_id: '',
+      member: '',
       discount: 0,
       is_tax: false,
       paid_value: 0,
@@ -2672,7 +2675,9 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       tax: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100),
       net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
       credit: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
-      change: 0
+      change: 0,
+      credit_error_msg: 'Credit Value is more than Maximum Allowance!',
+      is_credit_error: false
     };
   },
   methods: {
@@ -2691,6 +2696,8 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.results = [];
       this.query = member.name;
       this.member_id = member.id;
+      this.member = member;
+      if (this.credit > this.member.allowance) this.is_credit_error = true;
     },
     submit: function submit() {
       var data = {
@@ -2737,6 +2744,11 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     },
     net_value: function net_value() {
       this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
+    },
+    credit: function credit() {
+      if (this.member !== '') {
+        this.credit > this.member.allowance ? this.is_credit_error = true : this.is_credit_error = false;
+      }
     }
   }
 });
@@ -2972,6 +2984,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2982,6 +2995,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       query: '',
       results: [],
       member_id: '',
+      member: '',
       discount: 0,
       is_tax: false,
       paid_value: 0,
@@ -2989,10 +3003,17 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       tax: Math.round(this.items.net_total * 5 / 100),
       net_value: Math.round(this.items.net_total * 5 / 100) + this.items.net_total,
       credit: Math.round(this.items.net_total * 5 / 100) + this.items.net_total,
-      change: 0
+      change: 0,
+      credit_error_msg: 'Credit Value is more than Maximum Allowance!',
+      is_credit_error: false
     };
   },
   methods: {
+    // isSubmitDisable()
+    // {
+    //     if(this.is_credit_error === true) return true;
+    //     if(this.is_credit_error === false) return false;
+    // },
     getMembers: function getMembers(query) {
       if (query === '') {
         this.results = [];
@@ -3008,6 +3029,8 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.results = [];
       this.query = member.name;
       this.member_id = member.id;
+      this.member = member;
+      if (this.credit > this.member.allowance) this.is_credit_error = true;
     },
     submit: function submit() {
       var data = {
@@ -3019,6 +3042,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         'net_value': this.net_value,
         'credit': this.credit,
         'is_tax': this.is_tax,
+        'session_id': this.id,
         'change': this.change,
         'cashier_id': 1
       };
@@ -3047,13 +3071,17 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.net_value = this.tax + this.total - this.discount;
     },
     paid_value: function paid_value() {
-      // if(this.paid_value === 0) this.credit = this.net_value;
       this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
       this.net_value < this.paid_value ? this.change = this.paid_value - this.net_value : this.change = 0;
-      this.net_value = this.tax + this.total - this.discount; // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
+      this.net_value = this.tax + this.total - this.discount;
     },
     net_value: function net_value() {
       this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
+    },
+    credit: function credit() {
+      if (this.member !== '') {
+        this.credit > this.member.allowance ? this.is_credit_error = true : this.is_credit_error = false;
+      }
     }
   }
 });
@@ -22693,7 +22721,7 @@ var render = function() {
               {
                 staticClass: "btn btn-danger py-1 rounded-0",
                 staticStyle: { "font-size": "16px!important" },
-                attrs: { type: "button" },
+                attrs: { disabled: _vm.is_credit_error, type: "button" },
                 on: {
                   click: function($event) {
                     return _vm.submit()
@@ -23000,6 +23028,12 @@ var render = function() {
               ])
             ])
           ]),
+          _vm._v(" "),
+          _vm.is_credit_error
+            ? _c("span", { staticClass: "text-danger" }, [
+                _vm._v(_vm._s(_vm.credit_error_msg))
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "row mx-0" }, [
             _c(
@@ -23658,7 +23692,7 @@ var render = function() {
               {
                 staticClass: "btn btn-danger py-1 rounded-0",
                 staticStyle: { "font-size": "16px!important" },
-                attrs: { type: "button" },
+                attrs: { disabled: _vm.is_credit_error, type: "button" },
                 on: {
                   click: function($event) {
                     return _vm.submit()
@@ -23963,7 +23997,13 @@ var render = function() {
                   _vm._m(11)
                 ])
               ])
-            ])
+            ]),
+            _vm._v(" "),
+            _vm.is_credit_error
+              ? _c("span", { staticClass: "text-danger" }, [
+                  _vm._v(_vm._s(_vm.credit_error_msg))
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row mx-0" }, [

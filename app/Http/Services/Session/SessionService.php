@@ -55,4 +55,8 @@ class SessionService
         return $this->session->payCredit($data);
     }
 
+    public function sessionCredits($memberID){
+        return $this->session->getSessionCredit($memberID);
+    }
+
 }
