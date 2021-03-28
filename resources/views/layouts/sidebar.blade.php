@@ -25,6 +25,10 @@
             <i class="fal fa-inventory fs17"></i> Inventory
         </a>
 
+        <a href="" class="a-clear a-sidebar @yield('')">
+            <i class="fal fa-exchange fs17"></i> Daily Transition
+        </a>
+
 
 
         @elsecan('isCashier')
