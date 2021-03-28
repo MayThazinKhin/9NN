@@ -107,7 +107,7 @@ Route::middleware('can:isBarStaff')->group(function () {
 
 
 Route::get("/index", function(){
-    return view("menu_invoice.index");
+    return view("daily_transition.index");
 });
 
 Route::get("/detail", function(){

@@ -53,7 +53,7 @@
         }
     </style>
 </head>
-<body class="bg-danger">
+<body>
 {{--<div class="overall-container-login">--}}
 {{--    <div class="main-container-login">--}}
 {{--        <div class="d-flex mx-auto" style="width: 400px">--}}
@@ -81,7 +81,7 @@
             <div class="form-group text-center">
                 <label for="phone" class="label-form">Username</label>
                 <div>
-                    <input type="text" name="name" id="phone" class="input-form" required placeholder="Phone" style="font-size: 14px!important;">
+                    <input type="text" name="name" id="phone" class="input-form" required placeholder="" style="font-size: 14px!important;">
                     <span class="text-danger">{{$errors->first('name')}}</span>
                 </div>
             </div>
