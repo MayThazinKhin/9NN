@@ -63,6 +63,8 @@ Route::middleware('can:isCashier')->group(function () {
 
     //Credit
     Route::get('credits',[InvoiceController::class,'getCredits'])->name('credits');
+    Route::post('pay_credits',[InvoiceController::class,'payCredit'])->name('pay_credits');
+
 });
 
 Route::middleware('can:isKitchenStaff')->group(function () {

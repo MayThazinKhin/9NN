@@ -32,4 +32,8 @@ class Session extends Model
     public function member(){
         return $this->belongsTo(Member::class);
     }
+
+    public function ledger(){
+        return $this->morphOne(Ledger::class,'ledgerable');
+    }
 }

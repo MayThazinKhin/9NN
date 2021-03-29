@@ -7,7 +7,6 @@
             <table class="table table-borderless" id="myTable">
                 <thead>
                 <tr class="" style="border-bottom: 2px solid #dee2e6">
-                    <th class="table-header font-weight-normal">No</th>
                     <th class="table-header font-weight-normal">Member Name</th>
                     <th class="table-header font-weight-normal">Credit</th>
                     <th class="table-header font-weight-normal"> &nbsp;</th>
@@ -18,7 +17,7 @@
                     <tr>
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$member->member_name}}
+                                {{$member->name}}
                             </div>
                         </td>
 
@@ -30,7 +29,7 @@
 
                         <td class="padding-table-row w88px">
                             <button type="button" class="btn-clear " title="Edit"  id="edit-button"
-                                    data-toggle="modal" data-target="#modal">
+                                     data-toggle="modal" data-target="#credit_modal">
                                     <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
                             </button>
                         </td>
@@ -42,10 +41,10 @@
         </form>
     </div>
 
-    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+    <div class="modal fade" id="credit_modal" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 400px;">
             <div class="modal-content" style="border-radius: 4px;" id="app">
-                <form id="add_form" action="{{route('staffs.store')}}"  method="post">
+                <form id="add_form" action="{{route('pay_credits')}}"  method="post">
                     @csrf
                     <div class="modal-header border-bottom-0 mt-3">
                         <div class="text-left pl-4 pt-1">
@@ -53,9 +52,9 @@
                         </div>
                     </div>
                     <div class="modal-body mx-4 pt-2 pb-0">
+                        <input type="hidden" name="member_id" value="" id="member_id">
                         <div class="mb-3">
-                            <label for="name" class="label-form mb-1" style="font-size: 16px!important;">ပေးချေငွေ</label>
-                            <input type="text" id="name" name="name" class="input-form" placeholder="ပေးချေငွေထည့်ရန်" style="font-size: 15px!important;">
+                            <input type="text" id="name" name="paid_credit" class="input-form" placeholder="ပေးချေငွေထည့်ရန်" style="font-size: 15px!important;">
                         </div>
                     </div>
                     <div class="modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-4">
@@ -66,5 +65,15 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script_index')
+<script>
+    $('#credit_modal').on('show.bs.modal',function (event) {
+        var relatedTarget=$(event.relatedTarget);
+        var member=relatedTarget.data('member');
+        $('#member_id').val(member.id);
+    });
+</script>
 @endsection
 

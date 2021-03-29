@@ -36,6 +36,7 @@ class InvoiceController extends Controller
 
     public function payCredit(Request $request){
         //SessionFacade::pay($request->all());
+        return $request->all();
         $member = Member::where('id',$request['member_id'])->first();
         $member->credit -= $request['paid_credit'];
         $member->update();

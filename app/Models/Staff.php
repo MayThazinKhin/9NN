@@ -9,7 +9,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class Staff extends Authenticatable implements JWTSubject
 {
     use HasFactory;
-    protected $fillable = ['name','password','role_id','fee'];
+    protected $fillable = ['name','password','role_id','fee','fee_paid'];
     protected $appends = ['role'];
     protected $hidden = ['password'];
 
@@ -35,5 +35,9 @@ class Staff extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function ledger(){
+        return $this->morphOne(Ledger::class,'ledgerable');
     }
 }

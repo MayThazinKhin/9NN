@@ -16,6 +16,7 @@ class CreateReceiptsTable extends Migration
         Schema::create('receipts', function (Blueprint $table) {
             $table->id();
             $table->double('total')->default(0.0);
+            $table->double('staff_fee')->default(0.0);
             $table->double('net_value')->default(0.0);
             $table->double('paid_value')->default(0.0);
             $table->double('credit')->default(0.0);
