@@ -25,7 +25,7 @@
             <i class="fal fa-inventory fs17"></i> Inventory
         </a>
 
-        <a href="" class="a-clear a-sidebar @yield('')">
+        <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('financial')">
             <i class="fal fa-exchange fs17"></i> Daily Transition
         </a>
 

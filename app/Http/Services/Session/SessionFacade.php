@@ -3,7 +3,6 @@
 
 namespace App\Http\Services\Session;
 use Illuminate\Support\Facades\Facade;
-use phpDocumentor\Reflection\Types\Static_;
 
 /**
  * @method static create(array $all)
@@ -18,6 +17,8 @@ use phpDocumentor\Reflection\Types\Static_;
  * @method static credits()
  * @method static pay($data)
  * @method static sessionCredits($memberID);
+ * @method static getTaxValue($sessionID);
+ * @method static getMarker($sessionID);
  */
 class SessionFacade extends Facade
 {

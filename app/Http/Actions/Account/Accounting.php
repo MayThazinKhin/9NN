@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Actions\Accounting;
+namespace App\Http\Actions\Account;
 
 use App\Models\Account;
 use App\Models\Ledger;
@@ -10,7 +10,6 @@ class Accounting
 {
     public function primary(){
         $primary_accounts = Account::where('code','<', 9)->get();
-//        dd($this->getAccountValue($primary_accounts));
         return $this->getAccountValue($primary_accounts);
     }
 
@@ -34,6 +33,7 @@ class Accounting
         $accounts =  Account::where('code','LIKE', $parent_account_code.'%')->whereRaw('LENGTH(code) =' . $code_length)->get();
         return $this->getAccountValue($accounts);
     }
+
     public function getAccountValue($accounts){
         $a = [];
         foreach ($accounts as $acc){
@@ -51,8 +51,6 @@ class Accounting
     protected function getAccountValueByAction($account,$action){
 
         return Ledger::with('account')
-            ->where('is_confirmed',true)
-//            ->where('branch_id',authStaff()->branch->id)
             ->whereHas('account',function($query) use($account,$action){
                 $query->where('code','LIKE', $account->code.'%')
                     ->where('action',$action);

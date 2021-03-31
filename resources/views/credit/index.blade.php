@@ -67,13 +67,4 @@
     </div>
 @endsection
 
-@section('script_index')
-<script>
-    $('#credit_modal').on('show.bs.modal',function (event) {
-        var relatedTarget=$(event.relatedTarget);
-        var member=relatedTarget.data('member');
-        $('#member_id').val(member.id);
-    });
-</script>
-@endsection
 

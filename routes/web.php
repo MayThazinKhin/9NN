@@ -48,6 +48,9 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::get('/inventories/create',[InventoryController::class,'create'])->name('inventory.create');
     Route::post('/inventories',[InventoryController::class,'store'])->name('inventory.store');
     Route::post('items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
+
+    //Financial
+    Route::get('/financial',[FinancialController::class,'index'])->name('financial.index');
 });
 
 Route::middleware('can:isCashier')->group(function () {
@@ -76,11 +79,11 @@ Route::middleware('can:isKitchenStaff')->group(function () {
     Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 });
 
-Route::middleware('can:isAccountant')->group(function () {
-    //Financial
-    Route::get('/financial',[FinancialController::class,'index'])->name('financial.index');
-    Route::get('/secondary/{id}',[FinancialController::class,'secondary'])->name('secondary');
-});
+//Route::middleware('can:isAccountant')->group(function () {
+//    //Financial
+//    Route::get('/financial',[FinancialController::class,'index'])->name('financial.index');
+//    Route::get('/secondary/{id}',[FinancialController::class,'secondary'])->name('secondary');
+//});
 
 Route::middleware('can:isBarStaff')->group(function () {
     //cancel_item

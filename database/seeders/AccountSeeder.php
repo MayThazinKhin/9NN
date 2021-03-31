@@ -38,6 +38,10 @@ class AccountSeeder extends Seeder
             'name' => 'အကြွေး',
             'code' => 1106
         ]);
+        Account::create([
+            'name' => 'marker_paid',
+            'code' => 1107
+        ]);
 
         Account::create([
             'name' => 'Third party မှ ထုတ်ပေးငွေ',

@@ -3,13 +3,14 @@
 
 namespace App\Http\Actions\Periods;
 
-
 use App\Http\Services\Session\SessionFacade;
+use App\Models\Period;
 use Carbon\Carbon;
 
 class PeriodsBySessionID
 {
-    public function run($periods,$sessionID){
+    public function run($sessionID){
+        $periods =  Period::where('session_id',$sessionID)->get();
         $session  = SessionFacade::getSessionDetails($sessionID);
         $total_value = 0 ;
         $final_min = 0;

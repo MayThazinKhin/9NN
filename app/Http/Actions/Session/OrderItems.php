@@ -3,9 +3,7 @@
 
 namespace App\Http\Actions\Session;
 
-
 use App\Models\CancelItem;
-
 use App\Models\KitchenItem;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +13,6 @@ class OrderItems
         foreach ($data['items'] as $item) {
             $item_id = $item['id'];
             $count = $item['count'];
-
             $input = [
                 'item_id'=>$item_id,
                 'session_id'=>$session->id,
@@ -31,13 +28,11 @@ class OrderItems
         }
     }
 
-
     protected function updateOrder($session, $item_id, $count, $input ){
         $route_name = Route::currentRouteName();
         $old_count = $session->items()->where('item_id', $item_id)->first()->pivot->count;
         if($route_name == 'order_items'){
             $new_count =  $old_count + $count;
-
             KitchenItem::create($input);
         }
         else{
