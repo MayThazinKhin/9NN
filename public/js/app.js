@@ -1989,6 +1989,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -21716,7 +21718,11 @@ var render = function() {
                               _vm._v(" "),
                               _vm.errors[input.name]
                                 ? _c("span", { staticClass: "text-danger" }, [
-                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                    _vm._v(
+                                      "\n                            " +
+                                        _vm._s(_vm.errors[input.name][0]) +
+                                        "\n                        "
+                                    )
                                   ])
                                 : _vm._e()
                             ])
@@ -38539,8 +38545,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/single/Desktop/projects/9Snooker/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/single/Desktop/projects/9Snooker/resources/css/app.css */"./resources/css/app.css");
+__webpack_require__(/*! /home/tmz/php/9Snooker/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/tmz/php/9Snooker/resources/css/app.css */"./resources/css/app.css");
 
 
 /***/ })

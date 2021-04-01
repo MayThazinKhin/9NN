@@ -72,8 +72,8 @@
     </div>
     @php
         $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "amount"];
-        $input2 = (object) ["type" => "select", "label" => "Title", "name" => "title", "data" => '#'];
-        $input3 = (object) ["type" => "select", "label" => "Type", "name" => "type", "data" => '#'];
+        $input2 = (object) ["type" => "select", "label" => "Type", "name" => "type", "data" => '#'];
+        $input3 = (object) ["type" => "select", "label" => "Title", "name" => "title", "data" => '#'];
         $inputs = array($input1,$input2,$input3);
     @endphp
 

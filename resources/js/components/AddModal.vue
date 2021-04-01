@@ -60,9 +60,11 @@
                                 >{{ item.name }}</option
                                 >
                             </select>
-                            <span v-if="errors[input.name]" class="text-danger">{{
+                            <span v-if="errors[input.name]" class="text-danger">
+                                {{
                                     errors[input.name][0]
-                                }}</span>
+                                }}
+                            </span>
                         </div>
 
                     </div>
