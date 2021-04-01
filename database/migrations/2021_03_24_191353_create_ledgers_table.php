@@ -13,7 +13,7 @@ class CreateLedgersTable extends Migration
             $table->double('value');
             $table->dateTime('date');
             $table->foreignId('account_id')->constrained()->onDelete('cascade');
-            $table->morphs('ledgerable');
+            $table->nullableMorphs('ledgerable');
             $table->timestamps();
         });
     }
