@@ -5,24 +5,19 @@ namespace App\Http\Actions\Account;
 
 use App\Http\Services\Period\PeriodFacade;
 use App\Http\Services\Session\SessionFacade;
-use App\Models\Account;
-use App\Models\Ledger;
 
-class SessionAdding
+class SessionAdding extends Ledgering
 {
     private $sessionId;
     private $sessionPeriods;
-    private $ledger ;
     private $marker ;
     public function __construct($sessionID){
+        parent::__construct();
         $this->sessionId = $sessionID;
         $this->sessionPeriods =  PeriodFacade::getPeriodsBySessionID($sessionID);
         $this->marker = SessionFacade::getMarker($this->sessionId);
-        $this->ledger = [
-            'date' =>now()->format('Y-m-d'),
-            'ledgerable_id' => $this->sessionId,
-            'ledgerable_type' => 'session'
-        ];
+        $type = $this->setType($this->sessionId,'session');
+        $this->ledger = array_merge($this->ledger,$type);
 
     }
 
@@ -66,21 +61,5 @@ class SessionAdding
         $marker_fee_value = $this->marker->fee_paid;
         $data = $this->setData($marker_fee_value,1107);
         $this->create($data);
-
     }
-
-    protected function create($data){
-        $ledger_data = array_merge($this->ledger,$data);
-        Ledger::create($ledger_data);
-    }
-
-    protected function setData($value, $code){
-        $account_id = Account::where('code',$code)->pluck('id')->first();
-        return [
-            'value' => $value,
-            'account_id'=> $account_id
-        ];
-    }
-
-
 }

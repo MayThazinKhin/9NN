@@ -45,7 +45,8 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'session' => 'App\Models\Session',
             'receipt' => 'App\Models\Receipt',
-            'staff' => 'App\Models\Staff'
+            'staff' => 'App\Models\Staff',
+            'inventory' => 'App\Models\Inventory'
         ]);
 
     }

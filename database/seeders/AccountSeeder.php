@@ -74,6 +74,12 @@ class AccountSeeder extends Seeder
             'code' => 2,
             'is_categorized'=> true
         ]);
+
+        Account::create([
+            'name' => 'BAR',
+            'code' => 2101
+        ]);
+
         Account::create([
             'name' => 'အထွေထွေ',
             'code' => 2201
