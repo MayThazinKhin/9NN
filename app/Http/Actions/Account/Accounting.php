@@ -10,28 +10,15 @@ class Accounting
 {
     public function primary(){
         $primary_accounts = Account::where('code','<', 9)->get();
-        return $this->getAccountValue($primary_accounts);
+        return $primary_accounts;
     }
 
     public function secondary($primary_code){
-        return $this->getChildAccounts($primary_code,2);
-    }
-
-    public function tertiary($secondary_code){
-        return $this->getChildAccounts($secondary_code,3);
-    }
-
-    public function quaternary($tertiary_code){
-        return $this->getChildAccounts($tertiary_code,4);
-    }
-
-    public function fifth($quaternary_code){
-        return $this->getChildAccounts($quaternary_code,5);
+        return $this->getChildAccounts($primary_code,4);
     }
 
     protected function getChildAccounts($parent_account_code,$code_length){
-        $accounts =  Account::where('code','LIKE', $parent_account_code.'%')->whereRaw('LENGTH(code) =' . $code_length)->get();
-        return $this->getAccountValue($accounts);
+        return Account::where('code','LIKE', $parent_account_code.'2'.'%')->whereRaw('LENGTH(code) =' . $code_length)->get();
     }
 
     public function getAccountValue($accounts){
@@ -41,8 +28,6 @@ class Accounting
             $account->id = $acc->id;
             $account->name = $acc->name;
             $account->code = $acc->code;
-            $account->credit =  $this->getAccountValueByAction($acc,'credit');
-            $account->debit =  $this->getAccountValueByAction($acc,'debit');
             $a [] = $account;
         }
         return $a;

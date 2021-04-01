@@ -13,7 +13,8 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ItemSeeder::class,
             SessionSeeder::class,
-            AccountSeeder::class
+            AccountSeeder::class,
+            MemberSeeder::class
         ]);
 
     }

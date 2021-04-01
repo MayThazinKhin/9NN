@@ -19,7 +19,7 @@ class SessionAdding
         $this->sessionPeriods =  PeriodFacade::getPeriodsBySessionID($sessionID);
         $this->marker = SessionFacade::getMarker($this->sessionId);
         $this->ledger = [
-            'date' =>now(),
+            'date' =>now()->format('Y-m-d'),
             'ledgerable_id' => $this->sessionId,
             'ledgerable_type' => 'session'
         ];
@@ -66,6 +66,7 @@ class SessionAdding
         $marker_fee_value = $this->marker->fee_paid;
         $data = $this->setData($marker_fee_value,1107);
         $this->create($data);
+
     }
 
     protected function create($data){
