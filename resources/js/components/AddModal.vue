@@ -47,9 +47,9 @@
 
                         <div class="mb-4" v-if="input.type == 'select'">
                             <label class="label-form mb-1" style="font-size: 15px!important;color: #1b1e21">{{ input.label }}</label>
-                            <select v-model="form[input.name]" :title="input.label" class="selectpicker d-block" data-width="100%" title="Choice..."
+                            <select :id="input.label" v-model="form[input.name]" :title="input.label" class="selectpicker d-block" data-width="100%" title="Choice..."
                                     data-style="select-form w-100"
-                                    @change="input.label == 'Role' ? disableFeeFor9N(form[input.name]) : null"
+                                    @change="input.label == 'Role' ? disableFeeFor9N(form[input.name]) : fetchChildData(input)"
 
                             >
                                 <option v-if="input.data"
@@ -93,19 +93,48 @@ export default {
     },
 
     methods: {
+
+        fetchChildData(input)
+        {
+            if(input.parent_of)
+            {
+                let item= input.name;
+                let outputs = input.parent_of+'s';
+                let input_field = input.input_field_for_child_data;
+                let selected = input.data.find(i => i.id ==  $('#'+input.label).val());
+
+                let data = {};
+                data[item] = selected[input_field];
+
+                let child = this.inputs.find(i => i.name == input.parent_of);
+
+                let self = this;
+                ajaxHelper.ajaxHeaders();
+                $.post(input.child_data_url, JSON.stringify(data))
+                    .done(function(data,status) {
+                        if (status=== 'success')
+                        {
+                            Vue.set(child,'data', data[outputs]);
+                            self.$forceUpdate();
+                            self.$nextTick(function(){ $('.selectpicker').selectpicker('refresh'); });
+                        }
+                    })
+            }
+        },
+
         create() {
             let self = this;
             ajaxHelper.ajaxHeaders();
-            $.post(this.url, JSON.stringify(this.form))
-                .done(function(data) {
-                    console.log(data);
-                    if (data.success) {
-                        location.reload();
-                    }
-                })
-                .fail(function(xhr, status, error) {
-                    self.errors = JSON.parse(xhr.responseText).errors;
-                });
+            console.log(this.form)
+            // $.post(this.url, JSON.stringify(this.form))
+            //     .done(function(data) {
+            //         if (data.success) {
+            //             location.reload();
+            //         }
+            //     })
+            //     .fail(function(xhr, status, error) {
+            //         self.errors = JSON.parse(xhr.responseText).errors;
+            //     });
         },
 
         disableFeeFor9N(value){

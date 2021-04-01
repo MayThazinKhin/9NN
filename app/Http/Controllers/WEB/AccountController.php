@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 {
     public function index(){
-        return view('daily_transition.index');
+        $types =  (new Accounting())->primary();
+        return view('daily_transition.index',compact('types'));
     }
 
     public function type(){

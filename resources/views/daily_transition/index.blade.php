@@ -71,9 +71,10 @@
         </form>
     </div>
     @php
-        $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "amount"];
-        $input2 = (object) ["type" => "select", "label" => "Type", "name" => "type", "data" => '#'];
-        $input3 = (object) ["type" => "select", "label" => "Title", "name" => "title", "data" => '#'];
+        $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "value"];
+        $input2 = (object) ["type" => "select", "label" => "Type", "name" => "type", "data" => $types, "parent_of" => "title",
+         "child_data_url" => "/account_title", "input_field_for_child_data"=> "code"];
+        $input3 = (object) ["type" => "select", "label" => "Title", "name" => "title", "child_of" => "type"];
         $inputs = array($input1,$input2,$input3);
     @endphp
 

@@ -2003,18 +2003,44 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
   },
   methods: {
+    fetchChildData: function fetchChildData(input) {
+      if (input.parent_of) {
+        var item = input.name;
+        var outputs = input.parent_of + 's';
+        var input_field = input.input_field_for_child_data;
+        var selected = input.data.find(function (i) {
+          return i.id == $('#' + input.label).val();
+        });
+        var data = {};
+        data[item] = selected[input_field];
+        var child = this.inputs.find(function (i) {
+          return i.name == input.parent_of;
+        });
+        var self = this;
+        _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
+        $.post(input.child_data_url, JSON.stringify(data)).done(function (data, status) {
+          if (status === 'success') {
+            Vue.set(child, 'data', data[outputs]);
+            self.$forceUpdate();
+            self.$nextTick(function () {
+              $('.selectpicker').selectpicker('refresh');
+            });
+          }
+        });
+      }
+    },
     create: function create() {
       var self = this;
       _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
-      $.post(this.url, JSON.stringify(this.form)).done(function (data) {
-        console.log(data);
-
-        if (data.success) {
-          location.reload();
-        }
-      }).fail(function (xhr, status, error) {
-        self.errors = JSON.parse(xhr.responseText).errors;
-      });
+      console.log(this.form); // $.post(this.url, JSON.stringify(this.form))
+      //     .done(function(data) {
+      //         if (data.success) {
+      //             location.reload();
+      //         }
+      //     })
+      //     .fail(function(xhr, status, error) {
+      //         self.errors = JSON.parse(xhr.responseText).errors;
+      //     });
     },
     disableFeeFor9N: function disableFeeFor9N(value) {
       $('#fee').attr('disabled', false);
@@ -2184,8 +2210,6 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         contentType: "application/json",
         data: JSON.stringify(this.form),
         success: function success(data) {
-          console.log(data);
-
           if (data.success) {
             location.reload();
           }
@@ -2204,19 +2228,50 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     }
   },
   created: function created() {
+    var _this = this;
+
     for (var i = 0; i < this.inputs.length; i++) {
       this.form[this.inputs[i].name] = "";
+
+      if (this.inputs[i].parent_of) {
+        (function () {
+          var input = _this.inputs[i];
+          var item = input.name;
+          var item_id = input.name + '_id';
+          var outputs = input.parent_of + 's';
+          var input_field = input.input_field_for_child_data;
+          var selected = input.data.find(function (i) {
+            return i.id == _this.edit_data[item_id];
+          });
+          var data = {};
+          data[item] = selected[input_field];
+
+          var child = _this.inputs.find(function (i) {
+            return i.name == input.parent_of;
+          });
+
+          var self = _this;
+          _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
+          $.post(input.child_data_url, JSON.stringify(data)).done(function (data, status) {
+            if (status === 'success') {
+              Vue.set(child, 'data', data[outputs]);
+              self.$forceUpdate();
+              self.$nextTick(function () {
+                $('.selectpicker').selectpicker('refresh');
+              });
+            }
+          });
+        })();
+      }
+
+      if (this.inputs[i].child_of && this.inputs[i].data) {
+        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name];
+        this.$nextTick(function () {
+          $('.selectpicker').selectpicker('refresh');
+        });
+      }
     }
   },
-  // mounted(){
-  //     let value;
-  //     for(let i=0; i<this.inputs.length; i++)
-  //     {
-  //         if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
-  //     }
-  //
-  //     this.disableFeeFor9N(value);
-  // },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     edit_data: function edit_data(state) {
       return state.edit_modal.edit_data;
@@ -2227,11 +2282,12 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var value;
 
       for (var i = 0; i < this.inputs.length; i++) {
-        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name]; // if(this.inputs[i].type == 'select') $(".selectpicker").selectpicker("refresh");
-
-        if (this.inputs[i].label == "Role") value = this.form[this.inputs[i].name]; //TODO refresh selectpicker
-      } // $(".selectpicker").selectpicker("refresh");
-
+        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name];
+        if (this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
+        this.$nextTick(function () {
+          $('.selectpicker').selectpicker('refresh');
+        });
+      }
 
       this.disableFeeFor9N(value);
       this.route = this.url + "/" + this.edit_data.id;
@@ -21664,6 +21720,7 @@ var render = function() {
                                   ],
                                   staticClass: "selectpicker d-block",
                                   attrs: {
+                                    id: input.label,
                                     title: input.label,
                                     "data-width": "100%",
                                     title: "Choice...",
@@ -21696,7 +21753,7 @@ var render = function() {
                                           ? _vm.disableFeeFor9N(
                                               _vm.form[input.name]
                                             )
-                                          : null
+                                          : _vm.fetchChildData(input)
                                       }
                                     ]
                                   }
