@@ -50,8 +50,10 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::post('/inventories',[InventoryController::class,'store'])->name('inventory.store');
     Route::post('items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
 
-    //Financial
-    Route::get('/financial',[FinancialController::class,'index'])->name('financial.index');
+    //Account
+    Route::get('/financial',[AccountController::class,'index'])->name('financial.index');
+    Route::get('account_type',[AccountController::class,'type'])->name('account_type');
+    Route::post('account_title',[AccountController::class,'title'])->name('account_title');
 });
 
 Route::middleware('can:isCashier')->group(function () {
@@ -95,6 +97,4 @@ Route::middleware('can:isBarStaff')->group(function () {
     Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 });
 
-//Account
-Route::get('account_type',[AccountController::class,'type'])->name('account_type');
-Route::post('account_title',[AccountController::class,'title'])->name('account_title');
+
