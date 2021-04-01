@@ -26,7 +26,8 @@ class StaffSeeder extends Seeder
                 'name' => 'marker_'.$i,
                 'password' => 'password',
                 'role_id' => 3,
-                'fee' => 100 * $i
+                'fee' => 100 * $i,
+                'fee_paid' => 50 * $i
             ]);
         }
         Staff::create([

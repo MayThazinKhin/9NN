@@ -13,6 +13,7 @@ use App\Http\Controllers\WEB\InvoiceController;
 use App\Http\Controllers\WEB\CancelItemController;
 use App\Http\Controllers\WEB\LoginController;
 use App\Http\Controllers\WEB\ReceiptController;
+use App\Http\Controllers\WEB\AccountController;
 
 //login
 Route::get('',[LoginController::class,'index']);
@@ -94,27 +95,6 @@ Route::middleware('can:isBarStaff')->group(function () {
     Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get("/index", function(){
-    return view("daily_transition.index");
-});
-
-Route::get("/detail", function(){
-    return view("menu_invoice.detail");
-});
+//Account
+Route::get('account_type',[AccountController::class,'type'])->name('account_type');
+Route::post('account_title',[AccountController::class,'title'])->name('account_title');

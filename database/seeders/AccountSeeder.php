@@ -59,6 +59,15 @@ class AccountSeeder extends Seeder
             'name' => 'ကွမ်းယာ ဆိုင်မှ လစာ',
             'code' => 1204
         ]);
+        Account::create([
+            'name' => 'အခြားဝင်ငွေ',
+            'code' => 1205
+        ]);
+        Account::create([
+            'name' => 'others',
+            'code' => 1206
+        ]);
+
 
         Account::create([
             'name' => 'expense',
@@ -108,6 +117,18 @@ class AccountSeeder extends Seeder
         Account::create([
             'name' => 'အပ်ငွေ',
             'code' => 2211
+        ]);
+        Account::create([
+            'name' => 'advance',
+            'code' => 3
+        ]);
+        Account::create([
+            'name' => 'ယူငွေ',
+            'code' => 3201
+        ]);
+        Account::create([
+            'name' => 'ပိုငွေ',
+            'code' => 3202
         ]);
 
 
