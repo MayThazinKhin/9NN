@@ -54,9 +54,9 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::get('/financial',[AccountController::class,'index'])->name('financial.index');
     Route::get('account_type',[AccountController::class,'type'])->name('account_type');
     Route::post('account_title',[AccountController::class,'title'])->name('account_title');
-    Route::post('ledger_create',[AccountController::class,'create'])->name('ledger.create');
-    Route::post('ledger_update',[AccountController::class,'update'])->name('ledger.update');
-    Route::post('ledger_delete',[AccountController::class,'delete'])->name('ledger.delete');
+    Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
+    Route::post('ledger_update',[AccountController::class,'update'])->name('ledgers.update');
+    Route::post('ledger_delete',[AccountController::class,'delete'])->name('ledgers.delete');
 });
 
 Route::middleware('can:isCashier')->group(function () {

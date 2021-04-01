@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class AccountController extends BasicController
 {
+    private $ledgers;
+    public function __construct()
+    {
+        $ledgers = Ledger::class;
+         parent::__construct( $ledgers,'ledger','ledger');
+    }
+
     public function index(){
         $types =  (new Accounting())->primary();
         return view('daily_transition.index',compact('types'));
