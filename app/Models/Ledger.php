@@ -28,6 +28,16 @@ class Ledger extends Model
         return Account::where('code',$type_id)->pluck('id')->first();
     }
 
+    public function getTitleNameAttribute(){
+        return $this->account()->where('id',$this->account_id)->pluck('name')->first();
+    }
+
+    public function getTypeNameAttribute(){
+        $code = $this->account()->where('id',$this->account_id)->pluck('code')->first();
+        $type_id = intval(substr($code, 0, 1));
+        return Account::where('code',$type_id)->pluck('name')->first();
+    }
+
 
 
 

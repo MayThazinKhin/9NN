@@ -1991,6 +1991,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -1999,17 +2000,20 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   data: function data() {
     return {
       form: {},
-      errors: {}
+      errors: {},
+      isFeeDisable: false
     };
   },
   methods: {
     fetchChildData: function fetchChildData(input) {
+      var _this = this;
+
       if (input.parent_of) {
         var item = input.name;
         var outputs = input.parent_of + 's';
         var input_field = input.input_field_for_child_data;
         var selected = input.data.find(function (i) {
-          return i.id == $('#' + input.label).val();
+          return i.id == _this.form[input.name];
         });
         var data = {};
         data[item] = selected[input_field];
@@ -2032,7 +2036,6 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     create: function create() {
       var self = this;
       _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
-      console.log(this.form);
       $.post(this.url, JSON.stringify(this.form)).done(function (data) {
         if (data.success) {
           location.reload();
@@ -2042,18 +2045,41 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       });
     },
     disableFeeFor9N: function disableFeeFor9N(value) {
-      $('#fee').attr('disabled', false);
-
-      if (value !== 3) {
-        $('#fee').attr('disabled', true);
-      }
+      var role = this.inputs.find(function (i) {
+        return i.name == 'role_id';
+      });
+      console.log(this.form[role.name]); // $('#fee').attr('disabled',false);
+      //
+      // if(value !== 3)
+      // {
+      //     $('#fee').attr('disabled',true);
+      // }
     }
+  },
+  computed: {// isFeeDisable()
+    // {
+    //     let role = this.inputs.find(i => i.name ==  'role_id');
+    //     return this.form[role.name] != 3;
+    //     // return false;
+    //     // if(this.form[role.name] != 3) return true;
+    //     // return false;
+    //
+    //     // if(this.form[role.name] != 3) return true;
+    //     // else return false;
+    // },
   },
   created: function created() {
     for (var i = 0; i < this.inputs.length; i++) {
       this.form[this.inputs[i].name] = "";
     }
-  }
+  } // watch: {
+  //     forms: function()
+  //     {
+  //         let role = this.inputs.find(i => i.name ==  'role_id');
+  //         if(this.form[role.name] !== 3) return true;
+  //     }
+  // }
+
 });
 
 /***/ }),
@@ -2200,33 +2226,32 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
   },
   methods: {
-    fetchChildData: function fetchChildData(input, value) {
-      console.log(value);
+    fetchChildData: function fetchChildData(input) {
+      var _this = this;
 
       if (input.parent_of) {
         var item = input.name;
         var outputs = input.parent_of + 's';
         var input_field = input.input_field_for_child_data;
         var selected = input.data.find(function (i) {
-          return i.id == $('#' + input.label).val();
-        }); // console.log(input.label);
-        // console.log($( "#"+input.label+" option:selected" ).val());
-
-        console.log($('#' + input.label).val()); // let data = {};
-        // data[item] = selected[input_field];
-        // let child = this.inputs.find(i => i.name == input.parent_of);
-        //
-        // let self = this;
-        // ajaxHelper.ajaxHeaders();
-        // $.post(input.child_data_url, JSON.stringify(data))
-        //     .done(function(data) {
-        //         if (data.success)
-        //         {
-        //             Vue.set(child,'data', data[outputs]);
-        //             self.$forceUpdate();
-        //             self.$nextTick(function(){ $('.selectpicker').selectpicker('refresh'); });
-        //         }
-        //     })
+          return i.id == _this.form[input.name];
+        });
+        var data = {};
+        data[item] = selected[input_field];
+        var child = this.inputs.find(function (i) {
+          return i.name == input.parent_of;
+        });
+        var self = this;
+        _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
+        $.post(input.child_data_url, JSON.stringify(data)).done(function (data) {
+          if (data.success) {
+            Vue.set(child, 'data', data[outputs]);
+            self.$forceUpdate();
+            self.$nextTick(function () {
+              $('.selectpicker').selectpicker('refresh');
+            });
+          }
+        });
       }
     },
     update: function update() {
@@ -2247,13 +2272,23 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         }
       });
     },
-    disableFeeFor9N: function disableFeeFor9N(value) {
-      // this.$nextTick(function(){ $('#fee').attr('disabled',false); });
-      $('#fee').attr('disabled', false);
+    isFeeDisable: function isFeeDisable() {
+      var role = this.inputs.find(function (i) {
+        return i.name == 'role_id';
+      });
+      return this.form[role.name] != 3;
+    },
+    disableFeeFor9N: function disableFeeFor9N() {
+      var role = this.inputs.find(function (i) {
+        return i.name == 'role_id';
+      }); // console.log(this.form[role.name]);
 
-      if (value !== 3) {
-        // console.log('here');
-        $('#fee').attr('disabled', true); // this.$nextTick(function(){ $('#fee').attr('disabled',true); });
+      if (this.form[role.name] == 3) {
+        $('#fee').attr('disabled', false);
+        console.log('if');
+      } else {
+        $('#fee').attr('disabled', true);
+        console.log('else');
       }
     }
   },
@@ -2269,34 +2304,33 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   })),
   watch: {
     edit_data: function edit_data() {
-      var _this = this;
+      var _this2 = this;
 
-      var value;
-
+      // let value;
       for (var i = 0; i < this.inputs.length; i++) {
-        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name];
-        if (this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
+        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name]; // if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
+
         this.$nextTick(function () {
           $('.selectpicker').selectpicker('refresh');
         });
 
         if (this.inputs[i].parent_of) {
           (function () {
-            var input = _this.inputs[i];
+            var input = _this2.inputs[i];
             var item = input.name;
             var outputs = input.parent_of + 's';
             var input_field = input.input_field_for_child_data;
             var selected = input.data.find(function (i) {
-              return i.id == _this.edit_data[item];
+              return i.id == _this2.edit_data[item];
             });
             var data = {};
             data[item] = selected[input_field];
 
-            var child = _this.inputs.find(function (i) {
+            var child = _this2.inputs.find(function (i) {
               return i.name == input.parent_of;
             });
 
-            var self = _this;
+            var self = _this2;
             _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
             $.post(input.child_data_url, JSON.stringify(data)).done(function (data, status) {
               if (status === 'success') {
@@ -2318,7 +2352,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         }
       }
 
-      this.disableFeeFor9N(value);
+      this.disableFeeFor9N();
       this.route = this.url + "/" + this.edit_data.id;
       this.errors = {};
     }
@@ -21551,6 +21585,7 @@ var render = function() {
                                 staticStyle: { "font-size": "14px!important" },
                                 attrs: {
                                   id: input.name,
+                                  disabled: _vm.isFeeDisable,
                                   type: "text",
                                   placeholder: input.label,
                                   autocomplete: "off"
@@ -22247,10 +22282,8 @@ var render = function() {
                                       },
                                       function($event) {
                                         input.label == "Role"
-                                          ? _vm.disableFeeFor9N(
-                                              _vm.form[input.name]
-                                            )
-                                          : _vm.fetchChildData(input, this)
+                                          ? _vm.disableFeeFor9N()
+                                          : _vm.fetchChildData(input)
                                       }
                                     ]
                                   }
