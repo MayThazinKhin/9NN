@@ -18,8 +18,9 @@
                         <th class="table-header font-weight-normal">Id</th>
                         <th class="table-header font-weight-normal">Name</th>
                         <th class="table-header font-weight-normal">Role</th>
-                        <th class="table-header font-weight-normal"> &nbsp;</th>
-                        <th class="table-header font-weight-normal"> &nbsp;</th>
+                        <th class="table-header font-weight-normal">Monthly Pay</th>
+                        <th class="table-header font-weight-normal"> Actions</th>
+{{--                        <th class="table-header font-weight-normal"> &nbsp;</th>--}}
                     </tr>
                     </thead>
                     <tbody>
@@ -42,15 +43,19 @@
                             </div>
                         </td>
 
-                        <td class="padding-table-row w88px">
+                        <td class="padding-table-row">
+                            <div class="text-td text-capitalize">
+                                {{$staff->role}}
+                            </div>
+                        </td>
+
+                        <td class="padding-table-row w88px" style="display: inline">
                             <edit-button entity="{{$staff}}"></edit-button>
                             <button type="button" onclick="deleteItem('staffs',{{$staff->id}})" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
                               <i class="fal fa-times text-danger fw300"></i>
                             </button >
-                        </td>
-
-                        <td class="padding-table-row w88px">
                             <edit-password-button entity="{{$staff}}"></edit-password-button>
+
                         </td>
                     </tr>
                     @endforeach

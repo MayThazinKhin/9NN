@@ -22754,7 +22754,7 @@ var render = function() {
       staticClass: "btn-clear ",
       attrs: {
         type: "button",
-        title: "Edit",
+        title: "Password Reset",
         "data-toggle": "modal",
         "data-target": "#edit-password"
       },
@@ -22775,7 +22775,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "a-clear" }, [
       _c("i", {
-        staticClass: "far fa-file-edit fw300",
+        staticClass: "fas fa-lock-open",
         staticStyle: { color: "#673ab7" }
       })
     ])
