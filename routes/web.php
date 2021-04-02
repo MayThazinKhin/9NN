@@ -7,7 +7,6 @@ use App\Http\Controllers\WEB\TableController;
 use App\Http\Controllers\WEB\MemberController;
 use App\Http\Controllers\WEB\ItemController;
 use App\Http\Controllers\WEB\InventoryController;
-use App\Http\Controllers\WEB\FinancialController;
 use App\Http\Controllers\WEB\BarController;
 use App\Http\Controllers\WEB\InvoiceController;
 use App\Http\Controllers\WEB\CancelItemController;
@@ -52,13 +51,11 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::post('items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
 
     //Account
-    Route::get('/financial',[AccountController::class,'index'])->name('financial.index');
     Route::get('/monthly_financial',[AccountController::class,'monthly'])->name('monthly_financial.index');
-    Route::get('account_type',[AccountController::class,'type'])->name('account_type');
-    Route::post('account_title',[AccountController::class,'title'])->name('account_title');
-    Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
+    Route::get('/monthly_filter',[AccountController::class,'monthly_filter'])->name('monthly_financial.filter');
     Route::post('ledger_update',[AccountController::class,'update'])->name('ledgers.update');
     Route::post('ledger_delete',[AccountController::class,'delete'])->name('ledgers.delete');
+
 });
 
 Route::middleware('can:isCashier')->group(function () {
@@ -76,6 +73,16 @@ Route::middleware('can:isCashier')->group(function () {
     Route::get('credits',[InvoiceController::class,'getCredits'])->name('credits');
     Route::post('pay_credits',[InvoiceController::class,'payCredit'])->name('pay_credits');
 
+
+});
+
+Route::middleware('can:isCashier' || 'can:isAdmin')->group(function () {
+    //Account
+    Route::get('/financial',[AccountController::class,'index'])->name('financial.index');
+    Route::get('account_type',[AccountController::class,'type'])->name('account_type');
+    Route::post('account_title',[AccountController::class,'title'])->name('account_title');
+    Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
+
 });
 
 Route::middleware('can:isKitchenStaff')->group(function () {
@@ -86,12 +93,6 @@ Route::middleware('can:isKitchenStaff')->group(function () {
     Route::get('kitchen_items',[CancelItemController::class,'kitchenItems'])->name('kitchen_items');
     Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 });
-
-//Route::middleware('can:isAccountant')->group(function () {
-//    //Financial
-//    Route::get('/financial',[FinancialController::class,'index'])->name('financial.index');
-//    Route::get('/secondary/{id}',[FinancialController::class,'secondary'])->name('secondary');
-//});
 
 Route::middleware('can:isBarStaff')->group(function () {
     //cancel_item

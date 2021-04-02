@@ -51,6 +51,7 @@
                                 </div>
                             </td>
 
+                            @can('isAdmin')
                             <td class="padding-table-row w88px">
                                 <edit-button entity="{{$ledger}}"></edit-button>
 
@@ -58,6 +59,7 @@
                                     <i class="fal fa-times text-danger fw300"></i>
                                 </button>
                             </td>
+                            @endcan
                         </tr>
                     @endforeach
                     </tbody>

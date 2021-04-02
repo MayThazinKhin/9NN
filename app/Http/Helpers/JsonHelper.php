@@ -22,6 +22,12 @@ if(!function_exists('responseFalse')){
 }
 
 
+if(!function_exists('responseTrue')){
+    function responseTrue($message){
+        return responseData('message',$message,200)->send() && exit(1);;
+    }
+}
+
 
 
 

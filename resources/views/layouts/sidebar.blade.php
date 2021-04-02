@@ -47,10 +47,10 @@
             <i class="fal fa-file-invoice-dollar fs17"></i> Credit
         </a>
 
-        @elsecan('isAccountant')
-        <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('financial')">
-            <i class="fal fa-coins fs17"></i>  &nbsp;Financial
-        </a>
+       <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('financial')">
+            <i class="fal fa-exchange fs17"></i> Daily Transition
+       </a>
+
 
         @elsecan('isKitchenStaff')
         <a href="{{route('kitchen_items')}}" class="a-clear a-sidebar @yield('kitchen')">
