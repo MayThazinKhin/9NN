@@ -105,14 +105,15 @@ export default {
 
                 let data = {};
                 data[item] = selected[input_field];
+                console.log(data);
 
                 let child = this.inputs.find(i => i.name == input.parent_of);
 
                 let self = this;
                 ajaxHelper.ajaxHeaders();
                 $.post(input.child_data_url, JSON.stringify(data))
-                    .done(function(data,status) {
-                        if (status=== 'success')
+                    .done(function(data) {
+                        if (data.success)
                         {
                             Vue.set(child,'data', data[outputs]);
                             self.$forceUpdate();
@@ -126,15 +127,15 @@ export default {
             let self = this;
             ajaxHelper.ajaxHeaders();
             console.log(this.form)
-            // $.post(this.url, JSON.stringify(this.form))
-            //     .done(function(data) {
-            //         if (data.success) {
-            //             location.reload();
-            //         }
-            //     })
-            //     .fail(function(xhr, status, error) {
-            //         self.errors = JSON.parse(xhr.responseText).errors;
-            //     });
+            $.post(this.url, JSON.stringify(this.form))
+                .done(function(data) {
+                    if (data.success) {
+                        location.reload();
+                    }
+                })
+                .fail(function(xhr, status, error) {
+                    self.errors = JSON.parse(xhr.responseText).errors;
+                });
         },
 
         disableFeeFor9N(value){

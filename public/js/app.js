@@ -2013,13 +2013,14 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         });
         var data = {};
         data[item] = selected[input_field];
+        console.log(data);
         var child = this.inputs.find(function (i) {
           return i.name == input.parent_of;
         });
         var self = this;
         _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
-        $.post(input.child_data_url, JSON.stringify(data)).done(function (data, status) {
-          if (status === 'success') {
+        $.post(input.child_data_url, JSON.stringify(data)).done(function (data) {
+          if (data.success) {
             Vue.set(child, 'data', data[outputs]);
             self.$forceUpdate();
             self.$nextTick(function () {
@@ -2032,15 +2033,14 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     create: function create() {
       var self = this;
       _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
-      console.log(this.form); // $.post(this.url, JSON.stringify(this.form))
-      //     .done(function(data) {
-      //         if (data.success) {
-      //             location.reload();
-      //         }
-      //     })
-      //     .fail(function(xhr, status, error) {
-      //         self.errors = JSON.parse(xhr.responseText).errors;
-      //     });
+      console.log(this.form);
+      $.post(this.url, JSON.stringify(this.form)).done(function (data) {
+        if (data.success) {
+          location.reload();
+        }
+      }).fail(function (xhr, status, error) {
+        self.errors = JSON.parse(xhr.responseText).errors;
+      });
     },
     disableFeeFor9N: function disableFeeFor9N(value) {
       $('#fee').attr('disabled', false);

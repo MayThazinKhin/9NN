@@ -14,9 +14,11 @@ class CustomAdding extends Ledgering
     public function run(){
         //$data = $this->setData($this->data->value,$this->data->code);
         $data = [
-            'value' => $this->data->value,
-            'account_id'=> $this->data->title
+            'value' => $this->data['value'],
+            'account_id'=> $this->data['title']
         ];
+
+
         $this->create($data);
     }
 

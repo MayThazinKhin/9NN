@@ -28,12 +28,17 @@ class AccountController extends BasicController
 
     public function title(Request $request){
         $titles =  (new Accounting())->secondary($request->type);
-        responseData('titles',$titles,200);
+        return response()->json([
+            'success' => true,
+            'titles' => $titles
+        ]);
     }
 
     public function create(Request $request){
         (new CustomAdding($request->all()))->run();
-        responseTrue('successfully');
+        return response()->json([
+                'success' => true
+            ]);
     }
 
     public function edit(Request $request,Ledger $ledger){

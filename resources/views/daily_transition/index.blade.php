@@ -78,6 +78,6 @@
         $inputs = array($input1,$input2,$input3);
     @endphp
 
-    <add-modal title="Add Daily Transition" :inputs="{{json_encode($inputs)}}" url="/"></add-modal>
+    <add-modal title="Add Daily Transition" :inputs="{{json_encode($inputs)}}" url="/ledger_create"></add-modal>
     <edit-modal title="Edit Daily Transition" :inputs="{{json_encode($inputs)}}" url="/"></edit-modal>
 @endsection
