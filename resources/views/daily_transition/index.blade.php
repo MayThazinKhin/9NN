@@ -26,29 +26,28 @@
                     </tr>
                     </thead>
                     <tbody>
-
-
+                    @foreach($ledgers as $i=>$ledger)
                         <tr>
                             <th scope="row" class="padding-table-row">
                                 <span class="text-td font-weight-normal">
-                                    1
+                                     {{ $ledgers->perPage()*($ledgers->currentPage()-1)+ (++$i) }}
                                 </span>
                             </th>
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    tax
+                                    {{$ledger->title}}
                                 </div>
                             </td>
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    income
+                                    {{$ledger->type}}
                                 </div>
                             </td>
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    20000
+                                    {{$ledger->value}}
                                 </div>
                             </td>
 
@@ -60,14 +59,14 @@
                                 </button>
                             </td>
                         </tr>
-
+                    @endforeach
                     </tbody>
 
                 </table>
             </div>
-{{--            <nav aria-label="Page navigation example">--}}
-{{--                {{$items->links()}}--}}
-{{--            </nav>--}}
+            <nav aria-label="Page navigation example">
+                {{$ledgers->links()}}
+            </nav>
         </form>
     </div>
     @php

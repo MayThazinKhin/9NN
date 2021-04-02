@@ -15,7 +15,7 @@ class AccountController extends Controller
 {
 
     public function run(){
-        $data = Ledger::orderBy('date', 'desc')->paginate(20);
-        return $data;
+        $ledgers = Ledger::orderBy('date', 'desc')->paginate(20);
+        return $ledgers;
     }
 }

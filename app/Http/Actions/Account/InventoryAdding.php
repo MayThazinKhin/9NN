@@ -6,15 +6,15 @@ namespace App\Http\Actions\Account;
 
 use App\Models\Inventory;
 
-class InventoryAdding extends Ledgering
+class InventoryAdding extends Ledgering implements AccountValue
 {
     private $inventory;
     private $inventoryId;
-    public function __construct($inventoryID){
-        $this->inventoryId = $inventoryID;
+    public function __construct($inventory){
         parent::__construct();
-        $this->inventory = Inventory::where('id',$this->inventoryId)->first();
-        $type = $this->setType($inventoryID,'inventory');
+        $this->inventoryId = $inventory->id;
+        $this->inventory = $inventory;
+        $type = $this->setType($this->inventoryId,'inventory');
         $this->ledger = array_merge($this->ledger,$type);
     }
 

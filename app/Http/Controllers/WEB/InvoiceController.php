@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Actions\Account\SessionAdding;
 use App\Http\Controllers\Controller;
-
 use App\Http\Services\Period\PeriodFacade;
 use App\Http\Services\Session\SessionFacade;
 use App\Models\Member;
@@ -24,7 +24,8 @@ class InvoiceController extends Controller
     }
 
     public function update(Request $request){
-        SessionFacade::checkout($request->all());
+        $session =  SessionFacade::checkout($request->all());
+        (new SessionAdding($session))->run();
         return response()->json(array('is_success' => true) , 200);
     }
 
@@ -36,7 +37,6 @@ class InvoiceController extends Controller
 
     public function payCredit(Request $request){
         //SessionFacade::pay($request->all());
-        return $request->all();
         $member = Member::where('id',$request['member_id'])->first();
         $member->credit -= $request['paid_credit'];
         $member->update();

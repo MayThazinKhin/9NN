@@ -1,24 +1,23 @@
 <?php
 
-
+//used in App\Http\Actions\Session\SessionCheckout;
 namespace App\Http\Actions\Account;
 
 use App\Http\Services\Period\PeriodFacade;
 use App\Http\Services\Session\SessionFacade;
 
-class SessionAdding extends Ledgering
+class SessionAdding extends Ledgering implements AccountValue
 {
     private $sessionId;
     private $sessionPeriods;
     private $marker ;
-    public function __construct($sessionID){
+    public function __construct($session){
         parent::__construct();
-        $this->sessionId = $sessionID;
-        $this->sessionPeriods =  PeriodFacade::getPeriodsBySessionID($sessionID);
+        $this->sessionId = $session->id;
+        $this->sessionPeriods =  PeriodFacade::getPeriodsBySessionID($this->sessionId);
         $this->marker = SessionFacade::getMarker($this->sessionId);
         $type = $this->setType($this->sessionId,'session');
         $this->ledger = array_merge($this->ledger,$type);
-
     }
 
     public function run(){
@@ -58,7 +57,7 @@ class SessionAdding extends Ledgering
     }
 
     protected function addMarkerFeeValue(){
-        $marker_fee_value = $this->marker->fee_paid;
+        $marker_fee_value = $this->marker->fee_paid * $this->sessionPeriods->total_min ;
         $data = $this->setData($marker_fee_value,1107);
         $this->create($data);
     }

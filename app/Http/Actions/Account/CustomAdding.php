@@ -3,7 +3,7 @@
 
 namespace App\Http\Actions\Account;
 
-class CustomAdding extends Ledgering
+class CustomAdding extends Ledgering implements AccountValue
 {
     private $data;
     public function __construct($data){

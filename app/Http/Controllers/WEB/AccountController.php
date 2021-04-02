@@ -4,21 +4,23 @@ namespace App\Http\Controllers\WEB;
 
 use App\Http\Actions\Account\Accounting;
 use App\Http\Actions\Account\CustomAdding;
+use App\Models\Account;
 use App\Models\Ledger;
 use Illuminate\Http\Request;
 
 class AccountController extends BasicController
 {
-    private $ledgers;
+    private $ledger;
     public function __construct()
     {
-        $ledgers = Ledger::class;
-         parent::__construct( $ledgers,'ledger','ledger');
+        $this->ledger = Ledger::class;
+         parent::__construct( $this->ledger,'ledger','ledger');
     }
 
     public function index(){
         $types =  (new Accounting())->primary();
-        return view('daily_transition.index',compact('types'));
+        $ledgers = $this->ledger::orderBy('date', 'desc')->paginate(20);
+        return view('daily_transition.index',compact('types','ledgers'));
     }
 
     public function type(){
@@ -49,8 +51,5 @@ class AccountController extends BasicController
       return  parent::destroyData($ledger);
     }
 
-    public function all(){
-        $data = Ledger::orderBy('date', 'desc')->paginate(20);
-        return $data;
-    }
+
 }

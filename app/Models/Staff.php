@@ -10,12 +10,13 @@ class Staff extends Authenticatable implements JWTSubject
 {
     use HasFactory;
     protected $fillable = ['name','password','role_id','fee','fee_paid'];
-    protected $appends = ['role'];
+    protected $appends = ['role','monthly_fee'];
     protected $hidden = ['password'];
 
     public function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
+
 
     public function role()
     {
@@ -25,6 +26,11 @@ class Staff extends Authenticatable implements JWTSubject
     public function getRoleAttribute()
     {
         return $this->role()->where('id',$this->role_id)->pluck('name')->first();
+    }
+
+    public function getMonthlyFeeAttribute()
+    {
+
     }
 
     public function getJWTIdentifier()

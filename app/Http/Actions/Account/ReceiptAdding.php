@@ -5,14 +5,14 @@ namespace App\Http\Actions\Account;
 
 use App\Models\Receipt;
 
-class ReceiptAdding extends Ledgering
+class ReceiptAdding extends Ledgering implements AccountValue
 {
     private $receiptId;
     private $receipt;
-    public function __construct($receiptID){
+    public function __construct($receipt){
         parent::__construct();
-        $this->receiptId = $receiptID;
-        $this->receipt = Receipt::where('id',$this->receiptId)->first();
+        $this->receiptId = $receipt->id;
+        $this->receipt = $receipt;
         $type = $this->setType($this->receiptId,'receipt');
         $this->ledger = array_merge($this->ledger,$type);
     }
@@ -34,9 +34,4 @@ class ReceiptAdding extends Ledgering
             $this->create($data);
         }
     }
-
-
-
-
-
 }
