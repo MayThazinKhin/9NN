@@ -39,4 +39,9 @@ class LoginController extends Controller
        $table_id =  Table::getCurrentTableID($marker_id);
        return ($table_id) ?  SessionFacade::getCurrentSessionID($table_id) : $table_id ;
     }
+
+    protected function getMarkerFee(){
+       $maker =  UserData();
+
+    }
 }

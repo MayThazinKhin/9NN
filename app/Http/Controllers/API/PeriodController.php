@@ -37,4 +37,6 @@ class PeriodController extends Controller
         $periods = PeriodFacade::getPeriodsBySessionID($data['session_id']);
         responseData('periods',$periods,200);
     }
+
+
 }
