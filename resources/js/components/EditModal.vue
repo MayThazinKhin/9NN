@@ -146,19 +146,19 @@ export default {
 
         },
         disableFeeFor9N(){
-            let role = this.inputs.find(i => i.name ==  'role_id');
-            // console.log(this.form[role.name]);
-
-            if(this.form[role.name] == 3 )
-            {
-                $('#fee').attr('disabled',false);
-                console.log('if')
-            }
-            else
-            {
-                $('#fee').attr('disabled',true);
-                console.log('else');
-            }
+            // let role = this.inputs.find(i => i.name ==  'role_id');
+            // // console.log(this.form[role.name]);
+            //
+            // if(this.form[role.name] == 3 )
+            // {
+            //     $('#fee').attr('disabled',false);
+            //     console.log('if')
+            // }
+            // else
+            // {
+            //     $('#fee').attr('disabled',true);
+            //     console.log('else');
+            // }
         }
     },
 

@@ -2278,18 +2278,19 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       });
       return this.form[role.name] != 3;
     },
-    disableFeeFor9N: function disableFeeFor9N() {
-      var role = this.inputs.find(function (i) {
-        return i.name == 'role_id';
-      }); // console.log(this.form[role.name]);
-
-      if (this.form[role.name] == 3) {
-        $('#fee').attr('disabled', false);
-        console.log('if');
-      } else {
-        $('#fee').attr('disabled', true);
-        console.log('else');
-      }
+    disableFeeFor9N: function disableFeeFor9N() {// let role = this.inputs.find(i => i.name ==  'role_id');
+      // // console.log(this.form[role.name]);
+      //
+      // if(this.form[role.name] == 3 )
+      // {
+      //     $('#fee').attr('disabled',false);
+      //     console.log('if')
+      // }
+      // else
+      // {
+      //     $('#fee').attr('disabled',true);
+      //     console.log('else');
+      // }
     }
   },
   created: function created() {
