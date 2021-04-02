@@ -11,7 +11,7 @@ class CreateLedgersTable extends Migration
         Schema::create('ledgers', function (Blueprint $table) {
             $table->id();
             $table->double('value');
-            $table->dateTime('date');
+            $table->date('date');
             $table->foreignId('account_id')->constrained()->onDelete('cascade');
             $table->nullableMorphs('ledgerable');
             $table->timestamps();

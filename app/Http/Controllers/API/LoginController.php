@@ -28,6 +28,7 @@ class LoginController extends Controller
         $auth_token->type = 'Bearer';
         $auth_token->expires_in = null;
         $auth_token->session_id = $this->getCurrentSessionID();
+        $auth_token->fee_paid =  $this->getMarkerFee();
         return $auth_token;
         //auth('api')->tokenById($user_id);
     }
@@ -41,7 +42,7 @@ class LoginController extends Controller
     }
 
     protected function getMarkerFee(){
-       $maker =  UserData();
-
+        $marker = UserData();
+        return $marker->fee_paid;
     }
 }

@@ -57,5 +57,9 @@ class AccountController extends BasicController
       return  parent::destroyData($ledger);
     }
 
+    public function monthly_filter(Request $request){
+
+    }
+
 
 }
