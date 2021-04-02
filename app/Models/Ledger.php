@@ -19,13 +19,13 @@ class Ledger extends Model
     }
 
     public function getTitleAttribute(){
-        return $this->account()->where('id',$this->account_id)->pluck('name')->first();
+        return $this->account()->where('id',$this->account_id)->pluck('id')->first();
     }
 
     public function getTypeAttribute(){
         $code = $this->account()->where('id',$this->account_id)->pluck('code')->first();
         $type_id = intval(substr($code, 0, 1));
-        return Account::where('code',$type_id)->pluck('name')->first();
+        return Account::where('code',$type_id)->pluck('id')->first();
     }
 
 

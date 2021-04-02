@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content_title', 'Daily Transition')
+@section('content_title', 'Monthly Transition')
 @section('daily_transition','active-link')
 @section('add','#add')
 {{--@section('route','/items/search')--}}
@@ -9,7 +9,7 @@
 @include('layouts.delete')
 
 @section('content_header')
-    @include('layouts.content_header')
+    @include('layouts.content_header_with_datepicker')
 @endsection
 @section('content')
     <div>
@@ -69,14 +69,14 @@
             </nav>
         </form>
     </div>
-    @php
-        $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "value"];
-        $input2 = (object) ["type" => "select", "label" => "Type", "name" => "type", "data" => $types, "parent_of" => "title",
-         "child_data_url" => "/account_title", "input_field_for_child_data"=> "code"];
-        $input3 = (object) ["type" => "select", "label" => "Title", "name" => "title", "child_of" => "type"];
-        $inputs = array($input1,$input2,$input3);
-    @endphp
+{{--    @php--}}
+{{--        $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "value"];--}}
+{{--        $input2 = (object) ["type" => "select", "label" => "Type", "name" => "type", "data" => $types, "parent_of" => "title",--}}
+{{--         "child_data_url" => "/account_title", "input_field_for_child_data"=> "code"];--}}
+{{--        $input3 = (object) ["type" => "select", "label" => "Title", "name" => "title", "child_of" => "type"];--}}
+{{--        $inputs = array($input1,$input2,$input3);--}}
+{{--    @endphp--}}
 
-    <add-modal title="Add Daily Transition" :inputs="{{json_encode($inputs)}}" url="/ledger_create"></add-modal>
-    <edit-modal title="Edit Daily Transition" :inputs="{{json_encode($inputs)}}" url="/"></edit-modal>
+{{--    <add-modal title="Add Daily Transition" :inputs="{{json_encode($inputs)}}" url="/ledger_create"></add-modal>--}}
+{{--    <edit-modal title="Edit Daily Transition" :inputs="{{json_encode($inputs)}}" url="/"></edit-modal>--}}
 @endsection

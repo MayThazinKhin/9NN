@@ -40,6 +40,6 @@ class InvoiceController extends Controller
         $member = Member::where('id',$request['member_id'])->first();
         $member->credit -= $request['paid_credit'];
         $member->update();
-        return response()->json(array('is_success' => true) , 200);
+        return redirect()->back();
     }
 }

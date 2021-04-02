@@ -28,6 +28,9 @@
         <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('financial')">
             <i class="fal fa-exchange fs17"></i> Daily Transition
         </a>
+        <a href="{{route('monthly_financial.index')}}" class="a-clear a-sidebar @yield('financial')">
+            <i class="fal fa-exchange fs17"></i> Monthly Transition
+        </a>
 
 
 

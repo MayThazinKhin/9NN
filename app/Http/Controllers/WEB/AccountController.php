@@ -23,6 +23,12 @@ class AccountController extends BasicController
         return view('daily_transition.index',compact('types','ledgers'));
     }
 
+    public function monthly(){
+        $types =  (new Accounting())->primary();
+        $ledgers = $this->ledger::orderBy('date', 'desc')->paginate(20);
+        return view('monthly_transition.index',compact('types','ledgers'));
+    }
+
     public function type(){
         $types =  (new Accounting())->primary();
         responseData('types',$types,200);

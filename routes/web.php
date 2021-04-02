@@ -21,6 +21,7 @@ Route::get('login',[LoginController::class,'index']);
 Route::post('login',[LoginController::class,'login'])->name('staff_login');
 Route::get('logout',[LoginController::class,'logout'])->name('staff_logout');
 
+
 Route::middleware('can:isAdmin')->group(function () {
     //staffs
     Route::resource('staffs',StaffController::class);
@@ -52,6 +53,7 @@ Route::middleware('can:isAdmin')->group(function () {
 
     //Account
     Route::get('/financial',[AccountController::class,'index'])->name('financial.index');
+    Route::get('/monthly_financial',[AccountController::class,'monthly'])->name('monthly_financial.index');
     Route::get('account_type',[AccountController::class,'type'])->name('account_type');
     Route::post('account_title',[AccountController::class,'title'])->name('account_title');
     Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');

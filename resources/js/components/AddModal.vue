@@ -105,8 +105,6 @@ export default {
 
                 let data = {};
                 data[item] = selected[input_field];
-                console.log(data);
-
                 let child = this.inputs.find(i => i.name == input.parent_of);
 
                 let self = this;
