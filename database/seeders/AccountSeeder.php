@@ -63,11 +63,6 @@ class AccountSeeder extends Seeder
             'name' => 'အခြားဝင်ငွေ',
             'code' => 1205
         ]);
-        Account::create([
-            'name' => 'others',
-            'code' => 1206
-        ]);
-
 
         Account::create([
             'name' => 'expense',

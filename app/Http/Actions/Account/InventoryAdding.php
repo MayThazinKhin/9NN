@@ -1,10 +1,7 @@
 <?php
 
-
+//use in App\Http\Controllers\WEB\InventoryController@store
 namespace App\Http\Actions\Account;
-
-
-use App\Models\Inventory;
 
 class InventoryAdding extends Ledgering implements AccountValue
 {

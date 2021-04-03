@@ -5,8 +5,6 @@ namespace App\Http\Actions\Account;
 
 use App\Http\Services\Period\PeriodFacade;
 use App\Http\Services\Session\SessionFacade;
-use App\Models\Account;
-use App\Models\Ledger;
 
 class SessionAdding extends Ledgering implements AccountValue
 {
@@ -29,7 +27,8 @@ class SessionAdding extends Ledgering implements AccountValue
         $this->addMarkerValue();
         $this->addFoodValue();
         $this->addTaxValue();
-        $this->addMarkerFeeValue();
+        (new StaffAdding($this->session->marker_id))
+            ->addMarkerFeeValue($this->marker->fee_paid ,$this->sessionPeriods->total_min);
     }
 
     protected function addTableValue(){
@@ -60,16 +59,5 @@ class SessionAdding extends Ledgering implements AccountValue
         }
     }
 
-    protected function addMarkerFeeValue(){
-        $marker_fee_value = $this->marker->fee_paid * $this->sessionPeriods->total_min ;
-        $account_id = Account::where('code',1107)->pluck('id')->first();
-        $data = [
-            'date' =>now()->format('Y-m-d'),
-            'value' => $marker_fee_value,
-            'account_id'=> $account_id,
-            'ledgerable_id' => $this->session->marker_id,
-            'ledgerable_type' =>'staff'
-        ];
-        Ledger::create($data);
-    }
+
 }

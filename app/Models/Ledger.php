@@ -8,7 +8,7 @@ class Ledger extends Model
 {
     protected $fillable = ['value','date','account_id','ledgerable_id','ledgerable_type'];
 
-    protected $appends = ['title','type'];
+    protected $appends = ['title','type','title_name','type_name'];
 
     public function ledgerable(){
         return $this->morphTo();

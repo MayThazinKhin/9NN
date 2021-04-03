@@ -18,7 +18,7 @@
                         <th class="table-header font-weight-normal">Id</th>
                         <th class="table-header font-weight-normal">Name</th>
                         <th class="table-header font-weight-normal">Role</th>
-                        <th class="table-header font-weight-normal">Monthly Pay</th>
+                        <th class="table-header font-weight-normal">Monthly Fee</th>
                         <th class="table-header font-weight-normal"> Actions</th>
 {{--                        <th class="table-header font-weight-normal"> &nbsp;</th>--}}
                     </tr>
@@ -45,7 +45,7 @@
 
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$staff->role}}
+                                {{$staff->monthly_fee}}
                             </div>
                         </td>
 

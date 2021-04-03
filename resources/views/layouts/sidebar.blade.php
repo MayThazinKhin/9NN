@@ -25,10 +25,10 @@
             <i class="fal fa-inventory fs17"></i> Inventory
         </a>
 
-        <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('financial')">
+        <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('daily_transition')">
             <i class="fal fa-exchange fs17"></i> Daily Transition
         </a>
-        <a href="{{route('monthly_financial.index')}}" class="a-clear a-sidebar @yield('financial')">
+        <a href="{{route('monthly_financial.index')}}" class="a-clear a-sidebar @yield('monthly_transition')">
             <i class="fal fa-exchange fs17"></i> Monthly Transition
         </a>
 

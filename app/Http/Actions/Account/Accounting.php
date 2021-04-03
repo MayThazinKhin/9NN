@@ -5,6 +5,7 @@ namespace App\Http\Actions\Account;
 
 use App\Models\Account;
 use App\Models\Ledger;
+use Carbon\Carbon;
 
 class Accounting
 {
@@ -21,25 +22,19 @@ class Accounting
         return Account::where('code','LIKE', $parent_account_code.'2'.'%')->whereRaw('LENGTH(code) =' . $code_length)->get();
     }
 
-    public function getAccountValue($accounts){
-        $a = [];
-        foreach ($accounts as $acc){
-            $account = new \stdClass();
-            $account->id = $acc->id;
-            $account->name = $acc->name;
-            $account->code = $acc->code;
-            $a [] = $account;
+
+    public function getAccountValueByDate($start_date,$end_date){
+        $start_date = Carbon::parse('2021-04-01');
+        $end_date = Carbon::parse('2021-04-02');
+        $accounts =  Account::whereRaw('LENGTH(code) =' . 4)->select('id','name','code','value')->get();
+        foreach ($accounts as $account){
+            $type_id = intval(substr($account->code, 0, 1));
+            $type =  Account::where('code',$type_id)->select('id','name')->first();
+            $account->type = $type->name;
+            $value = Ledger::where('account_id',$account->id)->whereBetween('date',[$start_date,$end_date])->sum('value');
+            $account->value = $value;
         }
-        return $a;
-    }
-
-    protected function getAccountValueByAction($account,$action){
-
-        return Ledger::with('account')
-            ->whereHas('account',function($query) use($account,$action){
-                $query->where('code','LIKE', $account->code.'%')
-                    ->where('action',$action);
-            })->sum('value');
+        return $accounts;
     }
 
 }

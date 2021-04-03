@@ -4,8 +4,8 @@ namespace App\Http\Controllers\WEB;
 
 use App\Http\Actions\Account\Accounting;
 use App\Http\Actions\Account\CustomAdding;
-use App\Models\Account;
 use App\Models\Ledger;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AccountController extends BasicController
@@ -24,9 +24,10 @@ class AccountController extends BasicController
     }
 
     public function monthly(){
-        $types =  (new Accounting())->primary();
-        $ledgers = $this->ledger::orderBy('date', 'desc')->paginate(20);
-        return view('monthly_transition.index',compact('types','ledgers'));
+        $start_date =  Carbon::now()->format('Y-01-m');
+        $end_date =  Carbon::now()->format('Y-d-m');
+        $accounts = (new Accounting())->getAccountValueByDate($start_date,$end_date);
+        return view('monthly_transition.index',compact('accounts'));
     }
 
     public function type(){
