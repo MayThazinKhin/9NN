@@ -26,7 +26,6 @@ interface SessionInterface
 
     public function getCreditSessions();
 
-
     public function getSessionCredit($memberID);
 
     public function getTaxValue($sessionId);

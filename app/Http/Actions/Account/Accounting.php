@@ -24,8 +24,6 @@ class Accounting
 
 
     public function getAccountValueByDate($start_date,$end_date){
-        $start_date = Carbon::parse('2021-04-01');
-        $end_date = Carbon::parse('2021-04-02');
         $accounts =  Account::whereRaw('LENGTH(code) =' . 4)->select('id','name','code','value')->get();
         foreach ($accounts as $account){
             $type_id = intval(substr($account->code, 0, 1));
