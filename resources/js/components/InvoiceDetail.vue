@@ -64,7 +64,7 @@
                                     <p class="label-form">Marker Fee</p>
                                 </div>
                                 <div class="col">
-                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ net_value }} </p>
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ marker_fee }} </p>
                                 </div>
                             </div>
                             <div class="row mx-0 mb-3">
@@ -236,7 +236,7 @@ import Vuex, { mapState } from "vuex";
 import { ajaxHelper } from "../helpers/ajax_helper.js";
 Vue.use(Vuex);
 export default {
-    props: ["items","periods","members","id"],
+    props: ["items","periods","members","id","marker_fee"],
     data() {
         return {
             query: '',
@@ -248,7 +248,7 @@ export default {
             paid_value: 0,
             total: this.items.net_total + this.periods.total_value,
             tax: Math.round(((this.items.net_total + this.periods.total_value)*5)/100),
-            net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
+            net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value+ this.marker_fee,
             credit: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
             change: 0,
             credit_error_msg: 'Credit Value is more than Maximum Allowance!',
@@ -324,13 +324,13 @@ export default {
     watch: {
         discount: function()
         {
-            this.net_value = (this.tax+this.total)-this.discount;
+            this.net_value = (this.tax+this.total+this.marker_fee)-this.discount;
         },
         paid_value: function ()
         {
             this.net_value>this.paid_value ? this.credit = this.net_value-this.paid_value : this.credit=0;
             this.net_value<this.paid_value ? this.change = this.paid_value-this.net_value : this.change=0;
-            this.net_value = (this.tax+this.total)-this.discount;
+            this.net_value = (this.tax+this.total+this.marker_fee)-this.discount;
             // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
         },
         net_value: function ()
