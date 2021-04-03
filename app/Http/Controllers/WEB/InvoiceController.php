@@ -29,12 +29,16 @@ class InvoiceController extends Controller
     }
 
     public function getCredits(){
-        $invoices  = SessionFacade::credits();
-        return view('credit.index',compact('invoices'));
+        //$invoices  = SessionFacade::credits();
+        $members = Member::where('credit','<>',0)->get();
+        return view('credit.index',compact('members'));
     }
 
     public function payCredit(Request $request){
-        SessionFacade::pay($request->all());
+        //SessionFacade::pay($request->all());
+        $member = Member::where('id',$request['member_id'])->first();
+        $member->credit -= $request['paid_credit'];
+        $member->update();
         return response()->json(array('is_success' => true) , 200);
     }
 }

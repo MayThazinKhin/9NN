@@ -12,6 +12,7 @@ Vue.component('edit-modal', require('./components/EditModal.vue').default);
 Vue.component('edit-button', require('./components/EditButton.vue').default);
 Vue.component('edit-password', require('./components/EditPassword.vue').default);
 Vue.component('invoice-detail', require('./components/InvoiceDetail.vue').default);
+Vue.component('shop-invoice-detail', require('./components/ShopInvoiceDetail.vue').default);
 Vue.component('edit-password-button', require('./components/EditPasswordButton.vue').default);
 
 

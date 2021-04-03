@@ -25,8 +25,10 @@ class AuthServiceProvider extends ServiceProvider
 //        });
 
         Gate::define('isKitchenStaff',function ($user){
-            return $user->role == 'kitchen_staff' ;
+            return (($user->role == 'kitchen_staff') ||  ($user->role == 'bar_staff') ) ;
         });
+
+
 
     }
 }

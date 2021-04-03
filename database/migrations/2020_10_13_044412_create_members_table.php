@@ -21,6 +21,8 @@ class CreateMembersTable extends Migration
             $table->double('allowance')->default(0.0);
             $table->timestamps();
         });
+
+
     }
 
     /**

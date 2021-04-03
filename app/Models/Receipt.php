@@ -8,11 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Receipt extends Model
 {
     use HasFactory;
-    protected $fillable = ['total','marker_id','admin_id'];
+    protected $fillable = [
+        'total','net_value','paid_value',
+        'tax','change', 'discount','credit',
+        'is_tax','is_done',
+        'marker_id','cashier_id','member_id'];
 
-    public function items()
-    {
-       return $this->belongsToMany(Item::class)
-            ->using(ItemReceipt::class);
+    public function items(){
+        return $this->belongsToMany(Item::class,'item_receipt')
+            ->withPivot('count');
     }
 }

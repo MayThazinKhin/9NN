@@ -110,9 +110,8 @@
                                 </div>
                             </div>
                         </div>
+                        <span v-if="is_credit_error" class="text-danger">{{credit_error_msg}}</span>
                     </div>
-                    <span v-if="is_credit_error" class="text-danger">{{credit_error_msg}}</span>
-
                     <div class="row mx-0">
                         <div class="col bg-white position-relative" style="min-height: 50vh;padding-bottom: 52px">
                             <table class="table table-borderless">
@@ -167,51 +166,51 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4 bg-white position-relative" style="min-height: 50vh;padding-bottom: 52px">
-                    <table class="table table-borderless" id="myTable">
-                        <thead>
-                        <tr class="" style="border-bottom: 1px solid #dee2e6">
-                            <th class="table-header fs15" style="color:#3b3e41;">Start Time</th>
-                            <th class="table-header fs15" style="color:#3b3e41;">End Time</th>
-                            <th class="table-header fs15" style="color:#3b3e41;">Min</th>
-                            <th class="table-header fs15" style="color:#3b3e41;">Total</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+<!--                <div class="col-4 bg-white position-relative" style="min-height: 50vh;padding-bottom: 52px">-->
+<!--                    <table class="table table-borderless" id="myTable">-->
+<!--                        <thead>-->
+<!--                        <tr class="" style="border-bottom: 1px solid #dee2e6">-->
+<!--                            <th class="table-header fs15" style="color:#3b3e41;">Start Time</th>-->
+<!--                            <th class="table-header fs15" style="color:#3b3e41;">End Time</th>-->
+<!--                            <th class="table-header fs15" style="color:#3b3e41;">Min</th>-->
+<!--                            <th class="table-header fs15" style="color:#3b3e41;">Total</th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
 
-                        <tr v-for="(period,p) in periods.items" :key="p">
-                            <td class="padding-table-row" style="padding-top: 8px">
-                                <div class="text-td" style="font-family:'Roboto', sans-serif">
-                                    {{period.start_time}}
-                                </div>
-                            </td>
-                            <td class="padding-table-row">
-                                <div class="text-td text-capitalize" style="font-family:'Roboto', sans-serif">
-                                    {{period.end_time}}
-                                </div>
-                            </td>
-                            <td class="padding-table-row">
-                                <div class="text-td text-capitalize" style="font-family:'Roboto', sans-serif">
-                                    {{period.total_min}}
-                                </div>
-                            </td>
-                            <td class="padding-table-row">
-                                <div class="text-td" style="font-family:'Roboto', sans-serif">
-                                    {{period.value}}
-                                </div>
-                            </td>
+<!--                        <tr v-for="(period,p) in periods.items" :key="p">-->
+<!--                            <td class="padding-table-row" style="padding-top: 8px">-->
+<!--                                <div class="text-td" style="font-family:'Roboto', sans-serif">-->
+<!--                                    {{period.start_time}}-->
+<!--                                </div>-->
+<!--                            </td>-->
+<!--                            <td class="padding-table-row">-->
+<!--                                <div class="text-td text-capitalize" style="font-family:'Roboto', sans-serif">-->
+<!--                                    {{period.end_time}}-->
+<!--                                </div>-->
+<!--                            </td>-->
+<!--                            <td class="padding-table-row">-->
+<!--                                <div class="text-td text-capitalize" style="font-family:'Roboto', sans-serif">-->
+<!--                                    {{period.total_min}}-->
+<!--                                </div>-->
+<!--                            </td>-->
+<!--                            <td class="padding-table-row">-->
+<!--                                <div class="text-td" style="font-family:'Roboto', sans-serif">-->
+<!--                                    {{period.value}}-->
+<!--                                </div>-->
+<!--                            </td>-->
 
-                        </tr>
-                        </tbody>
-                    </table>
-                    <div style="position: absolute;bottom: 8px;right: 0;width: 100%">
-                        <div class="d-flex justify-content-end" style="border-top: 1px solid #e1e5e8;padding-top: 22px;margin-left: 40px;margin-right: 40px;">
-                            <p style="font-size: 14px!important;font-family: 'Roboto', sans-serif;color: #666;" class="d-inline-block">Total</p>
-                            <p style="font-family: 'Roboto', sans-serif;font-size: 14px;padding-left: 32px;padding-right: 12px;color: #666"
-                               class="d-inline-block">{{periods.total_value}}</p>
-                        </div>
-                    </div>
-                </div>
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                    <div style="position: absolute;bottom: 8px;right: 0;width: 100%">-->
+<!--                        <div class="d-flex justify-content-end" style="border-top: 1px solid #e1e5e8;padding-top: 22px;margin-left: 40px;margin-right: 40px;">-->
+<!--                            <p style="font-size: 14px!important;font-family: 'Roboto', sans-serif;color: #666;" class="d-inline-block">Total</p>-->
+<!--                            <p style="font-family: 'Roboto', sans-serif;font-size: 14px;padding-left: 32px;padding-right: 12px;color: #666"-->
+<!--                               class="d-inline-block">{{periods.total_value}}</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
 
 
@@ -223,7 +222,7 @@ import Vuex, { mapState } from "vuex";
 import { ajaxHelper } from "../helpers/ajax_helper.js";
 Vue.use(Vuex);
 export default {
-    props: ["items","periods","members","id"],
+    props: ["items","members","id"],
     data() {
         return {
             query: '',
@@ -233,10 +232,10 @@ export default {
             discount: 0,
             is_tax: false,
             paid_value: 0,
-            total: this.items.net_total + this.periods.total_value,
-            tax: Math.round(((this.items.net_total + this.periods.total_value)*5)/100),
-            net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
-            credit: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
+            total: this.items.net_total,
+            tax: Math.round(((this.items.net_total)*5)/100),
+            net_value: Math.round(((this.items.net_total)*5)/100) + this.items.net_total,
+            credit: Math.round(((this.items.net_total)*5)/100) + this.items.net_total,
             change: 0,
             credit_error_msg: 'Credit Value is more than Maximum Allowance!',
             is_credit_error: false
@@ -245,7 +244,11 @@ export default {
     },
 
     methods: {
-
+        // isSubmitDisable()
+        // {
+        //     if(this.is_credit_error === true) return true;
+        //     if(this.is_credit_error === false) return false;
+        // },
         getMembers(query)
         {
             if(query === ''){
@@ -266,7 +269,6 @@ export default {
             this.member_id = member.id;
             this.member = member;
             if(this.credit > this.member.allowance) this.is_credit_error = true;
-
         },
         submit()
         {
@@ -283,7 +285,7 @@ export default {
                 'change': this.change,
                 'cashier_id': 1
             }
-            fetch('/invoice_update/', {
+            fetch('/receipt_update/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -294,7 +296,7 @@ export default {
                 .then(response => response.json())
                 .then(data => {
                     if(data.is_success){
-                        window.location.replace('/invoices');
+                        window.location.replace('/receipts');
                     }else{
                         window.location.reload();
                     }
@@ -316,7 +318,6 @@ export default {
             this.net_value>this.paid_value ? this.credit = this.net_value-this.paid_value : this.credit=0;
             this.net_value<this.paid_value ? this.change = this.paid_value-this.net_value : this.change=0;
             this.net_value = (this.tax+this.total)-this.discount;
-            // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
         },
         net_value: function ()
         {

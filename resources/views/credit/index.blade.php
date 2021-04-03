@@ -7,36 +7,29 @@
             <table class="table table-borderless" id="myTable">
                 <thead>
                 <tr class="" style="border-bottom: 2px solid #dee2e6">
-                    <th class="table-header font-weight-normal">Date</th>
                     <th class="table-header font-weight-normal">Member Name</th>
                     <th class="table-header font-weight-normal">Credit</th>
                     <th class="table-header font-weight-normal"> &nbsp;</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($invoices as $i=>$invoice)
+                @foreach($members as $i=>$member)
                     <tr>
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$invoice->created_at}}
+                                {{$member->member_name}}
                             </div>
                         </td>
 
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$invoice->member_name}}
-                            </div>
-                        </td>
-
-                        <td class="padding-table-row">
-                            <div class="text-td text-capitalize">
-                                {{$invoice->credit}}
+                                {{$member->credit}}
                             </div>
                         </td>
 
                         <td class="padding-table-row w88px">
                             <button type="button" class="btn-clear " title="Edit"  id="edit-button">
-                                <a class="a-clear" href="{{route('invoice.detail',['id' => $invoice->id])}}">
+                                <a class="a-clear" href="">
                                     <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
                                 </a>
                             </button>

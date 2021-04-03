@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CancelItem extends Model
 {
     protected $fillable = ['item_id','session_id','count'];
-    protected $appends = ['item_name'];
+    protected $appends = ['item_name','item_type'];
 
     public function session(){
         return $this->belongsTo(Session::class);
@@ -19,6 +19,10 @@ class CancelItem extends Model
 
     public function getItemNameAttribute(){
         return $this->cancelItem()->where('id',$this->item_id)->pluck('name')->first();
+    }
+
+    public function getItemTypeAttribute(){
+        return $this->cancelItem->category->type->name;
     }
 
 }
