@@ -49,7 +49,8 @@ class AccountController extends BasicController
             ]);
     }
 
-    public function edit(Request $request,Ledger $ledger){
+    public function update(Request $request,Ledger $ledger){
+        dd($request->all());
        return parent::updateData($request,$ledger);
     }
 
@@ -57,8 +58,9 @@ class AccountController extends BasicController
       return  parent::destroyData($ledger);
     }
 
-    public function monthly_filter(Request $request){
-
+    public function monthly_filter(Request $request)
+    {
+        dd($request->all());
     }
 
 

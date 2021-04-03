@@ -5,7 +5,7 @@
     <div>
 
         @yield('select_box')
-        <form action=@yield('route') id="search" method="post" class="d-inline-block mb-0">
+        <form action={{route('monthly_financial.filter')}} id="search" method="post" class="d-inline-block mb-0">
             @csrf
             <label class="">
                 <input type="date" name="start_date" title="Start Date" class="search-box py-1" id="myInput" placeholder="" autocomplete="off">

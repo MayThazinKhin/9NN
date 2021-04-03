@@ -293,9 +293,11 @@ export default {
             })
                 .then(response => response.json())
                 .then(data => {
-                    if(data.is_success){
+                    if(data.is_success)
+                    {
                         window.location.replace('/invoices');
-                    }else{
+                    }
+                    else{
                         window.location.reload();
                     }
                 });
