@@ -2256,10 +2256,13 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var role = this.inputs.find(function (i) {
         return i.name == 'role_id';
       });
-      $('#fee').attr('disabled', false);
 
-      if (this.form[role.name] !== 3) {
-        $('#fee').attr('disabled', true);
+      if (role) {
+        $('#fee').attr('disabled', false);
+
+        if (this.form[role.name] !== 3) {
+          $('#fee').attr('disabled', true);
+        }
       }
     }
   },

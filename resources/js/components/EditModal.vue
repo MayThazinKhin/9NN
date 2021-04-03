@@ -141,12 +141,16 @@ export default {
 
         disableFeeFor9N(){
             let role = this.inputs.find(i => i.name ==  'role_id');
-            $('#fee').attr('disabled',false);
-
-            if(this.form[role.name] !== 3)
+            if(role)
             {
-                $('#fee').attr('disabled',true);
+                $('#fee').attr('disabled',false);
+
+                if(this.form[role.name] !== 3)
+                {
+                    $('#fee').attr('disabled',true);
+                }
             }
+
         }
     },
 
