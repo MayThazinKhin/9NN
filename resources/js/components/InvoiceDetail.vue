@@ -61,6 +61,14 @@
                             </div>
                             <div class="row mx-0 mb-3">
                                 <div class="col-5">
+                                    <p class="label-form">Marker Fee</p>
+                                </div>
+                                <div class="col">
+                                    <p class="label-form" style="color:#6b6e71;">MMKs {{ net_value }} </p>
+                                </div>
+                            </div>
+                            <div class="row mx-0 mb-3">
+                                <div class="col-5">
                                     <p class="label-form">Net Total</p>
                                 </div>
                                 <div class="col">
@@ -209,6 +217,11 @@
                             <p style="font-size: 14px!important;font-family: 'Roboto', sans-serif;color: #666;" class="d-inline-block">Total</p>
                             <p style="font-family: 'Roboto', sans-serif;font-size: 14px;padding-left: 32px;padding-right: 12px;color: #666"
                                class="d-inline-block">{{periods.total_value}}</p>
+                        </div>
+                        <div class="d-flex justify-content-end" style="border-top: 1px solid #e1e5e8;padding-top: 22px;margin-left: 40px;margin-right: 40px;">
+                            <p style="font-size: 14px!important;font-family: 'Roboto', sans-serif;color: #666;" class="d-inline-block">Total Minutes</p>
+                            <p style="font-family: 'Roboto', sans-serif;font-size: 14px;padding-left: 32px;padding-right: 12px;color: #666"
+                               class="d-inline-block">{{periods.total_min}}</p>
                         </div>
                     </div>
                 </div>

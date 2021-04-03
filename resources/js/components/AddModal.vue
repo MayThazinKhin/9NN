@@ -14,7 +14,7 @@
 
                         <div class="mb-4" v-if="input.type == 'text'">
                             <label class="label-form mb-1" style="font-size: 15px!important;">{{ input.label }}</label>
-                            <input :id="input.name" :disabled="isFeeDisable"
+                            <input :id="input.name"
                                    v-model="form[input.name]" type="text" class="input-form" :placeholder="input.label" style="font-size: 14px!important;" autocomplete="off">
                             <span v-if="errors[input.name]" class="text-danger">{{
                                     errors[input.name][0]
@@ -50,7 +50,7 @@
                             <label class="label-form mb-1" style="font-size: 15px!important;color: #1b1e21">{{ input.label }}</label>
                             <select :id="input.label" v-model="form[input.name]" :title="input.label" class="selectpicker d-block" data-width="100%" title="Choice..."
                                     data-style="select-form w-100"
-                                    @change="input.label == 'Role' ? disableFeeFor9N(form[input.name]) : fetchChildData(input)"
+                                    @change="input.label == 'Role' ? disableFeeFor9N() : fetchChildData(input)"
 
                             >
                                 <option v-if="input.data"
@@ -139,44 +139,22 @@ export default {
 
 
 
-        disableFeeFor9N(value){
+        disableFeeFor9N(){
             let role = this.inputs.find(i => i.name ==  'role_id');
-            console.log(this.form[role.name]);
-            // $('#fee').attr('disabled',false);
-            //
-            // if(value !== 3)
-            // {
-            //     $('#fee').attr('disabled',true);
-            // }
+            $('#fee').attr('disabled',false);
+
+            if(this.form[role.name] !== 3)
+            {
+                $('#fee').attr('disabled',true);
+            }
         }
     },
-    computed: {
-        // isFeeDisable()
-        // {
-        //     let role = this.inputs.find(i => i.name ==  'role_id');
-        //     return this.form[role.name] != 3;
-        //     // return false;
-        //     // if(this.form[role.name] != 3) return true;
-        //     // return false;
-        //
-        //     // if(this.form[role.name] != 3) return true;
-        //     // else return false;
-        // },
-    },
-
     created() {
-        for(let i=0; i<this.inputs.length; i++){
+        for(let i=0; i<this.inputs.length; i++)
+        {
             this.form[this.inputs[i].name] = "";
         }
     },
-
-    // watch: {
-    //     forms: function()
-    //     {
-    //         let role = this.inputs.find(i => i.name ==  'role_id');
-    //         if(this.form[role.name] !== 3) return true;
-    //     }
-    // }
 };
 </script>
 

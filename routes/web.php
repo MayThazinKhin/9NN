@@ -54,7 +54,7 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::get('/monthly_financial',[AccountController::class,'monthly'])->name('monthly_financial.index');
     Route::post('/monthly_filter',[AccountController::class,'monthly_filter'])->name('monthly_financial.filter');
     Route::patch('ledger_update/{ledger}',[AccountController::class,'update'])->name('ledgers.update');
-    Route::post('ledger_delete',[AccountController::class,'delete'])->name('ledgers.delete');
+    Route::delete('ledgers/{ledger}',[AccountController::class,'delete'])->name('ledgers.delete');
 
 });
 
@@ -78,8 +78,7 @@ Route::middleware('can:isCashier')->group(function () {
 
 Route::middleware('can:isCashier' || 'can:isAdmin')->group(function () {
     //Account
-    Route::get('account_type',[AccountController::class,'type'])->name('account_type');
-    Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
+
 
 });
 
@@ -103,4 +102,5 @@ Route::middleware('can:isBarStaff')->group(function () {
 
 Route::get('/financial',[AccountController::class,'index'])->name('financial.index');
 Route::post('account_title',[AccountController::class,'title'])->name('account_title');
-
+Route::get('account_type',[AccountController::class,'type'])->name('account_type');
+Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
