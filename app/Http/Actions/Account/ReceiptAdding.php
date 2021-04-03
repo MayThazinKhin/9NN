@@ -1,9 +1,7 @@
 <?php
 
-
+//use in App\Http\Controllers\WEB\ReceiptController@update
 namespace App\Http\Actions\Account;
-
-use App\Models\Receipt;
 
 class ReceiptAdding extends Ledgering implements AccountValue
 {

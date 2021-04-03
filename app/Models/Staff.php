@@ -32,8 +32,8 @@ class Staff extends Authenticatable implements JWTSubject
     }
 
     public function getMonthlyFeeAttribute(){
-        $date =  Carbon::now()->format('01-m-Y');
-        return $this->ledgers()->sum('value');
+        $date =  Carbon::now()->format('Y-01-m');
+        return $this->ledgers()->where('date','>=',$date)->sum('value');
     }
 
     public function getJWTIdentifier()

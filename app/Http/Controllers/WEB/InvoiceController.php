@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Actions\Account\CreditAdding;
 use App\Http\Actions\Account\SessionAdding;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Period\PeriodFacade;
@@ -30,16 +31,17 @@ class InvoiceController extends Controller
     }
 
     public function getCredits(){
-        //$invoices  = SessionFacade::credits();
+        //$invoices  = SessionFacade::credits(); for each invoice credit
         $members = Member::where('credit','<>',0)->get();
         return view('credit.index',compact('members'));
     }
 
     public function payCredit(Request $request){
-        //SessionFacade::pay($request->all());
+        //SessionFacade::pay($request->all());  for each invoice credit pay
         $member = Member::where('id',$request['member_id'])->first();
         $member->credit -= $request['paid_credit'];
         $member->update();
+        (new CreditAdding())->run($request['paid_credit']);
         return redirect()->back();
     }
 }

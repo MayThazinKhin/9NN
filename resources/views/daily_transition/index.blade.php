@@ -35,13 +35,13 @@
                             </th>
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    {{$ledger->title}}
+                                    {{$ledger->title_name}}
                                 </div>
                             </td>
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    {{$ledger->type}}
+                                    {{$ledger->type_name}}
                                 </div>
                             </td>
 
