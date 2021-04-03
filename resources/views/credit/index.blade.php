@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content_title', 'Invoices')
+@section('content_title', 'Credits')
 @section('invoice','active-link')
 @section('content')
     <div>
@@ -17,7 +17,7 @@
                     <tr>
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                {{$member->member_name}}
+                                {{$member->name}}
                             </div>
                         </td>
 
@@ -28,10 +28,9 @@
                         </td>
 
                         <td class="padding-table-row w88px">
-                            <button type="button" class="btn-clear " title="Edit"  id="edit-button">
-                                <a class="a-clear" href="">
+                            <button type="button" class="btn-clear " title="Edit" onclick="setMemberID('{{$member->id}}')"  id="edit-button"
+                                     data-toggle="modal" data-target="#credit_modal">
                                     <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
-                                </a>
                             </button>
                         </td>
                     </tr>
@@ -42,5 +41,7 @@
         </form>
     </div>
 
+    @include('credit.pay_credit')
 @endsection
+
 

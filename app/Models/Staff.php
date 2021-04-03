@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -9,8 +10,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 class Staff extends Authenticatable implements JWTSubject
 {
     use HasFactory;
-    protected $fillable = ['name','password','role_id','fee'];
-    protected $appends = ['role'];
+    protected $fillable = ['name','password','role_id','fee','fee_paid'];
+    protected $appends = ['role','monthly_fee'];
     protected $hidden = ['password'];
 
     public function setPasswordAttribute($value){
@@ -22,9 +23,17 @@ class Staff extends Authenticatable implements JWTSubject
         return $this->belongsTo(Role::class);
     }
 
-    public function getRoleAttribute()
-    {
+    public function ledgers(){
+        return $this->morphMany(Ledger::class,'ledgerable');
+    }
+
+    public function getRoleAttribute(){
         return $this->role()->where('id',$this->role_id)->pluck('name')->first();
+    }
+
+    public function getMonthlyFeeAttribute(){
+        $date =  Carbon::now()->format('Y-01-m');
+        return $this->ledgers()->where('date','>=',$date)->sum('value');
     }
 
     public function getJWTIdentifier()
@@ -36,4 +45,6 @@ class Staff extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+
 }

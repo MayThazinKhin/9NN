@@ -3,11 +3,10 @@
 
 namespace App\Http\Actions\Session;
 
-
+use App\Http\Actions\Account\SessionAdding;
 use App\Http\Services\Session\SessionFacade;
 use App\Models\Member;
 use App\Models\Receipt;
-use App\Models\Session;
 
 class SessionCheckout
 {
@@ -39,6 +38,6 @@ class SessionCheckout
                 ]);
             }
         }
-
+       return $session;
     }
 }

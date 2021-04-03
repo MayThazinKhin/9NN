@@ -1989,6 +1989,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -1997,16 +2000,43 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   data: function data() {
     return {
       form: {},
-      errors: {}
+      errors: {},
+      isFeeDisable: false
     };
   },
   methods: {
+    fetchChildData: function fetchChildData(input) {
+      var _this = this;
+
+      if (input.parent_of) {
+        var item = input.name;
+        var outputs = input.parent_of + 's';
+        var input_field = input.input_field_for_child_data;
+        var selected = input.data.find(function (i) {
+          return i.id == _this.form[input.name];
+        });
+        var data = {};
+        data[item] = selected[input_field];
+        var child = this.inputs.find(function (i) {
+          return i.name == input.parent_of;
+        });
+        var self = this;
+        _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
+        $.post(input.child_data_url, JSON.stringify(data)).done(function (data) {
+          if (data.success) {
+            Vue.set(child, 'data', data[outputs]);
+            self.$forceUpdate();
+            self.$nextTick(function () {
+              $('.selectpicker').selectpicker('refresh');
+            });
+          }
+        });
+      }
+    },
     create: function create() {
       var self = this;
       _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
       $.post(this.url, JSON.stringify(this.form)).done(function (data) {
-        console.log(data);
-
         if (data.success) {
           location.reload();
         }
@@ -2015,18 +2045,41 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       });
     },
     disableFeeFor9N: function disableFeeFor9N(value) {
-      $('#fee').attr('disabled', false);
-
-      if (value !== 3) {
-        $('#fee').attr('disabled', true);
-      }
+      var role = this.inputs.find(function (i) {
+        return i.name == 'role_id';
+      });
+      console.log(this.form[role.name]); // $('#fee').attr('disabled',false);
+      //
+      // if(value !== 3)
+      // {
+      //     $('#fee').attr('disabled',true);
+      // }
     }
+  },
+  computed: {// isFeeDisable()
+    // {
+    //     let role = this.inputs.find(i => i.name ==  'role_id');
+    //     return this.form[role.name] != 3;
+    //     // return false;
+    //     // if(this.form[role.name] != 3) return true;
+    //     // return false;
+    //
+    //     // if(this.form[role.name] != 3) return true;
+    //     // else return false;
+    // },
   },
   created: function created() {
     for (var i = 0; i < this.inputs.length; i++) {
       this.form[this.inputs[i].name] = "";
     }
-  }
+  } // watch: {
+  //     forms: function()
+  //     {
+  //         let role = this.inputs.find(i => i.name ==  'role_id');
+  //         if(this.form[role.name] !== 3) return true;
+  //     }
+  // }
+
 });
 
 /***/ }),
@@ -2173,6 +2226,34 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     };
   },
   methods: {
+    fetchChildData: function fetchChildData(input) {
+      var _this = this;
+
+      if (input.parent_of) {
+        var item = input.name;
+        var outputs = input.parent_of + 's';
+        var input_field = input.input_field_for_child_data;
+        var selected = input.data.find(function (i) {
+          return i.id == _this.form[input.name];
+        });
+        var data = {};
+        data[item] = selected[input_field];
+        var child = this.inputs.find(function (i) {
+          return i.name == input.parent_of;
+        });
+        var self = this;
+        _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
+        $.post(input.child_data_url, JSON.stringify(data)).done(function (data) {
+          if (data.success) {
+            Vue.set(child, 'data', data[outputs]);
+            self.$forceUpdate();
+            self.$nextTick(function () {
+              $('.selectpicker').selectpicker('refresh');
+            });
+          }
+        });
+      }
+    },
     update: function update() {
       var self = this;
       _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
@@ -2182,8 +2263,6 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         contentType: "application/json",
         data: JSON.stringify(this.form),
         success: function success(data) {
-          console.log(data);
-
           if (data.success) {
             location.reload();
           }
@@ -2193,12 +2272,25 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         }
       });
     },
-    disableFeeFor9N: function disableFeeFor9N(value) {
-      $('#fee').attr('disabled', false); // console.log(value);
-
-      if (value !== 3) {
-        $('#fee').attr('disabled', true);
-      }
+    isFeeDisable: function isFeeDisable() {
+      var role = this.inputs.find(function (i) {
+        return i.name == 'role_id';
+      });
+      return this.form[role.name] != 3;
+    },
+    disableFeeFor9N: function disableFeeFor9N() {// let role = this.inputs.find(i => i.name ==  'role_id');
+      // // console.log(this.form[role.name]);
+      //
+      // if(this.form[role.name] == 3 )
+      // {
+      //     $('#fee').attr('disabled',false);
+      //     console.log('if')
+      // }
+      // else
+      // {
+      //     $('#fee').attr('disabled',true);
+      //     console.log('else');
+      // }
     }
   },
   created: function created() {
@@ -2206,15 +2298,6 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       this.form[this.inputs[i].name] = "";
     }
   },
-  // mounted(){
-  //     let value;
-  //     for(let i=0; i<this.inputs.length; i++)
-  //     {
-  //         if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
-  //     }
-  //
-  //     this.disableFeeFor9N(value);
-  // },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     edit_data: function edit_data(state) {
       return state.edit_modal.edit_data;
@@ -2222,16 +2305,55 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   })),
   watch: {
     edit_data: function edit_data() {
-      var value;
+      var _this2 = this;
 
+      // let value;
       for (var i = 0; i < this.inputs.length; i++) {
-        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name]; // if(this.inputs[i].type == 'select') $(".selectpicker").selectpicker("refresh");
+        this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name]; // if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
 
-        if (this.inputs[i].label == "Role") value = this.form[this.inputs[i].name]; //TODO refresh selectpicker
-      } // $(".selectpicker").selectpicker("refresh");
+        this.$nextTick(function () {
+          $('.selectpicker').selectpicker('refresh');
+        });
 
+        if (this.inputs[i].parent_of) {
+          (function () {
+            var input = _this2.inputs[i];
+            var item = input.name;
+            var outputs = input.parent_of + 's';
+            var input_field = input.input_field_for_child_data;
+            var selected = input.data.find(function (i) {
+              return i.id == _this2.edit_data[item];
+            });
+            var data = {};
+            data[item] = selected[input_field];
 
-      this.disableFeeFor9N(value);
+            var child = _this2.inputs.find(function (i) {
+              return i.name == input.parent_of;
+            });
+
+            var self = _this2;
+            _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
+            $.post(input.child_data_url, JSON.stringify(data)).done(function (data, status) {
+              if (status === 'success') {
+                Vue.set(child, 'data', data[outputs]);
+
+                for (var j = 0; j < self.inputs.length; j++) {
+                  if (self.inputs[j].child_of) {
+                    self.form[self.inputs[j].name] = self.edit_data[self.inputs[j].name];
+                  }
+                }
+
+                self.$forceUpdate();
+                self.$nextTick(function () {
+                  $('.selectpicker').selectpicker('refresh');
+                });
+              }
+            });
+          })();
+        }
+      }
+
+      this.disableFeeFor9N();
       this.route = this.url + "/" + this.edit_data.id;
       this.errors = {};
     }
@@ -21512,6 +21634,7 @@ var render = function() {
                                 staticStyle: { "font-size": "14px!important" },
                                 attrs: {
                                   id: input.name,
+                                  disabled: _vm.isFeeDisable,
                                   type: "text",
                                   placeholder: input.label,
                                   autocomplete: "off"
@@ -21710,6 +21833,7 @@ var render = function() {
                                   ],
                                   staticClass: "selectpicker d-block",
                                   attrs: {
+                                    id: input.label,
                                     title: input.label,
                                     "data-width": "100%",
                                     title: "Choice...",
@@ -21742,7 +21866,7 @@ var render = function() {
                                           ? _vm.disableFeeFor9N(
                                               _vm.form[input.name]
                                             )
-                                          : null
+                                          : _vm.fetchChildData(input)
                                       }
                                     ]
                                   }
@@ -21764,7 +21888,11 @@ var render = function() {
                               _vm._v(" "),
                               _vm.errors[input.name]
                                 ? _c("span", { staticClass: "text-danger" }, [
-                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                    _vm._v(
+                                      "\n                            " +
+                                        _vm._s(_vm.errors[input.name][0]) +
+                                        "\n                        "
+                                    )
                                   ])
                                 : _vm._e()
                             ])
@@ -22173,6 +22301,7 @@ var render = function() {
                                   ],
                                   staticClass: "selectpicker d-block",
                                   attrs: {
+                                    id: input.label,
                                     title: input.label,
                                     "data-width": "100%",
                                     title: "Choice...",
@@ -22202,10 +22331,8 @@ var render = function() {
                                       },
                                       function($event) {
                                         input.label == "Role"
-                                          ? _vm.disableFeeFor9N(
-                                              _vm.form[input.name]
-                                            )
-                                          : null
+                                          ? _vm.disableFeeFor9N()
+                                          : _vm.fetchChildData(input)
                                       }
                                     ]
                                   }
@@ -22709,7 +22836,7 @@ var render = function() {
       staticClass: "btn-clear ",
       attrs: {
         type: "button",
-        title: "Edit",
+        title: "Password Reset",
         "data-toggle": "modal",
         "data-target": "#edit-password"
       },
@@ -22730,7 +22857,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { staticClass: "a-clear" }, [
       _c("i", {
-        staticClass: "far fa-file-edit fw300",
+        staticClass: "fas fa-lock-open",
         staticStyle: { color: "#673ab7" }
       })
     ])

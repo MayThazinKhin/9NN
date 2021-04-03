@@ -20,6 +20,8 @@ class CreateStaffTable extends Migration
             $table->char('name',200);
             $table->char('password',200);
             $table->double('fee')->default(0.0);
+            $table->double('fee_paid')->default(0.0);
+            $table->double('marker_fee')->default(0.0);
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

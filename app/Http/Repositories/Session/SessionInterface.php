@@ -29,4 +29,8 @@ interface SessionInterface
     public function payCredit($data);
 
     public function getSessionCredit($memberID);
+
+    public function getTaxValue($sessionId);
+
+    public function getMarker($sessionId);
 }

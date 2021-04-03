@@ -71,7 +71,7 @@ class SessionRepository implements SessionInterface
 
     public function checkoutSession($data){
         $session = $this->checkSessionID($data['session_id']);
-        (new SessionCheckout())->run($data,$session);
+        return  (new SessionCheckout())->run($data,$session);
     }
 
     public function getCreditSessions(){
@@ -82,8 +82,16 @@ class SessionRepository implements SessionInterface
         $session = $this->checkSessionID($data['session_id']);
     }
 
-
     public function getSessionCredit($memberID){
-     return   $this->session::where('member_id',$memberID)->where('is_done',false)->sum('credit');
+        return  $this->session::where('member_id',$memberID)->where('is_done',false)->sum('credit');
+    }
+
+    public function getTaxValue($sessionID){
+        return  $this->session::where([['id',$sessionID],['is_tax',false]])->pluck('tax')->first();
+    }
+
+    public function getMarker($sessionID){
+        $session = $this->checkSessionID($sessionID);
+        return $session->marker;
     }
 }

@@ -59,4 +59,12 @@ class SessionService
         return $this->session->getSessionCredit($memberID);
     }
 
+    public function getTaxValue($sessionID){
+        return $this->session->getTaxValue($sessionID);
+    }
+
+    public function getMarker($sessionID){
+        return $this->session->getMarker($sessionID);
+    }
+
 }

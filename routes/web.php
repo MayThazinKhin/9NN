@@ -7,18 +7,19 @@ use App\Http\Controllers\WEB\TableController;
 use App\Http\Controllers\WEB\MemberController;
 use App\Http\Controllers\WEB\ItemController;
 use App\Http\Controllers\WEB\InventoryController;
-use App\Http\Controllers\WEB\FinancialController;
 use App\Http\Controllers\WEB\BarController;
 use App\Http\Controllers\WEB\InvoiceController;
 use App\Http\Controllers\WEB\CancelItemController;
 use App\Http\Controllers\WEB\LoginController;
 use App\Http\Controllers\WEB\ReceiptController;
+use App\Http\Controllers\WEB\AccountController;
 
 //login
 Route::get('',[LoginController::class,'index']);
 Route::get('login',[LoginController::class,'index']);
 Route::post('login',[LoginController::class,'login'])->name('staff_login');
 Route::get('logout',[LoginController::class,'logout'])->name('staff_logout');
+
 
 Route::middleware('can:isAdmin')->group(function () {
     //staffs
@@ -48,6 +49,13 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::get('/inventories/create',[InventoryController::class,'create'])->name('inventory.create');
     Route::post('/inventories',[InventoryController::class,'store'])->name('inventory.store');
     Route::post('items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
+
+    //Account
+    Route::get('/monthly_financial',[AccountController::class,'monthly'])->name('monthly_financial.index');
+    Route::post('/monthly_filter',[AccountController::class,'monthly_filter'])->name('monthly_financial.filter');
+    Route::patch('ledger_update/{ledger}',[AccountController::class,'update'])->name('ledgers.update');
+    Route::post('ledger_delete',[AccountController::class,'delete'])->name('ledgers.delete');
+
 });
 
 Route::middleware('can:isCashier')->group(function () {
@@ -63,6 +71,16 @@ Route::middleware('can:isCashier')->group(function () {
 
     //Credit
     Route::get('credits',[InvoiceController::class,'getCredits'])->name('credits');
+    Route::post('pay_credits',[InvoiceController::class,'payCredit'])->name('pay_credits');
+
+
+});
+
+Route::middleware('can:isCashier' || 'can:isAdmin')->group(function () {
+    //Account
+    Route::get('account_type',[AccountController::class,'type'])->name('account_type');
+    Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
+
 });
 
 Route::middleware('can:isKitchenStaff')->group(function () {
@@ -74,12 +92,6 @@ Route::middleware('can:isKitchenStaff')->group(function () {
     Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 });
 
-Route::middleware('can:isAccountant')->group(function () {
-    //Financial
-    Route::get('/financial',[FinancialController::class,'index'])->name('financial.index');
-    Route::get('/secondary/{id}',[FinancialController::class,'secondary'])->name('secondary');
-});
-
 Route::middleware('can:isBarStaff')->group(function () {
     //cancel_item
     Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
@@ -89,27 +101,6 @@ Route::middleware('can:isBarStaff')->group(function () {
     Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 });
 
+Route::get('/financial',[AccountController::class,'index'])->name('financial.index');
+Route::post('account_title',[AccountController::class,'title'])->name('account_title');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Route::get("/index", function(){
-    return view("menu_invoice.index");
-});
-
-Route::get("/detail", function(){
-    return view("menu_invoice.detail");
-});

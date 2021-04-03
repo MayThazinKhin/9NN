@@ -28,6 +28,7 @@ class LoginController extends Controller
         $auth_token->type = 'Bearer';
         $auth_token->expires_in = null;
         $auth_token->session_id = $this->getCurrentSessionID();
+        $auth_token->fee_paid =  $this->getMarkerFee();
         return $auth_token;
         //auth('api')->tokenById($user_id);
     }
@@ -38,5 +39,10 @@ class LoginController extends Controller
        $marker_id = $marker->id;
        $table_id =  Table::getCurrentTableID($marker_id);
        return ($table_id) ?  SessionFacade::getCurrentSessionID($table_id) : $table_id ;
+    }
+
+    protected function getMarkerFee(){
+        $marker = UserData();
+        return $marker->fee_paid;
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Repositories\Session\SessionInterface;
 use App\Http\Repositories\Session\SessionRepository;
 use App\Http\Repositories\Table\TableInterface;
 use App\Http\Repositories\Table\TableRepository;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -40,6 +41,13 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ItemInterface::class, function (){
             return new ItemRepository();
         });
+
+        Relation::morphMap([
+            'session' => 'App\Models\Session',
+            'receipt' => 'App\Models\Receipt',
+            'staff' => 'App\Models\Staff',
+            'inventory' => 'App\Models\Inventory'
+        ]);
 
     }
     /**

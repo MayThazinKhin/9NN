@@ -47,9 +47,9 @@
 
                         <div class="mb-4" v-if="input.type == 'select'">
                             <label class="label-form mb-1" style="font-size: 15px!important;color: #1b1e21">{{ input.label }}</label>
-                            <select v-model="form[input.name]" :title="input.label" class="selectpicker d-block" data-width="100%" title="Choice..."
+                            <select :id="input.label" v-model="form[input.name]" :title="input.label" class="selectpicker d-block" data-width="100%" title="Choice..."
                                     data-style="select-form w-100"
-                                    @change="input.label == 'Role' ? disableFeeFor9N(form[input.name]) : null"
+                                    @change="input.label == 'Role' ? disableFeeFor9N() : fetchChildData(input)"
                             >
                                 <option v-if="input.data"
                                         v-for="(item, j) in input.data"
@@ -89,6 +89,37 @@ export default {
     },
 
     methods: {
+
+        fetchChildData(input)
+        {
+
+            if(input.parent_of)
+            {
+
+                let item= input.name;
+                let outputs = input.parent_of+'s';
+                let input_field = input.input_field_for_child_data;
+                let selected = input.data.find(i => i.id ==  this.form[input.name]);
+
+                let data = {};
+                data[item] = selected[input_field];
+                let child = this.inputs.find(i => i.name == input.parent_of);
+
+                let self = this;
+                ajaxHelper.ajaxHeaders();
+                $.post(input.child_data_url, JSON.stringify(data))
+                    .done(function(data) {
+                        if (data.success)
+                        {
+                            Vue.set(child,'data', data[outputs]);
+                            self.$forceUpdate();
+                            self.$nextTick(function(){ $('.selectpicker').selectpicker('refresh'); });
+                        }
+                    })
+            }
+        },
+
+
         update() {
             let self = this;
             ajaxHelper.ajaxHeaders();
@@ -98,7 +129,6 @@ export default {
                 contentType: "application/json",
                 data: JSON.stringify(this.form),
                 success: function(data) {
-                    console.log(data);
                     if (data.success) {
                         location.reload();
                     }
@@ -108,31 +138,39 @@ export default {
                 }
             });
         },
-        disableFeeFor9N(value){
-            $('#fee').attr('disabled',false);
-            // console.log(value);
-            if(value !== 3)
-            {
-                $('#fee').attr('disabled',true);
-            }
+
+        isFeeDisable()
+        {
+            let role = this.inputs.find(i => i.name ==  'role_id');
+            return this.form[role.name] != 3;
+
+        },
+        disableFeeFor9N(){
+            // let role = this.inputs.find(i => i.name ==  'role_id');
+            // // console.log(this.form[role.name]);
+            //
+            // if(this.form[role.name] == 3 )
+            // {
+            //     $('#fee').attr('disabled',false);
+            //     console.log('if')
+            // }
+            // else
+            // {
+            //     $('#fee').attr('disabled',true);
+            //     console.log('else');
+            // }
         }
     },
 
     created() {
-        for(let i=0; i<this.inputs.length; i++){
+        for(let i=0; i<this.inputs.length; i++)
+        {
             this.form[this.inputs[i].name] = "";
+
         }
+
     },
 
-    // mounted(){
-    //     let value;
-    //     for(let i=0; i<this.inputs.length; i++)
-    //     {
-    //         if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
-    //     }
-    //
-    //     this.disableFeeFor9N(value);
-    // },
 
     computed: {
         ...mapState({
@@ -141,17 +179,53 @@ export default {
     },
     watch: {
         edit_data: function() {
-            let value;
+            // let value;
             for(let i=0; i<this.inputs.length; i++){
                 this.form[this.inputs[i].name] = this.edit_data[this.inputs[i].name];
-                // if(this.inputs[i].type == 'select') $(".selectpicker").selectpicker("refresh");
 
-                if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
+                // if(this.inputs[i].label == "Role") value = this.form[this.inputs[i].name];
+                this.$nextTick(function(){ $('.selectpicker').selectpicker('refresh'); });
 
-                //TODO refresh selectpicker
+
+                if(this.inputs[i].parent_of)
+                {
+                    let input = this.inputs[i];
+                    let item= input.name;
+                    let outputs = input.parent_of+'s';
+                    let input_field = input.input_field_for_child_data;
+                    let selected = input.data.find(i => i.id ==  this.edit_data[item]);
+
+                    let data = {};
+                    data[item] = selected[input_field];
+
+
+                    let child = this.inputs.find(i => i.name == input.parent_of);
+
+                    let self = this;
+                    ajaxHelper.ajaxHeaders();
+                    $.post(input.child_data_url, JSON.stringify(data))
+                        .done(function(data,status) {
+                            if (status=== 'success')
+                            {
+                                Vue.set(child,'data', data[outputs]);
+
+                                for(let j=0; j<self.inputs.length; j++)
+                                {
+                                    if(self.inputs[j].child_of)
+                                    {
+                                        self.form[self.inputs[j].name] = self.edit_data[self.inputs[j].name];
+                                    }
+                                }
+                                self.$forceUpdate();
+                                self.$nextTick(function(){ $('.selectpicker').selectpicker('refresh'); });
+                            }
+                        })
+                }
+
+
             }
-            // $(".selectpicker").selectpicker("refresh");
-            this.disableFeeFor9N(value);
+            this.disableFeeFor9N();
+
 
             this.route = this.url + "/" + this.edit_data.id;
             this.errors = {};

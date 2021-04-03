@@ -25,6 +25,13 @@
             <i class="fal fa-inventory fs17"></i> Inventory
         </a>
 
+        <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('daily_transition')">
+            <i class="fal fa-exchange fs17"></i> Daily Transition
+        </a>
+        <a href="{{route('monthly_financial.index')}}" class="a-clear a-sidebar @yield('monthly_transition')">
+            <i class="fal fa-exchange fs17"></i> Monthly Transition
+        </a>
+
 
 
         @elsecan('isCashier')
@@ -40,10 +47,10 @@
             <i class="fal fa-file-invoice-dollar fs17"></i> Credit
         </a>
 
-        @elsecan('isAccountant')
-        <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('financial')">
-            <i class="fal fa-coins fs17"></i>  &nbsp;Financial
-        </a>
+       <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('financial')">
+            <i class="fal fa-exchange fs17"></i> Daily Transition
+       </a>
+
 
         @elsecan('isKitchenStaff')
         <a href="{{route('kitchen_items')}}" class="a-clear a-sidebar @yield('kitchen')">

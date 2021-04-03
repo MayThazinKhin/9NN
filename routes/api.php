@@ -34,3 +34,7 @@ Route::middleware('jwt-auth')->group(function () {
 
 Route::post('login',[LoginController::class,'login'])->name('login');
 Route::post('categories',[ItemController::class,'getItemCategoriesByType'])->name('categories');
+
+Route::post('testing',[\App\Http\Controllers\API\AccountController::class,'run'])->name('testing');
+
+
