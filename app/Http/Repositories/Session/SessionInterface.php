@@ -26,7 +26,6 @@ interface SessionInterface
 
     public function getCreditSessions();
 
-    public function payCredit($data);
 
     public function getSessionCredit($memberID);
 

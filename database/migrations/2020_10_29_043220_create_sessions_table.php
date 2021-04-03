@@ -20,6 +20,7 @@ class CreateSessionsTable extends Migration
             $table->double('total')->default(0.0);
             $table->double('net_value')->default(0.0);
             $table->double('paid_value')->default(0.0);
+            $table->double('marker_fee')->default(0.0);
             $table->double('credit')->default(0.0);
             $table->double('discount')->default(0.0);
             $table->double('change')->default(0.0);

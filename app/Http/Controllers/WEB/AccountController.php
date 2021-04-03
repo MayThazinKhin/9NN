@@ -51,7 +51,7 @@ class AccountController extends BasicController
     }
 
     public function update(Request $request,Ledger $ledger){
-        dd($request->all());
+        //dd($request->all());
        return parent::updateData($request,$ledger);
     }
 
