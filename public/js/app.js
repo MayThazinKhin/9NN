@@ -2779,9 +2779,10 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       discount: 0,
       is_tax: false,
       paid_value: 0,
+      total_marker_fee: this.periods.total_min * this.marker_fee,
       total: this.items.net_total + this.periods.total_value,
       tax: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100),
-      net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value + this.marker_fee,
+      net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value + this.periods.total_min * this.marker_fee,
       credit: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
       change: 0,
       credit_error_msg: 'Credit Value is more than Maximum Allowance!',
@@ -2843,12 +2844,12 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   },
   watch: {
     discount: function discount() {
-      this.net_value = this.tax + this.total + this.marker_fee - this.discount;
+      this.net_value = this.tax + this.total + this.total_marker_fee - this.discount;
     },
     paid_value: function paid_value() {
       this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
       this.net_value < this.paid_value ? this.change = this.paid_value - this.net_value : this.change = 0;
-      this.net_value = this.tax + this.total + this.marker_fee - this.discount; // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
+      this.net_value = this.tax + this.total + this.total_marker_fee - this.discount; // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
     },
     net_value: function net_value() {
       this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
@@ -22987,7 +22988,7 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v("MMKs " + _vm._s(_vm.marker_fee) + " ")]
+                      [_vm._v("MMKs " + _vm._s(_vm.total_marker_fee) + " ")]
                     )
                   ])
                 ]),
