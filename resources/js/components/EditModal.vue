@@ -139,26 +139,18 @@ export default {
             });
         },
 
-        isFeeDisable()
-        {
-            let role = this.inputs.find(i => i.name ==  'role_id');
-            return this.form[role.name] != 3;
-
-        },
         disableFeeFor9N(){
-            // let role = this.inputs.find(i => i.name ==  'role_id');
-            // // console.log(this.form[role.name]);
-            //
-            // if(this.form[role.name] == 3 )
-            // {
-            //     $('#fee').attr('disabled',false);
-            //     console.log('if')
-            // }
-            // else
-            // {
-            //     $('#fee').attr('disabled',true);
-            //     console.log('else');
-            // }
+            let role = this.inputs.find(i => i.name ==  'role_id');
+            if(role)
+            {
+                $('#fee').attr('disabled',false);
+
+                if(this.form[role.name] !== 3)
+                {
+                    $('#fee').attr('disabled',true);
+                }
+            }
+
         }
     },
 

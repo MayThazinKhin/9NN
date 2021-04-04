@@ -8,9 +8,8 @@ use App\Http\Actions\Session\OrderItems;
 use App\Http\Actions\Session\SessionCheckout;
 use App\Http\Actions\Session\SessionCredits;
 use App\Http\Actions\Session\SessionDetails;
+use App\Http\Actions\Session\SessionEnding;
 use App\Http\Actions\Session\UncheckSessions;
-use App\Http\Services\Period\PeriodFacade as Period;
-use App\Http\Services\Table\TableFacade as Table;
 use App\Models\Session;
 
 class SessionRepository implements SessionInterface
@@ -56,13 +55,7 @@ class SessionRepository implements SessionInterface
 
     public function endSession($sessionID){
         $session = $this->checkSessionID($sessionID);
-        Period::endLatestPeriod($sessionID);
-        $this->updateSession($session);
-        Table::freeTable($session->table);
-    }
-
-    protected function updateSession($session){
-        $session->update(['end_time' => CurrentTime()]);
+        (new SessionEnding())->run($session);
     }
 
     public function getAllUncheckSessions(){
@@ -76,10 +69,6 @@ class SessionRepository implements SessionInterface
 
     public function getCreditSessions(){
         return (new SessionCredits())->run();
-    }
-
-    public function payCredit($data){
-        $session = $this->checkSessionID($data['session_id']);
     }
 
     public function getSessionCredit($memberID){

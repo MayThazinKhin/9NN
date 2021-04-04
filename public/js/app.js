@@ -2044,42 +2044,22 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         self.errors = JSON.parse(xhr.responseText).errors;
       });
     },
-    disableFeeFor9N: function disableFeeFor9N(value) {
+    disableFeeFor9N: function disableFeeFor9N() {
       var role = this.inputs.find(function (i) {
         return i.name == 'role_id';
       });
-      console.log(this.form[role.name]); // $('#fee').attr('disabled',false);
-      //
-      // if(value !== 3)
-      // {
-      //     $('#fee').attr('disabled',true);
-      // }
+      $('#fee').attr('disabled', false);
+
+      if (this.form[role.name] !== 3) {
+        $('#fee').attr('disabled', true);
+      }
     }
-  },
-  computed: {// isFeeDisable()
-    // {
-    //     let role = this.inputs.find(i => i.name ==  'role_id');
-    //     return this.form[role.name] != 3;
-    //     // return false;
-    //     // if(this.form[role.name] != 3) return true;
-    //     // return false;
-    //
-    //     // if(this.form[role.name] != 3) return true;
-    //     // else return false;
-    // },
   },
   created: function created() {
     for (var i = 0; i < this.inputs.length; i++) {
       this.form[this.inputs[i].name] = "";
     }
-  } // watch: {
-  //     forms: function()
-  //     {
-  //         let role = this.inputs.find(i => i.name ==  'role_id');
-  //         if(this.form[role.name] !== 3) return true;
-  //     }
-  // }
-
+  }
 });
 
 /***/ }),
@@ -2272,25 +2252,18 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         }
       });
     },
-    isFeeDisable: function isFeeDisable() {
+    disableFeeFor9N: function disableFeeFor9N() {
       var role = this.inputs.find(function (i) {
         return i.name == 'role_id';
       });
-      return this.form[role.name] != 3;
-    },
-    disableFeeFor9N: function disableFeeFor9N() {// let role = this.inputs.find(i => i.name ==  'role_id');
-      // // console.log(this.form[role.name]);
-      //
-      // if(this.form[role.name] == 3 )
-      // {
-      //     $('#fee').attr('disabled',false);
-      //     console.log('if')
-      // }
-      // else
-      // {
-      //     $('#fee').attr('disabled',true);
-      //     console.log('else');
-      // }
+
+      if (role) {
+        $('#fee').attr('disabled', false);
+
+        if (this.form[role.name] !== 3) {
+          $('#fee').attr('disabled', true);
+        }
+      }
     }
   },
   created: function created() {
@@ -2779,11 +2752,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["items", "periods", "members", "id"],
+  props: ["items", "periods", "members", "id", "marker_fee"],
   data: function data() {
     return {
       query: '',
@@ -2795,7 +2781,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       paid_value: 0,
       total: this.items.net_total + this.periods.total_value,
       tax: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100),
-      net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
+      net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value + this.marker_fee,
       credit: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
       change: 0,
       credit_error_msg: 'Credit Value is more than Maximum Allowance!',
@@ -2857,12 +2843,12 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   },
   watch: {
     discount: function discount() {
-      this.net_value = this.tax + this.total - this.discount;
+      this.net_value = this.tax + this.total + this.marker_fee - this.discount;
     },
     paid_value: function paid_value() {
       this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
       this.net_value < this.paid_value ? this.change = this.paid_value - this.net_value : this.change = 0;
-      this.net_value = this.tax + this.total - this.discount; // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
+      this.net_value = this.tax + this.total + this.marker_fee - this.discount; // this.net_value>this.paid_value ? this.debt = this.net_value-this.paid_value : this.debt=0;
     },
     net_value: function net_value() {
       this.net_value > this.paid_value ? this.credit = this.net_value - this.paid_value : this.credit = 0;
@@ -21634,7 +21620,6 @@ var render = function() {
                                 staticStyle: { "font-size": "14px!important" },
                                 attrs: {
                                   id: input.name,
-                                  disabled: _vm.isFeeDisable,
                                   type: "text",
                                   placeholder: input.label,
                                   autocomplete: "off"
@@ -21863,9 +21848,7 @@ var render = function() {
                                       },
                                       function($event) {
                                         input.label == "Role"
-                                          ? _vm.disableFeeFor9N(
-                                              _vm.form[input.name]
-                                            )
+                                          ? _vm.disableFeeFor9N()
                                           : _vm.fetchChildData(input)
                                       }
                                     ]
@@ -23004,13 +22987,28 @@ var render = function() {
                         staticClass: "label-form",
                         staticStyle: { color: "#6b6e71" }
                       },
-                      [_vm._v("MMKs " + _vm._s(_vm.net_value) + " ")]
+                      [_vm._v("MMKs " + _vm._s(_vm.marker_fee) + " ")]
                     )
                   ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row mx-0 mb-3" }, [
                   _vm._m(7),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col" }, [
+                    _c(
+                      "p",
+                      {
+                        staticClass: "label-form",
+                        staticStyle: { color: "#6b6e71" }
+                      },
+                      [_vm._v("MMKs " + _vm._s(_vm.net_value) + " ")]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row mx-0 mb-3" }, [
+                  _vm._m(8),
                   _vm._v(" "),
                   _c("div", { staticClass: "col" }, [
                     _c(
@@ -23029,7 +23027,7 @@ var render = function() {
             _c("div", { staticClass: "col pt-2 pb-2" }, [
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col" }, [
-                  _vm._m(8),
+                  _vm._m(9),
                   _vm._v(" "),
                   _c("label", { staticClass: "search-box-container" }, [
                     _c("input", {
@@ -23104,7 +23102,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col mb-3" }, [
-                  _vm._m(9),
+                  _vm._m(10),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -23132,7 +23130,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col" }, [
-                  _vm._m(10),
+                  _vm._m(11),
                   _vm._v(" "),
                   _c("input", {
                     directives: [
@@ -23198,7 +23196,7 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm._m(11)
+                  _vm._m(12)
                 ])
               ])
             ])
@@ -23219,7 +23217,7 @@ var render = function() {
               },
               [
                 _c("table", { staticClass: "table table-borderless" }, [
-                  _vm._m(12),
+                  _vm._m(13),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -23367,7 +23365,7 @@ var render = function() {
                 attrs: { id: "myTable" }
               },
               [
-                _vm._m(13),
+                _vm._m(14),
                 _vm._v(" "),
                 _c(
                   "tbody",
@@ -23513,6 +23511,48 @@ var render = function() {
                       [_vm._v(_vm._s(_vm.periods.total_value))]
                     )
                   ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "d-flex justify-content-end",
+                    staticStyle: {
+                      "border-top": "1px solid #e1e5e8",
+                      "padding-top": "22px",
+                      "margin-left": "40px",
+                      "margin-right": "40px"
+                    }
+                  },
+                  [
+                    _c(
+                      "p",
+                      {
+                        staticClass: "d-inline-block",
+                        staticStyle: {
+                          "font-size": "14px!important",
+                          "font-family": "'Roboto', sans-serif",
+                          color: "#666"
+                        }
+                      },
+                      [_vm._v("Total Minutes")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass: "d-inline-block",
+                        staticStyle: {
+                          "font-family": "'Roboto', sans-serif",
+                          "font-size": "14px",
+                          "padding-left": "32px",
+                          "padding-right": "12px",
+                          color: "#666"
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.periods.total_min))]
+                    )
+                  ]
                 )
               ]
             )
@@ -23596,6 +23636,14 @@ var staticRenderFns = [
         },
         [_vm._v("အကြွေး")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-5" }, [
+      _c("p", { staticClass: "label-form" }, [_vm._v("Marker Fee")])
     ])
   },
   function() {

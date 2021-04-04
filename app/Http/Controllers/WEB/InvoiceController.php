@@ -20,8 +20,9 @@ class InvoiceController extends Controller
     public function detail($id){
         $periods  = PeriodFacade::getPeriodsBySessionID($id);
         $items = SessionFacade::getOrderItems($id);
+        $marker_fee = SessionFacade::getMarker($id)->fee_paid;
         $members = Member::all();
-        return view('invoice.detail',compact('periods','items','members','id'));
+        return view('invoice.detail',compact('periods','items','members','id','marker_fee'));
     }
 
     public function update(Request $request){

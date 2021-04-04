@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Facade;
  * @method static uncheck()
  * @method static checkout(array $all)
  * @method static credits()
- * @method static pay($data)
  * @method static sessionCredits($memberID);
  * @method static getTaxValue($sessionID);
  * @method static getMarker($sessionID);

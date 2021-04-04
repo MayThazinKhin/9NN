@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Http\Services\Period\PeriodFacade;
 use App\Http\Services\Session\SessionFacade as Session;
 use App\Http\Services\Table\TableFacade as Table;
+use App\Models\Period;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class SessionSeeder extends Seeder
@@ -26,16 +28,30 @@ class SessionSeeder extends Seeder
         $data = [];
         $data['table_id'] = 1;
         $data['marker_id'] = 3;
-        $data['start_time'] = CurrentTime();
+        $data['start_time'] = '2020-04-04 00:00:00';
         $data['end_time'] = CurrentTime();
         return $data;
     }
 
     protected function setPeriods($session_id){
-        $s_data['session_id'] = $session_id ;
-        PeriodFacade::start($s_data);
-        $s_data['period_id'] = 1 ;
-        PeriodFacade::end($s_data);
+        Period::create([
+            'start_time' => Carbon::now()->subMinutes(60),
+            'end_time' => Carbon::now()->subMinutes(50) ,
+            'session_id' => $session_id
+        ]);
+        Period::create([
+            'start_time' => Carbon::now()->subMinutes(45),
+            'end_time' => Carbon::now()->subMinutes(30) ,
+            'session_id' => $session_id
+        ]);
+        Period::create([
+            'start_time' => Carbon::now()->subMinutes(30),
+            'end_time' => Carbon::now() ,
+            'session_id' => $session_id
+        ]);
+
+
+
     }
     protected function setOrderJasonString(){
         return '{

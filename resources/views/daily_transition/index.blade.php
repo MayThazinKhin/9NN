@@ -55,7 +55,7 @@
                             <td class="padding-table-row w88px">
                                 <edit-button entity="{{$ledger}}"></edit-button>
 
-                                <button type="button" onclick="deleteItem()" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
+                                <button type="button" onclick="deleteItem('ledgers',{{$ledger->id}})" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
                                     <i class="fal fa-times text-danger fw300"></i>
                                 </button>
                             </td>
@@ -77,8 +77,9 @@
          "child_data_url" => "/account_title", "input_field_for_child_data"=> "code"];
         $input3 = (object) ["type" => "select", "label" => "Title", "name" => "title", "child_of" => "type"];
         $inputs = array($input1,$input2,$input3);
+        $edit_inputs = array($input1);
     @endphp
 
     <add-modal title="Add Daily Transition" :inputs="{{json_encode($inputs)}}" url="/ledger_create"></add-modal>
-    <edit-modal title="Edit Daily Transition" :inputs="{{json_encode($inputs)}}" url="/ledger_update"></edit-modal>
+    <edit-modal title="Edit Daily Transition" :inputs="{{json_encode($edit_inputs)}}" url="/ledger_update"></edit-modal>
 @endsection

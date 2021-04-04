@@ -4,6 +4,7 @@
     <invoice-detail :items="{{json_encode($items)}}"
                     :periods="{{json_encode($periods)}}"
                     :members="{{json_encode($members)}}"
+                    :marker_fee="{{json_encode($marker_fee)}}"
                     :id="{{$id}}">
 
     </invoice-detail>

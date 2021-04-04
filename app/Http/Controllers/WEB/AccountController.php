@@ -24,11 +24,20 @@ class AccountController extends BasicController
     }
 
     public function monthly(){
-        $start_date =  Carbon::now()->format('Y-01-m');
-        $end_date =  Carbon::now()->format('Y-d-m');
+        $start_date =  Carbon::now()->format('Y-m-01');
+        $end_date =  Carbon::now()->format('Y-m-d');
+        return $this->getAccountsWithValue($start_date,$end_date);
+    }
+
+    public function monthly_filter(Request $request){
+        return $this->getAccountsWithValue($request->start_date,$request->end_date);
+    }
+
+    protected function getAccountsWithValue($start_date,$end_date){
         $accounts = (new Accounting())->getAccountValueByDate($start_date,$end_date);
         return view('monthly_transition.index',compact('accounts'));
     }
+
 
     public function type(){
         $types =  (new Accounting())->primary();
@@ -51,7 +60,6 @@ class AccountController extends BasicController
     }
 
     public function update(Request $request,Ledger $ledger){
-        dd($request->all());
        return parent::updateData($request,$ledger);
     }
 
@@ -59,10 +67,7 @@ class AccountController extends BasicController
       return  parent::destroyData($ledger);
     }
 
-    public function monthly_filter(Request $request)
-    {
-        dd($request->all());
-    }
+
 
 
 }
