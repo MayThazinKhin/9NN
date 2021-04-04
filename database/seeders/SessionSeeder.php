@@ -58,15 +58,15 @@ class SessionSeeder extends Seeder
         "session_id": 1,
         "items": [
             {
-                "id": 5,
+                "id": 1,
                 "count": 3
             },
             {
-                "id": 6,
+                "id": 2,
                 "count": 3
             },
             {
-                "id": 7,
+                "id": 3,
                 "count": 3
             }
         ]
