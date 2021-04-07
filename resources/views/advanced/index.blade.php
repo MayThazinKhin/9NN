@@ -30,7 +30,7 @@
                         <tr>
                             <th scope="row" class="padding-table-row">
                                 <span class="text-td font-weight-normal">
-                                     {{ $ledgers->perPage()*($ledgers->currentPage()-1)+ (++$i) }}
+                                    {{++$i}}
                                 </span>
                             </th>
                             <td class="padding-table-row">

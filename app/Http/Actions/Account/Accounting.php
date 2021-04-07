@@ -39,7 +39,7 @@ class Accounting
     }
 
     public function getAdvancedAccountID(){
-        return Account::where('code','LIKE', '3'.'2'.'%')->pluck('id')->all();
+        return Account::where('code','LIKE', '3'.'1'.'%')->pluck('id')->all();
     }
 
 }
