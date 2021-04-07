@@ -104,3 +104,6 @@ Route::get('/financial',[AccountController::class,'index'])->name('financial.ind
 Route::post('account_title',[AccountController::class,'title'])->name('account_title');
 Route::get('account_type',[AccountController::class,'type'])->name('account_type');
 Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
+
+Route::view('/welcome', 'cash.withdraw');
+
