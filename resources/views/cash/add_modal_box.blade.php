@@ -33,7 +33,7 @@
     {
         $('#name').val(id);
         $("#value").attr({
-            "min" : amount,
+            "max" : amount,
         });
     }
 
