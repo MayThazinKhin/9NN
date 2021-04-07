@@ -16,9 +16,9 @@
                     <thead>
                     <tr class="" style="border-bottom: 2px solid #dee2e6">
                         <th class="table-header font-weight-normal">Id</th>
+                        <th class="table-header font-weight-normal">Date</th>
                         <th class="table-header font-weight-normal">Title</th>
                         <th class="table-header font-weight-normal">Amount</th>
-                        <th class="table-header font-weight-normal"> &nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -29,30 +29,32 @@
                                      {{ $ledgers->perPage()*($ledgers->currentPage()-1)+ (++$i) }}
                                 </span>
                         </th>
+
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                <a href="#" class="a-clear text-dark"></a>
+                                {{$ledger->date}}
                             </div>
                         </td>
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                10000
+                               {{$ledger->title_name}}
+                            </div>
+                        </td>
+                        <td class="padding-table-row">
+                            <div class="text-td text-capitalize">
+                               - {{$ledger->value}}
                             </div>
                         </td>
 
-                        <td class="padding-table-row w88px">
-                            <button type="button" onclick="deleteItem()" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
-                                <i class="fal fa-times text-danger fw300"></i>
-                            </button>
-                        </td>
+
                     </tr>@endforeach
                     </tbody>
 
                 </table>
             </div>
-            {{--            <nav aria-label="Page navigation example">--}}
-            {{--                {{$ledgers->links()}}--}}
-            {{--            </nav>--}}
+                        <nav aria-label="Page navigation example">
+                            {{$ledgers->links()}}
+                        </nav>
         </form>
     </div>
     @php

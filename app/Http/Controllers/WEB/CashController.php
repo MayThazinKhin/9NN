@@ -14,11 +14,6 @@ class CashController extends Controller
         return view('cash.index',compact('accounts'));
     }
 
-    public function transfer(Request $request){
-
-    }
-
-
     public function withdraw(){
         $cash_ids = (new Accounting())->getCashAccountID();
         $ledgers = Ledger::whereIn('account_id',$cash_ids)->orderBy('date', 'desc')->paginate(20);

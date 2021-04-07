@@ -57,6 +57,9 @@ class AccountController extends BasicController
 
     public function create(Request $request){
         (new CustomAdding($request->all()))->run();
+        if(isset($request['is_redirect'])) {
+            return  redirect()->back();
+        }
         return response()->json([
                 'success' => true
             ]);

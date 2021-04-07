@@ -23,5 +23,30 @@ class CustomAdding extends Ledgering implements AccountValue
     public function run(){
         $data = $this->setData($this->data['value'],$this->code);
         $this->create($data);
+        ($this->code < 4000) ? $this->updateCashInHand($data) : $this->transfer();
     }
+
+    public function transfer(){
+        $cash_in_bank = Account::where('code',4202)->first();
+        $cash_in_hand = Account::where('code',4201)->first();
+
+        //cashInHand To cashInBank
+        if($this->code == 4201 ){
+            $hand_value =  $cash_in_hand->value - $this->data['value'] ;
+            $bank_value =  $cash_in_bank->value + $this->data['value'];
+        }
+        //cashInBank To cashInHand
+        if($this->code == 4202 ){
+            $hand_value =  $cash_in_hand->value + $this->data['value'] ;
+            $bank_value =  $cash_in_bank->value - $this->data['value'];
+        }
+
+        $cash_in_bank->update([
+            'value' => $bank_value
+        ]);
+        $cash_in_hand->update([
+            'value' =>  $hand_value
+        ]);
+    }
+
 }
