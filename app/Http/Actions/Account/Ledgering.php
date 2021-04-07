@@ -46,7 +46,11 @@ class Ledgering
 
     protected function updateCashInHand($data){
         $cash_in_hand = Account::where('code',4201)->first();
-        $cash_in_hand->value = $data['sign'] ? $cash_in_hand->value + $data['value'] : $cash_in_hand->value  - $data['value'] ;
-        $cash_in_hand->save();
+        $value = $data['sign'] ? $cash_in_hand->value + $data['value'] : $cash_in_hand->value  - $data['value'] ;
+        $cash_in_hand->update(
+            [
+                'value' => $value
+            ]
+        );
     }
 }

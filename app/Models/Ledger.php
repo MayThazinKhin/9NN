@@ -14,6 +14,13 @@ class Ledger extends Model
         return $this->morphTo();
     }
 
+    public function staff(){
+        return $this->belongsTo(Staff::class,'ledgerable');
+    }
+
+    public function staffName(){
+        return $this->staff()->where('id',$this->ledgerable_id)->pluck('name')->first();
+    }
     public function account(){
       return  $this->belongsTo(Account::class);
     }

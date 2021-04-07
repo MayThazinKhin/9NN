@@ -8,9 +8,6 @@
 {{--@include('item.edit')--}}
 @include('layouts.delete')
 
-@section('content_header')
-    @include('layouts.content_header')
-@endsection
 @section('content')
     <div>
         <form class="position-relative w-100">
