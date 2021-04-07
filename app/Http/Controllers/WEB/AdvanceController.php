@@ -6,7 +6,6 @@ use App\Http\Actions\Account\Accounting;
 use App\Http\Controllers\Controller;
 use App\Models\Ledger;
 use App\Models\Staff;
-use Illuminate\Http\Request;
 
 class AdvanceController extends Controller
 {
