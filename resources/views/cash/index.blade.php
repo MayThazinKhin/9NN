@@ -43,7 +43,18 @@
                                 </div>
                             </td>
                             <td class="padding-table-row w88px">
-                                <edit-button> </edit-button>
+{{--                                <edit-button entity="{{$account}}"></edit-button>--}}
+                                <button type="button"
+                                        class="btn-clear "
+                                        title="Edit"
+                                        data-toggle="modal"
+                                        onclick="setId({{$account->id}})"
+                                        data-target="#cash"
+                                >
+                                    <a class="a-clear">
+                                        <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
+                                    </a>
+                                </button>
                             </td>
                         </tr>
 
@@ -56,11 +67,27 @@
 
         </form>
     </div>
-    @php
-        $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "value"];
-        $inputs = array($input1);
-        $edit_inputs = array($input1);
-    @endphp
-    <edit-modal title="Transfer" :inputs="{{json_encode($edit_inputs)}}" url=""></edit-modal>
-{{--    <edit-modal title="ထုတ်ရန်" :inputs="{{json_encode($edit_inputs)}}" url=""></edit-modal>--}}
+    @include('cash.add_modal_box')
+
+{{--    @php--}}
+{{--        $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "value" ];--}}
+{{--        $input2 = (object) ["type" => "hidden", "label" => "Title", "name" => "title", "value" => ""];--}}
+{{--        $inputs = array($input1,$input2);--}}
+{{--    @endphp--}}
+
+{{--    <add-modal title="Add Cash" :inputs="{{json_encode($inputs)}}" url="/ledger_create"></add-modal>--}}
+
+
+{{--    <script type="application/javascript">--}}
+{{--        function setId(id)--}}
+{{--        {--}}
+{{--            let test = '<?php echo json_encode($input2); ?>';--}}
+{{--            test.value = id;--}}
+{{--            console.log(test);--}}
+{{--            --}}{{--console.log({{json_encode($inputs)}});--}}
+{{--        }--}}
+{{--    </script>--}}
+
 @endsection
+
+
