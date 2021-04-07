@@ -21,6 +21,14 @@
                                 }}</span>
                         </div>
 
+                        <div class="mb-4" v-if="input.type == 'hidden'">
+                            <input :id="input.name" hidden
+                                   v-model="form[input.name]" type="text" class="input-form" :placeholder="input.label" style="font-size: 14px!important;" autocomplete="off">
+                            <span v-if="errors[input.name]" class="text-danger">{{
+                                    errors[input.name][0]
+                                }}</span>
+                        </div>
+
                         <div class="mb-4" v-if="input.type == 'email'">
                             <label class="label-form mb-1" style="font-size: 15px!important;">{{ input.label }}</label>
                             <input  v-model="form[input.name]" type="email" class="input-form" :placeholder="input.label" style="font-size: 14px!important;">
@@ -101,7 +109,7 @@ export default {
             if(input.parent_of)
             {
                 let item= input.name;
-                let outputs = input.parent_of+'s';
+                let outputs =   input.parent_of+'s';
                 let input_field = input.input_field_for_child_data;
                 let selected = input.data.find(i => i.id ==  this.form[input.name]);
 
@@ -152,7 +160,8 @@ export default {
     created() {
         for(let i=0; i<this.inputs.length; i++)
         {
-            this.form[this.inputs[i].name] = "";
+            if(this.inputs[i].value) this.form[this.inputs[i].name] = this.inputs[i].value;
+            else this.form[this.inputs[i].name] = "";
         }
     },
 };

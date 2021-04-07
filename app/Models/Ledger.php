@@ -14,6 +14,13 @@ class Ledger extends Model
         return $this->morphTo();
     }
 
+    public function staff(){
+        return $this->belongsTo(Staff::class,'ledgerable');
+    }
+
+    public function staffName(){
+        return $this->staff()->where('id',$this->ledgerable_id)->pluck('name')->first();
+    }
     public function account(){
       return  $this->belongsTo(Account::class);
     }
@@ -34,7 +41,7 @@ class Ledger extends Model
 
     public function getTypeNameAttribute(){
         $code = $this->account()->where('id',$this->account_id)->pluck('code')->first();
-        $type_id = intval(substr($code, 0, 1));
+        $type_id = FirstWord($code);
         return Account::where('code',$type_id)->pluck('name')->first();
     }
 

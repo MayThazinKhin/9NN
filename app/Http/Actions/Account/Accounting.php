@@ -10,7 +10,7 @@ use Carbon\Carbon;
 class Accounting
 {
     public function primary(){
-        $primary_accounts = Account::where('code','<', 9)->get();
+        $primary_accounts = Account::where('code','<', 9)->where('is_archived',false)->get();
         return $primary_accounts;
     }
 
@@ -22,9 +22,9 @@ class Accounting
         return Account::where('code','LIKE', $parent_account_code.'2'.'%')->whereRaw('LENGTH(code) =' . $code_length)->get();
     }
 
-
     public function getAccountValueByDate($start_date,$end_date){
-        $accounts =  Account::whereRaw('LENGTH(code) =' . 4)->select('id','name','code','value')->get();
+        $cash_ids = $this->getCashAccountID();
+        $accounts =  Account::whereRaw('LENGTH(code) =' . 4)->whereNotIn('id',$cash_ids)->select('id','name','code','value')->get();
         foreach ($accounts as $account){
             $type_id = intval(substr($account->code, 0, 1));
             $type =  Account::where('code',$type_id)->select('id','name')->first();
@@ -33,6 +33,14 @@ class Accounting
             $account->value = $value;
         }
         return $accounts;
+    }
+
+    public function getCashAccountID(){
+        return Account::where('code','LIKE', '4'.'2'.'%')->pluck('id')->all();
+    }
+
+    public function getAdvancedAccountID(){
+        return Account::where('code','LIKE', '3'.'1'.'%')->pluck('id')->all();
     }
 
 }
