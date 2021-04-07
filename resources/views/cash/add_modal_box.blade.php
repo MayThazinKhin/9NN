@@ -14,7 +14,7 @@
 
                     <div class="mb-4">
                         <label class="label-form mb-1" style="font-size: 15px!important;">Amount</label>
-                        <input type="text" class="input-form" placeholder="Amount" style="font-size: 14px!important;" name="value" autocomplete="off">
+                        <input id="value" type="number" class="input-form" placeholder="Amount" style="font-size: 14px!important;" name="value" autocomplete="off">
                     </div>
                     <input type="text" id="name" name="title" hidden >
                     <input type="text" id="name" name="is_redirect" value="true" hidden >
@@ -29,9 +29,12 @@
 </div>
 
 <script type="application/javascript">
-    function setId(id)
+    function setId(id,amount)
     {
         $('#name').val(id);
+        $("#value").attr({
+            "min" : amount,
+        });
     }
 
 </script>

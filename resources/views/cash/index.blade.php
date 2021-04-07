@@ -48,7 +48,7 @@
                                         class="btn-clear "
                                         title="Edit"
                                         data-toggle="modal"
-                                        onclick="setId({{$account->id}})"
+                                        onclick="setId({{$account->id}},{{$account->value}})"
                                         data-target="#cash"
                                 >
                                     <a class="a-clear">
