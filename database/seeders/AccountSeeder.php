@@ -125,7 +125,7 @@ class AccountSeeder extends Seeder
             'is_archived'=> true
         ]);
         Account::create([
-            'name' => 'total',
+            'name' => 'ထုတ်ငွေ',
             'code' => 3101
         ]);
 

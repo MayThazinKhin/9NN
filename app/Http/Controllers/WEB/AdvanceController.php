@@ -2,15 +2,23 @@
 
 namespace App\Http\Controllers\WEB;
 
+use App\Http\Actions\Account\Accounting;
 use App\Http\Controllers\Controller;
+use App\Models\Ledger;
 use App\Models\Staff;
 use Illuminate\Http\Request;
 
 class AdvanceController extends Controller
 {
-    public function staff(){
+    public function index(){
+        $advanced_accounts = $this->getAdvancedAccounts();
+        $ledgers = Ledger::whereIn('account_id',$advanced_accounts)->orderBy('date', 'desc')->get();
         $staffs = Staff::all();
-        responseData('staffs',$staffs,200);
+        return view('advanced.index',compact('ledgers','staffs'));
+    }
+
+    protected function getAdvancedAccounts(){
+        return (new Accounting())->getAdvancedAccountID();
     }
 
 

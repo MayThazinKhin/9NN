@@ -60,6 +60,9 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::get('/cash',[CashController::class,'index'])->name('cash.index');
     Route::get('/withdraw',[CashController::class,'withdraw'])->name('withdraw');
 
+    //Advance
+    Route::get('advance_transaction',[AdvanceController::class,'index'])->name('transaction.index');
+
 });
 
 Route::middleware('can:isCashier')->group(function () {
@@ -109,6 +112,6 @@ Route::post('account_title',[AccountController::class,'title'])->name('account_t
 Route::get('account_type',[AccountController::class,'type'])->name('account_type');
 Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
 
-Route::get('account_staff',[\App\Http\Controllers\WEB\AdvanceController::class,'staff'])->name('account_staff');
+Route::get('account_staff',[AdvanceController::class,'staff'])->name('account_staff');
 
 
