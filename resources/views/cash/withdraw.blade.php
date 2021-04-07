@@ -19,22 +19,22 @@
                     <thead>
                     <tr class="" style="border-bottom: 2px solid #dee2e6">
                         <th class="table-header font-weight-normal">Id</th>
-                        <th class="table-header font-weight-normal">Date</th>
+                        <th class="table-header font-weight-normal">Title</th>
                         <th class="table-header font-weight-normal">Amount</th>
                         <th class="table-header font-weight-normal"> &nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {{--                    @foreach()--}}
+                    @foreach($ledgers as $i=>$ledger)
                     <tr>
                         <th scope="row" class="padding-table-row">
                                 <span class="text-td font-weight-normal">
-                                     1
+                                     {{ $ledgers->perPage()*($ledgers->currentPage()-1)+ (++$i) }}
                                 </span>
                         </th>
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                <a href="#" class="a-clear text-dark">Cash in bank</a>
+                                <a href="#" class="a-clear text-dark"></a>
                             </div>
                         </td>
                         <td class="padding-table-row">
@@ -48,8 +48,7 @@
                                 <i class="fal fa-times text-danger fw300"></i>
                             </button>
                         </td>
-                    </tr>
-                    {{--                    @endforeach--}}
+                    </tr>@endforeach
                     </tbody>
 
                 </table>

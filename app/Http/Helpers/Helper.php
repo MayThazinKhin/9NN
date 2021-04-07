@@ -38,6 +38,12 @@ if(!function_exists('JsonDecode')){
     }
 }
 
+if(!function_exists('FirstWord')){
+    function FirstWord($code){
+       return intval(substr($code, 0, 1));
+    }
+}
+
 
 
 

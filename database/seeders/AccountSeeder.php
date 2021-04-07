@@ -121,15 +121,26 @@ class AccountSeeder extends Seeder
         ]);
         Account::create([
             'name' => 'advance',
-            'code' => 3
+            'code' => 3,
+            'is_archived'=> true
         ]);
         Account::create([
-            'name' => 'ယူငွေ',
-            'code' => 3201
+            'name' => 'ထုတ်ငွေ',
+            'code' => 3101
+        ]);
+
+        Account::create([
+            'name' => 'cash',
+            'code' => 4,
+            'is_archived'=> true
         ]);
         Account::create([
-            'name' => 'ပိုငွေ',
-            'code' => 3202
+            'name' => 'cash in hand',
+            'code' => 4201
+        ]);
+        Account::create([
+            'name' => 'cash in bank',
+            'code' => 4202
         ]);
 
 

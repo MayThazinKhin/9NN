@@ -25,56 +25,35 @@
                     </tr>
                     </thead>
                     <tbody>
-{{--                    @foreach()--}}
+                    @foreach($accounts as $i=>$account)
                         <tr>
                             <th scope="row" class="padding-table-row">
                                 <span class="text-td font-weight-normal">
-                                     1
+                                     {{++$i}}
                                 </span>
                             </th>
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    Cash in hand
+                                   {{$account->name}}
                                 </div>
                             </td>
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    10000
+                                    {{$account->value}}
                                 </div>
                             </td>
                             <td class="padding-table-row w88px">
-                                <edit-button ></edit-button>
+                                <edit-button> </edit-button>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="row" class="padding-table-row">
-                                <span class="text-td font-weight-normal">
-                                     2
-                                </span>
-                            </th>
-                            <td class="padding-table-row">
-                                <div class="text-td text-capitalize">
-                                    <a href="#" class="a-clear text-dark">Cash in bank</a>
-                                </div>
-                            </td>
-                            <td class="padding-table-row">
-                                <div class="text-td text-capitalize">
-                                    10000
-                                </div>
-                            </td>
 
-                            <td class="padding-table-row w88px">
-                                <edit-button></edit-button>
-                            </td>
                         </tr>
-{{--                    @endforeach--}}
+                    @endforeach
                     </tbody>
 
                 </table>
             </div>
-{{--            <nav aria-label="Page navigation example">--}}
-{{--                {{$ledgers->links()}}--}}
-{{--            </nav>--}}
+
         </form>
     </div>
     @php

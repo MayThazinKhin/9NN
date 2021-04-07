@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content_title', 'Advanced')
-@section('daily_transition','active-link')
+@section('advance_transition','active-link')
 @section('add','#add')
 {{--@section('route','/items/search')--}}
 
@@ -66,14 +66,12 @@
 
                 </table>
             </div>
-            <nav aria-label="Page navigation example">
-                {{$ledgers->links()}}
-            </nav>
+
         </form>
     </div>
     @php
         $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "value"];
-        $input2 = (object) ["type" => "select", "label" => "Stat", "name" => "stat", "data" => $stats, "parent_of" => "title",
+        $input2 = (object) ["type" => "select", "label" => "Stat", "name" => "stat",  "parent_of" => "title",
          "child_data_url" => "/account_title", "input_field_for_child_data"=> "code"];
         $input3 = (object) ["type" => "select", "label" => "Title", "name" => "title", "child_of" => "stat"];
         $inputs = array($input1,$input2,$input3);

@@ -34,7 +34,7 @@ class Ledger extends Model
 
     public function getTypeNameAttribute(){
         $code = $this->account()->where('id',$this->account_id)->pluck('code')->first();
-        $type_id = intval(substr($code, 0, 1));
+        $type_id = FirstWord($code);
         return Account::where('code',$type_id)->pluck('name')->first();
     }
 
