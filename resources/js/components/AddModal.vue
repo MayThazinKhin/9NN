@@ -101,7 +101,7 @@ export default {
             if(input.parent_of)
             {
                 let item= input.name;
-                let outputs = input.parent_of+'s';
+                let outputs =   input.parent_of+'s';
                 let input_field = input.input_field_for_child_data;
                 let selected = input.data.find(i => i.id ==  this.form[input.name]);
 

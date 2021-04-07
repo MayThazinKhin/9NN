@@ -32,6 +32,10 @@
             <i class="fal fa-exchange fs17"></i> Monthly Transition
         </a>
 
+        <a href="{{route('monthly_financial.index')}}" class="a-clear a-sidebar @yield('monthly_transition')">
+            <i class="fal fa-exchange fs17"></i> Advanced Transition
+        </a>
+
 
 
         @elsecan('isCashier')
