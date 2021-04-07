@@ -13,6 +13,8 @@ use App\Http\Controllers\WEB\CancelItemController;
 use App\Http\Controllers\WEB\LoginController;
 use App\Http\Controllers\WEB\ReceiptController;
 use App\Http\Controllers\WEB\AccountController;
+use App\Http\Controllers\WEB\AdvanceController;
+use App\Http\Controllers\WEB\CashController;
 
 //login
 Route::get('',[LoginController::class,'index']);
@@ -55,6 +57,8 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::post('/monthly_filter',[AccountController::class,'monthly_filter'])->name('monthly_financial.filter');
     Route::patch('ledger_update/{ledger}',[AccountController::class,'update'])->name('ledgers.update');
     Route::delete('ledgers/{ledger}',[AccountController::class,'delete'])->name('ledgers.delete');
+    Route::get('/cash',[CashController::class,'index'])->name('cash.index');
+    Route::get('/withdraw',[CashController::class,'withdraw'])->name('withdraw');
 
 });
 
@@ -105,5 +109,6 @@ Route::post('account_title',[AccountController::class,'title'])->name('account_t
 Route::get('account_type',[AccountController::class,'type'])->name('account_type');
 Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');
 
-Route::view('/welcome', 'cash.withdraw');
+Route::get('account_staff',[\App\Http\Controllers\WEB\AdvanceController::class,'staff'])->name('account_staff');
+
 

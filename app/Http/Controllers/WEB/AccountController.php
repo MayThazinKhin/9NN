@@ -19,7 +19,8 @@ class AccountController extends BasicController
 
     public function index(){
         $types =  (new Accounting())->primary();
-        $ledgers = $this->ledger::orderBy('date', 'desc')->paginate(20);
+        $cash_ids = (new Accounting())->getCashAccountID();
+        $ledgers = $this->ledger::whereNotIn('account_id',$cash_ids)->orderBy('date', 'desc')->paginate(20);
         return view('daily_transition.index',compact('types','ledgers'));
     }
 

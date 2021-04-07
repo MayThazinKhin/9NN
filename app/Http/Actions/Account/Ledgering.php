@@ -2,8 +2,6 @@
 
 
 namespace App\Http\Actions\Account;
-
-
 use App\Models\Account;
 use App\Models\Ledger;
 
@@ -19,13 +17,16 @@ class Ledgering
     protected function create($data){
         $ledger_data = array_merge($this->ledger,$data);
         Ledger::create($ledger_data);
+        $this->updateCashInHand($data);
     }
 
     protected function setData($value, $code){
         $account_id = Account::where('code',$code)->pluck('id')->first();
+        $sign = $this->getSign($code);
         return [
             'value' => $value,
-            'account_id'=> $account_id
+            'account_id'=> $account_id,
+            'sign' => $sign
         ];
     }
 
@@ -34,5 +35,18 @@ class Ledgering
             'ledgerable_id' => $id,
             'ledgerable_type' =>$type
         ];
+    }
+
+    protected function getSign($code){
+        $income = [1];
+        $expense = [2,3];
+        $type = FirstWord($code) ;
+        return  (in_array($type,$income)) ? true : false ;
+    }
+
+    protected function updateCashInHand($data){
+        $cash_in_hand = Account::where('code',4201)->first();
+        $cash_in_hand->value = $data['sign'] ? $cash_in_hand->value + $data['value'] : $cash_in_hand->value  - $data['value'] ;
+        $cash_in_hand->save();
     }
 }

@@ -31,8 +31,12 @@
         <a href="{{route('monthly_financial.index')}}" class="a-clear a-sidebar @yield('monthly_transition')">
             <i class="fal fa-exchange fs17"></i> Monthly Transition
         </a>
-        <a href="" class="a-clear a-sidebar ">
-            <i class="fal fa-sack-dollar fs17"></i> Cash
+        <a href="{{route('cash.index')}}" class="a-clear a-sidebar "  @yield('cash')>
+            <i class="fal fa-sack-dollar fs17"> </i> Cash
+        </a>
+
+        <a href="{{route('withdraw')}}" class="a-clear a-sidebar "  @yield('withdraw')>
+          <i class="fal fa-sack-dollar fs17"> </i> Withdraw
         </a>
 
         <a href="{{route('monthly_financial.index')}}" class="a-clear a-sidebar @yield('monthly_transition')">
