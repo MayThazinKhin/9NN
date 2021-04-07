@@ -1992,6 +1992,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2057,7 +2065,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   },
   created: function created() {
     for (var i = 0; i < this.inputs.length; i++) {
-      this.form[this.inputs[i].name] = "";
+      if (this.inputs[i].value) this.form[this.inputs[i].name] = this.inputs[i].value;else this.form[this.inputs[i].name] = "";
     }
   }
 });
@@ -21573,6 +21581,49 @@ var render = function() {
                                 staticStyle: { "font-size": "14px!important" },
                                 attrs: {
                                   id: input.name,
+                                  type: "text",
+                                  placeholder: input.label,
+                                  autocomplete: "off"
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        input.type == "hidden"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  id: input.name,
+                                  hidden: "",
                                   type: "text",
                                   placeholder: input.label,
                                   autocomplete: "off"

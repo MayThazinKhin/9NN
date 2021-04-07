@@ -53,7 +53,6 @@
 
                             @can('isAdmin')
                             <td class="padding-table-row w88px">
-                                <edit-button entity="{{$ledger}}"></edit-button>
 
                                 <button type="button" onclick="deleteItem('ledgers',{{$ledger->id}})" id="delete-button" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
                                     <i class="fal fa-times text-danger fw300"></i>
@@ -71,13 +70,10 @@
     </div>
     @php
         $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "value"];
-        $input2 = (object) ["type" => "select", "label" => "Stat", "name" => "stat",  "parent_of" => "title",
-         "child_data_url" => "/account_title", "input_field_for_child_data"=> "code"];
-        $input3 = (object) ["type" => "select", "label" => "Title", "name" => "title", "child_of" => "stat"];
+        $input2 = (object) ["type" => "select", "label" => "Staff", "name" => "staff_id", "data" => $staffs];
+        $input3 = (object) ["type" => "hidden", "label" => "Title", "name" => "title", "value" => 3101];
         $inputs = array($input1,$input2,$input3);
-        $edit_inputs = array($input1);
     @endphp
 
-    <add-modal title="Add Advanced Transition" :inputs="{{json_encode($inputs)}}" url="/"></add-modal>
-    <edit-modal title="Edit Advanced Transition" :inputs="{{json_encode($edit_inputs)}}" url="/"></edit-modal>
+    <add-modal title="Add Advanced Transition" :inputs="{{json_encode($inputs)}}" url="/ledger_create"></add-modal>
 @endsection
