@@ -23,7 +23,8 @@ class Accounting
     }
 
     public function getAccountValueByDate($start_date,$end_date){
-        $accounts =  Account::whereRaw('LENGTH(code) =' . 4)->select('id','name','code','value')->get();
+        $cash_ids = $this->getCashAccountID();
+        $accounts =  Account::whereRaw('LENGTH(code) =' . 4)->whereNotIn('id',$cash_ids)->select('id','name','code','value')->get();
         foreach ($accounts as $account){
             $type_id = intval(substr($account->code, 0, 1));
             $type =  Account::where('code',$type_id)->select('id','name')->first();

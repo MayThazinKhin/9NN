@@ -13,5 +13,6 @@ class CreditAdding extends Ledgering
     public function run($value){
         $data = $this->setData($value,1106);
         $this->create($data);
+        $this->updateCashInHand($data);
     }
 }

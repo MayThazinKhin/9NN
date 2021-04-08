@@ -16,5 +16,6 @@ class StaffAdding extends Ledgering
         $marker_fee_value = $fee_paid * $total_min ;
         $data = $this->setData($marker_fee_value,1107);
         $this->create($data);
+        $this->updateCashInHand($data);
     }
 }

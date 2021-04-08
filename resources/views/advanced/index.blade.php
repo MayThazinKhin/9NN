@@ -19,8 +19,8 @@
                     <thead>
                     <tr class="" style="border-bottom: 2px solid #dee2e6">
                         <th class="table-header font-weight-normal">Id</th>
-                        <th class="table-header font-weight-normal">Title</th>
-                        <th class="table-header font-weight-normal">Type</th>
+                        <th class="table-header font-weight-normal">Date</th>
+                        <th class="table-header font-weight-normal">Staff</th>
                         <th class="table-header font-weight-normal">Amount</th>
                         <th class="table-header font-weight-normal"> &nbsp;</th>
                     </tr>
@@ -35,13 +35,13 @@
                             </th>
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    {{$ledger->title_name}}
+                                    {{$ledger->date}}
                                 </div>
                             </td>
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    {{$ledger->type_name}}
+                                    {{$ledger->staff_name}}
                                 </div>
                             </td>
 

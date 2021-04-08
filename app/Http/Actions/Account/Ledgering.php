@@ -17,7 +17,6 @@ class Ledgering
     protected function create($data){
         $ledger_data = array_merge($this->ledger,$data);
         Ledger::create($ledger_data);
-        $this->updateCashInHand($data);
     }
 
     protected function setData($value, $code){
@@ -40,13 +39,25 @@ class Ledgering
     protected function getSign($code){
         $income = [1];
         $expense = [2,3];
+        $cash = [4];
         $type = FirstWord($code) ;
-        return  (in_array($type,$income)) ? true : false ;
+        if($type < 4){
+            return  (in_array($type,$income)) ? true : false ;
+        }
+       return 'cash';
     }
 
     protected function updateCashInHand($data){
-        $cash_in_hand = Account::where('code',4201)->first();
-        $cash_in_hand->value = $data['sign'] ? $cash_in_hand->value + $data['value'] : $cash_in_hand->value  - $data['value'] ;
-        $cash_in_hand->save();
+            $cash_in_hand = Account::where('code',4201)->first();
+            $value = $data['sign'] ? $cash_in_hand->value + $data['value'] : $cash_in_hand->value  - $data['value'] ;
+            $cash_in_hand->update(
+                [
+                    'value' => $value
+                ]
+            );
     }
+
+
+
+
 }
