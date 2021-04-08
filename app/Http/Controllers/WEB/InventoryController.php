@@ -20,7 +20,10 @@ class InventoryController extends BasicController
     }
 
     public function create(){
-        $types = ItemFacade::getAllTypes();
+        $raw_types = ItemFacade::getAllTypes();
+        $types = $raw_types->filter(function ($item) {
+            return $item->name != 'menu';
+        });
         return view('inventory.create',compact('types'));
     }
 
