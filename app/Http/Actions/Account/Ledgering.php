@@ -17,7 +17,6 @@ class Ledgering
     protected function create($data){
         $ledger_data = array_merge($this->ledger,$data);
         Ledger::create($ledger_data);
-
     }
 
     protected function setData($value, $code){
