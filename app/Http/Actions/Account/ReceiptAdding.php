@@ -24,12 +24,14 @@ class ReceiptAdding extends Ledgering implements AccountValue
         $shop_value = $this->receipt->total;
         $data = $this->setData($shop_value,1104);
         $this->create($data);
+        $this->updateCashInHand($data);
     }
 
     protected function addTaxValue(){
         if($this->receipt->is_tax == false){
             $data = $this->setData($this->receipt->tax,1105);
             $this->create($data);
+            $this->updateCashInHand($data);
         }
     }
 }

@@ -23,5 +23,6 @@ class InventoryAdding extends Ledgering implements AccountValue
         $inventory_value = $this->inventory->price;
         $data = $this->setData($inventory_value,2101);
         $this->create($data);
+        $this->updateCashInHand($data);
     }
 }

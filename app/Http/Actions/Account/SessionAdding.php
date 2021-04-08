@@ -35,12 +35,14 @@ class SessionAdding extends Ledgering implements AccountValue
         $session_value  = $this->sessionPeriods->total_value ;
         $data = $this->setData($session_value,1101);
         $this->create($data);
+        $this->updateCashInHand($data);
     }
 
     public function addMarkerValue(){
         $marker_paid_value  = $this->sessionPeriods->total_min * $this->marker->fee;
         $data = $this->setData($marker_paid_value,1102);
         $this->create($data);
+        $this->updateCashInHand($data);
     }
 
     protected function addFoodValue(){
@@ -48,6 +50,7 @@ class SessionAdding extends Ledgering implements AccountValue
         if($food_value > 0){
             $data = $this->setData($food_value,1103);
             $this->create($data);
+            $this->updateCashInHand($data);
         }
     }
 
@@ -56,6 +59,7 @@ class SessionAdding extends Ledgering implements AccountValue
         if($tax_value > 0){
             $data = $this->setData($tax_value,1105);
             $this->create($data);
+            $this->updateCashInHand($data);
         }
     }
 
