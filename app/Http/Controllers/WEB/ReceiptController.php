@@ -47,10 +47,10 @@ class ReceiptController extends Controller
         return $receipt;
     }
     public function update(Request $request){
-        $request['session_id'] = 1;
         $data = $request->all();
         $session = $this->checkReceiptID($data['session_id']);
         $receipt = (new SessionCheckout())->run($data,$session);
+
         (new ReceiptAdding($receipt))->run();
         return response()->json(array('is_success' => true) , 200);
     }
