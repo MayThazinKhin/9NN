@@ -5,7 +5,8 @@
     <shop-invoice-detail :items="{{json_encode($receipt)}}"
                     :members="{{json_encode($members)}}"
                     :id="{{$id}}"
-                         :is_submit="true"
+                         :is_submit="false"
+
     >
 
     </shop-invoice-detail>

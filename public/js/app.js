@@ -2000,9 +2000,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2012,8 +2009,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     return {
       form: {},
       errors: {},
-      isFeeDisable: false,
-      paid_fee: ''
+      isFeeDisable: false
     };
   },
   methods: {
@@ -2060,13 +2056,10 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var role = this.inputs.find(function (i) {
         return i.name == 'role_id';
       });
+      $('#fee').attr('disabled', false);
 
-      if (this.form[role.name] == 3) {
-        $('#fee').attr('disabled', false);
-        $('#paid_fee').append("\n                           <div class=\"mb-4\">\n                            <label class=\"label-form mb-1\" style=\"font-size: 15px!important;\">Paid Fee</label>\n                            <input\n                                   v-model=\"paid_fee\" type=\"text\" class=\"input-form\" placeholder=\"Paid Fee\" style=\"font-size: 14px!important;\" autocomplete=\"off\">\n                            <span v-if=\"errors[paid_fee]\" class=\"text-danger\">{{\n                                    errors[paid_fee][0]\n                                }}</span>\n                        </div>\n\n                    ");
-      } else {
+      if (this.form[role.name] !== 3) {
         $('#fee').attr('disabled', true);
-        $('#paid_fee').empty();
       }
     }
   },
@@ -2883,7 +2876,7 @@ __webpack_require__.r(__webpack_exports__);
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["items", "periods", "members", "id", "marker_fee"],
+  props: ["items", "periods", "members", "id", "marker_fee", "is_submit"],
   data: function data() {
     return {
       query: '',
@@ -2954,7 +2947,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       });
     }
   },
-  created: function created() {// console.log(this.id);
+  created: function created() {// console.log(this.is_submit);
   },
   watch: {
     discount: function discount() {
@@ -3212,7 +3205,7 @@ __webpack_require__.r(__webpack_exports__);
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["items", "members", "id"],
+  props: ["items", "members", "id", "is_submit"],
   data: function data() {
     return {
       query: '',
@@ -21901,8 +21894,6 @@ var render = function() {
                             ])
                           : _vm._e(),
                         _vm._v(" "),
-                        _c("div", { attrs: { id: "paid_fee" } }),
-                        _vm._v(" "),
                         input.type == "select"
                           ? _c("div", { staticClass: "mb-4" }, [
                               _c(
@@ -23233,22 +23224,24 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", [
-          _c("div", { staticClass: "d-inline-block ml-3" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-danger py-1 rounded-0",
-                staticStyle: { "font-size": "16px!important" },
-                attrs: { disabled: _vm.is_credit_error, type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.submit()
-                  }
-                }
-              },
-              [_vm._v("Invoices ထုတ်ရန်")]
-            )
-          ])
+          _vm.is_submit
+            ? _c("div", { staticClass: "d-inline-block ml-3" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger py-1 rounded-0",
+                    staticStyle: { "font-size": "16px!important" },
+                    attrs: { disabled: _vm.is_credit_error, type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.submit()
+                      }
+                    }
+                  },
+                  [_vm._v("Invoices ထုတ်ရန်")]
+                )
+              ])
+            : _vm._e()
         ])
       ]),
       _vm._v(" "),
@@ -24269,22 +24262,24 @@ var render = function() {
         _vm._m(0),
         _vm._v(" "),
         _c("div", [
-          _c("div", { staticClass: "d-inline-block ml-3" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-danger py-1 rounded-0",
-                staticStyle: { "font-size": "16px!important" },
-                attrs: { disabled: _vm.is_credit_error, type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.submit()
-                  }
-                }
-              },
-              [_vm._v("Invoices ထုတ်ရန်")]
-            )
-          ])
+          _vm.is_submit
+            ? _c("div", { staticClass: "d-inline-block ml-3" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger py-1 rounded-0",
+                    staticStyle: { "font-size": "16px!important" },
+                    attrs: { disabled: _vm.is_credit_error, type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.submit()
+                      }
+                    }
+                  },
+                  [_vm._v("Invoices ထုတ်ရန်")]
+                )
+              ])
+            : _vm._e()
         ])
       ]),
       _vm._v(" "),

@@ -52,9 +52,6 @@
                                     errors[input.name][0]
                                 }}</span>
                         </div>
-                        <div id="paid_fee">
-
-                        </div>
 
 
                         <div class="mb-4" v-if="input.type == 'select'">
@@ -101,8 +98,7 @@ export default {
         return {
             form: {},
             errors: {},
-            isFeeDisable: false,
-            paid_fee: ''
+            isFeeDisable: false
         };
     },
 
@@ -153,32 +149,12 @@ export default {
 
         disableFeeFor9N(){
             let role = this.inputs.find(i => i.name ==  'role_id');
+            $('#fee').attr('disabled',false);
 
-            if(this.form[role.name] == 3)
-            {
-                $('#fee').attr('disabled',false);
-                $('#paid_fee').append(
-                    `
-                           <div class="mb-4">
-                            <label class="label-form mb-1" style="font-size: 15px!important;">Paid Fee</label>
-                            <input
-                                   v-model="paid_fee" type="text" class="input-form" placeholder="Paid Fee" style="font-size: 14px!important;" autocomplete="off">
-                            <span v-if="errors[paid_fee]" class="text-danger">{{
-                                    errors[paid_fee][0]
-                                }}</span>
-                        </div>
-
-                    `
-                )
-
-            }
-            else
+            if(this.form[role.name] !== 3)
             {
                 $('#fee').attr('disabled',true);
-                $('#paid_fee').empty();
-
             }
-
         }
     },
     created() {

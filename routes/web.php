@@ -70,10 +70,14 @@ Route::middleware('can:isCashier')->group(function () {
     Route::get('invoices',[InvoiceController::class,'index'])->name('invoice');
     Route::get('invoice_detail/{id}',[InvoiceController::class,'detail'])->name('invoice.detail');
     Route::post('invoice_update',[InvoiceController::class,'update'])->name('invoice.update');
+    Route::get('done_invoices',[InvoiceController::class,'done_index'])->name('done_invoice');
+    Route::get('done_invoice_detail/{id}',[InvoiceController::class,'done_detail'])->name('done_invoice.detail');
 
     //Receipt
     Route::get('receipts',[ReceiptController::class,'index'])->name('receipt');
     Route::get('receipt_detail/{id}',[ReceiptController::class,'detail'])->name('receipt.detail');
+    Route::get('done_receipts',[ReceiptController::class,'done_index'])->name('done_receipt');
+    Route::get('done_receipt_detail/{id}',[ReceiptController::class,'done_detail'])->name('done_receipt.detail');
     Route::post('receipt_update',[ReceiptController::class,'update'])->name('receipt.update');
 
     //Credit

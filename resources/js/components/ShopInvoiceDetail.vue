@@ -8,7 +8,7 @@
                 </nav>
                 <div>
 
-                    <div class="d-inline-block ml-3">
+                    <div v-if="is_submit" class="d-inline-block ml-3">
                         <button :disabled="is_credit_error" type="button" @click="submit()" class="btn btn-danger py-1 rounded-0" style="font-size: 16px!important;">Invoices ထုတ်ရန်</button>
                     </div>
                 </div>
@@ -222,7 +222,7 @@ import Vuex, { mapState } from "vuex";
 import { ajaxHelper } from "../helpers/ajax_helper.js";
 Vue.use(Vuex);
 export default {
-    props: ["items","members","id"],
+    props: ["items","members","id","is_submit"],
     data() {
         return {
             query: '',

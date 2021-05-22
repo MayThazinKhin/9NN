@@ -6,7 +6,7 @@
                     :members="{{json_encode($members)}}"
                     :marker_fee="{{json_encode($marker_fee)}}"
                     :id="{{$id}}"
-                    :is_submit="true"
+                    :is_submit="false"
     >
 
     </invoice-detail>

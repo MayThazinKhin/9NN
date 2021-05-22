@@ -4,6 +4,7 @@ namespace App\Http\Controllers\WEB;
 
 use App\Http\Actions\Account\CreditAdding;
 use App\Http\Actions\Account\SessionAdding;
+use App\Http\Actions\Session\CheckedSessions;
 use App\Http\Controllers\Controller;
 use App\Http\Services\Period\PeriodFacade;
 use App\Http\Services\Session\SessionFacade;
@@ -23,6 +24,20 @@ class InvoiceController extends Controller
         $marker_fee = SessionFacade::getMarker($id)->fee_paid;
         $members = Member::all();
         return view('invoice.detail',compact('periods','items','members','id','marker_fee'));
+    }
+
+    public function done_index(){
+        $invoices  = (new CheckedSessions())->run() ;
+        return view('invoice_done.index',compact('invoices'));
+    }
+
+    public function done_detail($id)
+    {
+        $periods  = PeriodFacade::getPeriodsBySessionID($id);
+        $items = SessionFacade::getOrderItems($id);
+        $marker_fee = SessionFacade::getMarker($id)->fee_paid;
+        $members = Member::all();
+        return view('invoice_done.detail',compact('periods','items','members','id','marker_fee'));
     }
 
     public function update(Request $request){
