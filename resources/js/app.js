@@ -8,6 +8,7 @@ import 'nprogress/nprogress.css';
 window.Vue = require('vue');
 
 Vue.component('add-modal', require('./components/AddModal.vue').default,{name: 'add-modal'});
+Vue.component('add-new-staff', require('./components/AddNewStaff.vue').default,{name: 'add-new-staff'});
 Vue.component('edit-modal', require('./components/EditModal.vue').default);
 Vue.component('edit-button', require('./components/EditButton.vue').default);
 Vue.component('edit-password', require('./components/EditPassword.vue').default);

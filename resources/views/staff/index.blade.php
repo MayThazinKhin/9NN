@@ -68,20 +68,10 @@
             </nav>
     </form>
     </div>
-    @php
-        $input1 = (object) ["type" => "text", "label" => "Name", "name" => "name"];
-        $input2 = (object) ["type" => "password", "label" => "Password", "name" => "password"];
-        $input3 = (object) ["type" => "select", "label" => "Role", "name" => "role_id", "data" => $roles];
-        $input4 = (object) ["type" => "text", "label" => "Fee Per Min", "name" => "fee"];
-        $input5 = (object) ["type" => "password", "label" => "Password Confirmation ", "name" => "password_confirmation"];
-        $inputs = array($input1,$input2,$input3,$input4);
 
-        $edit_inputs =  array($input1,$input3,$input4);
+    <add-new-staff roles="{{$roles}}"></add-new-staff>
 
-        $change_inputs =  array($input2,$input5);
-    @endphp
-
-    <add-modal title="Add New Staff" :inputs="{{json_encode($inputs)}}" url="/staffs"></add-modal>
-    <edit-modal title="Edit Staff" :inputs="{{json_encode($edit_inputs)}}" url="/staffs"></edit-modal>
-    <edit-password title="Change Password" :inputs="{{json_encode($change_inputs)}}" url="/staffs/change_password"></edit-password>
+{{--    <add-modal title="Add New Staff" :inputs="{{json_encode($inputs)}}" url="/staffs"></add-modal>--}}
+{{--    <edit-modal title="Edit Staff" :inputs="{{json_encode($edit_inputs)}}" url="/staffs"></edit-modal>--}}
+{{--    <edit-password title="Change Password" :inputs="{{json_encode($change_inputs)}}" url="/staffs/change_password"></edit-password>--}}
 @endsection
