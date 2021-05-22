@@ -29,6 +29,17 @@ class ReceiptController extends Controller
         return view('shop_invoice.detail',compact('receipt','members','id'));
     }
 
+    public function done_index(){
+        $receipts = $this->receipt::where('cashier_id','<>', null)->orderBy('id', 'desc')->paginate(20);
+        return view('shop_invoice_done.index',compact('receipts'));
+    }
+
+    public function done_detail($id){
+        $receipt = (new OrderedItems())->run($this->checkReceiptID($id));
+        $members = Member::all();
+        return view('shop_invoice_done.detail',compact('receipt','members','id'));
+    }
+
     public function checkReceiptID($id){
         $receipt = $this->receipt::where('id', $id)->first();
         if (!$receipt)
