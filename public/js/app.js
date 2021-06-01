@@ -2142,6 +2142,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2151,20 +2168,43 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
     return {
       name: '',
       password: '',
-      role_id: ''
+      fee: 0,
+      fee_paid: 0,
+      marker_fee: 0,
+      role_id: '',
+      is_marker: false,
+      errors: []
     };
   },
   methods: {
     create: function create() {
       var self = this;
       _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
-      $.post(this.url, JSON.stringify(this.form)).done(function (data) {
+      var form = {
+        name: this.name,
+        password: this.password,
+        fee: this.fee,
+        role_id: this.role_id
+      };
+
+      if (this.is_marker) {
+        form.fee_paid = this.fee_paid;
+        form.marker_fee = this.marker_fee;
+      }
+
+      $.post('/staffs', JSON.stringify(form)).done(function (data) {
         if (data.success) {
           location.reload();
         }
       }).fail(function (xhr, status, error) {
         self.errors = JSON.parse(xhr.responseText).errors;
+        console.log(self.errors);
       });
+    }
+  },
+  watch: {
+    role_id: function role_id() {
+      this.is_marker = this.role_id == 3 ? true : false;
     }
   }
 });
@@ -2622,6 +2662,199 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     setEditItem: function setEditItem() {
       this.$store.commit("setEditData", JSON.parse(this.entity));
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditStaff.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditStaff.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../helpers/ajax_helper.js */ "./resources/js/helpers/ajax_helper.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['roles'],
+  data: function data() {
+    return {
+      name: '',
+      password: '',
+      fee: 0,
+      fee_paid: 0,
+      marker_fee: 0,
+      role_id: '',
+      is_marker: false,
+      errors: []
+    };
+  },
+  methods: {
+    update: function update() {
+      var self = this;
+      _helpers_ajax_helper_js__WEBPACK_IMPORTED_MODULE_1__["ajaxHelper"].ajaxHeaders();
+      var form = {
+        name: this.name,
+        password: this.password,
+        fee: this.fee,
+        role_id: this.role_id
+      };
+
+      if (this.is_marker) {
+        form.fee_paid = this.fee_paid;
+        form.marker_fee = this.marker_fee;
+      }
+
+      $.ajax({
+        url: '/staffs',
+        type: "patch",
+        contentType: "application/json",
+        data: JSON.stringify(form),
+        success: function success(data) {
+          if (data.success) {
+            location.reload();
+          }
+        },
+        error: function error(xhr, status, _error) {
+          self.errors = JSON.parse(xhr.responseText).errors;
+        }
+      });
+    }
+  },
+  created: function created() {},
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+    staff_data: function staff_data(state) {
+      return state.staff.staff_data;
+    }
+  })),
+  watch: {
+    staff_data: function staff_data() {
+      this.name = this.staff_data.name;
+      this.fee = this.staff_data.fee;
+      this.role_id = this.staff_data.role_id;
+      this.$forceUpdate();
+      this.$nextTick(function () {
+        $('.selectpicker').selectpicker('refresh');
+      });
+    },
+    role_id: function role_id() {
+      this.is_marker = this.role_id == 3 ? true : false;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditStaffButton.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditStaffButton.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["entity"],
+  data: function data() {
+    return {};
+  },
+  methods: {
+    setEditItem: function setEditItem() {
+      this.$store.commit("setStaffData", JSON.parse(this.entity));
     }
   }
 });
@@ -3272,6 +3505,8 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       }).then(function (response) {
         return response.json();
       }).then(function (data) {
+        console.log(data);
+
         if (data.is_success) {
           window.location.replace('/receipts');
         } else {
@@ -22117,7 +22352,13 @@ var render = function() {
                           _vm.name = $event.target.value
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.name
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(" " + _vm._s(_vm.errors.name[0]) + " ")
+                        ])
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "mb-4" }, [
@@ -22155,7 +22396,13 @@ var render = function() {
                           _vm.password = $event.target.value
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.password
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(" " + _vm._s(_vm.errors.password[0]) + " ")
+                        ])
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "mb-4" }, [
@@ -22204,16 +22451,150 @@ var render = function() {
                           }
                         }
                       },
-                      _vm._l(_vm.input.data, function(item, j) {
+                      _vm._l(_vm.roles, function(role, i) {
                         return _c(
                           "option",
-                          { key: j, domProps: { value: item.id } },
-                          [_vm._v(_vm._s(item.name))]
+                          {
+                            key: i,
+                            domProps: { value: role.id },
+                            model: {
+                              value: _vm.role_id,
+                              callback: function($$v) {
+                                _vm.role_id = $$v
+                              },
+                              expression: "role_id"
+                            }
+                          },
+                          [_vm._v(_vm._s(role.name))]
                         )
                       }),
                       0
-                    )
-                  ])
+                    ),
+                    _vm._v(" "),
+                    _vm.errors.role_id
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(" " + _vm._s(_vm.errors.role_id[0]) + " ")
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mb-4" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "label-form mb-1",
+                        staticStyle: { "font-size": "15px!important" }
+                      },
+                      [_vm._v("Fee")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fee,
+                          expression: "fee"
+                        }
+                      ],
+                      staticClass: "input-form",
+                      staticStyle: { "font-size": "14px!important" },
+                      attrs: {
+                        type: "number",
+                        placeholder: "Fee",
+                        autocomplete: "off"
+                      },
+                      domProps: { value: _vm.fee },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.fee = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _vm.is_marker
+                    ? _c("div", { staticClass: "mb-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "label-form mb-1",
+                            staticStyle: { "font-size": "15px!important" }
+                          },
+                          [_vm._v("Fee Paid")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fee_paid,
+                              expression: "fee_paid"
+                            }
+                          ],
+                          staticClass: "input-form",
+                          staticStyle: { "font-size": "14px!important" },
+                          attrs: {
+                            type: "number",
+                            placeholder: "Fee",
+                            autocomplete: "off"
+                          },
+                          domProps: { value: _vm.fee_paid },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.fee_paid = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.is_marker
+                    ? _c("div", { staticClass: "mb-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "label-form mb-1",
+                            staticStyle: { "font-size": "15px!important" }
+                          },
+                          [_vm._v("Monthly Fee")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.marker_fee,
+                              expression: "marker_fee"
+                            }
+                          ],
+                          staticClass: "input-form",
+                          staticStyle: { "font-size": "14px!important" },
+                          attrs: {
+                            type: "number",
+                            placeholder: "Fee",
+                            autocomplete: "off"
+                          },
+                          domProps: { value: _vm.marker_fee },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.marker_fee = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
                 _c(
@@ -23192,6 +23573,410 @@ var staticRenderFns = [
     return _c("a", { staticClass: "a-clear" }, [
       _c("i", {
         staticClass: "fas fa-lock-open",
+        staticStyle: { color: "#673ab7" }
+      })
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditStaff.vue?vue&type=template&id=21a44bca&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditStaff.vue?vue&type=template&id=21a44bca& ***!
+  \************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: "edit_staff",
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "add",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "modal-dialog", staticStyle: { width: "400px" } },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-content",
+              staticStyle: { "border-radius": "4px" },
+              attrs: { id: "app" }
+            },
+            [
+              _c("form", { attrs: { action: "#", method: "post" } }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body mx-4 pt-2 pb-0" }, [
+                  _c("div", { staticClass: "mb-4" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "label-form mb-1",
+                        staticStyle: { "font-size": "15px!important" }
+                      },
+                      [_vm._v("Name")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.name,
+                          expression: "name"
+                        }
+                      ],
+                      staticClass: "input-form",
+                      staticStyle: { "font-size": "14px!important" },
+                      attrs: {
+                        type: "text",
+                        placeholder: "Name",
+                        autocomplete: "off"
+                      },
+                      domProps: { value: _vm.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.name = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.errors.name
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(" " + _vm._s(_vm.errors.name[0]) + " ")
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mb-4" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "label-form mb-1",
+                        staticStyle: {
+                          "font-size": "15px!important",
+                          color: "#1b1e21"
+                        }
+                      },
+                      [_vm._v("Role")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.role_id,
+                            expression: "role_id"
+                          }
+                        ],
+                        staticClass: "selectpicker d-block",
+                        attrs: {
+                          "data-width": "100%",
+                          title: "Role...",
+                          "data-style": "select-form w-100"
+                        },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.role_id = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          }
+                        }
+                      },
+                      _vm._l(_vm.roles, function(role, i) {
+                        return _c(
+                          "option",
+                          {
+                            key: i,
+                            domProps: { value: role.id },
+                            model: {
+                              value: _vm.role_id,
+                              callback: function($$v) {
+                                _vm.role_id = $$v
+                              },
+                              expression: "role_id"
+                            }
+                          },
+                          [_vm._v(_vm._s(role.name))]
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _vm.errors.role_id
+                      ? _c("span", { staticClass: "text-danger" }, [
+                          _vm._v(" " + _vm._s(_vm.errors.role_id[0]) + " ")
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mb-4" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "label-form mb-1",
+                        staticStyle: { "font-size": "15px!important" }
+                      },
+                      [_vm._v("Fee")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.fee,
+                          expression: "fee"
+                        }
+                      ],
+                      staticClass: "input-form",
+                      staticStyle: { "font-size": "14px!important" },
+                      attrs: {
+                        type: "number",
+                        placeholder: "Fee",
+                        autocomplete: "off"
+                      },
+                      domProps: { value: _vm.fee },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.fee = $event.target.value
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _vm.is_marker
+                    ? _c("div", { staticClass: "mb-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "label-form mb-1",
+                            staticStyle: { "font-size": "15px!important" }
+                          },
+                          [_vm._v("Fee Paid")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fee_paid,
+                              expression: "fee_paid"
+                            }
+                          ],
+                          staticClass: "input-form",
+                          staticStyle: { "font-size": "14px!important" },
+                          attrs: {
+                            type: "number",
+                            placeholder: "Fee",
+                            autocomplete: "off"
+                          },
+                          domProps: { value: _vm.fee_paid },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.fee_paid = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.is_marker
+                    ? _c("div", { staticClass: "mb-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "label-form mb-1",
+                            staticStyle: { "font-size": "15px!important" }
+                          },
+                          [_vm._v("Monthly Fee")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.marker_fee,
+                              expression: "marker_fee"
+                            }
+                          ],
+                          staticClass: "input-form",
+                          staticStyle: { "font-size": "14px!important" },
+                          attrs: {
+                            type: "number",
+                            placeholder: "Fee",
+                            autocomplete: "off"
+                          },
+                          domProps: { value: _vm.marker_fee },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.marker_fee = $event.target.value
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-4"
+                  },
+                  [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn pr-0",
+                        staticStyle: { "font-size": "16px!important" },
+                        attrs: { "data-dismiss": "modal" }
+                      },
+                      [_vm._v("Cancel")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger pl-3",
+                        staticStyle: { "font-size": "16px!important" },
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.update($event)
+                          }
+                        }
+                      },
+                      [_vm._v(" Confirm ")]
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header border-bottom-0 mt-3" }, [
+      _c("div", { staticClass: "text-left pl-4 pt-1" }, [
+        _c(
+          "p",
+          {
+            staticClass: "fs18 mb-0 font-weight-bold",
+            staticStyle: {
+              "font-family": "'Roboto',sans-serif",
+              "font-size": "18px!important"
+            }
+          },
+          [_vm._v("\n                            Edit Staff")]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditStaffButton.vue?vue&type=template&id=9a63f3a6&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditStaffButton.vue?vue&type=template&id=9a63f3a6& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "button",
+    {
+      staticClass: "btn-clear ",
+      attrs: {
+        type: "button",
+        title: "Edit",
+        "data-toggle": "modal",
+        "data-target": "#edit_staff"
+      },
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          return _vm.setEditItem($event)
+        }
+      }
+    },
+    [_vm._m(0)]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { staticClass: "a-clear" }, [
+      _c("i", {
+        staticClass: "far fa-file-edit fw300",
         staticStyle: { color: "#673ab7" }
       })
     ])
@@ -38466,7 +39251,9 @@ Vue.component('add-new-staff', __webpack_require__(/*! ./components/AddNewStaff.
   name: 'add-new-staff'
 });
 Vue.component('edit-modal', __webpack_require__(/*! ./components/EditModal.vue */ "./resources/js/components/EditModal.vue")["default"]);
+Vue.component('edit-staff', __webpack_require__(/*! ./components/EditStaff.vue */ "./resources/js/components/EditStaff.vue")["default"]);
 Vue.component('edit-button', __webpack_require__(/*! ./components/EditButton.vue */ "./resources/js/components/EditButton.vue")["default"]);
+Vue.component('edit-staff-button', __webpack_require__(/*! ./components/EditStaffButton.vue */ "./resources/js/components/EditStaffButton.vue")["default"]);
 Vue.component('edit-password', __webpack_require__(/*! ./components/EditPassword.vue */ "./resources/js/components/EditPassword.vue")["default"]);
 Vue.component('invoice-detail', __webpack_require__(/*! ./components/InvoiceDetail.vue */ "./resources/js/components/InvoiceDetail.vue")["default"]);
 Vue.component('shop-invoice-detail', __webpack_require__(/*! ./components/ShopInvoiceDetail.vue */ "./resources/js/components/ShopInvoiceDetail.vue")["default"]);
@@ -38924,6 +39711,144 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/EditStaff.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/EditStaff.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditStaff_vue_vue_type_template_id_21a44bca___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditStaff.vue?vue&type=template&id=21a44bca& */ "./resources/js/components/EditStaff.vue?vue&type=template&id=21a44bca&");
+/* harmony import */ var _EditStaff_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditStaff.vue?vue&type=script&lang=js& */ "./resources/js/components/EditStaff.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditStaff_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditStaff_vue_vue_type_template_id_21a44bca___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditStaff_vue_vue_type_template_id_21a44bca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditStaff.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditStaff.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/EditStaff.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaff_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EditStaff.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditStaff.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaff_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EditStaff.vue?vue&type=template&id=21a44bca&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/EditStaff.vue?vue&type=template&id=21a44bca& ***!
+  \******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaff_vue_vue_type_template_id_21a44bca___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditStaff.vue?vue&type=template&id=21a44bca& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditStaff.vue?vue&type=template&id=21a44bca&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaff_vue_vue_type_template_id_21a44bca___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaff_vue_vue_type_template_id_21a44bca___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/EditStaffButton.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/EditStaffButton.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditStaffButton_vue_vue_type_template_id_9a63f3a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditStaffButton.vue?vue&type=template&id=9a63f3a6& */ "./resources/js/components/EditStaffButton.vue?vue&type=template&id=9a63f3a6&");
+/* harmony import */ var _EditStaffButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditStaffButton.vue?vue&type=script&lang=js& */ "./resources/js/components/EditStaffButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditStaffButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditStaffButton_vue_vue_type_template_id_9a63f3a6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditStaffButton_vue_vue_type_template_id_9a63f3a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditStaffButton.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditStaffButton.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/EditStaffButton.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaffButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EditStaffButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditStaffButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaffButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EditStaffButton.vue?vue&type=template&id=9a63f3a6&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/EditStaffButton.vue?vue&type=template&id=9a63f3a6& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaffButton_vue_vue_type_template_id_9a63f3a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditStaffButton.vue?vue&type=template&id=9a63f3a6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditStaffButton.vue?vue&type=template&id=9a63f3a6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaffButton_vue_vue_type_template_id_9a63f3a6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditStaffButton_vue_vue_type_template_id_9a63f3a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/InvoiceDetail.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/InvoiceDetail.vue ***!
@@ -39151,6 +40076,29 @@ var edit_modal = {
 
 /***/ }),
 
+/***/ "./resources/js/store/staff.js":
+/*!*************************************!*\
+  !*** ./resources/js/store/staff.js ***!
+  \*************************************/
+/*! exports provided: staff */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staff", function() { return staff; });
+var staff = {
+  state: {
+    staff_data: {}
+  },
+  mutations: {
+    setStaffData: function setStaffData(state, data) {
+      state.staff_data = data;
+    }
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/store/store.js":
 /*!*************************************!*\
   !*** ./resources/js/store/store.js ***!
@@ -39166,6 +40114,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _add_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./add-modal */ "./resources/js/store/add-modal.js");
 /* harmony import */ var _edit_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit-modal */ "./resources/js/store/edit-modal.js");
+/* harmony import */ var _staff__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./staff */ "./resources/js/store/staff.js");
+
 
 
 
@@ -39174,7 +40124,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
     add_modal: _add_modal__WEBPACK_IMPORTED_MODULE_2__["add_modal"],
-    edit_modal: _edit_modal__WEBPACK_IMPORTED_MODULE_3__["edit_modal"]
+    edit_modal: _edit_modal__WEBPACK_IMPORTED_MODULE_3__["edit_modal"],
+    staff: _staff__WEBPACK_IMPORTED_MODULE_4__["staff"]
   },
   state: {},
   mutations: {}
