@@ -50,6 +50,7 @@ class ReceiptController extends Controller
         $data = $request->all();
         $session = $this->checkReceiptID($data['session_id']);
         $receipt = (new SessionCheckout())->run($data,$session);
+
         (new ReceiptAdding($receipt))->run();
         return response()->json(array('is_success' => true) , 200);
     }
