@@ -21,7 +21,17 @@ class OrderedItems
                 unset($item['type']);
                 $net_total += $item->total;
             }
+            $session_foc_items = $session->foc_items;
+            $foc_items  = [];
+            foreach ($session_foc_items as $session_foc_item){
+                $foc_item = new \stdClass();
+                $foc_item->id = $session_foc_item->item_id;
+                $foc_item->name = $session_foc_item->item_name ;
+                $foc_item->count = $session_foc_item->count;
+                $foc_items [] = $foc_item;
+            }
             $orders->items = $items;
+            $orders->foc_items = $foc_items;
             $orders->net_total = $net_total;
         }
         return $orders;
