@@ -428,7 +428,7 @@ textarea:focus {
 
 .text-td {
   font-size: 14px;
-  font-family: SansSerif;
+  font-family: 'roboto',SansSerif;
   color: #414b4e; }
 
 /****************** form ****************************/
