@@ -15,6 +15,24 @@ body{
     background-color: #f8fafb;
 }
 
+#inner::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 1px rgba(0,0,0,0.9);
+    border-radius: 4px;
+}
+
+#inner::-webkit-scrollbar
+{
+    width: 8px;
+    //background-color: #F5F5F5;
+}
+
+#inner::-webkit-scrollbar-thumb
+{
+    border-radius: 4px;
+    background-color: #ddd;
+
+}
 /*************general**************/
 
 $black:#1b1e21;
@@ -254,7 +272,7 @@ textarea:focus{
     top: 0;
     left: 0;
     padding-top: 8px;
-    width: 200px;
+    width: 220px;
     background-color: #fff;
     border-right: 4px solid darken(#eff1f5,1%);
 }
@@ -269,7 +287,7 @@ textarea:focus{
     display: block;
     color: #666;
     margin: 4px 0;
-    padding: 8px 6px 10px 48px;
+    padding: 8px 6px 10px 40px;
     align-items: center;
     white-space: nowrap;
     overflow: hidden;
@@ -294,7 +312,7 @@ textarea:focus{
 /*****************mainbody***********************/
 
 .main-container{
-    margin-left: 200px;
+    margin-left: 220px;
     margin-top: 50px;
     background-color: #eff1f5;
     padding: 32px;

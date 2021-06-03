@@ -54,7 +54,8 @@
                     <div class="row mx-0 mb-3">
                         <div class="col-8">
                             <div class="modal-footer border-0 justify-content-between mx-0 px-2 mb-0">
-                                <button type="button" class="btn pl-0" data-dismiss="modal" style="font-size: 16px!important;">Cancel</button>
+{{--                                <button type="button" class="btn pl-0" data-dismiss="modal" style="font-size: 16px!important;">Cancel</button>--}}
+                                <a class="btn py-1 pl-0 rounded-0 a-clear" style="box-shadow: none" href="/inventories">Cancel</a>
                                 <button type="submit" class="btn btn-danger pl-3" style="font-size: 16px!important;" id="confirm-add-button"> Add Inventory </button>
                             </div>
                         </div>

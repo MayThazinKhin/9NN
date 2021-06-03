@@ -8,7 +8,13 @@
                 <nav style="margin-top: 8px">
                     <a href="#" class="a-clear text-dark fm-roboto fs17">Invoice Management</a>
                 </nav>
-                <div>
+                <div class="pr-3">
+                    <span class="__mm font-weight-bold fs15 pr-2">မီးလာ</span>
+                    <div class="custom-control custom-switch d-inline-block">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                        <label class="custom-control-label" for="customSwitch1" style="cursor: pointer"></label>
+                    </div>
+                    <span class="__mm font-weight-bold fs15">မီးပြတ်</span>
                 </div>
             </div>
         </header>
@@ -45,7 +51,7 @@
                         </td>
 
                         <td class="padding-table-row w88px">
-                            <button type="button" class="btn-clear " title="Edit"  id="edit-button">
+                            <button type="button" class="btn-clear " title="Detail"  id="edit-button">
                                 <a class="a-clear" href="{{route('invoice.detail',['id' => $invoice->id])}}">
                                     <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
                                 </a>

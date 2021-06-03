@@ -118,4 +118,5 @@ Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.
 
 Route::get('account_staff',[AdvanceController::class,'staff'])->name('account_staff');
 
-
+Route::view('/index', 'bar_inventory_confirm.index');
+Route::view('/create', 'log.create');

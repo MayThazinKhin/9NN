@@ -49,7 +49,7 @@
                             </div>
                         </td>
 
-                        <td class="padding-table-row w88px" style="display: inline">
+                        <td class="padding-table-row w120px" style="">
                             <edit-button entity="{{$staff}}"></edit-button>
                             <button type="button" onclick="deleteItem('staffs',{{$staff->id}})" class="btn-clear" title="Delete"  data-toggle="modal" data-target="#delete">
                               <i class="fal fa-times text-danger fw300"></i>

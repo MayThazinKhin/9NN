@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <div class="inner-sidebar" id="inner">
+    <div class="inner-sidebar pb-4" style="overflow-y: auto" id="inner">
         @can('isAdmin')
         <a href="{{route('staffs.index')}}" class="a-clear a-sidebar @yield('staff')">
             <i class="fas fa-user-tie fs17"></i> &nbsp;Staff
@@ -22,7 +22,7 @@
         </a>
 
         <a href="{{route('inventory.index')}}" class="a-clear a-sidebar @yield('inventory')">
-            <i class="fal fa-inventory fs17"></i> Inventory
+            <i class="fal fa-warehouse-alt fs17"></i> Inventory
         </a>
 
         <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('daily_transition')">
@@ -44,8 +44,58 @@
           <i class="fal fa-sack-dollar fs17"> </i> Withdraw
         </a>
 
+{{--        bar inventory--}}
+            <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
+                    data-toggle="collapse" data-target="#motor_cycle"
+                    aria-expanded="false" aria-controls="motor_cycle"
+            >
+                <i class="fal fa-inventory fs17 pr-2"> </i> Bar Inventory
+            </button>
+            <div class="collapse multi-collapse" id="motor_cycle">
+                <a href="#" class="a-clear a-sidebar cycle"
+                     style="padding-left: 42px">
+                    Bar Inventory List
+                </a>
+                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
+                    Bar Inventory Confirm
+                </a>
+            </div>
 
+{{--            shop inventory--}}
 
+            <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
+                    data-toggle="collapse" data-target="#motor_cycle"
+                    aria-expanded="false" aria-controls="motor_cycle"
+            >
+                <i class="fal fa-inventory fs17 pr-2"> </i> Shop Inventory
+            </button>
+            <div class="collapse multi-collapse" id="motor_cycle">
+                <a href="#" class="a-clear a-sidebar cycle"
+                   style="padding-left: 42px">
+                    Shop Inventory List
+                </a>
+                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
+                    Shop Inventory Confirm
+                </a>
+            </div>
+
+            {{--            kitchen inventory--}}
+
+            <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
+                    data-toggle="collapse" data-target="#motor_cycle"
+                    aria-expanded="false" aria-controls="motor_cycle"
+            >
+                <i class="fal fa-inventory fs17 pr-2"> </i> Kitchen Inventory
+            </button>
+            <div class="collapse multi-collapse" id="motor_cycle">
+                <a href="#" class="a-clear a-sidebar cycle"
+                   style="padding-left: 42px">
+                    Kitchen Inventory List
+                </a>
+                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
+                    Kitchen Inventory Confirm
+                </a>
+            </div>
 
 
         @elsecan('isCashier')
