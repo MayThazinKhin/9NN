@@ -1,4 +1,4 @@
-@extends('layouts.master')
+s@extends('layouts.master')
 @section('content_title', 'Shop Invoices')
 @section('receipt','active-link')
 @section('content')

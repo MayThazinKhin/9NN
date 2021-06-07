@@ -43,4 +43,30 @@ class InventoryController extends BasicController
         $item_data['count'] = $item->count + $data['count'];
         $item->update($item_data);
     }
+
+    public function barInventory(){
+        return view('bar_inventory.index');
+    }
+
+    public function kitchenInventory(){
+        return view('kitchen_inventory.index');
+    }
+
+    public function itemInventory(){
+        return view('shop_inventory.index');
+    }
+
+    public function confirmBarInventory(){
+        return view('bar_inventory_confirm.index');
+    }
+
+    public function confirmKitchenInventory(){
+        return view('kitchen_inventory_confirm.index');
+    }
+
+    public function confirmItemInventory(){
+        return view('shop_inventory_confirm.create');
+    }
+
+
 }

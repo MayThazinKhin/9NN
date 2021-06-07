@@ -52,11 +52,11 @@
                 <i class="fal fa-inventory fs17 pr-2"> </i> Bar Inventory
             </button>
             <div class="collapse multi-collapse" id="motor_cycle">
-                <a href="#" class="a-clear a-sidebar cycle"
+                <a href="{{route('bar.inventory')}}" class="a-clear a-sidebar cycle"
                      style="padding-left: 42px">
                     Bar Inventory List
                 </a>
-                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
+                <a href="{{route('bar.inventory.confirm')}}" class="a-clear a-sidebar cycle" style="padding-left: 42px">
                     Bar Inventory Confirm
                 </a>
             </div>
@@ -70,11 +70,11 @@
                 <i class="fal fa-inventory fs17 pr-2"> </i> Shop Inventory
             </button>
             <div class="collapse multi-collapse" id="motor_cycle">
-                <a href="#" class="a-clear a-sidebar cycle"
+                <a href="{{route('item.inventory')}}" class="a-clear a-sidebar cycle"
                    style="padding-left: 42px">
                     Shop Inventory List
                 </a>
-                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
+                <a href="{{route('item.inventory.confirm')}}" class="a-clear a-sidebar cycle" style="padding-left: 42px">
                     Shop Inventory Confirm
                 </a>
             </div>
@@ -88,11 +88,11 @@
                 <i class="fal fa-inventory fs17 pr-2"> </i> Kitchen Inventory
             </button>
             <div class="collapse multi-collapse" id="motor_cycle">
-                <a href="#" class="a-clear a-sidebar cycle"
+                <a href="{{route('kitchen.inventory')}}" class="a-clear a-sidebar cycle"
                    style="padding-left: 42px">
                     Kitchen Inventory List
                 </a>
-                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
+                <a href="{{route('kitchen.inventory.confirm')}}" class="a-clear a-sidebar cycle" style="padding-left: 42px">
                     Kitchen Inventory Confirm
                 </a>
             </div>

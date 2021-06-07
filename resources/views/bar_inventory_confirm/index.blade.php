@@ -3,7 +3,7 @@
 @section('bar_inventory_confirm','active-link')
 {{--@section('add_route','/inventories/create')--}}
 @section('content_header')
-    {{--    @include('layouts.content_header')--}}
+{{--    @include('layouts.content_header')--}}
 @endsection
 @section('content')
     <header class="header pl-2">
