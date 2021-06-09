@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Period extends Model
 {
     use HasFactory;
-    protected $fillable = ['start_time','end_time','session_id'];
+    protected $fillable = ['start_time','end_time','power_type','session_id'];
     public $timestamps = false;
 }

@@ -131,7 +131,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{--                                    @foreach($items->items as $i=> $item)--}}
                                 <tr>
                                     <th scope="row" class="padding-table-row">
                                                 <span class="text-td font-weight-normal">
@@ -172,58 +171,8 @@
                         </div>
                     </div>
                 </div>
-                {{--                    <div class="col-4 bg-white position-relative" style="min-height: 50vh;padding-bottom: 52px">--}}
-                {{--                        <table class="table table-borderless" id="myTable">--}}
-                {{--                            <thead>--}}
-                {{--                            <tr class="" style="border-bottom: 1px solid #dee2e6">--}}
-                {{--                                <th class="table-header fs15" style="color:#3b3e41;">Start Time</th>--}}
-                {{--                                <th class="table-header fs15" style="color:#3b3e41;">End Time</th>--}}
-                {{--                                <th class="table-header fs15" style="color:#3b3e41;">Min</th>--}}
-                {{--                                <th class="table-header fs15" style="color:#3b3e41;">Total</th>--}}
-                {{--                            </tr>--}}
-                {{--                            </thead>--}}
-                {{--                            <tbody>--}}
-
-                {{--                            @foreach($periods->items as $p_item)--}}
-                {{--                             <tr>--}}
-                {{--                                <td class="padding-table-row" style="padding-top: 8px">--}}
-                {{--                                    <div class="text-td" style="font-family:'Roboto', sans-serif">--}}
-                {{--                                      {{$p_item->start_time}}--}}
-                {{--                                    </div>--}}
-                {{--                                </td>--}}
-                {{--                                <td class="padding-table-row">--}}
-                {{--                                    <div class="text-td text-capitalize" style="font-family:'Roboto', sans-serif">--}}
-                {{--                                        {{$p_item->end_time}}--}}
-                {{--                                    </div>--}}
-                {{--                                </td>--}}
-                {{--                                 <td class="padding-table-row">--}}
-                {{--                                     <div class="text-td text-capitalize" style="font-family:'Roboto', sans-serif">--}}
-                {{--                                         {{$p_item->total_min}}--}}
-                {{--                                     </div>--}}
-                {{--                                 </td>--}}
-                {{--                                <td class="padding-table-row">--}}
-                {{--                                    <div class="text-td" style="font-family:'Roboto', sans-serif">--}}
-                {{--                                        {{$p_item->value}}--}}
-                {{--                                    </div>--}}
-                {{--                                </td>--}}
-
-                {{--                            </tr>--}}
-                {{--                            @endforeach--}}
-                {{--                            </tbody>--}}
-                {{--                        </table>--}}
-                {{--                        <div style="position: absolute;bottom: 8px;right: 0;width: 100%">--}}
-                {{--                            <div class="d-flex justify-content-end" style="border-top: 1px solid #e1e5e8;padding-top: 22px;margin-left: 40px;margin-right: 40px;">--}}
-                {{--                                <p style="font-size: 14px!important;font-family: 'Roboto', sans-serif;color: #666;" class="d-inline-block">Total</p>--}}
-                {{--                                <p style="font-family: 'Roboto', sans-serif;font-size: 14px;padding-left: 32px;padding-right: 12px;color: #666"--}}
-                {{--                                   class="d-inline-block">{{$periods->total_value}}</p>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
             </div>
-
-
         </form>
     </div>
-
 @endsection
 
