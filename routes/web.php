@@ -15,6 +15,7 @@ use App\Http\Controllers\WEB\ReceiptController;
 use App\Http\Controllers\WEB\AccountController;
 use App\Http\Controllers\WEB\AdvanceController;
 use App\Http\Controllers\WEB\CashController;
+use App\Http\Controllers\WEB\PowerMoodController;
 
 //login
 Route::get('',[LoginController::class,'index']);
@@ -90,6 +91,9 @@ Route::middleware('can:isCashier')->group(function () {
     //Credit
     Route::get('credits',[InvoiceController::class,'getCredits'])->name('credits');
     Route::post('pay_credits',[InvoiceController::class,'payCredit'])->name('pay_credits');
+
+    //Power Mode
+    Route::post('power_switch',[PowerMoodController::class,'switch'])->name('power_switch');
 
 
 });

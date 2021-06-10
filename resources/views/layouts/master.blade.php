@@ -44,10 +44,11 @@
     <div class="top-and-side-bar">
         <div class="topbar" >
             <div class="pr-3" style="float: right; padding-top: 15px;"  >
-                <form action="">
+                <form action="{{route('power_switch')}}" method="post">
+                    @csrf
                     <span class="__mm font-weight-bold fs15 pr-2">မီးလာ</span>
                         <div class="custom-control custom-switch d-inline-block">
-                            <input onChange="this.form.submit()" type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <input @if($mee_pyat) checked @endif onChange="this.form.submit()" name="switch[]" type="checkbox" class="custom-control-input" id="customSwitch1">
                             <label class="custom-control-label" for="customSwitch1" style="cursor: pointer"></label>
                         </div>
                     <span class="__mm font-weight-bold fs15">မီးပြတ်</span>

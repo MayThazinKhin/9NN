@@ -16,7 +16,7 @@ class CreatePowerMoodsTable extends Migration
         Schema::create('power_moods', function (Blueprint $table) {
             $table->id();
             $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->dateTime('end_date')->nullable();
             $table->timestamps();
         });
     }
