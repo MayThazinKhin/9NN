@@ -6,11 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\RestartPeriodRequest;
 use App\Http\Requests\API\StartPeriodRequest;
 use App\Http\Services\Period\PeriodFacade;
+use App\Models\PowerMood;
 
 class PeriodController extends Controller
 {
     public function startPeriod(StartPeriodRequest $request){
         $data = $request->all();
+        $latest_power = PowerMood::where('end_date',null)->where('start_date',CurrentTime())->first();
+        return $latest_power;
         PeriodFacade::start($data);
         $this->getAllPeriods($data);
     }

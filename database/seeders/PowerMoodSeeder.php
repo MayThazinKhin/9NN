@@ -16,12 +16,12 @@ class PowerMoodSeeder extends Seeder
     {
         PowerMood::create([
             'start_date'=> CurrentTime(),
-            'end_data' => CurrentTime()
+            'end_date' => CurrentTime()
         ]);
 
         PowerMood::create([
             'start_date'=> CurrentTime(),
-            'end_data' => null
+            'end_date' => null
         ]);
     }
 }
