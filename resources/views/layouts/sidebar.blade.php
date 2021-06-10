@@ -1,4 +1,8 @@
 <div class="sidebar">
+    <div style="padding-left: 20px; padding-top: 10px; font-size: 18px;">
+        <span><b>9 Snookers & Billiard</b></span>
+    </div>
+
     <div class="inner-sidebar pb-4" style="overflow-y: auto" id="inner">
         @can('isAdmin')
         <a href="{{route('staffs.index')}}" class="a-clear a-sidebar @yield('staff')">

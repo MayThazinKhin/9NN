@@ -42,9 +42,20 @@
 
 
     <div class="top-and-side-bar">
-        <div class="topbar">
-            9 snookers & billiard shop
+        <div class="topbar" >
+            <div class="pr-3" style="float: right; padding-top: 15px;"  >
+                <form action="">
+                    <span class="__mm font-weight-bold fs15 pr-2">မီးလာ</span>
+                        <div class="custom-control custom-switch d-inline-block">
+                            <input onChange="this.form.submit()" type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1" style="cursor: pointer"></label>
+                        </div>
+                    <span class="__mm font-weight-bold fs15">မီးပြတ်</span>
+                </form>
+
+            </div>
         </div>
+
         <!-- sidebar -->
         @include('layouts.sidebar')
         <!-- sidebar -->
