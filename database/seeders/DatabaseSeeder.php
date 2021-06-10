@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             ItemSeeder::class,
             SessionSeeder::class,
             AccountSeeder::class,
+            PowerMoodSeeder::class
 
         ]);
 
