@@ -15,6 +15,7 @@ use App\Http\Controllers\WEB\ReceiptController;
 use App\Http\Controllers\WEB\AccountController;
 use App\Http\Controllers\WEB\AdvanceController;
 use App\Http\Controllers\WEB\CashController;
+use App\Http\Controllers\WEB\PowerMoodController;
 
 //login
 Route::get('',[LoginController::class,'index']);
@@ -52,6 +53,13 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::post('/inventories',[InventoryController::class,'store'])->name('inventory.store');
     Route::post('items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
 
+    Route::get('/bar_inventories',[InventoryController::class,'barInventory'])->name('bar.inventory');
+    Route::get('/kitchen_inventories',[InventoryController::class,'kitchenInventory'])->name('kitchen.inventory');
+    Route::get('/item_inventories',[InventoryController::class,'itemInventory'])->name('item.inventory');
+    Route::get('/bar_inventories_confirm',[InventoryController::class,'confirmBarInventory'])->name('bar.inventory.confirm');
+    Route::get('/kitchen_inventories_confirm',[InventoryController::class,'confirmKitchenInventory'])->name('kitchen.inventory.confirm');
+    Route::get('/item_inventories_confirm',[InventoryController::class,'confirmItemInventory'])->name('item.inventory.confirm');
+
     //Account
     Route::get('/monthly_financial',[AccountController::class,'monthly'])->name('monthly_financial.index');
     Route::post('/monthly_filter',[AccountController::class,'monthly_filter'])->name('monthly_financial.filter');
@@ -83,6 +91,9 @@ Route::middleware('can:isCashier')->group(function () {
     //Credit
     Route::get('credits',[InvoiceController::class,'getCredits'])->name('credits');
     Route::post('pay_credits',[InvoiceController::class,'payCredit'])->name('pay_credits');
+
+    //Power Mode
+    Route::post('power_switch',[PowerMoodController::class,'switch'])->name('power_switch');
 
 
 });

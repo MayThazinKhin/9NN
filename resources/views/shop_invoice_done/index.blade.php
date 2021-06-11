@@ -40,7 +40,7 @@
 
                         <td class="padding-table-row w88px">
                             <button type="button" class="btn-clear " title="Edit"  id="edit-button">
-                                <a class="a-clear" href="{{route('done_receipt_detail.detail',['id' => $receipt->id])}}">
+                                <a class="a-clear" href="{{route('done_receipt.detail',['id' => $receipt->id])}}">
                                     <i class="far fa-file-edit fw300" style="color:#673ab7;"></i>
                                 </a>
                             </button>

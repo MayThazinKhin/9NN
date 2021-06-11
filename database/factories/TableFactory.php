@@ -16,6 +16,7 @@ class TableFactory extends Factory
         return [
             'name' => $this->faker->word,
             'price' => $this->faker->numberBetween(150,500),
+            'power_off_price' => $this->faker->numberBetween(150,500),
             'marker_id' => $this->faker->randomElement($maker_IDs)
         ];
     }

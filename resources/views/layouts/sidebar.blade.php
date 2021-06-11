@@ -1,4 +1,8 @@
 <div class="sidebar">
+    <div style="padding-left: 20px; padding-top: 10px; font-size: 18px;">
+        <span><b>9 Snookers & Billiard</b></span>
+    </div>
+
     <div class="inner-sidebar pb-4" style="overflow-y: auto" id="inner">
         @can('isAdmin')
         <a href="{{route('staffs.index')}}" class="a-clear a-sidebar @yield('staff')">
@@ -67,11 +71,11 @@
                 <i class="fal fa-inventory fs17 pr-2"> </i> Bar Inventory
             </button>
             <div class="collapse multi-collapse" id="bar_inventory" style="background-color: #f8f8f8">
-                <a href="#" class="a-clear a-sidebar m-0"
+                <a href="{{route('bar.inventory')}}" class="a-clear a-sidebar m-0"
                      style="padding-left: 56px">
                     List
                 </a>
-                <a href="#" class="a-clear a-sidebar m-0" style="padding-left: 56px">
+                <a href="{{route('bar.inventory.confirm')}}" class="a-clear a-sidebar m-0" style="padding-left: 56px">
                     Confirm
                 </a>
             </div>
@@ -85,11 +89,11 @@
                 <i class="fal fa-inventory fs17 pr-2"> </i> Shop Inventory
             </button>
             <div class="collapse multi-collapse pl-4" id="shop_inventory" style="background-color: #f8f8f8">
-                <a href="#" class="a-clear a-sidebar cycle m-0"
+                <a href="{{route('item.inventory')}}" class="a-clear a-sidebar cycle m-0"
                    style="padding-left: 56px">
                     List
                 </a>
-                <a href="#" class="a-clear a-sidebar cycle m-0" style="padding-left: 56px">
+                <a href="{{route('item.inventory.confirm')}}" class="a-clear a-sidebar cycle m-0" style="padding-left: 56px">
                     Confirm
                 </a>
             </div>
@@ -103,11 +107,11 @@
                 <i class="fal fa-inventory fs17 pr-2"> </i> Kitchen Inventory
             </button>
             <div class="collapse multi-collapse" id="kitchen_inventory" style="background-color: #f8f8f8">
-                <a href="#" class="a-clear a-sidebar m-0"
+                <a href="{{route('kitchen.inventory')}}" class="a-clear a-sidebar m-0"
                    style="padding-left: 56px">
                     List
                 </a>
-                <a href="#" class="a-clear a-sidebar m-0" style="padding-left: 56px">
+                <a href="{{route('kitchen.inventory.confirm')}}" class="a-clear a-sidebar m-0" style="padding-left: 56px">
                     Confirm
                 </a>
             </div>
@@ -147,8 +151,8 @@
            <i class="fal fa-minus-circle fs17"></i> Cancel Items
         </a>
         @endcan
-         <a href="{{route('staff_logout')}}" class="a-clear a-sidebar @yield('cancel')">
-            <i class="fal fa-minus-circle fs17"></i> logout
-         </a>
+{{--         <a href="{{route('staff_logout')}}" class="a-clear a-sidebar @yield('cancel')">--}}
+{{--            <i class="fal fa-minus-circle fs17"></i> logout--}}
+{{--         </a>--}}
     </div>
 </div>

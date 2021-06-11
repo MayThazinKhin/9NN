@@ -23,7 +23,6 @@
                         <th class="table-header font-weight-normal">Date</th>
                         <th class="table-header font-weight-normal">Item</th>
                         <th class="table-header font-weight-normal">Count</th>
-                        <th class="table-header font-weight-normal">Price</th>
 {{--                        <th class="table-header font-weight-normal">&nbsp;</th>--}}
                     </tr>
                     </thead>
@@ -52,11 +51,6 @@
                                 </div>
                             </td>
 
-                            <td class="padding-table-row">
-                                <div class="text-td text-capitalize">
-                                    500
-                                </div>
-                            </td>
 
 {{--                            <td class="padding-table-row w88px" style="">--}}
 {{--                                <button type="button" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">--}}

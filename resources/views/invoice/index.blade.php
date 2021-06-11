@@ -8,14 +8,7 @@
                 <nav style="margin-top: 8px">
                     <a href="#" class="a-clear text-dark fm-roboto fs17">Invoice Management</a>
                 </nav>
-                <div class="pr-3">
-                    <span class="__mm font-weight-bold fs15 pr-2">မီးလာ</span>
-                    <div class="custom-control custom-switch d-inline-block">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                        <label class="custom-control-label" for="customSwitch1" style="cursor: pointer"></label>
-                    </div>
-                    <span class="__mm font-weight-bold fs15">မီးပြတ်</span>
-                </div>
+
             </div>
         </header>
         <form class="position-relative w-100">

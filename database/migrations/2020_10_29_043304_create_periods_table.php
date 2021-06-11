@@ -17,6 +17,7 @@ class CreatePeriodsTable extends Migration
             $table->id();
             $table->dateTime('start_time');
             $table->dateTime('end_time')->nullable();
+            $table->boolean('power_type')->default(true);
             $table->foreignId('session_id')->constrained()->onDelete('cascade');
         });
     }

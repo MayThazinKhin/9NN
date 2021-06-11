@@ -10,8 +10,12 @@ use App\Http\Repositories\Session\SessionInterface;
 use App\Http\Repositories\Session\SessionRepository;
 use App\Http\Repositories\Table\TableInterface;
 use App\Http\Repositories\Table\TableRepository;
+use App\Http\Views\Composers\AuthStaffComposer;
+use App\Http\Views\Composers\PowerMoodComposer;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->power_mood();
+        $this->auth_staff();
         $this->app->bind(TableInterface::class, function (){
             return new TableRepository();
         });
@@ -58,6 +64,19 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    public function power_mood()
+    {
+        return View::composer(
+            'layouts.master', PowerMoodComposer::class
+        );
+    }
+    public function auth_staff()
+    {
+        return View::composer(
+            'layouts.master', AuthStaffComposer::class
+        );
     }
 
 

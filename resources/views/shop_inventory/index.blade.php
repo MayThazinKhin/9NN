@@ -23,7 +23,6 @@
                         <th class="table-header font-weight-normal">Date</th>
                         <th class="table-header font-weight-normal">Item</th>
                         <th class="table-header font-weight-normal">Count</th>
-                        <th class="table-header font-weight-normal">Price</th>
                         {{--                        <th class="table-header font-weight-normal">&nbsp;</th>--}}
                     </tr>
                     </thead>
@@ -49,12 +48,6 @@
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
                                 3
-                            </div>
-                        </td>
-
-                        <td class="padding-table-row">
-                            <div class="text-td text-capitalize">
-                                500
                             </div>
                         </td>
 

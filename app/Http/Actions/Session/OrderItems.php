@@ -4,6 +4,7 @@
 namespace App\Http\Actions\Session;
 
 use App\Models\CancelItem;
+use App\Models\FOCItem;
 use App\Models\KitchenItem;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,10 @@ class OrderItems
         if($route_name == 'order_items'){
             $new_count =  $old_count + $count;
             KitchenItem::create($input);
+        }
+        elseif ($route_name == 'foc_order_items'){
+            $new_count =   $old_count - $count;
+            FOCItem::create($input);
         }
         else{
             $new_count =   $old_count - $count;
