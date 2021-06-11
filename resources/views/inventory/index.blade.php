@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('content_title', 'Inventory Management')
+@section('content_title', 'Inventory History')
 @section('inventory','active-link')
 @section('add_route','/inventories/create')
 @section('content_header')
@@ -24,7 +24,7 @@
                 <th class="table-header font-weight-normal">Item</th>
                 <th class="table-header font-weight-normal">Count</th>
                 <th class="table-header font-weight-normal">Price</th>
-                <th class="table-header font-weight-normal">&nbsp;</th>
+{{--                <th class="table-header font-weight-normal">&nbsp;</th>--}}
             </tr>
             </thead>
             <tbody>
@@ -60,11 +60,11 @@
                     </div>
                 </td>
 
-                <td class="padding-table-row w88px" style="">
-                    <button type="button" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">
-                            <i class="fas fa-exchange-alt" style="color: rgb(103, 58, 183);"></i>
-                    </button>
-                </td>
+{{--                <td class="padding-table-row w88px" style="">--}}
+{{--                    <button type="button" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">--}}
+{{--                            <i class="fas fa-exchange-alt" style="color: rgb(103, 58, 183);"></i>--}}
+{{--                    </button>--}}
+{{--                </td>--}}
             </tr>
             @endforeach
             </tbody>

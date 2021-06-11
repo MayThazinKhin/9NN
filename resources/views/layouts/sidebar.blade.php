@@ -21,9 +21,24 @@
             &nbsp;<i class="fal fa-user fs17"></i> &nbsp;Member
         </a>
 
-        <a href="{{route('inventory.index')}}" class="a-clear a-sidebar @yield('inventory')">
-            <i class="fal fa-warehouse-alt fs17"></i> Inventory
-        </a>
+            {{--             inventory--}}
+
+            <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100 @yield('inventory')" type="button"
+                    data-toggle="collapse" data-target="#inventory"
+                    aria-expanded="false" aria-controls="inventory"
+            >
+                <i class="fal fa-inventory fs17 pr-2"> </i>  Inventory
+            </button>
+            <div class="collapse multi-collapse " id="inventory" style="background-color: #f8f8f8">
+                <a href="#" class="a-clear a-sidebar m-0"
+                   style="padding-left: 56px">
+                    Management
+                </a>
+                <a href="{{route('inventory.index')}}"
+                   class="a-clear a-sidebar m-0 " style="padding-left: 56px">
+                    History
+                </a>
+            </div>
 
         <a href="{{route('financial.index')}}" class="a-clear a-sidebar @yield('daily_transition')">
             <i class="fal fa-exchange fs17"></i> Daily Transition
@@ -46,54 +61,54 @@
 
 {{--        bar inventory--}}
             <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
-                    data-toggle="collapse" data-target="#motor_cycle"
-                    aria-expanded="false" aria-controls="motor_cycle"
+                    data-toggle="collapse" data-target="#bar_inventory"
+                    aria-expanded="false" aria-controls="bar_inventory"
             >
                 <i class="fal fa-inventory fs17 pr-2"> </i> Bar Inventory
             </button>
-            <div class="collapse multi-collapse" id="motor_cycle">
-                <a href="#" class="a-clear a-sidebar cycle"
-                     style="padding-left: 42px">
-                    Bar Inventory List
+            <div class="collapse multi-collapse" id="bar_inventory" style="background-color: #f8f8f8">
+                <a href="#" class="a-clear a-sidebar m-0"
+                     style="padding-left: 56px">
+                    List
                 </a>
-                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
-                    Bar Inventory Confirm
+                <a href="#" class="a-clear a-sidebar m-0" style="padding-left: 56px">
+                    Confirm
                 </a>
             </div>
 
 {{--            shop inventory--}}
 
             <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
-                    data-toggle="collapse" data-target="#motor_cycle"
-                    aria-expanded="false" aria-controls="motor_cycle"
+                    data-toggle="collapse" data-target="#shop_inventory"
+                    aria-expanded="false" aria-controls="shop_inventory"
             >
                 <i class="fal fa-inventory fs17 pr-2"> </i> Shop Inventory
             </button>
-            <div class="collapse multi-collapse" id="motor_cycle">
-                <a href="#" class="a-clear a-sidebar cycle"
-                   style="padding-left: 42px">
-                    Shop Inventory List
+            <div class="collapse multi-collapse pl-4" id="shop_inventory" style="background-color: #f8f8f8">
+                <a href="#" class="a-clear a-sidebar cycle m-0"
+                   style="padding-left: 56px">
+                    List
                 </a>
-                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
-                    Shop Inventory Confirm
+                <a href="#" class="a-clear a-sidebar cycle m-0" style="padding-left: 56px">
+                    Confirm
                 </a>
             </div>
 
             {{--            kitchen inventory--}}
 
             <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
-                    data-toggle="collapse" data-target="#motor_cycle"
-                    aria-expanded="false" aria-controls="motor_cycle"
+                    data-toggle="collapse" data-target="#kitchen_inventory"
+                    aria-expanded="false" aria-controls="kitchen_inventory"
             >
                 <i class="fal fa-inventory fs17 pr-2"> </i> Kitchen Inventory
             </button>
-            <div class="collapse multi-collapse" id="motor_cycle">
-                <a href="#" class="a-clear a-sidebar cycle"
-                   style="padding-left: 42px">
-                    Kitchen Inventory List
+            <div class="collapse multi-collapse" id="kitchen_inventory" style="background-color: #f8f8f8">
+                <a href="#" class="a-clear a-sidebar m-0"
+                   style="padding-left: 56px">
+                    List
                 </a>
-                <a href="#" class="a-clear a-sidebar cycle" style="padding-left: 42px">
-                    Kitchen Inventory Confirm
+                <a href="#" class="a-clear a-sidebar m-0" style="padding-left: 56px">
+                    Confirm
                 </a>
             </div>
 
