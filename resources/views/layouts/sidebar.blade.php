@@ -136,8 +136,8 @@
            <i class="fal fa-minus-circle fs17"></i> Cancel Items
         </a>
         @endcan
-         <a href="{{route('staff_logout')}}" class="a-clear a-sidebar @yield('cancel')">
-            <i class="fal fa-minus-circle fs17"></i> logout
-         </a>
+{{--         <a href="{{route('staff_logout')}}" class="a-clear a-sidebar @yield('cancel')">--}}
+{{--            <i class="fal fa-minus-circle fs17"></i> logout--}}
+{{--         </a>--}}
     </div>
 </div>
