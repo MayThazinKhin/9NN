@@ -12,6 +12,7 @@ class SessionDetails
         $details->start_time = $session->start_time;
         $details->end_time = $session->end_time;
         $details->table_price = $table->price;
+        $details->power_off_price = $table->power_off_price;
         $details->table_name = $table->name;
         return $details;
     }

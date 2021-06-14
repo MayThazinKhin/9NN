@@ -13,5 +13,7 @@ interface TableInterface
     public function applyMarkerID($table_id,$marker_id);
 
     public function freeTable($table);
+
+    public function checkTableFree($table_id);
 }
 

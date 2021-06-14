@@ -17,9 +17,8 @@ class Session extends Model
     }
 
     public function foc_items(){
-        return $this->hasMany(FOCItem::class);
+        return $this->belongsToMany(Item::class,'f_o_c_items')->withTimestamps()->withPivot('count');
     }
-
 
     public function table(){
         return $this->belongsTo(Table::class);

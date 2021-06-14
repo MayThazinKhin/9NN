@@ -27,4 +27,8 @@ class TableService
     public function freeTable($table){
         return $this->table->freeTable($table);
     }
+
+    public function checkTableFree($table_id){
+        return $this->table->checkTableFree($table_id) ;
+    }
 }

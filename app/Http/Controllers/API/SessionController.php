@@ -12,13 +12,17 @@ use Illuminate\Http\Request;
 class SessionController extends Controller
 {
     public function startSession(StartSessionRequest $request){
-       $data = $this->setSessionData($request->all());
-       $session =  Session::create($data);
-       if($session){
-            Table::applyMarkerId($data['table_id'],$data['marker_id']);
-            responseData('session_id',$session->id,200);
+       $is_table_free =   Table::checkTableFree($request->table_id);
+       if($is_table_free === true){
+           $data = $this->setSessionData($request->all());
+           $session =  Session::create($data);
+           if($session){
+               Table::applyMarkerId($data['table_id'],$data['marker_id']);
+               responseData('session_id',$session->id,200);
+           }
+           responseFalse();
        }
-       responseFalse();
+      responseStatus('Table is not free',409);
     }
 
     public function orderItems(Request $request){

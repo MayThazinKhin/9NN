@@ -18,8 +18,10 @@ class PeriodRepository implements PeriodInterface
     public function start($data){
         Session::checkSessionID($data['session_id']);
         $data['start_time'] = CurrentTime();
-        $latest_power = PowerMood::where('end_date',null)->where('start_date',CurrentTime())->first();
-
+        $latest_power = PowerMood::where('end_date',null)->first();
+        if ($latest_power){
+            $data['power_type'] = false ;
+        }
         $this->period::create($data);
     }
 

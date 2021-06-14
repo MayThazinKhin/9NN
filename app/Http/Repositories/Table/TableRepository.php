@@ -17,7 +17,7 @@ class TableRepository implements TableInterface
     }
 
     public function getFreeTables(){
-       return $this->table::where('marker_id',null)->select('id','name','price')->get();
+       return $this->table::where('marker_id',null)->select('id','name','price','power_off_price')->get();
     }
 
     public function applyMarkerID($table_id, $marker_id){
@@ -33,5 +33,10 @@ class TableRepository implements TableInterface
         $table->update([
             'marker_id' => $data
         ]);
+    }
+
+    public function checkTableFree($table_id){
+      $table =   $this->table::where('id',$table_id)->where('marker_id',null)->first();
+      return ($table) ? true : false ;
     }
 }
