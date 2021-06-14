@@ -6,13 +6,7 @@
     @include('layouts.content_header')
 @endsection
 @section('content')
-    {{--    <header class="header pl-2">--}}
-    {{--        <div class="d-flex justify-content-between">--}}
-    {{--            <nav style="margin-top: 8px">--}}
-    {{--                <a href="#" class="a-clear text-dark fm-roboto fs17">@yield('content_title') </a>--}}
-    {{--            </nav>--}}
-    {{--        </div>--}}
-    {{--    </header>--}}
+
     <div>
         <form class="position-relative w-100">
             <div class="w-100 bg-white p-3 mt-3" style="min-height: 76vh">

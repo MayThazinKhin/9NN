@@ -2,14 +2,9 @@
 @section('content_title', 'Bar Management')
 @section('bar','active-link')
 @section('add_route','/bars/create')
-{{--@section('add','#add')--}}
-{{--@section('route','/bars/search')--}}
 @section('content_header')
     @include('layouts.content_header')
 @endsection
-
-{{--@include('item.create')--}}
-{{--@include('item.edit')--}}
 @include('layouts.delete')
 
 @section('select_box')

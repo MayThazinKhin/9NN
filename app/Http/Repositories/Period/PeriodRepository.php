@@ -29,7 +29,6 @@ class PeriodRepository implements PeriodInterface
         (new End())->byId($data['period_id']);
     }
 
-
     public function getPeriodsBySessionID($sessionID){
         return (new PeriodsBySessionID())->run($sessionID);
     }

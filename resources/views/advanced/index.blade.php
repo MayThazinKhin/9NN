@@ -2,12 +2,7 @@
 @section('content_title', 'Advanced')
 @section('advance_transition','active-link')
 @section('add','#add')
-{{--@section('route','/items/search')--}}
-
-{{--@include('item.create')--}}
-{{--@include('item.edit')--}}
 @include('layouts.delete')
-
 @section('content_header')
     @include('layouts.content_header')
 @endsection
