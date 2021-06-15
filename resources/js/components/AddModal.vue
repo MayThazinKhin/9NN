@@ -164,6 +164,7 @@ export default {
             else this.form[this.inputs[i].name] = "";
         }
     },
+
 };
 </script>
 
