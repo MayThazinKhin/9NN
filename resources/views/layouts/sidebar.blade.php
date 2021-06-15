@@ -17,6 +17,10 @@
             <i class="fal fa-shopping-cart fs17"></i> Shop
         </a>
 
+        <a href="{{route('general.index')}}" class="a-clear a-sidebar @yield('general_item')">
+            <i class="fal fa-shopping-cart fs17"></i> General Item
+        </a>
+
         <a href="{{route('tables.index')}}" class="a-clear a-sidebar @yield('table')">
             &nbsp;<i class="fas fa-table"></i> Table
         </a>

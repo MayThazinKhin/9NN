@@ -2170,7 +2170,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       password: '',
       fee: 0,
       fee_paid: 0,
-      marker_fee: 0,
+      monthly_fee: 0,
       role_id: '',
       is_marker: false,
       errors: []
@@ -2183,13 +2183,13 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var form = {
         name: this.name,
         password: this.password,
-        fee: this.fee,
+        monthly_fee: this.monthly_fee,
         role_id: this.role_id
       };
 
       if (this.is_marker) {
         form.fee_paid = this.fee_paid;
-        form.marker_fee = this.marker_fee;
+        form.fee = this.fee;
       }
 
       $.post('/staffs', JSON.stringify(form)).done(function (data) {
@@ -2763,7 +2763,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       password: '',
       fee: 0,
       fee_paid: 0,
-      marker_fee: 0,
+      monthly_fee: 0,
       role_id: '',
       is_marker: false,
       errors: []
@@ -2776,13 +2776,13 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       var form = {
         name: this.name,
         password: this.password,
-        fee: this.fee,
+        monthly_fee: this.monthly_fee,
         role_id: this.role_id
       };
 
       if (this.is_marker) {
         form.fee_paid = this.fee_paid;
-        form.marker_fee = this.marker_fee;
+        form.fee = this.fee;
       }
 
       $.ajax({
@@ -2810,7 +2810,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
   watch: {
     staff_data: function staff_data() {
       this.name = this.staff_data.name;
-      this.fee = this.staff_data.fee;
+      this.monthly_fee = this.staff_data.monthly_fee;
       this.role_id = this.staff_data.role_id;
       this.$forceUpdate();
       this.$nextTick(function () {
@@ -22478,43 +22478,45 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "mb-4" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "label-form mb-1",
-                        staticStyle: { "font-size": "15px!important" }
-                      },
-                      [_vm._v("Fee")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fee,
-                          expression: "fee"
-                        }
-                      ],
-                      staticClass: "input-form",
-                      staticStyle: { "font-size": "14px!important" },
-                      attrs: {
-                        type: "number",
-                        placeholder: "Fee",
-                        autocomplete: "off"
-                      },
-                      domProps: { value: _vm.fee },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _vm.is_marker
+                    ? _c("div", { staticClass: "mb-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "label-form mb-1",
+                            staticStyle: { "font-size": "15px!important" }
+                          },
+                          [_vm._v("Fee")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fee,
+                              expression: "fee"
+                            }
+                          ],
+                          staticClass: "input-form",
+                          staticStyle: { "font-size": "14px!important" },
+                          attrs: {
+                            type: "number",
+                            placeholder: "Fee",
+                            autocomplete: "off"
+                          },
+                          domProps: { value: _vm.fee },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.fee = $event.target.value
+                            }
                           }
-                          _vm.fee = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
+                        })
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm.is_marker
                     ? _c("div", { staticClass: "mb-4" }, [
@@ -22556,45 +22558,43 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.is_marker
-                    ? _c("div", { staticClass: "mb-4" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-form mb-1",
-                            staticStyle: { "font-size": "15px!important" }
-                          },
-                          [_vm._v("Monthly Fee")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.marker_fee,
-                              expression: "marker_fee"
-                            }
-                          ],
-                          staticClass: "input-form",
-                          staticStyle: { "font-size": "14px!important" },
-                          attrs: {
-                            type: "number",
-                            placeholder: "Fee",
-                            autocomplete: "off"
-                          },
-                          domProps: { value: _vm.marker_fee },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.marker_fee = $event.target.value
-                            }
+                  _c("div", { staticClass: "mb-4" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "label-form mb-1",
+                        staticStyle: { "font-size": "15px!important" }
+                      },
+                      [_vm._v("Monthly Fee")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.monthly_fee,
+                          expression: "monthly_fee"
+                        }
+                      ],
+                      staticClass: "input-form",
+                      staticStyle: { "font-size": "14px!important" },
+                      attrs: {
+                        type: "number",
+                        placeholder: "Fee",
+                        autocomplete: "off"
+                      },
+                      domProps: { value: _vm.monthly_fee },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        })
-                      ])
-                    : _vm._e()
+                          _vm.monthly_fee = $event.target.value
+                        }
+                      }
+                    })
+                  ])
                 ]),
                 _vm._v(" "),
                 _c(
@@ -23745,43 +23745,45 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "mb-4" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "label-form mb-1",
-                        staticStyle: { "font-size": "15px!important" }
-                      },
-                      [_vm._v("Fee")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.fee,
-                          expression: "fee"
-                        }
-                      ],
-                      staticClass: "input-form",
-                      staticStyle: { "font-size": "14px!important" },
-                      attrs: {
-                        type: "number",
-                        placeholder: "Fee",
-                        autocomplete: "off"
-                      },
-                      domProps: { value: _vm.fee },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _vm.is_marker
+                    ? _c("div", { staticClass: "mb-4" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "label-form mb-1",
+                            staticStyle: { "font-size": "15px!important" }
+                          },
+                          [_vm._v("Fee")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.fee,
+                              expression: "fee"
+                            }
+                          ],
+                          staticClass: "input-form",
+                          staticStyle: { "font-size": "14px!important" },
+                          attrs: {
+                            type: "number",
+                            placeholder: "Fee",
+                            autocomplete: "off"
+                          },
+                          domProps: { value: _vm.fee },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.fee = $event.target.value
+                            }
                           }
-                          _vm.fee = $event.target.value
-                        }
-                      }
-                    })
-                  ]),
+                        })
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _vm.is_marker
                     ? _c("div", { staticClass: "mb-4" }, [
@@ -23823,45 +23825,43 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.is_marker
-                    ? _c("div", { staticClass: "mb-4" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "label-form mb-1",
-                            staticStyle: { "font-size": "15px!important" }
-                          },
-                          [_vm._v("Monthly Fee")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.marker_fee,
-                              expression: "marker_fee"
-                            }
-                          ],
-                          staticClass: "input-form",
-                          staticStyle: { "font-size": "14px!important" },
-                          attrs: {
-                            type: "number",
-                            placeholder: "Fee",
-                            autocomplete: "off"
-                          },
-                          domProps: { value: _vm.marker_fee },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.marker_fee = $event.target.value
-                            }
+                  _c("div", { staticClass: "mb-4" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "label-form mb-1",
+                        staticStyle: { "font-size": "15px!important" }
+                      },
+                      [_vm._v("Monthly Fee")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.monthly_fee,
+                          expression: "monthly_fee"
+                        }
+                      ],
+                      staticClass: "input-form",
+                      staticStyle: { "font-size": "14px!important" },
+                      attrs: {
+                        type: "number",
+                        placeholder: "Fee",
+                        autocomplete: "off"
+                      },
+                      domProps: { value: _vm.monthly_fee },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        })
-                      ])
-                    : _vm._e()
+                          _vm.monthly_fee = $event.target.value
+                        }
+                      }
+                    })
+                  ])
                 ]),
                 _vm._v(" "),
                 _c(

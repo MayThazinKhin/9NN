@@ -61,6 +61,14 @@ class CategorySeeder extends Seeder
             'name' => 'smoothies',
             'type_id' => 3
         ]);
+        Category::create([
+            'name' => 'general 1',
+            'type_id' => 4
+        ]);
+        Category::create([
+            'name' => 'general 2',
+            'type_id' => 4
+        ]);
 
     }
 }

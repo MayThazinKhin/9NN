@@ -9,7 +9,7 @@ class TypeSeeder extends Seeder
 {
     public function run()
     {
-        $types = ['shop','menu','bar'];
+        $types = ['shop','menu','bar','general_item'];
         foreach ($types as $type){
             Type::create([
                 'name' => $type

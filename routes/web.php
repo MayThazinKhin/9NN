@@ -35,6 +35,10 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::post('/items/search',[ItemController::class,'search'])->name('items.search');
     Route::post('categories',[ItemController::class,'getItemCategoriesByType'])->name('type_categories');
 
+    //Items
+    Route::get('general_item',[ItemController::class,'general'])->name('general.index');
+//    Route::post('/general-items/search',[ItemController::class,'general_search'])->name('general.search');
+
     //Bars
     Route::resource('bars',BarController::class);
     Route::post('/bars/search',[BarController::class,'search'])->name('bars.search');

@@ -66,7 +66,8 @@
     @php
         $input1 = (object) ["type" => "text", "label" => "Name", "name" => "name"];
         $input2 = (object) ["type" => "text", "label" => "Price Per Min", "name" => "price"];
-        $inputs = array($input1,$input2);
+        $input3 = (object) ["type" => "text", "label" => "Power Off Price", "name" => "power_off_price"];
+        $inputs = array($input1,$input2,$input3);
     @endphp
 
     <add-modal title="Add New Table" :inputs="{{json_encode($inputs)}}" url="/tables"></add-modal>

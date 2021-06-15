@@ -38,7 +38,7 @@
                             <span class="text-danger" v-if="errors.role_id"> {{errors.role_id[0]}} </span>
 
                         </div>
-                        <div class="mb-4">
+                        <div class="mb-4" v-if="is_marker">
                             <label class="label-form mb-1" style="font-size: 15px!important;">Fee</label>
                             <input
                                 v-model="fee" type="number" class="input-form" placeholder="Fee" style="font-size: 14px!important;" autocomplete="off">
@@ -48,10 +48,10 @@
                             <input
                                 v-model="fee_paid" type="number" class="input-form" placeholder="Fee" style="font-size: 14px!important;" autocomplete="off">
                         </div>
-                        <div class="mb-4" v-if="is_marker">
+                        <div class="mb-4" >
                             <label class="label-form mb-1" style="font-size: 15px!important;">Monthly Fee</label>
                             <input
-                                v-model="marker_fee" type="number" class="input-form" placeholder="Fee" style="font-size: 14px!important;" autocomplete="off">
+                                v-model="monthly_fee" type="number" class="input-form" placeholder="Fee" style="font-size: 14px!important;" autocomplete="off">
                         </div>
 
                     </div>
@@ -77,7 +77,7 @@ export default {
             password: '',
             fee: 0,
             fee_paid: 0,
-            marker_fee: 0,
+            monthly_fee: 0,
             role_id: '',
             is_marker: false,
             errors: []
@@ -92,13 +92,13 @@ export default {
             let form = {
                 name: this.name,
                 password: this.password,
-                fee: this.fee,
+                monthly_fee: this.monthly_fee,
                 role_id: this.role_id
             }
             if(this.is_marker)
             {
                 form.fee_paid = this.fee_paid;
-                form.marker_fee = this.marker_fee;
+                form.fee = this.fee;
             }
             $.ajax({
                 url: '/staffs',
@@ -133,7 +133,7 @@ export default {
     watch: {
         staff_data: function() {
             this.name = this.staff_data.name;
-            this.fee = this.staff_data.fee;
+            this.monthly_fee = this.staff_data.monthly_fee;
             this.role_id = this.staff_data.role_id;
             this.$forceUpdate();
             this.$nextTick(function(){ $('.selectpicker').selectpicker('refresh'); });

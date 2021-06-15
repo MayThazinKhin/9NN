@@ -23,6 +23,13 @@ class ItemController extends BasicController
         return view('item.index',compact('items','categories'));
     }
 
+    public function general(){
+        $category_IDs = Category::where('type_id',4)->pluck('id')->all();
+        $items = Item::whereIn('category_id',$category_IDs)->orderBy('id', 'desc')->paginate(20);
+        $categories = ItemFacade::getItemCategoriesByType('general_item');
+        return view('general_item.index',compact('items','categories'));
+    }
+
     public function destroy(Item $item){
         return parent::destroyData($item);
     }
