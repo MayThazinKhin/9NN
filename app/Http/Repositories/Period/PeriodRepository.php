@@ -4,6 +4,7 @@ namespace App\Http\Repositories\Period;
 
 use App\Http\Actions\Periods\End;
 use App\Http\Actions\Periods\PeriodsBySessionID;
+use App\Http\Actions\Session\CurrentStatus;
 use App\Http\Services\Session\SessionFacade as Session;
 use App\Models\Period;
 use App\Models\PowerMood;
@@ -17,11 +18,9 @@ class PeriodRepository implements PeriodInterface
 
     public function start($data){
         Session::checkSessionID($data['session_id']);
-        $data['start_time'] = CurrentTime();
-        $latest_power = PowerMood::where('end_date',null)->first();
-        if ($latest_power){
-            $data['power_type'] = false ;
-        }
+        $current_status = (new CurrentStatus())->run();
+        $data['start_time'] = $current_status->time;
+        $data['power_type'] = $current_status->power;
         $this->period::create($data);
     }
 
@@ -37,4 +36,6 @@ class PeriodRepository implements PeriodInterface
     public function endLatestPeriod($sessionID){
         (new End())->byLatest($sessionID);
     }
+
+
 }
