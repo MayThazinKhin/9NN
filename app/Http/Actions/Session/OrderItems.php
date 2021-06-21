@@ -4,6 +4,7 @@
 namespace App\Http\Actions\Session;
 
 use App\Models\CancelItem;
+use App\Models\Item;
 use App\Models\KitchenItem;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,13 @@ class OrderItems
             else {
                 $this->updateSessionItemCount($session,$item_id,$count,'cancel');
                 CancelItem::create($input);
+                $item_data = Item::find($item_id);
+                if($item_data){
+                    $update_count = $item_data->count + $count ;
+                    $item_data->update([
+                        'count' => $update_count
+                    ]);
+                }
             }
         }
     }

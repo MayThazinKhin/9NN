@@ -4,6 +4,7 @@ namespace App\Http\Controllers\WEB;
 
 use App\Http\Controllers\Controller;
 use App\Models\CancelItem;
+use App\Models\Item;
 use App\Models\KitchenItem;
 use App\Models\Staff;
 use Illuminate\Http\Request;
@@ -20,12 +21,14 @@ class CancelItemController extends Controller
         });
     }
 
-    public function index(){
-        $items = CancelItem::orderBy('id', 'desc')->paginate(20);
-        foreach ( $items->items() as $item){
+    public function index(Request $request){
+        $cancel_items = CancelItem::orderBy('id', 'desc')->get();
+        $items = collect($cancel_items)->where('item_type',$this->type)->values();
+        foreach ( $items as $item){
             $item->marker_name = Staff::where('id', $item->session->marker_id)->pluck('name')->first();
             unset($item['session']);
         }
+        //$items = paginate($filtered_items,$request);
         return view('cancelItems.index',compact('items'));
     }
 
@@ -37,8 +40,17 @@ class CancelItemController extends Controller
         return view('kitchenItems.index',compact('items'));
     }
 
-    public function updateKitchenStatus(Request $request,KitchenItem $item){
-        $item->update($request->all());
+    public function updateKitchenStatus(Request $request,KitchenItem $kitchenItem){
+        $kitchenItem->update($request->all());
+        if($this->type == 'bar'){
+            $item_data = Item::find($kitchenItem->item_id);
+            if($item_data){
+                $update_count = $item_data->count - $kitchenItem->count ;
+                $item_data->update([
+                    'count' => $update_count
+                ]);
+            }
+        }
         return redirect()->back();
     }
 }

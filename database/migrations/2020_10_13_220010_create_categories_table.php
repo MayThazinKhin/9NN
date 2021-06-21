@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->char('name',200);
             $table->foreignId('type_id')->constrained()->onDelete('cascade');
+            $table->boolean('is_countable')->default(false);
             $table->timestamps();
         });
     }
