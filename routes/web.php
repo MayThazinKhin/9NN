@@ -55,6 +55,7 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::get('/inventories',[InventoryController::class,'index'])->name('inventory.index');
     Route::get('/inventories/create',[InventoryController::class,'create'])->name('inventory.create');
     Route::post('/inventories',[InventoryController::class,'store'])->name('inventory.store');
+    Route::get('/inventory_list',[InventoryController::class,'getItemList'])->name('inventory.list');
     Route::post('items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
 
     Route::get('/bar_inventories',[InventoryController::class,'barInventory'])->name('bar.inventory');
@@ -102,11 +103,6 @@ Route::middleware('can:isCashier')->group(function () {
 
 });
 
-Route::middleware('can:isCashier' || 'can:isAdmin')->group(function () {
-    //Account
-
-
-});
 
 Route::middleware('can:isKitchenStaff')->group(function () {
     //cancel_item

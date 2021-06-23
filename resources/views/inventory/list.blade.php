@@ -6,13 +6,6 @@
     @include('layouts.content_header')
 @endsection
 @section('content')
-    {{--    <header class="header pl-2">--}}
-    {{--        <div class="d-flex justify-content-between">--}}
-    {{--            <nav style="margin-top: 8px">--}}
-    {{--                <a href="#" class="a-clear text-dark fm-roboto fs17">@yield('content_title') </a>--}}
-    {{--            </nav>--}}
-    {{--        </div>--}}
-    {{--    </header>--}}
     <div>
         <form class="position-relative w-100">
             <div class="w-100 bg-white p-3 mt-3" style="min-height: 76vh">
@@ -22,37 +15,31 @@
                         <th class="table-header font-weight-normal">Id</th>
                         <th class="table-header font-weight-normal">Item</th>
                         <th class="table-header font-weight-normal">Amount</th>
-                        <th class="table-header font-weight-normal">Price</th>
                         <th class="table-header font-weight-normal">&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
 
-{{--                    @foreach($inventories as $i=>$inventory)--}}
+                    @foreach($items as $i=>$item)
                         <tr>
                             <th scope="row" class="padding-table-row">
                                 <span class="text-td font-weight-normal">
-                                    1
-{{--                                    {{ $inventories->perPage()*($inventories->currentPage()-1)+ (++$i) }}--}}
+
+                                    {{ $items->perPage()*($items->currentPage()-1)+ (++$i) }}
                                 </span>
                             </th>
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
                                     item
-{{--                                    {{$inventory->item_name}}--}}
+                                    {{$item->name}}
                                 </div>
                             </td>
 
-                            <td class="padding-table-row">
-                                <div class="text-td text-capitalize">
-                                    3
-                                </div>
-                            </td>
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                   1500
+                                   {{$item->count}}
                                 </div>
                             </td>
 
@@ -62,25 +49,17 @@
                                 </button>
                             </td>
                         </tr>
-{{--                    @endforeach--}}
+                    @endforeach
                     </tbody>
 
                 </table>
             </div>
             <nav aria-label="Page navigation example">
-{{--                {{$inventories->links()}}--}}
+                {{$items->links()}}
             </nav>
         </form>
     </div>
 
-    {{--    @php--}}
-    {{--        $input1 = (object) ["type" => "text", "label" => "Amount", "name" => "amount"];--}}
-    {{--        $input2 = (object) ["type" => "select", "label" => "To", "name" => "to", "data" =>"" ];--}}
-    {{--        $inputs = array($input1,$input2);--}}
-    {{--    @endphp--}}
-
-    {{--    <add-modal title="Add New Admin" :inputs="{{json_encode($inputs)}}" url="/admin"></add-modal>--}}
-    {{--    <edit-modal title="Transfer Item" :inputs="{{json_encode($inputs)}}" url="/admin"></edit-modal>--}}
 
 
 
@@ -88,7 +67,7 @@
     <div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="transfer" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 400px;">
             <div class="modal-content" style="border-radius: 4px;" id="app">
-                <form id="add_form" action="#"  method="post">
+                <form id="add_form" action=""  method="post">
                     <div class="modal-header border-bottom-0 mt-3">
                         <div class="text-left pl-4 pt-1">
                             <p style="font-family: 'Roboto',sans-serif;font-size: 18px!important;" class="fs18 mb-0 font-weight-bold">

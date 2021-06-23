@@ -5,8 +5,10 @@ namespace App\Http\Controllers\WEB;
 use App\Http\Actions\Account\InventoryAdding;
 use App\Http\Requests\InventoryRequest;
 use App\Http\Services\Item\ItemFacade;
+use App\Models\Category;
 use App\Models\Inventory;
 use App\Models\Item;
+use Illuminate\Support\Facades\DB;
 
 class InventoryController extends BasicController
 {
@@ -43,6 +45,15 @@ class InventoryController extends BasicController
         $item_data['count'] = $item->count + $data['count'];
         $item->update($item_data);
     }
+
+    public function getItemList(){
+         $items = DB::table('categories')
+            ->join('items', 'categories.id', '=', 'items.category_id')
+            ->where('categories.is_countable',true)
+            ->paginate(20);
+        return view('inventory.list',compact('items'));
+    }
+
 
     public function barInventory(){
         return view('bar_inventory.index');

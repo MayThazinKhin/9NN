@@ -29,8 +29,6 @@
             &nbsp;<i class="fal fa-user fs17"></i> &nbsp;Member
         </a>
 
-            {{--             inventory--}}
-
             <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100 @yield('inventory')" type="button"
                     data-toggle="collapse" data-target="#inventory"
                     aria-expanded="false" aria-controls="inventory"
@@ -38,7 +36,7 @@
                 <i class="fal fa-inventory fs17 pr-2"> </i>  Inventory
             </button>
             <div class="collapse multi-collapse " id="inventory" style="background-color: #f8f8f8">
-                <a href="#" class="a-clear a-sidebar m-0"
+                <a href="{{route('inventory.list')}}" class="a-clear a-sidebar m-0" inventory.list
                    style="padding-left: 56px">
                     Management
                 </a>

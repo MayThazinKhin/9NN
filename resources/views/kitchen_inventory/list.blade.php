@@ -1,9 +1,7 @@
 @extends('layouts.master')
 @section('content_title', 'Kitchen Inventory Management')
 @section('bar_inventory','active-link')
-{{--@section('add_route','/inventories/create')--}}
 @section('content_header')
-    {{--    @include('layouts.content_header')--}}
 @endsection
 @section('content')
     <header class="header pl-2">
@@ -23,7 +21,6 @@
                         <th class="table-header font-weight-normal">Date</th>
                         <th class="table-header font-weight-normal">Item</th>
                         <th class="table-header font-weight-normal">Count</th>
-                        {{--                        <th class="table-header font-weight-normal">&nbsp;</th>--}}
                     </tr>
                     </thead>
                     <tbody>
@@ -50,12 +47,6 @@
                                 3
                             </div>
                         </td>
-
-                        {{--                            <td class="padding-table-row w88px" style="">--}}
-                        {{--                                <button type="button" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">--}}
-                        {{--                                    <i class="fas fa-exchange-alt" style="color: rgb(103, 58, 183);"></i>--}}
-                        {{--                                </button>--}}
-                        {{--                            </td>--}}
                     </tr>
                     </tbody>
 
