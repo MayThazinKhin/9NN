@@ -30,7 +30,7 @@
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    {{$item->name}}
+                                    {{$item->item_name}}
                                 </div>
                             </td>
 

@@ -20,9 +20,9 @@ class OrderItems
                 'count' => $count,
             ];
             $route_name = Route::currentRouteName();
-            if($route_name == 'order_items'){
+            if($route_name == 'order_items' ){
                 $is_already_ordered = $session->items->contains($item_id);
-                ($is_already_ordered)  ?
+                $is_already_ordered ?
                     $this->updateSessionItemCount($session,$item_id,$count,'order') :
                     $session->items()->attach($item_id, ['count' => $count]);
                 KitchenItem::create($input);
@@ -37,7 +37,7 @@ class OrderItems
                 else{
                     $session->foc_items()->attach($item_id, ['count' => $count]);
                 }
-                $this->updateSessionItemCount($session,$item_id,$count,'foc');
+                KitchenItem::create($input);
             }
             else {
                 $this->updateSessionItemCount($session,$item_id,$count,'cancel');

@@ -20,7 +20,8 @@ class InventoryTransferController extends Controller
         });
     }
     public function getItemList(){
-        return view('bar_inventory.list');
+        $items =  ItemInventory::where('type_id',$this->type)->get();
+        return view('bar_inventory.list',compact('items'));
     }
 
     public function getTransferItem(){

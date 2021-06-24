@@ -5,6 +5,7 @@ namespace App\Http\Controllers\WEB;
 use App\Http\Controllers\Controller;
 use App\Models\CancelItem;
 use App\Models\Item;
+use App\Models\ItemInventory;
 use App\Models\KitchenItem;
 use App\Models\Staff;
 use Illuminate\Http\Request;
@@ -43,7 +44,7 @@ class CancelItemController extends Controller
     public function updateKitchenStatus(Request $request,KitchenItem $kitchenItem){
         $kitchenItem->update($request->all());
         if($this->type == 'bar'){
-            $item_data = Item::find($kitchenItem->item_id);
+            $item_data = ItemInventory::find($kitchenItem->item_id);
             if($item_data){
                 $update_count = $item_data->count - $kitchenItem->count ;
                 $item_data->update([
