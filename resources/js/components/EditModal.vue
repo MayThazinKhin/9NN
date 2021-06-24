@@ -20,6 +20,14 @@
                                 }}</span>
                         </div>
 
+                        <div class="mb-4" v-if="input.type == 'number'">
+                            <label class="label-form mb-1" style="font-size: 15px!important;">{{ input.label }}</label>
+                            <input :id="input.name"  v-model="form[input.name]" type="number" class="input-form" :placeholder="input.label" style="font-size: 14px!important;">
+                            <span v-if="errors[input.name]" class="text-danger">{{
+                                    errors[input.name][0]
+                                }}</span>
+                        </div>
+
                         <div class="mb-4" v-if="input.type == 'email'">
                             <label class="label-form mb-1" style="font-size: 15px!important;">{{ input.label }}</label>
                             <input  v-model="form[input.name]" type="email" class="input-form" :placeholder="input.label" style="font-size: 14px!important;">

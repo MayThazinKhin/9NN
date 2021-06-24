@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-4">
                         <label class="label-form mb-1" style="font-size: 14px!important;color: #4b4e51">Price</label>
-                        <input name="price" type="text" value="{{old('price')}}" class="input-form" placeholder="Price" style="font-size: 14px!important;">
+                        <input name="price" type="number" value="{{old('price')}}" class="input-form" placeholder="Price" style="font-size: 14px!important;">
                         <span class="text-danger">{{$errors->first('price')}}</span>
 
                     </div>

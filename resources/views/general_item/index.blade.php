@@ -73,7 +73,7 @@
 
     @php
         $input1 = (object) ["type" => "text", "label" => "Name", "name" => "name"];
-        $input2 = (object) ["type" => "text", "label" => "Price", "name" => "price"];
+        $input2 = (object) ["type" => "number", "label" => "Price", "name" => "price"];
         $input3 = (object) ["type" => "select", "label" => "Category", "name" => "category_id", "data" => $categories];
         $inputs = array($input1,$input2,$input3);
     @endphp

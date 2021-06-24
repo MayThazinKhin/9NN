@@ -2000,6 +2000,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -2264,6 +2272,14 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -22089,6 +22105,57 @@ var render = function() {
                             ])
                           : _vm._e(),
                         _vm._v(" "),
+                        input.type == "number"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: { "font-size": "15px!important" }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  id: input.name,
+                                  type: "number",
+                                  placeholder: input.label,
+                                  autocomplete: "off"
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
                         input.type == "hidden"
                           ? _c("div", { staticClass: "mb-4" }, [
                               _c("input", {
@@ -22967,6 +23034,56 @@ var render = function() {
                                 attrs: {
                                   id: input.name,
                                   type: "text",
+                                  placeholder: input.label
+                                },
+                                domProps: { value: _vm.form[input.name] },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      input.name,
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _vm.errors[input.name]
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errors[input.name][0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        input.type == "number"
+                          ? _c("div", { staticClass: "mb-4" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label-form mb-1",
+                                  staticStyle: { "font-size": "15px!important" }
+                                },
+                                [_vm._v(_vm._s(input.label))]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form[input.name],
+                                    expression: "form[input.name]"
+                                  }
+                                ],
+                                staticClass: "input-form",
+                                staticStyle: { "font-size": "14px!important" },
+                                attrs: {
+                                  id: input.name,
+                                  type: "number",
                                   placeholder: input.label
                                 },
                                 domProps: { value: _vm.form[input.name] },
