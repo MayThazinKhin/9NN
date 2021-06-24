@@ -41,9 +41,7 @@
                             </td>
 
                             <td class="padding-table-row w88px" style="">
-                                <button type="button" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">
-                                    <i class="fas fa-exchange-alt" style="color: rgb(103, 58, 183);"></i>
-                                </button>
+                                <set-inventory-transfer-amount id="{{$item->id}}" count="{{$item->count}}"></set-inventory-transfer-amount>
                             </td>
                         </tr>
                     @endforeach
@@ -57,41 +55,7 @@
         </form>
     </div>
 
-    <div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="transfer" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" style="width: 400px;">
-            <div class="modal-content" style="border-radius: 4px;" id="app">
-                <form id="add_form" action="{{route('inventory.transfer')}}"  method="post">
-                    <div class="modal-header border-bottom-0 mt-3">
-                        <div class="text-left pl-4 pt-1">
-                            <p style="font-family: 'Roboto',sans-serif;font-size: 18px!important;" class="fs18 mb-0 font-weight-bold">
-                                Transfer Item</p>
-                        </div>
-                    </div>
+    <inventory-transfer></inventory-transfer>
 
-                    <div class="modal-body mx-4 pt-2 pb-0">
-                        <div class="mb-4">
-                            <label class="label-form mb-1" style="font-size: 15px!important;">Amount</label>
-                            <input type="text" class="input-form" placeholder="Amount" style="font-size: 14px!important;">
 
-                        </div>
-
-                        <div class="mb-4">
-                            <label class="label-form mb-1" style="font-size: 15px!important;color: #1b1e21">To</label>
-                            <select class="selectpicker d-block" data-width="100%" title="Choice..."
-                                    data-style="select-form w-100">
-                                <option value="1">Shop</option>
-                                <option value="2">Kitchen</option>
-                                <option value="3">Bar</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-4">
-                        <button class="btn pr-0" data-dismiss="modal" style="font-size: 16px!important;">Cancel</button>
-                        <button class="btn btn-danger pl-3" style="font-size: 16px!important;"> Confirm </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection

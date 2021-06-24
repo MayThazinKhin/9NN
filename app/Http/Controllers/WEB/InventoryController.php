@@ -56,8 +56,11 @@ class InventoryController extends BasicController
     }
 
     public function transferItems(Request $request){
-        $request->date = CurrentTime();
-        ItemTransfer::create($request->all());
+        $data= $request->except('id');
+        $data['item_id'] = $request->id;
+        $data['date'] = CurrentTime();
+        ItemTransfer::create($data);
+        return response()->json(array('success' => true) , 200);
     }
 
 

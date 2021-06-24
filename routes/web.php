@@ -57,7 +57,7 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::get('/inventories/create',[InventoryController::class,'create'])->name('inventory.create');
     Route::post('/inventories',[InventoryController::class,'store'])->name('inventory.store');
     Route::get('/inventory_list',[InventoryController::class,'getItemList'])->name('inventory.list');
-    Route::get('/inventory_transfer',[InventoryController::class,'transferItems'])->name('inventory.transfer');
+    Route::post('/inventory_transfer',[InventoryController::class,'transferItems'])->name('inventory.transfer');
     Route::post('/items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
 
 

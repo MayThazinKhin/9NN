@@ -17,6 +17,8 @@ Vue.component('edit-password', require('./components/EditPassword.vue').default)
 Vue.component('invoice-detail', require('./components/InvoiceDetail.vue').default);
 Vue.component('shop-invoice-detail', require('./components/ShopInvoiceDetail.vue').default);
 Vue.component('edit-password-button', require('./components/EditPasswordButton.vue').default);
+Vue.component('set-inventory-transfer-amount', require('./components/SetInventoryTranferAmount.vue').default);
+Vue.component('inventory-transfer', require('./components/InventoryTransfer.vue').default);
 
 
 
