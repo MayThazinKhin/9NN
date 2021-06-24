@@ -65,58 +65,9 @@
           <i class="fal fa-sack-dollar fs17"> </i> Withdraw
         </a>
 
-{{--        bar inventory--}}
-            <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
-                    data-toggle="collapse" data-target="#bar_inventory"
-                    aria-expanded="false" aria-controls="bar_inventory"
-            >
-                <i class="fal fa-inventory fs17 pr-2"> </i> Bar Inventory
-            </button>
-            <div class="collapse multi-collapse" id="bar_inventory" style="background-color: #f8f8f8">
-                <a href="{{route('bar.inventory')}}" class="a-clear a-sidebar m-0"
-                     style="padding-left: 56px">
-                    List
-                </a>
-                <a href="{{route('bar.inventory.confirm')}}" class="a-clear a-sidebar m-0" style="padding-left: 56px">
-                    Confirm
-                </a>
-            </div>
 
-{{--            shop inventory--}}
 
-            <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
-                    data-toggle="collapse" data-target="#shop_inventory"
-                    aria-expanded="false" aria-controls="shop_inventory"
-            >
-                <i class="fal fa-inventory fs17 pr-2"> </i> Shop Inventory
-            </button>
-            <div class="collapse multi-collapse pl-4" id="shop_inventory" style="background-color: #f8f8f8">
-                <a href="{{route('item.inventory')}}" class="a-clear a-sidebar cycle m-0"
-                   style="padding-left: 56px">
-                    List
-                </a>
-                <a href="{{route('item.inventory.confirm')}}" class="a-clear a-sidebar cycle m-0" style="padding-left: 56px">
-                    Confirm
-                </a>
-            </div>
 
-            {{--            kitchen inventory--}}
-
-            <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
-                    data-toggle="collapse" data-target="#kitchen_inventory"
-                    aria-expanded="false" aria-controls="kitchen_inventory"
-            >
-                <i class="fal fa-inventory fs17 pr-2"> </i> Kitchen Inventory
-            </button>
-            <div class="collapse multi-collapse" id="kitchen_inventory" style="background-color: #f8f8f8">
-                <a href="{{route('kitchen.inventory')}}" class="a-clear a-sidebar m-0"
-                   style="padding-left: 56px">
-                    List
-                </a>
-                <a href="{{route('kitchen.inventory.confirm')}}" class="a-clear a-sidebar m-0" style="padding-left: 56px">
-                    Confirm
-                </a>
-            </div>
 
 
         @elsecan('isCashier')
@@ -152,6 +103,22 @@
         <a href="{{route('cancel_items')}}" class="a-clear a-sidebar @yield('cancel')">
            <i class="fal fa-minus-circle fs17"></i> Cancel Items
         </a>
+        {{--        bar inventory--}}
+            <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
+                    data-toggle="collapse" data-target="#bar_inventory"
+                    aria-expanded="false" aria-controls="bar_inventory"
+            >
+                <i class="fal fa-inventory fs17 pr-2"> </i> Inventory
+            </button>
+            <div class="collapse multi-collapse" id="bar_inventory" style="background-color: #f8f8f8">
+                <a href="{{route('item.list')}}" class="a-clear a-sidebar m-0"
+                   style="padding-left: 56px">
+                    Stock List
+                </a>
+                <a href="{{route('transfer.item')}}" class="a-clear a-sidebar m-0" style="padding-left: 56px">
+                    Transfer List
+                </a>
+            </div>
         @endcan
 {{--         <a href="{{route('staff_logout')}}" class="a-clear a-sidebar @yield('cancel')">--}}
 {{--            <i class="fal fa-minus-circle fs17"></i> logout--}}

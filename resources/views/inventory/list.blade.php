@@ -24,18 +24,15 @@
                         <tr>
                             <th scope="row" class="padding-table-row">
                                 <span class="text-td font-weight-normal">
-
                                     {{ $items->perPage()*($items->currentPage()-1)+ (++$i) }}
                                 </span>
                             </th>
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    item
                                     {{$item->name}}
                                 </div>
                             </td>
-
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
@@ -60,14 +57,10 @@
         </form>
     </div>
 
-
-
-
-
     <div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="transfer" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 400px;">
             <div class="modal-content" style="border-radius: 4px;" id="app">
-                <form id="add_form" action=""  method="post">
+                <form id="add_form" action="{{route('inventory.transfer')}}"  method="post">
                     <div class="modal-header border-bottom-0 mt-3">
                         <div class="text-left pl-4 pt-1">
                             <p style="font-family: 'Roboto',sans-serif;font-size: 18px!important;" class="fs18 mb-0 font-weight-bold">
@@ -85,11 +78,10 @@
                         <div class="mb-4">
                             <label class="label-form mb-1" style="font-size: 15px!important;color: #1b1e21">To</label>
                             <select class="selectpicker d-block" data-width="100%" title="Choice..."
-                                    data-style="select-form w-100"
-                            >
-                                <option value="bar">Bar</option>
-                                <option value="shop">Shop</option>
-                                <option value="kitchen">Kitchen</option>
+                                    data-style="select-form w-100">
+                                <option value="1">Shop</option>
+                                <option value="2">Kitchen</option>
+                                <option value="3">Bar</option>
                             </select>
                         </div>
 

@@ -18,7 +18,7 @@
             <div class="w-100 bg-white p-3 mt-3" style="min-height: 76vh">
                 <table class="table table-borderless" id="myTable">
                     <thead>
-                    <tr class="" style="border-bottom: 2px solid #dee2e6">
+                    <tr class="" style="-bottom: 2px solid #dee2e6">
                         <th class="table-header font-weight-normal">Id</th>
                         <th class="table-header font-weight-normal">Date</th>
                         <th class="table-header font-weight-normal">Item Name</th>

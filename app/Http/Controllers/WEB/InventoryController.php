@@ -5,9 +5,10 @@ namespace App\Http\Controllers\WEB;
 use App\Http\Actions\Account\InventoryAdding;
 use App\Http\Requests\InventoryRequest;
 use App\Http\Services\Item\ItemFacade;
-use App\Models\Category;
 use App\Models\Inventory;
 use App\Models\Item;
+use App\Models\ItemTransfer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class InventoryController extends BasicController
@@ -54,30 +55,12 @@ class InventoryController extends BasicController
         return view('inventory.list',compact('items'));
     }
 
-
-    public function barInventory(){
-        return view('bar_inventory.index');
+    public function transferItems(Request $request){
+        $request->date = CurrentTime();
+        ItemTransfer::create($request->all());
     }
 
-    public function kitchenInventory(){
-        return view('kitchen_inventory.index');
-    }
 
-    public function itemInventory(){
-        return view('shop_inventory.index');
-    }
-
-    public function confirmBarInventory(){
-        return view('bar_inventory_confirm.index');
-    }
-
-    public function confirmKitchenInventory(){
-        return view('kitchen_inventory_confirm.index');
-    }
-
-    public function confirmItemInventory(){
-        return view('shop_inventory_confirm.create');
-    }
 
 
 }
