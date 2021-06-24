@@ -45,5 +45,6 @@ class InventoryTransferController extends Controller
             $item_inventory->count += $itemTransfer->count;
         }
         $item_inventory->save();
+        return redirect()->back();
     }
 }

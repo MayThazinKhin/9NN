@@ -103,7 +103,7 @@ Route::middleware('can:isCashier')->group(function () {
 Route::middleware('can:isKitchenStaff')->group(function () {
     //Inventory
     Route::get('/transfer_item',[InventoryTransferController::class,'getTransferItem'])->name('transfer.item');
-    Route::get('/confirm_item/{id}',[InventoryTransferController::class,'confirmItems'])->name('confirm.item');
+    Route::post('/confirm_item/{id}',[InventoryTransferController::class,'confirmItems'])->name('confirm.item');
     Route::get('/item_list',[InventoryTransferController::class,'getItemList'])->name('item.list');
 
     //cancel_item

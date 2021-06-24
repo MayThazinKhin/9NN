@@ -53,7 +53,7 @@
                         </td>
 
                         <td class="padding-table-row w88px" style="">
-                            <button type="button" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">
+                            <button type="button" onclick="setUrl({{$item->id}})" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">
                                 <i class="fas fa-check-circle" style="color: rgb(103, 58, 183);"></i>
                             </button>
                         </td>
@@ -73,7 +73,8 @@
     <div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="transfer" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" style="width: 400px;">
             <div class="modal-content" style="border-radius: 4px;" id="app">
-                <form id="add_form" action="{{route('confirm.item')}}"  method="post">
+                <form id="transfer_confirm" method="post">
+                    @csrf
                     <div class="modal-header border-bottom-0 mt-3">
                         <div class="text-left pl-4 pt-1">
                             <p style="font-family: 'Roboto',sans-serif;font-size: 18px!important;" class="fs18 mb-0 font-weight-bold">
@@ -85,10 +86,16 @@
                     </div>
                     <div class="modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-2">
                         <button class="btn pr-0" data-dismiss="modal" style="font-size: 16px!important;">Cancel</button>
-                        <button class="btn btn-danger pl-3" style="font-size: 16px!important;"> Confirm </button>
+                        <button type="submit" class="btn btn-danger pl-3" style="font-size: 16px!important;"> Confirm </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+    <script type="application/javascript">
+        function setUrl($id) {
+            $('#transfer_confirm').attr('action', '/confirm_item/'+ $id);
+        }
+    </script>
 @endsection
