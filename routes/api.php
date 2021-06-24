@@ -24,7 +24,7 @@ Route::middleware('jwt-auth')->group(function () {
     Route::post('cancel_order_items',[SessionController::class,'orderItems'])->name('cancel_order_items');
     Route::post('foc_order_items',[SessionController::class,'orderItems'])->name('foc_order_items');
     Route::post('get_order_items',[SessionController::class,'getOrderItems']);
-    Route::get('current_time',[SessionController::class,'getCurrentTime']);
+    Route::get('current_status',[SessionController::class,'getCurrentTime']);
     Route::post('end_session',[SessionController::class,'endSession']);
 
     Route::post('start_period',[PeriodController::class,'startPeriod']);

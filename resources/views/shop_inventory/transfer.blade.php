@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('content_title', 'Kitchen Inventory Management')
-@section('bar_inventory','active-link')
+@section('content_title', 'Shop Inventory Transfer Confirm')
+@section('shop_inventory_confirm','active-link')
 {{--@section('add_route','/inventories/create')--}}
 @section('content_header')
     {{--    @include('layouts.content_header')--}}
@@ -9,7 +9,7 @@
     <header class="header pl-2">
         <div class="d-flex justify-content-between">
             <nav style="margin-top: 8px">
-                <a href="#" class="a-clear text-dark fm-roboto fs17">Kitchen Inventory Management </a>
+                <a href="#" class="a-clear text-dark fm-roboto fs17">Shop Inventory Transfer Confirm</a>
             </nav>
         </div>
     </header>
@@ -18,12 +18,12 @@
             <div class="w-100 bg-white p-3 mt-3" style="min-height: 76vh">
                 <table class="table table-borderless" id="myTable">
                     <thead>
-                    <tr class="" style="border-bottom: 2px solid #dee2e6">
+                    <tr class="" style="-bottom: 2px solid #dee2e6">
                         <th class="table-header font-weight-normal">Id</th>
                         <th class="table-header font-weight-normal">Date</th>
-                        <th class="table-header font-weight-normal">Item</th>
-                        <th class="table-header font-weight-normal">Count</th>
-                        {{--                        <th class="table-header font-weight-normal">&nbsp;</th>--}}
+                        <th class="table-header font-weight-normal">Item Name</th>
+                        <th class="table-header font-weight-normal">Amount</th>
+                        <th class="table-header font-weight-normal">&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,27 +35,27 @@
                         </th>
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                12.12.2021
+                                12.12.2022
                             </div>
                         </td>
 
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                                something
+                                Water Bottle
                             </div>
                         </td>
 
                         <td class="padding-table-row">
-                            <div class="text-td text-capitalize">
+                            <div class="text-td text-capitalize pl-1">
                                 3
                             </div>
                         </td>
 
-                        {{--                            <td class="padding-table-row w88px" style="">--}}
-                        {{--                                <button type="button" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">--}}
-                        {{--                                    <i class="fas fa-exchange-alt" style="color: rgb(103, 58, 183);"></i>--}}
-                        {{--                                </button>--}}
-                        {{--                            </td>--}}
+                        <td class="padding-table-row w88px" style="">
+                            <button type="button" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">
+                                <i class="fas fa-check-circle" style="color: rgb(103, 58, 183);"></i>
+                            </button>
+                        </td>
                     </tr>
                     </tbody>
 
@@ -86,30 +86,14 @@
                     <div class="modal-header border-bottom-0 mt-3">
                         <div class="text-left pl-4 pt-1">
                             <p style="font-family: 'Roboto',sans-serif;font-size: 18px!important;" class="fs18 mb-0 font-weight-bold">
-                                Transfer Item</p>
+                                Confirm Transfer Item?</p>
                         </div>
                     </div>
 
-                    <div class="modal-body mx-4 pt-2 pb-0">
-                        <div class="mb-4">
-                            <label class="label-form mb-1" style="font-size: 15px!important;">Amount</label>
-                            <input type="text" class="input-form" placeholder="Amount" style="font-size: 14px!important;">
-
-                        </div>
-
-                        <div class="mb-4">
-                            <label class="label-form mb-1" style="font-size: 15px!important;color: #1b1e21">To</label>
-                            <select class="selectpicker d-block" data-width="100%" title="Choice..."
-                                    data-style="select-form w-100"
-                            >
-                                <option value="bar">Bar</option>
-                                <option value="shop">Shop</option>
-                                <option value="kitchen">Kitchen</option>
-                            </select>
-                        </div>
-
+                    <div class="modal-body mx-4 pt-0 pb-0">
+                        {{--                        <h3>Confirm</h3>--}}
                     </div>
-                    <div class="modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-4">
+                    <div class="modal-footer border-0 justify-content-between mx-3 px-4 mb-2 mt-2">
                         <button class="btn pr-0" data-dismiss="modal" style="font-size: 16px!important;">Cancel</button>
                         <button class="btn btn-danger pl-3" style="font-size: 16px!important;"> Confirm </button>
                     </div>

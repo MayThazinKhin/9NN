@@ -16,6 +16,7 @@ use App\Http\Controllers\WEB\AccountController;
 use App\Http\Controllers\WEB\AdvanceController;
 use App\Http\Controllers\WEB\CashController;
 use App\Http\Controllers\WEB\PowerMoodController;
+use App\Http\Controllers\WEB\InventoryTransferController;
 
 //login
 Route::get('',[LoginController::class,'index']);
@@ -55,14 +56,10 @@ Route::middleware('can:isAdmin')->group(function () {
     Route::get('/inventories',[InventoryController::class,'index'])->name('inventory.index');
     Route::get('/inventories/create',[InventoryController::class,'create'])->name('inventory.create');
     Route::post('/inventories',[InventoryController::class,'store'])->name('inventory.store');
-    Route::post('items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
+    Route::get('/inventory_list',[InventoryController::class,'getItemList'])->name('inventory.list');
+    Route::get('/inventory_transfer',[InventoryController::class,'transferItems'])->name('inventory.transfer');
+    Route::post('/items_for_inv',[ItemController::class,'getItemsByTypeID'])->name('items.inventory');
 
-    Route::get('/bar_inventories',[InventoryController::class,'barInventory'])->name('bar.inventory');
-    Route::get('/kitchen_inventories',[InventoryController::class,'kitchenInventory'])->name('kitchen.inventory');
-    Route::get('/item_inventories',[InventoryController::class,'itemInventory'])->name('item.inventory');
-    Route::get('/bar_inventories_confirm',[InventoryController::class,'confirmBarInventory'])->name('bar.inventory.confirm');
-    Route::get('/kitchen_inventories_confirm',[InventoryController::class,'confirmKitchenInventory'])->name('kitchen.inventory.confirm');
-    Route::get('/item_inventories_confirm',[InventoryController::class,'confirmItemInventory'])->name('item.inventory.confirm');
 
     //Account
     Route::get('/monthly_financial',[AccountController::class,'monthly'])->name('monthly_financial.index');
@@ -102,28 +99,19 @@ Route::middleware('can:isCashier')->group(function () {
 
 });
 
-Route::middleware('can:isCashier' || 'can:isAdmin')->group(function () {
-    //Account
-
-
-});
 
 Route::middleware('can:isKitchenStaff')->group(function () {
+    //Inventory
+    Route::get('/transfer_item',[InventoryTransferController::class,'getTransferItem'])->name('transfer.item');
+    Route::get('/confirm_item/{id}',[InventoryTransferController::class,'confirmItems'])->name('confirm.item');
+    Route::get('/item_list',[InventoryTransferController::class,'getItemList'])->name('item.list');
+
     //cancel_item
     Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
 
     //kitchen_item
     Route::get('kitchen_items',[CancelItemController::class,'kitchenItems'])->name('kitchen_items');
-    Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
-});
-
-Route::middleware('can:isBarStaff')->group(function () {
-    //cancel_item
-    Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
-
-    //kitchen_item
-    Route::get('kitchen_items',[CancelItemController::class,'kitchenItems'])->name('kitchen_items');
-    Route::post('update_kitchen_status/{item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
+    Route::post('update_kitchen_status/{kitchen_item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
 });
 
 Route::get('/financial',[AccountController::class,'index'])->name('financial.index');

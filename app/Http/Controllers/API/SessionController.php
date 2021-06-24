@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Actions\Session\CurrentStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\StartSessionRequest;
 use App\Http\Services\Period\PeriodFacade as Period;
 use App\Http\Services\Session\SessionFacade as Session;
 use App\Http\Services\Table\TableFacade as Table;
+use App\Models\PowerMood;
 use Illuminate\Http\Request;
 
 class SessionController extends Controller
@@ -48,7 +50,8 @@ class SessionController extends Controller
     }
 
     public function getCurrentTime(){
-        responseData('time',CurrentTime(),200);
+        $current_status = (new CurrentStatus())->run();
+        responseData('current_status',$current_status,200);
     }
 
     public function endSession(Request $request){

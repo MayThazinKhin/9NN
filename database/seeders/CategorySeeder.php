@@ -8,67 +8,58 @@ use Illuminate\Database\Seeder;
 class CategorySeeder extends Seeder
 {
     public function run(){
-       //Category::factory(20)->create();
-        Category::create([
-            'name' => 'chalk',
-            'type_id' => 1
-        ]);
-        Category::create([
-            'name' => 'tip',
-            'type_id' => 1
-        ]);
-        Category::create([
-            'name' => 'salad',
-            'type_id' => 2
-        ]);
-        Category::create([
-            'name' => 'soup',
-            'type_id' => 2
-        ]);
-        Category::create([
-            'name' => 'fast food',
-            'type_id' => 2
-        ]);
-        Category::create([
-            'name' => 'fresh juice',
-            'type_id' => 3
-        ]);
-        Category::create([
-            'name' => 'mocktail',
-            'type_id' => 3
-        ]);
-        Category::create([
-            'name' => 'shisha',
-            'type_id' => 3
-        ]);
-        Category::create([
-            'name' => 'beer',
-            'type_id' => 3
-        ]);
-        Category::create([
-            'name' => 'energy drink',
-            'type_id' => 3
-        ]);
-        Category::create([
-            'name' => 'coffee',
-            'type_id' => 3
-        ]);
-        Category::create([
-            'name' => 'milk shake',
-            'type_id' => 3
-        ]);
-        Category::create([
-            'name' => 'smoothies',
-            'type_id' => 3
-        ]);
-        Category::create([
-            'name' => 'general 1',
-            'type_id' => 4
-        ]);
-        Category::create([
-            'name' => 'general 2',
-            'type_id' => 4
-        ]);
+        $shops = ['chalk','tip'];
+        foreach($shops as $shop){
+            Category::create([
+                'name' =>$shop,
+                'type_id' => 1,
+                'is_countable' => true
+            ]);
+        }
 
+        $menus = ['salad','soup','fast food'];
+        foreach ($menus as $menu){
+            Category::create([
+                'name' => $menu,
+                'type_id' => 2,
+                'is_countable' => false
+            ]);
+        }
+
+        $countable_bars = ['beer','energy drink', 'coffee'];
+        foreach ($countable_bars as $countable_bar){
+            Category::create([
+                'name' => $countable_bar,
+                'type_id' => 3,
+                'is_countable' => true
+            ]);
+        }
+
+        $uncountable_bars = ['fresh juice','mocktail','shisha', 'coffee', 'milk shake','smoothies'];
+        foreach ($uncountable_bars as $uncountable_bar){
+            Category::create([
+                'name' => $uncountable_bar,
+                'type_id' => 3,
+                'is_countable' => false
+            ]);
+        }
+
+        $countable_general_items = ['ဆန်အိတ်','ဆီပုံး'];
+        foreach ($countable_general_items as $countable_general_item){
+            Category::create([
+                'name' => $countable_general_item,
+                'type_id' => 4,
+                'is_countable' => true
+            ]);
+        }
+
+        $uncountable_general_items = ['လိမ္မော်သီး','သံပုရာသီး'];
+        foreach ($uncountable_general_items as $uncountable_general_item){
+            Category::create([
+                'name' => $uncountable_general_item,
+                'type_id' => 4,
+                'is_countable' => false
+            ]);
+        }
     }
 }

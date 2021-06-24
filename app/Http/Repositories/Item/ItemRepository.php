@@ -35,7 +35,10 @@ class ItemRepository implements ItemInterface
         $items = collect([]) ;
         foreach($types as $type)
             foreach ($type->categories as $category)
-                $items =   $items->merge($category->items);
+                if($category->is_countable == 1){
+                    $items =   $items->merge($category->items);
+                }
+
         return $items;
     }
 }

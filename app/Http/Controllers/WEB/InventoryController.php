@@ -7,6 +7,9 @@ use App\Http\Requests\InventoryRequest;
 use App\Http\Services\Item\ItemFacade;
 use App\Models\Inventory;
 use App\Models\Item;
+use App\Models\ItemTransfer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class InventoryController extends BasicController
 {
@@ -44,29 +47,20 @@ class InventoryController extends BasicController
         $item->update($item_data);
     }
 
-    public function barInventory(){
-        return view('bar_inventory.index');
+    public function getItemList(){
+         $items = DB::table('categories')
+            ->join('items', 'categories.id', '=', 'items.category_id')
+            ->where('categories.is_countable',true)
+            ->paginate(20);
+        return view('inventory.list',compact('items'));
     }
 
-    public function kitchenInventory(){
-        return view('kitchen_inventory.index');
+    public function transferItems(Request $request){
+        $request->date = CurrentTime();
+        ItemTransfer::create($request->all());
     }
 
-    public function itemInventory(){
-        return view('shop_inventory.index');
-    }
 
-    public function confirmBarInventory(){
-        return view('bar_inventory_confirm.index');
-    }
-
-    public function confirmKitchenInventory(){
-        return view('kitchen_inventory_confirm.index');
-    }
-
-    public function confirmItemInventory(){
-        return view('shop_inventory_confirm.create');
-    }
 
 
 }

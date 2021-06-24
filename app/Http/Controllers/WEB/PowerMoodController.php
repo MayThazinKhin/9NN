@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\WEB;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\Period\PeriodFacade;
+use App\Models\Period;
 use App\Models\PowerMood;
 use Illuminate\Http\Request;
 
@@ -10,7 +12,6 @@ class PowerMoodController extends Controller
 {
     public function switch(Request $request)
     {
-
         if($request->input('switch') !== null)
         {
             $data['start_date'] = now();
@@ -19,10 +20,16 @@ class PowerMoodController extends Controller
         if($request->input('switch') == null)
         {
             $data['end_date'] = now();
-            $last_row = PowerMood::latest()->first();
-            $last_row->update($data);
+            $latest_power = PowerMood::where('end_date',null)->first();
+            $latest_power->update($data);
         }
-
+        $periods = Period::where('end_time',null)->get();
+        foreach ($periods as $period){
+            $data['session_id'] = $period->session_id;
+            $data['period_id'] = $period->id;
+            PeriodFacade::end($data);
+            PeriodFacade::start($data);
+        }
         return redirect()->back();
     }
 }
