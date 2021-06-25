@@ -174,6 +174,59 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mx-0">
+                        <div class="col bg-white position-relative" style="min-height: 50vh;padding-bottom: 52px">
+                            <table class="table table-borderless">
+                                <thead>
+                                <tr class="" style="border-bottom: 2px solid #dee2e6">
+                                    <th class="table-header font-weight-normal">
+                                        No.
+                                    </th>
+                                    <th class="table-header" style="font-size: 16px!important;font-family: Padauk!important;">မီနူးနာမည်</th>
+                                    <th class="table-header" style="font-size: 16px!important;font-family: Padauk!important;">Price</th>
+                                    <th class="table-header" style="font-size: 16px!important;font-family: Padauk!important;">ပမာဏ</th>
+                                    <th class="table-header text-right" style="font-size: 16px!important;font-family: Padauk!important;">ကျသင့်ငွေ</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr v-for="(item,i) in items.foc_items" :key="i">
+                                    <th scope="row" class="padding-table-row">
+                                            <span class="text-td font-weight-normal">
+                                                            {{i+1}}
+                                            </span>
+                                    </th>
+                                    <td class="padding-table-row">
+                                        <div class="text-td text-capitalize">
+                                            {{item.name}}
+                                        </div>
+                                    </td>
+                                    <td class="padding-table-row">
+                                        <div class="text-td">
+                                            {{item.price}}
+                                        </div>
+                                    </td>
+                                    <td class="padding-table-row">
+                                        <div class="text-td">
+                                            {{item.count}}
+                                        </div>
+                                    </td>
+                                    <td class="padding-table-row">
+                                        <div class="text-td text-right">
+                                            0
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+<!--                            <div style="position: absolute;bottom: 8px;right: 0;width: 100%">-->
+<!--                                <div class="d-flex justify-content-end" style="border-top: 1px solid #e1e5e8;padding-top: 22px;margin-left: 40px;margin-right: 40px;">-->
+<!--                                    <p style="font-size: 16px!important;font-family: Padauk!important;font-weight: 800" class="d-inline-block">အစားအသောက်အတွက် ကျသင့်ငွေ စုစုပေါင်း</p>-->
+<!--                                    <p style="font-family: 'Roboto', sans-serif;font-size: 15px;padding-left: 24px;padding-right: 18px;"-->
+<!--                                       class="d-inline-block">{{items.net_total}}</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
                 </div>
                 <div class="col-4 bg-white position-relative" style="min-height: 50vh;padding-bottom: 52px">
                     <table class="table table-borderless" id="myTable">
@@ -319,7 +372,7 @@ export default {
     },
 
     created(){
-        // console.log(this.is_submit);
+        // console.log(this.items.foc_items);
     },
 
     watch: {

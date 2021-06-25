@@ -20,6 +20,8 @@
                         <th class="table-header font-weight-normal">Id</th>
                         <th class="table-header font-weight-normal">Item</th>
                         <th class="table-header font-weight-normal">Count</th>
+                        <th class="table-header font-weight-normal">Action</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -41,6 +43,9 @@
                                     {{$item->count}}
                                 </div>
                             </td>
+                            <td class="padding-table-row w88px" style="">
+                                <set-inventory-transfer-amount id="{{$item->id}}" count="{{$item->count}}"></set-inventory-transfer-amount>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -49,5 +54,7 @@
             </div>
         </form>
     </div>
+        <item-subtract></item-subtract>
+
 
 @endsection

@@ -19,6 +19,7 @@ Vue.component('shop-invoice-detail', require('./components/ShopInvoiceDetail.vue
 Vue.component('edit-password-button', require('./components/EditPasswordButton.vue').default);
 Vue.component('set-inventory-transfer-amount', require('./components/SetInventoryTranferAmount.vue').default);
 Vue.component('inventory-transfer', require('./components/InventoryTransfer.vue').default);
+Vue.component('item-subtract', require('./components/ItemSubtract.vue').default);
 
 
 
