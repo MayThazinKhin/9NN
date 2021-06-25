@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Actions\Session;
 
 use App\Models\CancelItem;

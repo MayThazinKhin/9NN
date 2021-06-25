@@ -31,7 +31,7 @@
                     <tr>
                         <th scope="row" class="padding-table-row">
                                 <span class="text-td font-weight-normal">
-                                    {{$i++}}
+                                    {{++$i}}
                                 </span>
                         </th>
                         <td class="padding-table-row">
@@ -42,7 +42,7 @@
 
                         <td class="padding-table-row">
                             <div class="text-td text-capitalize">
-                               {{$item->item_id}}
+                               {{$item->item_name}}
                             </div>
                         </td>
 

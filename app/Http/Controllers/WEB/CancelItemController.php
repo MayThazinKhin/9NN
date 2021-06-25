@@ -43,13 +43,16 @@ class CancelItemController extends Controller
 
     public function updateKitchenStatus(Request $request,KitchenItem $kitchenItem){
         $kitchenItem->update($request->all());
-        if($this->type == 'bar'){
-            $item_data = ItemInventory::find($kitchenItem->item_id);
-            if($item_data){
-                $update_count = $item_data->count - $kitchenItem->count ;
-                $item_data->update([
-                    'count' => $update_count
-                ]);
+        if($request->status == 'done'){
+            $is_countable =  $kitchenItem->kitchenItem->Category->is_countable;
+            if($is_countable){
+                $item_data = ItemInventory::find($kitchenItem->item_id);
+                if($item_data){
+                    $update_count = $item_data->count - $kitchenItem->count ;
+                    $item_data->update([
+                        'count' => $update_count
+                    ]);
+                }
             }
         }
         return redirect()->back();

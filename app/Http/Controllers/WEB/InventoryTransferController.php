@@ -15,7 +15,7 @@ class InventoryTransferController extends Controller
     public function __construct(){
         $this->middleware(function ($request, $next) {
             $role = Auth::user()->role;
-            $this->type = ($role == 'kitchen_staff') ? 1 : 3;
+            $this->type = ($role == 'kitchen_staff') ? 2 : 3;
             return $next($request);
         });
     }
@@ -46,6 +46,9 @@ class InventoryTransferController extends Controller
             $item_inventory->count += $itemTransfer->count;
         }
         $item_inventory->save();
+        $item = Item::find($itemTransfer->item_id);
+        $item->count -= $itemTransfer->count;
+        $item->save();
         return redirect()->back();
     }
 }

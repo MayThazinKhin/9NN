@@ -30,7 +30,6 @@
                                     {{++$i}}
                                 </span>
                             </th>
-
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
                                    {{$item->item_name}}

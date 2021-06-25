@@ -30,7 +30,7 @@
 
                             <td class="padding-table-row">
                                 <div class="text-td text-capitalize">
-                                    {{$item->item_name}}
+                                    {{$item->name}}
                                 </div>
                             </td>
 
@@ -54,8 +54,9 @@
             </nav>
         </form>
     </div>
-
     <inventory-transfer></inventory-transfer>
+
+
 
 
 @endsection
