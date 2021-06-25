@@ -6,7 +6,7 @@
                     <div class="modal-header border-bottom-0 mt-3">
                         <div class="text-left pl-4 pt-1">
                             <p style="font-family: 'Roboto',sans-serif;font-size: 18px!important;" class="fs18 mb-0 font-weight-bold">
-                                Transfer Item</p>
+                                Subtract Item</p>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@ export default {
                 count: this.input_amount,
                 id: this.id
             }
-            $.post('/inventory_transfer', JSON.stringify(form))
+            $.post('/update_inventory_item/'+this.id, JSON.stringify(form))
                 .done(function(data) {
                     if (data.success) {
                         location.reload();

@@ -3458,7 +3458,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         count: this.input_amount,
         id: this.id
       };
-      $.post('/inventory_transfer', JSON.stringify(form)).done(function (data) {
+      $.post('/update_inventory_item/' + this.id, JSON.stringify(form)).done(function (data) {
         if (data.success) {
           location.reload();
         }
@@ -25982,7 +25982,7 @@ var staticRenderFns = [
               "font-size": "18px!important"
             }
           },
-          [_vm._v("\n                            Transfer Item")]
+          [_vm._v("\n                            Subtract Item")]
         )
       ])
     ])

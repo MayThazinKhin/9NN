@@ -27,6 +27,10 @@ class Item extends Model
         return $this->category->type();
     }
 
+    public function itemInventories(){
+        return $this->hasMany(ItemInventory::class);
+    }
+
 
 
 

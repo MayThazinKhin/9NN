@@ -53,7 +53,7 @@
                         </td>
 
                         <td class="padding-table-row w88px" style="">
-                            <button type="button" onclick="setUrl({{$item->id}})" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">
+                            <button type="button" onclick="setUrl({{$item->transfer->id}})" title="Transfer Item" data-toggle="modal" data-target="#transfer" class="btn-clear ">
                                 <i class="fas fa-check-circle" style="color: rgb(103, 58, 183);"></i>
                             </button>
                         </td>

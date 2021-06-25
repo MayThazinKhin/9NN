@@ -49,6 +49,15 @@ class InventoryTransferController extends Controller
         $item = Item::find($itemTransfer->item_id);
         $item->count -= $itemTransfer->count;
         $item->save();
+
         return redirect()->back();
+    }
+
+    public function update(Request $request,ItemInventory $itemInventory){
+        $itemInventory->update([
+            'count' => $request->count
+        ]);
+        return response()->json(array('success' => true) , 200);
+
     }
 }
