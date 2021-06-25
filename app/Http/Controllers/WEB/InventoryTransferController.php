@@ -51,4 +51,11 @@ class InventoryTransferController extends Controller
         $item->save();
         return redirect()->back();
     }
+
+    public function update(Request $request,ItemInventory $itemInventory){
+        $itemInventory->update([
+            'count' => $request->count
+        ]);
+        return redirect()->back();
+    }
 }

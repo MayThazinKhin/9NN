@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\ItemRequest;
 use App\Http\Services\Item\ItemFacade;
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 
@@ -16,10 +17,14 @@ class ItemController extends Controller
     }
 
     public function getItemsByCategoryID(ItemRequest $request){
+        $items_by_category_id =  ItemFacade::getItemsByCategoryID($request);
+        foreach ($items_by_category_id as $item){
+           $item =  Item::find(14);
+            return [$item->itemInventories];
+        }
 
-        $items = ItemFacade::getItemsByCategoryID($request);
-        $paginate_items = paginate($items,$request);
-        responseData('items',$paginate_items,200);
+        //$paginate_items = paginate($items,$request);
+        //responseData('items',$paginate_items,200);
     }
 
 
