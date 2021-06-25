@@ -16,6 +16,7 @@ class ItemController extends Controller
     }
 
     public function getItemsByCategoryID(ItemRequest $request){
+
         $items = ItemFacade::getItemsByCategoryID($request);
         $paginate_items = paginate($items,$request);
         responseData('items',$paginate_items,200);

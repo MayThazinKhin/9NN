@@ -42,11 +42,12 @@
                                 </div>
                             </td>
                         </tr>
+                    @endforeach
                     </tbody>
 
                 </table>
             </div>
         </form>
     </div>
-        @endforeach
+
 @endsection
