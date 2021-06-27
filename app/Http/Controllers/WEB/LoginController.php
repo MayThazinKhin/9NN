@@ -26,8 +26,8 @@ class LoginController extends Controller
             return redirect('invoices');
         elseif(Gate::allows('isKitchenStaff'))
             return redirect('kitchen_items');
-        elseif(Gate::allows('isAccountant'))
-            return redirect('financial');
+        elseif(Gate::allows('isInventoryStaff'))
+            return redirect('item_list');
         else
             return redirect('login');
     }

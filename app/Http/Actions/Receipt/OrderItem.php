@@ -5,6 +5,7 @@ namespace App\Http\Actions\Receipt;
 
 
 use App\Models\Item;
+use App\Models\ItemInventory;
 use App\Models\Receipt;
 
 class OrderItem
@@ -19,7 +20,7 @@ class OrderItem
         foreach ($order['items'] as $item){
             $order_count = $item['count'];
             $id = $item['id'];
-            $item_data = Item::find($id);
+            $item_data =   ItemInventory::where([['item_id',$item->id],['type_id',1]])->first();
             if($item_data){
                 $receipt->items()->attach($id,['count'=>$order_count]);
                 $update_count = $item_data->count - $order_count ;
@@ -27,7 +28,8 @@ class OrderItem
                     'count' => $update_count
                 ]);
             }
-        }
+            }
+
         return $receipt;
     }
 

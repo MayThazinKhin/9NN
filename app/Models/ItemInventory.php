@@ -19,4 +19,6 @@ class ItemInventory extends Model
         return $this->item()->where('id',$this->item_id)->pluck('name')->first();
     }
 
+
+
 }

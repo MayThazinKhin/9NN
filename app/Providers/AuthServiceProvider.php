@@ -16,16 +16,16 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role == 'admin' ;
         });
 
-         Gate::define('isCashier',function ($user){
+        Gate::define('isCashier',function ($user){
              return $user->role == 'cashier' ;
-         });
-
-        Gate::define('isShopStaff',function ($user){
-            return $user->role == 'shop_staff' ;
         });
 
         Gate::define('isKitchenStaff',function ($user){
             return (($user->role == 'kitchen_staff') ||  ($user->role == 'bar_staff') ) ;
+        });
+
+        Gate::define('isInventoryStaff',function ($user){
+            return  ($user->role == 'shop_staff')  ;
         });
     }
 }

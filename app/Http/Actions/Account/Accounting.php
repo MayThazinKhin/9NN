@@ -10,8 +10,7 @@ use Carbon\Carbon;
 class Accounting
 {
     public function primary(){
-        $primary_accounts = Account::where('code','<', 9)->where('is_archived',false)->get();
-        return $primary_accounts;
+        return Account::where('code','<', 9)->where('is_archived',false)->get();
     }
 
     public function secondary($primary_code){

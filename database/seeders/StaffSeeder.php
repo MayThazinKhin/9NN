@@ -46,7 +46,7 @@ class StaffSeeder extends Seeder
             'role_id' => 6
         ]);
         Staff::create([
-            'name' => 'bar_staff',
+            'name' => 'shop_staff',
             'password' => 'password',
             'role_id' => 7
         ]);

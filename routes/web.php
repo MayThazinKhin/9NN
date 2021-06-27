@@ -95,23 +95,10 @@ Route::middleware('can:isCashier')->group(function () {
     Route::post('invoice_update',[InvoiceController::class,'update'])->name('invoice.update');
     Route::get('done_invoices',[InvoiceController::class,'done_index'])->name('done_invoice');
     Route::get('done_invoice_detail/{id}',[InvoiceController::class,'done_detail'])->name('done_invoice.detail');
-
-
-    Route::get('invoices',[InvoiceController::class,'index'])->name('invoice');
-    Route::get('invoice_detail/{id}',[InvoiceController::class,'detail'])->name('invoice.detail');
-    Route::post('invoice_update',[InvoiceController::class,'update'])->name('invoice.update');
-    Route::get('done_invoices',[InvoiceController::class,'done_index'])->name('done_invoice');
-    Route::get('done_invoice_detail/{id}',[InvoiceController::class,'done_detail'])->name('done_invoice.detail');
-
 });
 
 
-Route::middleware('can:isKitchenStaff')->group(function () {
-    //Inventory
-    Route::get('/transfer_item',[InventoryTransferController::class,'getTransferItem'])->name('transfer.item');
-    Route::post('/confirm_item/{itemTransfer}',[InventoryTransferController::class,'confirmItems'])->name('confirm.item');
-    Route::get('/item_list',[InventoryTransferController::class,'getItemList'])->name('item.list');
-    Route::post('/update_inventory_item/{itemInventory}',[InventoryTransferController::class,'update'])->name('update.inventory.item');
+Route::middleware('can:isKitchenStaff' )->group(function () {
 
     //cancel_item
     Route::get('cancel_items',[CancelItemController::class,'index'])->name('cancel_items');
@@ -119,11 +106,17 @@ Route::middleware('can:isKitchenStaff')->group(function () {
     //kitchen_item
     Route::get('kitchen_items',[CancelItemController::class,'kitchenItems'])->name('kitchen_items');
     Route::post('update_kitchen_status/{kitchen_item}',[CancelItemController::class,'updateKitchenStatus'])->name('update_kitchen_status');
+
+    Route::get('/transfer_item',[InventoryTransferController::class,'getTransferItem'])->name('transfer.item');
+    Route::post('/confirm_item/{itemTransfer}',[InventoryTransferController::class,'confirmItems'])->name('confirm.item');
+    Route::get('/item_list',[InventoryTransferController::class,'getItemList'])->name('item.list');
+    Route::post('/update_inventory_item/{itemInventory}',[InventoryTransferController::class,'update'])->name('update.inventory.item');
+
 });
 
-Route::middleware('can:isShopStaff')->group(function () {
+Route::middleware(['can:isInventoryStaff'])->group(function () {
 
-
+//Inventory
 
 });
 

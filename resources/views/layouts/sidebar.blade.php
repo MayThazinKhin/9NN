@@ -103,7 +103,6 @@
         <a href="{{route('cancel_items')}}" class="a-clear a-sidebar @yield('cancel')">
            <i class="fal fa-minus-circle fs17"></i> Cancel Items
         </a>
-        {{--        bar inventory--}}
             <button style="" class="btn-clear btn-collapse a-sidebar m-0 text-left w-100" type="button"
                     data-toggle="collapse" data-target="#bar_inventory"
                     aria-expanded="false" aria-controls="bar_inventory"
@@ -119,7 +118,12 @@
                     Transfer List
                 </a>
             </div>
+        @elsecanany(['isInventoryStaff' || 'isKitchenStaff']))
+
+
         @endcan
+
+
 {{--         <a href="{{route('staff_logout')}}" class="a-clear a-sidebar @yield('cancel')">--}}
 {{--            <i class="fal fa-minus-circle fs17"></i> logout--}}
 {{--         </a>--}}
