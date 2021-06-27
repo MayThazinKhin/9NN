@@ -21,11 +21,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('isKitchenStaff',function ($user){
-            return (($user->role == 'kitchen_staff') ||  ($user->role == 'bar_staff') ) ;
+            return (($user->role == 'kitchen_staff') ||  ($user->role == 'bar_staff') || ($user->role == 'shop_staff')  ) ;
         });
 
         Gate::define('isInventoryStaff',function ($user){
-            return  ($user->role == 'shop_staff')  ;
+            return (($user->role == 'kitchen_staff') ||  ($user->role == 'bar_staff')) ;
         });
     }
 }
