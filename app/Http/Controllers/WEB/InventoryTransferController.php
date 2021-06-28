@@ -15,7 +15,13 @@ class InventoryTransferController extends Controller
     public function __construct(){
         $this->middleware(function ($request, $next) {
             $role = Auth::user()->role;
-            $this->type = ($role == 'kitchen_staff') ? 2 : 3;
+            if ($role == 'shop_staff'){
+                $this->type  = 1;
+            }
+            else{
+                $this->type = ($role == 'kitchen_staff') ? 2 : 3;
+            }
+
             return $next($request);
         });
     }
