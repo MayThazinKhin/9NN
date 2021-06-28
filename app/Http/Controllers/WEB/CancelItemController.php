@@ -46,7 +46,7 @@ class CancelItemController extends Controller
         if($request->status == 'done'){
             $is_countable =  $kitchenItem->kitchenItem->Category->is_countable;
             if($is_countable){
-                $item_data = ItemInventory::find($kitchenItem->item_id);
+                $item_data = ItemInventory::where([['item_id',$kitchenItem->item_id],['type_id',3]])->first();
                 if($item_data){
                     $update_count = $item_data->count - $kitchenItem->count ;
                     $item_data->update([
