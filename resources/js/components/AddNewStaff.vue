@@ -71,7 +71,6 @@
             </div>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -94,7 +93,6 @@ export default {
     },
 
     methods: {
-
         create() {
             let self = this;
             ajaxHelper.ajaxHeaders();

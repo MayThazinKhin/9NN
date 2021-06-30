@@ -39,8 +39,6 @@
 </head>
 <body style="background-color: #eff1f5">
 <div class="overall-container" id="app">
-
-
     <div class="top-and-side-bar">
         <div class="topbar" >
             <a href="{{route('staff_logout')}}">

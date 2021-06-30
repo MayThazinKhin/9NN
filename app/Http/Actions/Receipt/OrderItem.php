@@ -20,7 +20,7 @@ class OrderItem
         foreach ($order['items'] as $item){
             $order_count = $item['count'];
             $id = $item['id'];
-            $item_data =   ItemInventory::where([['item_id',$item->id],['type_id',1]])->first();
+            $item_data =   ItemInventory::where([['item_id',$id],['type_id',1]])->first();
             if($item_data){
                 $receipt->items()->attach($id,['count'=>$order_count]);
                 $update_count = $item_data->count - $order_count ;
