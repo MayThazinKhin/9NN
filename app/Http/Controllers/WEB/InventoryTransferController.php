@@ -30,6 +30,11 @@ class InventoryTransferController extends Controller
         return view('bar_inventory.list',compact('items'));
     }
 
+    public function search(Request $request){
+        $items = Item::where('name', 'LIKE', "%{$request->name}%")->get();
+        return response()->json(['success' => true,'items'=>$items] , 200);
+    }
+
     public function getTransferItem(){
         $items =  ItemTransfer::where([['is_confirmed',0],['type_id',$this->type]])->orderBy('date','desc')->get();
         return view('bar_inventory.transfer',compact('items'));

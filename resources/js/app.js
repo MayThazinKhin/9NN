@@ -17,8 +17,7 @@ Vue.component('edit-password-button', require('./components/EditPasswordButton.v
 Vue.component('set-inventory-transfer-amount', require('./components/SetInventoryTranferAmount.vue').default);
 Vue.component('inventory-transfer', require('./components/InventoryTransfer.vue').default);
 Vue.component('item-subtract', require('./components/ItemSubtract.vue').default);
-
-
+Vue.component('auto-complete', require('./components/AutoComplete.vue').default,{name: 'auto-complete'});
 const app = new Vue({
     el: '#app',
     store,

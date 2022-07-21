@@ -10,6 +10,7 @@
                     <a href="#" class="a-clear text-dark fm-roboto fs17">Inventory Management </a>
                 </nav>
             </div>
+            <auto-complete></auto-complete>
         </header>
     <div>
         <form class="position-relative w-100">
@@ -54,6 +55,6 @@
         </form>
     </div>
         <item-subtract></item-subtract>
-
-
 @endsection
+
+

@@ -111,7 +111,7 @@ Route::middleware('can:isKitchenStaff' )->group(function () {
     Route::post('/confirm_item/{itemTransfer}',[InventoryTransferController::class,'confirmItems'])->name('confirm.item');
     Route::get('/item_list',[InventoryTransferController::class,'getItemList'])->name('item.list');
     Route::post('/update_inventory_item/{itemInventory}',[InventoryTransferController::class,'update'])->name('update.inventory.item');
-
+    Route::post('search_inventory_item',[InventoryTransferController::class,'search']);
 });
 
 Route::middleware(['can:isInventoryStaff'])->group(function () {
