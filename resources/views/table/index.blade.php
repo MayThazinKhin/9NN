@@ -20,6 +20,7 @@
                         <th class="table-header font-weight-normal">Id</th>
                         <th class="table-header font-weight-normal">Name</th>
                         <th class="table-header font-weight-normal">Price per Min</th>
+                        <th class="table-header font-weight-normal">Status</th>
                         <th class="table-header font-weight-normal"> &nbsp;</th>
                     </tr>
                     </thead>
@@ -43,6 +44,14 @@
                                 {{$table->price}}
                             </div>
                         </td>
+
+                        <td class="padding-table-row">
+                            <div class="custom-control custom-switch d-inline-block">
+                                <input @if($table->marker_id == null ) checked @endif type="checkbox" class="custom-control-input" >
+                                <label class="custom-control-label" for="customSwitch1" style="cursor: pointer"></label>
+                            </div>
+                        </td>
+
 
                         <td class="padding-table-row w88px">
                             <edit-button entity="{{$table}}"></edit-button>

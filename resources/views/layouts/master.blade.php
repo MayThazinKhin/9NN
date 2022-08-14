@@ -77,7 +77,11 @@
        @yield('content')
     </div>
 </div>
-
+{{--@if(isset($_COOKIE['session_id'])) {--}}
+@include('layouts.notify',['session_id'=>$_COOKIE['session_id'],'marker_name'=>$_COOKIE['marker_name'],'table_name'=>$_COOKIE['table_name']])
+{{--echo "welcome ".$_COOKIE['session_id'];--}}
+{{--@endif--}}
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 <script>
     $('#search_input').keydown(function(event){
         let keyCode = (event.keyCode ? event.keyCode : event.which);
@@ -89,15 +93,30 @@
     $(document).ready(function (){
         $('.normal').autosize();
         $('.animated-txtarea').autosize();
-
         $("#myInput").on("keyup", function() {
             var value = $(this).val().toLowerCase();
             $("#myTable tbody tr").filter(function() {
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
+        Pusher.logToConsole = true;
+        var pusher = new Pusher('672e52edb8ed57f644eb', {
+            cluster: 'ap1'
+        });
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function(data) {
+           console.log(data)
+            document.cookie = "session_id = " + data.session_id  ;
+           document.cookie = "table_name = " + data.table_name  ;
+           document.cookie = "marker_name = " + data.marker_name  ;
+            $('#notify_model').modal('show');
+        });
+
+
+
     });
 </script>
+
 @yield('script_index')
 </body>
 </html>

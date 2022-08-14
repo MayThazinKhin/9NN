@@ -21,9 +21,10 @@ class InvoiceController extends Controller
     public function detail($id){
         $periods  = PeriodFacade::getPeriodsBySessionID($id);
         $items = SessionFacade::getOrderItems($id);
-        $marker_fee = SessionFacade::getMarker($id)->fee_paid;
+        $marker= SessionFacade::getMarker($id);
+        $session = SessionFacade::getSessionDetails($id);
         $members = Member::all();
-        return view('invoice.detail',compact('periods','items','members','id','marker_fee'));
+        return view('invoice.detail',compact('periods','items','members','id','marker','session'));
     }
 
     public function done_index(){

@@ -30,6 +30,7 @@ class SessionSeeder extends Seeder
         $data['marker_id'] = 3;
         $data['start_time'] = '2020-04-04 00:00:00';
         $data['end_time'] = CurrentTime();
+        $data['invoice_number'] = '9N-0999999';
         return $data;
     }
 

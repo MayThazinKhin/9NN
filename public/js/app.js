@@ -3354,11 +3354,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["items", "periods", "members", "id", "marker_fee", "is_submit"],
+  props: ["items", "periods", "members", "id", "marker", "is_submit", "session"],
   data: function data() {
     return {
       query: '',
@@ -3368,10 +3393,10 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       discount: 0,
       is_tax: false,
       paid_value: 0,
-      total_marker_fee: this.periods.total_min * this.marker_fee,
+      total_marker_fee: this.periods.total_min * this.marker.fee,
       total: this.items.net_total + this.periods.total_value,
       tax: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100),
-      net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value + this.periods.total_min * this.marker_fee,
+      net_value: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value + this.periods.total_min * this.marker.fee,
       credit: Math.round((this.items.net_total + this.periods.total_value) * 5 / 100) + this.items.net_total + this.periods.total_value,
       change: 0,
       credit_error_msg: 'Credit Value is more than Maximum Allowance!',
@@ -24831,6 +24856,45 @@ var render = function() {
               ])
             : _vm._e()
         ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mx-0" }, [
+        _c(
+          "div",
+          {
+            staticClass: "col bg-white position-relative",
+            staticStyle: { "min-height": "20vh", "padding-bottom": "2px" }
+          },
+          [
+            _c("table", { staticClass: "table table-borderless" }, [
+              _c("tbody", [
+                _c("tr", [
+                  _c("td", [_vm._v("Date")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("-" + _vm._s(_vm.session.date))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Invoice Number")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("- " + _vm._s(_vm.session.invoice_number))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Table Name")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("- " + _vm._s(_vm.session.table_name))])
+                ]),
+                _vm._v(" "),
+                _c("tr", [
+                  _c("td", [_vm._v("Marker Name")]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v("- " + _vm._s(_vm.marker.name))])
+                ])
+              ])
+            ])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "row mx-0" }, [

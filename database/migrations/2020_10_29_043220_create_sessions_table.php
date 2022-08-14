@@ -17,6 +17,7 @@ class CreateSessionsTable extends Migration
             $table->id();
             $table->dateTime('start_time');
             $table->dateTime('end_time')->nullable();
+            $table->char('invoice_number')->unique();
             $table->double('total')->default(0.0);
             $table->double('net_value')->default(0.0);
             $table->double('paid_value')->default(0.0);

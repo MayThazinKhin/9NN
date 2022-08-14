@@ -10,6 +10,7 @@ use App\Http\Services\Session\SessionFacade as Session;
 use App\Http\Services\Table\TableFacade as Table;
 use App\Models\PowerMood;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SessionController extends Controller
 {
@@ -63,6 +64,7 @@ class SessionController extends Controller
         $marker = UserData();
         $request['marker_id'] = $marker->id;
         $request['start_time'] = CurrentTime();
+        $request['invoice_number'] = $this->generateRandomId();
         return $request;
     }
 
@@ -71,6 +73,16 @@ class SessionController extends Controller
         $table_value = Period::getPeriodsBySessionID($sessionID)->total_value;
         $session->total_value = $order_value + $table_value ;
         return $session;
+    }
+
+    private function generateRandomId(){
+        $invoice_number = '9N-'.mt_rand(1000000000,9999999999);
+        $session_invoice = [
+            'invoice_number' => $invoice_number
+        ];
+        $rules = ['invoice_number' => 'unique:sessions'];
+        $validate = Validator::make($session_invoice, $rules)->passes();
+        return $validate ? $session_invoice['invoice_number'] : $this->generateRandomId();
     }
 
 

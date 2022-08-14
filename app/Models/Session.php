@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Session extends Model
 {
-    protected $fillable = ['start_time','end_time',
+    protected $fillable = ['start_time','end_time','invoice_number',
         'total','net_value','paid_value','marker_fee',
         'tax','change', 'discount','credit',
         'is_tax','is_done',

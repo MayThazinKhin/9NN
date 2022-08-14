@@ -14,8 +14,33 @@
                 </div>
             </div>
             <div class="row mx-0">
-                <div class="col-8 pl-0">
+                <div class="col bg-white position-relative" style="min-height: 20vh;padding-bottom: 2px">
+                    <table class="table table-borderless">
+                        <tbody>
+                        <tr>
+                            <td>Date</td>
+                            <td>-{{session.date}}</td>
+                        </tr>
+                        <tr>
+                            <td>Invoice Number</td>
+                            <td>- {{session.invoice_number}}</td>
+                        </tr>
+                        <tr>
+                            <td>Table Name</td>
+                            <td>- {{session.table_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Marker Name</td>
+                            <td>- {{marker.name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
+            <div class="row mx-0">
+
+                <div class="col-8 pl-0">
                     <div class="row bg-white mx-0 py-3 mb-3">
                         <div class="col-5 pt-2" style="border-right: 1px solid #ddd">
                             <div class="row mx-0 mb-3">
@@ -289,7 +314,7 @@ import Vuex, { mapState } from "vuex";
 import { ajaxHelper } from "../helpers/ajax_helper.js";
 Vue.use(Vuex);
 export default {
-    props: ["items","periods","members","id","marker_fee","is_submit"],
+    props: ["items","periods","members","id","marker","is_submit","session"],
     data() {
         return {
             query: '',
@@ -299,10 +324,10 @@ export default {
             discount: 0,
             is_tax: false,
             paid_value: 0,
-            total_marker_fee: this.periods.total_min * this.marker_fee,
+            total_marker_fee: this.periods.total_min * this.marker.fee,
             total: this.items.net_total + this.periods.total_value,
             tax: Math.round(((this.items.net_total + this.periods.total_value)*5)/100),
-            net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value+ (this.periods.total_min * this.marker_fee),
+            net_value: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value+ (this.periods.total_min * this.marker.fee),
             credit: Math.round(((this.items.net_total + this.periods.total_value)*5)/100) + this.items.net_total + this.periods.total_value,
             change: 0,
             credit_error_msg: 'Credit Value is more than Maximum Allowance!',
