@@ -16,6 +16,7 @@ class PeriodController extends Controller
     public function startPeriod(StartPeriodRequest $request){
         $session = SessionFacade::getSessionDetails($request->session_id);
         event(new Notify($session->session_id,$session->table_name,$session->marker_name));
+        responseTrue('success');
     }
 
     public function confirmPeriod(Request $request){

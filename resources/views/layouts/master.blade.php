@@ -77,10 +77,9 @@
        @yield('content')
     </div>
 </div>
-{{--@if(isset($_COOKIE['session_id'])) {--}}
+@if(isset($_COOKIE['session_id']))
 @include('layouts.notify',['session_id'=>$_COOKIE['session_id'],'marker_name'=>$_COOKIE['marker_name'],'table_name'=>$_COOKIE['table_name']])
-{{--echo "welcome ".$_COOKIE['session_id'];--}}
-{{--@endif--}}
+@endif
 <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
 <script>
     $('#search_input').keydown(function(event){
