@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Events\Notify;
+use App\Events\PeriodConfirmation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\RestartPeriodRequest;
 use App\Http\Requests\API\StartPeriodRequest;
@@ -22,7 +23,7 @@ class PeriodController extends Controller
     public function confirmPeriod(Request $request){
         $data = $request->all();
         PeriodFacade::start($data);
-        $this->getAllPeriods($data);
+        (event(new PeriodConfirmation(true)));
         return redirect()->back();
     }
 
