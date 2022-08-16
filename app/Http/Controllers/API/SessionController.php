@@ -40,6 +40,7 @@ class SessionController extends Controller
         else{
             (event(new PeriodConfirmation(0)));
         }
+        return redirect()->back();
     }
 
     public function orderItems(Request $request){
