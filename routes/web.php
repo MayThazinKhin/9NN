@@ -17,7 +17,7 @@ use App\Http\Controllers\WEB\AdvanceController;
 use App\Http\Controllers\WEB\CashController;
 use App\Http\Controllers\WEB\PowerMoodController;
 use App\Http\Controllers\WEB\InventoryTransferController;
-use App\Http\Controllers\API\PeriodController;
+use App\Http\Controllers\API\SessionController;
 
 //login
 Route::get('',[LoginController::class,'index']);
@@ -84,7 +84,7 @@ Route::middleware('can:isCashier')->group(function () {
     Route::post('receipt_update',[ReceiptController::class,'update'])->name('receipt.update');
 
     //Period
-    Route::post('confirm_period',[PeriodController::class, 'confirmPeriod'])->name('confirm_period');
+    Route::post('confirm_session',[SessionController::class, 'confirmSession'])->name('confirm_session');
 
     //Credit
     Route::get('credits',[InvoiceController::class,'getCredits'])->name('credits');

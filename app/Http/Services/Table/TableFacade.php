@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static applyMarkerId($table_id, $marker_id)
  * @method static freeTable($table)
  * @method static checkTableFree($table_id)
+ * @method static getName($table_id)
  */
 class TableFacade extends Facade
 {

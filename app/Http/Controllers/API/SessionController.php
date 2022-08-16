@@ -2,30 +2,44 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Events\Notify;
+use App\Events\PeriodConfirmation;
 use App\Http\Actions\Session\CurrentStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\StartSessionRequest;
 use App\Http\Services\Period\PeriodFacade as Period;
 use App\Http\Services\Session\SessionFacade as Session;
 use App\Http\Services\Table\TableFacade as Table;
-use App\Models\PowerMood;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class SessionController extends Controller
 {
     public function startSession(StartSessionRequest $request){
-       $is_table_free =   Table::checkTableFree($request->table_id);
+        $table_id = $request->table_id;
+        $is_table_free =   Table::checkTableFree($table_id);
        if($is_table_free === true){
-           $data = $this->setSessionData($request->all());
-           $session =  Session::create($data);
-           if($session){
-               Table::applyMarkerId($data['table_id'],$data['marker_id']);
-               responseData('session_id',$session->id,200);
-           }
-           responseFalse();
+           $table_name = Table::getName($table_id);
+           $marker_name = UserData()->name;
+           $marker_id = UserData()->id;
+           event(new Notify($table_id, $marker_id , $table_name,$marker_name));
+           responseTrue('success');
        }
       responseStatus('Table is not free',409);
+    }
+
+    public function confirmSession(Request $request){
+        if($request->is_confirm == 'true'){
+            $data = $this->setSessionData($request->all());
+            $session =  Session::create($data);
+            if($session){
+                Table::applyMarkerId($data['table_id'],$data['marker_id']);
+                (event(new PeriodConfirmation($session->id)));
+            }
+        }
+        else{
+            (event(new PeriodConfirmation(false)));
+        }
     }
 
     public function orderItems(Request $request){
@@ -61,8 +75,8 @@ class SessionController extends Controller
     }
 
     protected function setSessionData($request){
-        $marker = UserData();
-        $request['marker_id'] = $marker->id;
+//        $marker = UserData();
+//        $request['marker_id'] = $marker->id;
         $request['start_time'] = CurrentTime();
         $request['invoice_number'] = $this->generateRandomId();
         return $request;

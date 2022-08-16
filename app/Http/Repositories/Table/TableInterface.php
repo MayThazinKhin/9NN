@@ -15,5 +15,7 @@ interface TableInterface
     public function freeTable($table);
 
     public function checkTableFree($table_id);
+
+    public function getName($table_id);
 }
 

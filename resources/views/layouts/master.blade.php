@@ -77,10 +77,10 @@
        @yield('content')
     </div>
 </div>
-@if(isset($_COOKIE['session_id']))
-@include('layouts.notify',['session_id'=>$_COOKIE['session_id'],'marker_name'=>$_COOKIE['marker_name'],'table_name'=>$_COOKIE['table_name']])
+@if(isset($_COOKIE['table_id']) && isset($_COOKIE['marker_id']))
+@include('layouts.notify',['table_id'=>$_COOKIE['table_id'],'marker_name'=>$_COOKIE['marker_name'],'table_name'=>$_COOKIE['table_name'],'marker_id'=>$_COOKIE['marker_id']])
 @endif
-<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+<script src="{{asset('js/pusher.min.js')}}"></script>
 <script>
     $('#search_input').keydown(function(event){
         let keyCode = (event.keyCode ? event.keyCode : event.which);
@@ -102,12 +102,13 @@
         var pusher = new Pusher('672e52edb8ed57f644eb', {
             cluster: 'ap1'
         });
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function(data) {
+        var channel = pusher.subscribe('notify-channel');
+        channel.bind('notify-event', function(data) {
            console.log(data)
-            document.cookie = "session_id = " + data.session_id  ;
+            document.cookie = "table_id = " + data.table_id  ;
            document.cookie = "table_name = " + data.table_name  ;
            document.cookie = "marker_name = " + data.marker_name  ;
+           document.cookie = "marker_id = " + data.marker_id;
             $('#notify_model').modal('show');
         });
 

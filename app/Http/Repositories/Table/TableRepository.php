@@ -37,6 +37,11 @@ class TableRepository implements TableInterface
 
     public function checkTableFree($table_id){
       $table =   $this->table::where('id',$table_id)->where('marker_id',null)->first();
-      return ($table) ? true : false ;
+      return (bool) $table;
+    }
+
+    public function getName($table_id)
+    {
+        return $this->table::where('id',$table_id)->pluck('name')->first();
     }
 }

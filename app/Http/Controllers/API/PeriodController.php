@@ -2,29 +2,17 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Events\Notify;
-use App\Events\PeriodConfirmation;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\RestartPeriodRequest;
 use App\Http\Requests\API\StartPeriodRequest;
 use App\Http\Services\Period\PeriodFacade;
-use App\Http\Services\Session\SessionFacade;
-use Illuminate\Http\Request;
-
 
 class PeriodController extends Controller
 {
     public function startPeriod(StartPeriodRequest $request){
-        $session = SessionFacade::getSessionDetails($request->session_id);
-        event(new Notify($session->session_id,$session->table_name,$session->marker_name));
-        responseTrue('success');
-    }
-
-    public function confirmPeriod(Request $request){
         $data = $request->all();
         PeriodFacade::start($data);
-        (event(new PeriodConfirmation(true)));
-        return redirect()->back();
+        $this->getAllPeriods($data);
     }
 
     public function restartPeriod(RestartPeriodRequest $request){

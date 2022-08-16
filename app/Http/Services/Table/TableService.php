@@ -31,4 +31,8 @@ class TableService
     public function checkTableFree($table_id){
         return $this->table->checkTableFree($table_id) ;
     }
+
+    public function getName($table_id){
+        return $this->table->getName($table_id);
+    }
 }
