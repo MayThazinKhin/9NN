@@ -38,7 +38,7 @@ class SessionController extends Controller
             }
         }
         else{
-            (event(new PeriodConfirmation(false)));
+            (event(new PeriodConfirmation(0)));
         }
     }
 
