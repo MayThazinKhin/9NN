@@ -27,6 +27,7 @@ class CreateSessionsTable extends Migration
             $table->double('change')->default(0.0);
             $table->double('tax')->default(0.0);
             $table->boolean('is_tax')->default(false);
+            $table->boolean('is_bank')->default(false);
             $table->boolean('is_done')->default(false);
             $table->foreignId('table_id')->constrained()->onDelete('cascade');
             $table->foreignId('marker_id')->constrained('staff')->onDelete('cascade');

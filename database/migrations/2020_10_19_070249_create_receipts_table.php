@@ -24,6 +24,7 @@ class CreateReceiptsTable extends Migration
             $table->double('change')->default(0.0);
             $table->double('tax')->default(0.0);
             $table->boolean('is_tax')->default(false);
+            $table->boolean('is_bank')->default(false);
             $table->boolean('is_done')->default(false);
             $table->foreignId('marker_id')->constrained('staff')->onDelete('cascade');
             $table->foreignId('cashier_id')->nullable()->constrained('staff')->onDelete('cascade');
