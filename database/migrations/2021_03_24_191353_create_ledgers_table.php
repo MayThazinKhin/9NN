@@ -12,7 +12,13 @@ class CreateLedgersTable extends Migration
             $table->id();
             $table->double('value');
             $table->date('date');
-            $table->foreignId('account_id')->constrained()->onDelete('cascade');
+            $table->text('remark')->nullable();
+            $table->unsignedBigInteger('cash_id')->nullable();
+            $table->unsignedBigInteger('type_id')->nullable();
+            $table->boolean('is_confirmed')->default(true);
+            $table->foreignId('account_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreign('cash_id')->references('id')->on('accounts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('type_id')->references('id')->on('accounts')->onDelete('cascade')->onUpdate('cascade');
             $table->nullableMorphs('ledgerable');
             $table->timestamps();
         });

@@ -6,6 +6,6 @@
                          :id="{{$id}}"
                          :is_submit="false"
     >
-    </shop-invoice-detail>s
+    </shop-invoice-detail>
 @endsection
 

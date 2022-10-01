@@ -3804,41 +3804,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -3852,6 +3817,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
       member: '',
       discount: 0,
       is_tax: false,
+      is_bank: false,
       paid_value: 0,
       total: this.items.net_total,
       tax: Math.round(this.items.net_total * 5 / 100),
@@ -3896,6 +3862,7 @@ Vue.use(vuex__WEBPACK_IMPORTED_MODULE_0__["default"]);
         'net_value': this.net_value,
         'credit': this.credit,
         'is_tax': this.is_tax,
+        'is_bank': this.is_bank,
         'session_id': this.id,
         'change': this.change,
         'cashier_id': 1
@@ -26594,6 +26561,56 @@ var render = function() {
                   _vm._v(" "),
                   _vm._m(11)
                 ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col" }, [
+                  _c("div", { staticClass: "col mb-3 pt-3" }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col mb-6 pt-3" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.is_bank,
+                          expression: "is_bank"
+                        }
+                      ],
+                      staticClass: "input-form d-inline-block mr-2",
+                      staticStyle: { width: "fit-content" },
+                      attrs: { type: "checkbox" },
+                      domProps: {
+                        checked: Array.isArray(_vm.is_bank)
+                          ? _vm._i(_vm.is_bank, null) > -1
+                          : _vm.is_bank
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.is_bank,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 && (_vm.is_bank = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.is_bank = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
+                          } else {
+                            _vm.is_bank = $$c
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(12)
+                  ])
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -26613,7 +26630,7 @@ var render = function() {
               },
               [
                 _c("table", { staticClass: "table table-borderless" }, [
-                  _vm._m(12),
+                  _vm._m(13),
                   _vm._v(" "),
                   _c(
                     "tbody",
@@ -26951,6 +26968,31 @@ var staticRenderFns = [
             }
           },
           [_vm._v(" ကပ် မကပ်")]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "label",
+      {
+        staticClass: "label-form d-inline-block",
+        staticStyle: { color: "#5b6167!important" },
+        attrs: { for: "" }
+      },
+      [
+        _c(
+          "span",
+          {
+            staticStyle: {
+              "font-size": "16px!important",
+              "font-family": "Padauk!important"
+            }
+          },
+          [_vm._v("Bank Acc")]
         )
       ]
     )

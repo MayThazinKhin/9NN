@@ -17,7 +17,7 @@ class Accounting
         return $this->getChildAccounts($primary_code,4);
     }
 
-    protected function getChildAccounts($parent_account_code,$code_length){
+    public function getChildAccounts($parent_account_code,$code_length){
         return Account::where('code','LIKE', $parent_account_code.'2'.'%')->whereRaw('LENGTH(code) =' . $code_length)->get();
     }
 

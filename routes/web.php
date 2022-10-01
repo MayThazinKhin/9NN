@@ -125,6 +125,13 @@ Route::middleware(['can:isInventoryStaff'])->group(function () {
 });
 
 Route::get('/financial',[AccountController::class,'index'])->name('financial.index');
+Route::get('/bank_box',[AccountController::class,'getBankBook'])->name('bank_book');
+
+Route::get('/closing/{account_id}',[AccountController::class,'closing'])->name('financial.closing');
+Route::get('/daily_cash',[AccountController::class,'getDailyCash'])->name('daily_cash');
+Route::get('/daily_bank',[AccountController::class,'getDailyCash'])->name('daily_bank');
+
+
 Route::post('account_title',[AccountController::class,'title'])->name('account_title');
 Route::get('account_type',[AccountController::class,'type'])->name('account_type');
 Route::post('ledger_create',[AccountController::class,'create'])->name('ledgers.create');

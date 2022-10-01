@@ -13,7 +13,6 @@ class Ledgering
             'date' =>now()->format('Y-m-d'),
         ];
     }
-
     protected function create($data){
         $ledger_data = array_merge($this->ledger,$data);
         Ledger::create($ledger_data);
@@ -41,8 +40,8 @@ class Ledgering
         $expense = [2,3];
         $cash = [4];
         $type = FirstWord($code) ;
-        if($type < 4){
-            return  (in_array($type,$income)) ? true : false ;
+        if($type < 5){
+            return in_array($type,$income);
         }
        return 'cash';
     }

@@ -9,6 +9,7 @@ class ReceiptAdding extends Ledgering implements AccountValue
     private $receipt;
     public function __construct($receipt){
         parent::__construct();
+        dd($receipt);
         $this->receiptId = $receipt->id;
         $this->receipt = $receipt;
         $type = $this->setType($this->receiptId,'receipt');
