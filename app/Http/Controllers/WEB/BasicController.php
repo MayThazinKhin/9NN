@@ -56,15 +56,4 @@ class BasicController extends Controller
         return view($this->var.'.search')->with($index_data);
     }
 
-//    public function create(){
-//
-//    }
-//
-//    public function show($id){
-//        //
-//    }
-
-//    public function edit($id){
-//        //
-//    }
 }

@@ -3,8 +3,6 @@
 
 namespace App\Http\Actions\Receipt;
 
-
-use App\Models\Item;
 use App\Models\ItemInventory;
 use App\Models\Receipt;
 
@@ -32,5 +30,4 @@ class OrderItem
 
         return $receipt;
     }
-
 }
